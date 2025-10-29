@@ -4,12 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relatório Semanal PFC - Olimpíadas</title>
+    <title>Relatório Semanal PFC - Olimpíadas do Conhecimento</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="script.js"></script>
     <style>
+        
         /* Modal Styles */
         .modal-overlay {
             display: none;
@@ -257,14 +259,17 @@
         }
         
         /* Cursor pointer para linhas da tabela */
-        #meritsTable tbody tr {
+        #olympiadsTable tbody tr,
+        #otherMeritsTable tbody tr {
             cursor: pointer;
             transition: background-color 0.2s ease;
         }
         
-        #meritsTable tbody tr:hover {
+        #olympiadsTable tbody tr:hover,
+        #otherMeritsTable tbody tr:hover {
             background-color: #f8f9fa !important;
         }
+        
     </style>
 </head>
 <body>
@@ -272,7 +277,7 @@
         <div class="header-content">
             <img src="Logo PFC.png" alt="Logo PFC" class="logo">
             <h1>Relatório Semanal PFC</h1>
-            <p class="subtitle">Olimpíadas do Conhecimento e Méritos Estudantis - 28/10/2025</p>
+            <p class="subtitle">Olimpíadas do Conhecimento - 29/10/2025</p>
         </div>
     </header>
 
@@ -283,22 +288,23 @@
         <a href="auditoria.html" class="nav-link">Auditoria</a>
         <a href="cursinho/cursinho.html" class="nav-link">🎓 Cursinho</a>
         <a href="olimpiadas.html" class="nav-link active">🏆 Olimpíadas</a>
+        <a href="outros_meritos.html" class="nav-link">🎖️ Outros Méritos</a>
     </nav>
 
     <main class="main-content">
         
         <section class="summary-cards">
             <div class="card">
-                <h3>Alunos com Méritos</h3>
-                <div class="metric">111</div>
+                <h3>Alunos com Olimpíadas</h3>
+                <div class="metric">39</div>
             </div>
             <div class="card">
                 <h3>Pontuação Média</h3>
-                <div class="metric">8.2</div>
+                <div class="metric">10.6</div>
             </div>
             <div class="card">
                 <h3>Pontuação Máxima</h3>
-                <div class="metric">155</div>
+                <div class="metric">125</div>
             </div>
             <div class="card">
                 <h3>Tipos de Olimpíadas</h3>
@@ -308,9 +314,9 @@
         
         
         <section class="table-section">
-            <h2>Ranking de Méritos dos Alunos</h2>
+            <h2>Ranking de Olimpíadas do Conhecimento</h2>
             
-        <table border="1" class="dataframe dataframe data-table" id="meritsTable">
+        <table border="1" class="dataframe dataframe data-table" id="olympiadsTable">
             <thead>
                 <tr style="text-align: right;">
                     <th>Posição</th>
@@ -318,15 +324,8 @@
                     <th>Cidade</th>
                     <th>Série</th>
                     <th>Ano de Ingresso</th>
-                    <th>Pontuação Total</th>
-                    <th>Olimpíadas</th>
-                    <th>Honrarias</th>
-                    <th>Outras Premiações</th>
-                    <th>Premiações PFC</th>
+                    <th>Pontuação Olimpíadas</th>
                     <th>Detalhes Olimpíadas</th>
-                    <th>Detalhes Honrarias</th>
-                    <th>Detalhes Outras Premiações</th>
-                    <th>Detalhes Premiações PFC</th>
                 </tr>
             </thead>
             <tbody>
@@ -337,15 +336,8 @@
                     <td>Coronel Macedo</td>
                     <td>6</td>
                     <td>2024</td>
-                    <td><strong>155</strong></td>
-                    <td>125</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>30</td>
+                    <td><strong>125</strong></td>
                     <td>OBMEP (participação); OBMEP - Prata (+40 pts); OLISP (participação); OLISP - Prata (+35 pts); OMASP (participação); OMASP - Prata (+35 pts)</td>
-                    <td></td>
-                    <td></td>
-                    <td>Melhor Clube - 2º Lugar (+30 pts)</td>
                 </tr>
             
                 <tr>
@@ -354,321 +346,188 @@
                     <td>São Roque</td>
                     <td>9</td>
                     <td>2024</td>
-                    <td><strong>55</strong></td>
-                    <td>45</td>
-                    <td>0</td>
-                    <td>10</td>
-                    <td>0</td>
+                    <td><strong>45</strong></td>
                     <td>PORTUGUÊS (participação); PORTUGUÊS - 1º Lugar (+40 pts)</td>
-                    <td></td>
-                    <td>Medalha (+10 pts)</td>
-                    <td></td>
                 </tr>
             
                 <tr>
                     <td>3º</td>
-                    <td>gabriel alfais roberto pereira</td>
-                    <td>São Roque</td>
-                    <td>9</td>
-                    <td>2023</td>
-                    <td><strong>55</strong></td>
-                    <td>5</td>
-                    <td>20</td>
-                    <td>30</td>
-                    <td>0</td>
-                    <td>OBMEP (participação)</td>
-                    <td>Menção Honrosa (+20 pts)</td>
-                    <td>Feira De Ciências - 1º Lugar (+30 pts)</td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>4º</td>
-                    <td>isabelle akemi kosaka</td>
-                    <td>Coronel Macedo</td>
-                    <td>6</td>
-                    <td>2023</td>
-                    <td><strong>55</strong></td>
-                    <td>15</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>40</td>
-                    <td>OBMEP (participação); OLISP (participação); OBA (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td>Melhor Clube - 1º Lugar (+40 pts)</td>
-                </tr>
-            
-                <tr>
-                    <td>5º</td>
-                    <td>luann henrique dos santos lima kull</td>
-                    <td>Corumbataí</td>
-                    <td>7</td>
-                    <td>2024</td>
-                    <td><strong>45</strong></td>
-                    <td>5</td>
-                    <td>40</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>OBMEP (participação)</td>
-                    <td>Destaque (+15 pts); Aluno Destaque (+25 pts)</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>6º</td>
-                    <td>mariana de souza rocha</td>
-                    <td>São Roque</td>
-                    <td>7</td>
-                    <td>2022</td>
-                    <td><strong>40</strong></td>
-                    <td>20</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>20</td>
-                    <td>OBMEP (participação); OBMEP - Segunda Fase (+15 pts)</td>
-                    <td></td>
-                    <td></td>
-                    <td>Melhor Clube - 3º Lugar (+20 pts)</td>
-                </tr>
-            
-                <tr>
-                    <td>7º</td>
-                    <td>kamila almeida andrade</td>
-                    <td>Coronel Macedo</td>
-                    <td>5</td>
-                    <td>2024</td>
-                    <td><strong>35</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>30</td>
-                    <td>OBMEP (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td>Melhor Clube - 2º Lugar (+30 pts)</td>
-                </tr>
-            
-                <tr>
-                    <td>8º</td>
-                    <td>kerollyn thallya dos santos rodrigues</td>
-                    <td>Coronel Macedo</td>
-                    <td>7</td>
-                    <td>2023</td>
-                    <td><strong>30</strong></td>
-                    <td>15</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>15</td>
-                    <td>OBMEP (participação); OLISP (participação); OMASP (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td>Maratona Científica (+15 pts)</td>
-                </tr>
-            
-                <tr>
-                    <td>9º</td>
-                    <td>isabella satilio de moura</td>
-                    <td>São Roque</td>
-                    <td>9</td>
-                    <td>2023</td>
-                    <td><strong>30</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>30</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td>Medalha - Ouro (+30 pts)</td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>10º</td>
-                    <td>maria cecília de campos</td>
-                    <td>Iperó</td>
-                    <td>8</td>
-                    <td>2023</td>
-                    <td><strong>30</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>30</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Maratona Científica - 1º Lugar (+30 pts)</td>
-                </tr>
-            
-                <tr>
-                    <td>11º</td>
-                    <td>miguel donizete de almeida dos santos</td>
-                    <td>São Roque</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>30</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>30</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td>Medalha - Ouro (+30 pts)</td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>12º</td>
-                    <td>milena duarte de santos messias ferreira</td>
-                    <td>Iperó</td>
-                    <td>8</td>
-                    <td>2023</td>
-                    <td><strong>25</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>25</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Concurso Literário - 1º Lugar (+25 pts)</td>
-                </tr>
-            
-                <tr>
-                    <td>13º</td>
                     <td>ana luisa soares lopes de oliveira</td>
                     <td>São Roque</td>
                     <td>6</td>
                     <td>2025</td>
                     <td><strong>20</strong></td>
-                    <td>20</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
                     <td>OBMEP (participação); OBMEP - 2ª Fase (+15 pts)</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                </tr>
+            
+                <tr>
+                    <td>4º</td>
+                    <td>mariana de souza rocha</td>
+                    <td>São Roque</td>
+                    <td>7</td>
+                    <td>2022</td>
+                    <td><strong>20</strong></td>
+                    <td>OBMEP (participação); OBMEP - Segunda Fase (+15 pts)</td>
+                </tr>
+            
+                <tr>
+                    <td>5º</td>
+                    <td>kerollyn thallya dos santos rodrigues</td>
+                    <td>Coronel Macedo</td>
+                    <td>7</td>
+                    <td>2023</td>
+                    <td><strong>15</strong></td>
+                    <td>OBMEP (participação); OLISP (participação); OMASP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>6º</td>
+                    <td>isabelle akemi kosaka</td>
+                    <td>Coronel Macedo</td>
+                    <td>6</td>
+                    <td>2023</td>
+                    <td><strong>15</strong></td>
+                    <td>OBMEP (participação); OLISP (participação); OBA (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>7º</td>
+                    <td>natália de barros macário</td>
+                    <td>Coronel Macedo</td>
+                    <td>5</td>
+                    <td>2024</td>
+                    <td><strong>10</strong></td>
+                    <td>OBMEP (participação); OLISP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>8º</td>
+                    <td>joão vitor garcia da rosa</td>
+                    <td>Coronel Macedo</td>
+                    <td>6</td>
+                    <td>2025</td>
+                    <td><strong>10</strong></td>
+                    <td>OLISP (participação); OMASP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>9º</td>
+                    <td>gabriel alfais roberto pereira</td>
+                    <td>São Roque</td>
+                    <td>9</td>
+                    <td>2023</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>10º</td>
+                    <td>marley gabriel vieira portilho de carvalho</td>
+                    <td>São Roque</td>
+                    <td>6</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>11º</td>
+                    <td>murillo henrique gonçalves de carvalho</td>
+                    <td>Capela do Alto</td>
+                    <td>6</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>12º</td>
+                    <td>gabriely moura de moraes</td>
+                    <td>Capela do Alto</td>
+                    <td>6</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>13º</td>
+                    <td>manuela aparecida leite de camargo almeida</td>
+                    <td>Capela do Alto</td>
+                    <td>6</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
                 </tr>
             
                 <tr>
                     <td>14º</td>
-                    <td>bryan samuel bastos</td>
-                    <td>Corumbataí</td>
-                    <td>7</td>
+                    <td>arthur carriel pereira</td>
+                    <td>Guareí</td>
+                    <td>6</td>
                     <td>2024</td>
-                    <td><strong>20</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>15</td>
-                    <td>OBMEP (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td>Projeto Pfc - 3º Lugar (+15 pts)</td>
+                    <td><strong>5</strong></td>
+                    <td>OBA (participação)</td>
                 </tr>
             
                 <tr>
                     <td>15º</td>
-                    <td>joao vitor ribeiro aguilheira</td>
-                    <td>Iperó</td>
-                    <td>8</td>
-                    <td>2023</td>
-                    <td><strong>15</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>15</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Concurso Literário - 3º Lugar (+15 pts)</td>
+                    <td>elisa priolli pereira</td>
+                    <td>Mirassol</td>
+                    <td>4</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>ROBÓTICA (participação)</td>
                 </tr>
             
                 <tr>
                     <td>16º</td>
-                    <td>nicolly nunes neves</td>
-                    <td>São Roque</td>
-                    <td>7</td>
-                    <td>2024</td>
-                    <td><strong>15</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>10</td>
-                    <td>0</td>
-                    <td>OBMEP (participação)</td>
-                    <td></td>
-                    <td>Medalha (+10 pts)</td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>17º</td>
-                    <td>gabrielly cristina matos brielle</td>
-                    <td>Corumbataí</td>
-                    <td>7</td>
-                    <td>2024</td>
-                    <td><strong>15</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>10</td>
-                    <td>OBMEP (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td>Concurso Literário (+10 pts)</td>
-                </tr>
-            
-                <tr>
-                    <td>18º</td>
-                    <td>joão marcos marcucci kviatkovski wenzel</td>
-                    <td>Corumbataí</td>
-                    <td>7</td>
-                    <td>2024</td>
-                    <td><strong>15</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>10</td>
-                    <td>OBMEP (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td>Projeto Pfc (+10 pts)</td>
-                </tr>
-            
-                <tr>
-                    <td>19º</td>
                     <td>cauã silva de alencar</td>
                     <td>Corumbataí</td>
                     <td>7</td>
                     <td>2024</td>
-                    <td><strong>15</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>10</td>
+                    <td><strong>5</strong></td>
                     <td>OBMEP (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td>Projeto Pfc (+10 pts)</td>
+                </tr>
+            
+                <tr>
+                    <td>17º</td>
+                    <td>gabrielly carvalho muniz</td>
+                    <td>Mirassol</td>
+                    <td>4</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>ROBÓTICA (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>18º</td>
+                    <td>manuela dos santos gonçalves</td>
+                    <td>Mirassol</td>
+                    <td>4</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>ROBÓTICA (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>19º</td>
+                    <td>davi josé cardoso</td>
+                    <td>Mirassol</td>
+                    <td>4</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>ROBÓTICA (participação)</td>
                 </tr>
             
                 <tr>
                     <td>20º</td>
-                    <td>maria eduarda batista da silva</td>
-                    <td>São Roque</td>
-                    <td>9</td>
-                    <td>2022</td>
-                    <td><strong>15</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>15</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Melhor Clube (+15 pts)</td>
+                    <td>josé pedro boarroli</td>
+                    <td>Mirassol</td>
+                    <td>4</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>ROBÓTICA (participação)</td>
                 </tr>
             
                 <tr>
@@ -677,1545 +536,188 @@
                     <td>Mirassol</td>
                     <td>4</td>
                     <td>2025</td>
-                    <td><strong>15</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>10</td>
-                    <td>0</td>
+                    <td><strong>5</strong></td>
                     <td>ROBÓTICA (participação)</td>
-                    <td></td>
-                    <td>Medalha (+10 pts)</td>
-                    <td></td>
                 </tr>
             
                 <tr>
                     <td>22º</td>
-                    <td>sarah heloísa leite sarti</td>
-                    <td>Corumbataí</td>
-                    <td>7</td>
-                    <td>2024</td>
-                    <td><strong>15</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>10</td>
-                    <td>0</td>
-                    <td>OBMEP (participação)</td>
-                    <td></td>
-                    <td>Medalha (+10 pts)</td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>23º</td>
-                    <td>miguel fernando de oliveira rodrigues</td>
-                    <td>Corumbataí</td>
-                    <td>7</td>
-                    <td>2024</td>
-                    <td><strong>15</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>10</td>
-                    <td>OBMEP (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td>Projeto Pfc (+10 pts)</td>
-                </tr>
-            
-                <tr>
-                    <td>24º</td>
-                    <td>natália de barros macário</td>
-                    <td>Coronel Macedo</td>
-                    <td>5</td>
-                    <td>2024</td>
-                    <td><strong>10</strong></td>
-                    <td>10</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>OBMEP (participação); OLISP (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>25º</td>
-                    <td>lucas yuji pereira dos santos</td>
-                    <td>São Roque</td>
-                    <td>7</td>
-                    <td>2022</td>
-                    <td><strong>10</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>10</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td>Medalha (+10 pts)</td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>26º</td>
-                    <td>jeaniffer elisa ramos ribeiro</td>
-                    <td>São Roque</td>
-                    <td>9</td>
-                    <td>2022</td>
-                    <td><strong>10</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>10</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td>Medalha (+10 pts)</td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>27º</td>
-                    <td>joão vitor garcia da rosa</td>
-                    <td>Coronel Macedo</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>10</strong></td>
-                    <td>10</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>OLISP (participação); OMASP (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>28º</td>
-                    <td>igor candido araujo</td>
-                    <td>Iperó</td>
-                    <td>6</td>
-                    <td>2023</td>
-                    <td><strong>10</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>10</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td>Concurso (+10 pts)</td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>29º</td>
-                    <td>marley gabriel vieira portilho de carvalho</td>
-                    <td>São Roque</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>OBMEP (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>30º</td>
-                    <td>larissa milene nogueira</td>
-                    <td>Corumbataí</td>
-                    <td>7</td>
-                    <td>2024</td>
-                    <td><strong>5</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>OBMEP (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>31º</td>
-                    <td>nikael henrique pereira</td>
-                    <td>Corumbataí</td>
-                    <td>7</td>
-                    <td>2024</td>
-                    <td><strong>5</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>OBMEP (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>32º</td>
-                    <td>lívia de oliveira schrank</td>
-                    <td>Corumbataí</td>
-                    <td>7</td>
-                    <td>2024</td>
-                    <td><strong>5</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>OBMEP (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>33º</td>
-                    <td>maria sophia nogueira</td>
-                    <td>Corumbataí</td>
-                    <td>7</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>OBMEP (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>34º</td>
-                    <td>josé pedro boarroli</td>
-                    <td>Mirassol</td>
-                    <td>4</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>ROBÓTICA (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>35º</td>
-                    <td>davi josé cardoso</td>
-                    <td>Mirassol</td>
-                    <td>4</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>ROBÓTICA (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>36º</td>
                     <td>victor felipe rahman querino de souza</td>
                     <td>Mirassol</td>
                     <td>4</td>
                     <td>2025</td>
                     <td><strong>5</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
                     <td>ROBÓTICA (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
                 </tr>
             
                 <tr>
-                    <td>37º</td>
-                    <td>gabrielly carvalho muniz</td>
-                    <td>Mirassol</td>
-                    <td>4</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>ROBÓTICA (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>38º</td>
-                    <td>manuela dos santos gonçalves</td>
-                    <td>Mirassol</td>
-                    <td>4</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>ROBÓTICA (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>39º</td>
-                    <td>elisa priolli pereira</td>
-                    <td>Mirassol</td>
-                    <td>4</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>ROBÓTICA (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>40º</td>
-                    <td>manuela aparecida leite de camargo almeida</td>
-                    <td>Capela do Alto</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>OBMEP (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>41º</td>
-                    <td>gabriely moura de moraes</td>
-                    <td>Capela do Alto</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>OBMEP (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>42º</td>
-                    <td>murillo henrique gonçalves de carvalho</td>
-                    <td>Capela do Alto</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>OBMEP (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>43º</td>
-                    <td>arthur carriel pereira</td>
-                    <td>Guareí</td>
-                    <td>6</td>
+                    <td>23º</td>
+                    <td>bryan samuel bastos</td>
+                    <td>Corumbataí</td>
+                    <td>7</td>
                     <td>2024</td>
                     <td><strong>5</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>OBA (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>OBMEP (participação)</td>
                 </tr>
             
                 <tr>
-                    <td>44º</td>
+                    <td>24º</td>
+                    <td>nikael henrique pereira</td>
+                    <td>Corumbataí</td>
+                    <td>7</td>
+                    <td>2024</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>25º</td>
+                    <td>miguel fernando de oliveira rodrigues</td>
+                    <td>Corumbataí</td>
+                    <td>7</td>
+                    <td>2024</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>26º</td>
+                    <td>luann henrique dos santos lima kull</td>
+                    <td>Corumbataí</td>
+                    <td>7</td>
+                    <td>2024</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>27º</td>
+                    <td>lívia de oliveira schrank</td>
+                    <td>Corumbataí</td>
+                    <td>7</td>
+                    <td>2024</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>28º</td>
+                    <td>larissa milene nogueira</td>
+                    <td>Corumbataí</td>
+                    <td>7</td>
+                    <td>2024</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>29º</td>
+                    <td>joão marcos marcucci kviatkovski wenzel</td>
+                    <td>Corumbataí</td>
+                    <td>7</td>
+                    <td>2024</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>30º</td>
+                    <td>gabrielly cristina matos brielle</td>
+                    <td>Corumbataí</td>
+                    <td>7</td>
+                    <td>2024</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>31º</td>
+                    <td>sarah heloísa leite sarti</td>
+                    <td>Corumbataí</td>
+                    <td>7</td>
+                    <td>2024</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>32º</td>
                     <td>eduardo higno appel</td>
                     <td>São Roque</td>
                     <td>7</td>
                     <td>2025</td>
                     <td><strong>5</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
                     <td>OBMEP (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
                 </tr>
             
                 <tr>
-                    <td>45º</td>
-                    <td>felipe de angelis</td>
-                    <td>Corumbataí</td>
-                    <td>7</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>OBMEP (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>46º</td>
+                    <td>33º</td>
                     <td>ketlyn lavínia silva</td>
                     <td>Corumbataí</td>
                     <td>7</td>
                     <td>2025</td>
                     <td><strong>5</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
                     <td>OBMEP (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
                 </tr>
             
                 <tr>
-                    <td>47º</td>
+                    <td>34º</td>
                     <td>eloa c duarte</td>
                     <td>Corumbataí</td>
                     <td>7</td>
                     <td>2025</td>
                     <td><strong>5</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
                     <td>OBMEP (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
                 </tr>
             
                 <tr>
-                    <td>48º</td>
+                    <td>35º</td>
+                    <td>felipe de angelis</td>
+                    <td>Corumbataí</td>
+                    <td>7</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>36º</td>
+                    <td>maria sophia nogueira</td>
+                    <td>Corumbataí</td>
+                    <td>7</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>37º</td>
                     <td>isabeli quinalia padovani</td>
                     <td>Corumbataí</td>
                     <td>7</td>
                     <td>2025</td>
                     <td><strong>5</strong></td>
-                    <td>5</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
                     <td>OBMEP (participação)</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
                 </tr>
             
                 <tr>
-                    <td>49º</td>
-                    <td>milena gonçalves ramos</td>
+                    <td>38º</td>
+                    <td>nicolly nunes neves</td>
                     <td>São Roque</td>
                     <td>7</td>
                     <td>2024</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
                 </tr>
             
                 <tr>
-                    <td>50º</td>
-                    <td>isabelle teixeira gonçalves</td>
-                    <td>São Roque</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>51º</td>
-                    <td>raissa fernanda fontanelli</td>
-                    <td>São Roque</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>52º</td>
-                    <td>ana carolina lessa de almeida</td>
-                    <td>São Roque</td>
-                    <td>7</td>
-                    <td>2024</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>53º</td>
-                    <td>ana laura oliveira silva</td>
-                    <td>São Roque</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>54º</td>
-                    <td>antonella di carlos pereira</td>
-                    <td>São Roque</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>55º</td>
-                    <td>daphne costa pereira</td>
-                    <td>São Roque</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>56º</td>
-                    <td>sophia mariana machado de oliveira</td>
-                    <td>Guareí</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>57º</td>
-                    <td>lorena pinheiro de moraes</td>
-                    <td>Guareí</td>
-                    <td>6</td>
-                    <td>2024</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>58º</td>
-                    <td>patricia maria machado de oliveira</td>
-                    <td>Guareí</td>
-                    <td>9</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>59º</td>
-                    <td>ana laura nogueira cezar</td>
-                    <td>São Roque</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>60º</td>
-                    <td>samuel braz de morais</td>
-                    <td>Guareí</td>
-                    <td>6</td>
-                    <td>2024</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>61º</td>
-                    <td>ana júlia peres francisco</td>
-                    <td>Iperó</td>
-                    <td>8</td>
-                    <td>2023</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>62º</td>
-                    <td>nathaly kauane lima dos santos</td>
-                    <td>Capela do Alto</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>63º</td>
-                    <td>joão miguel paiva cavalcante</td>
-                    <td>Capela do Alto</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>64º</td>
-                    <td>sabrina da silva charles</td>
-                    <td>Iperó</td>
-                    <td>8</td>
-                    <td>2023</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>65º</td>
-                    <td>thiago santana alves</td>
-                    <td>Iperó</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>66º</td>
-                    <td>joão miguel alves carriel</td>
-                    <td>Capela do Alto</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>67º</td>
-                    <td>caio monteiro de oliveira</td>
-                    <td>Iperó</td>
-                    <td>8</td>
-                    <td>2023</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>68º</td>
-                    <td>thiago henrick rodrigues martins</td>
-                    <td>Iperó</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>69º</td>
-                    <td>leticia valentina de oliveira</td>
-                    <td>Capela do Alto</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>70º</td>
-                    <td>alessandro de souza silva</td>
-                    <td>Iperó</td>
-                    <td>8</td>
-                    <td>2023</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>71º</td>
-                    <td>ryan augusto silva de jesus</td>
-                    <td>Iperó</td>
-                    <td>8</td>
-                    <td>2023</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>72º</td>
-                    <td>joão pedro da silva dantas</td>
-                    <td>Iperó</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>73º</td>
-                    <td>thaissa danielly oliveira cuba</td>
-                    <td>Iperó</td>
-                    <td>6</td>
-                    <td>2024</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>74º</td>
-                    <td>bianca ferreira de souza</td>
-                    <td>Iperó</td>
+                    <td>39º</td>
+                    <td>kamila almeida andrade</td>
+                    <td>Coronel Macedo</td>
                     <td>5</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>75º</td>
-                    <td>diogo edgard ribeiro</td>
-                    <td>Iperó</td>
-                    <td>5</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>76º</td>
-                    <td>isabelle cristina soares santos</td>
-                    <td>Iperó</td>
-                    <td>5</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>77º</td>
-                    <td>josé henrique de jesus</td>
-                    <td>Iperó</td>
-                    <td>5</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>78º</td>
-                    <td>guilherme fernandes</td>
-                    <td>Iperó</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>79º</td>
-                    <td>isabela padovan</td>
-                    <td>Iperó</td>
-                    <td>8</td>
-                    <td>2023</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>80º</td>
-                    <td>gabrielle oliveira de barros</td>
-                    <td>Iperó</td>
-                    <td>8</td>
                     <td>2024</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>81º</td>
-                    <td>andré felipe caetano</td>
-                    <td>Iperó</td>
-                    <td>8</td>
-                    <td>2024</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>82º</td>
-                    <td>miguel felipe da silva dias gomes</td>
-                    <td>Iperó</td>
-                    <td>8</td>
-                    <td>2023</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>83º</td>
-                    <td>italo fonseca araújo</td>
-                    <td>Iperó</td>
-                    <td>8</td>
-                    <td>2023</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>84º</td>
-                    <td>ester rodrigues mendes</td>
-                    <td>São Roque</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>85º</td>
-                    <td>bruno eliezer de oliveira santos</td>
-                    <td>Mirassol</td>
-                    <td>4</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>86º</td>
-                    <td>isadora de lourenço albanez</td>
-                    <td>Mirassol</td>
-                    <td>4</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>87º</td>
-                    <td>alessandra rosa de oliveira</td>
-                    <td>São Roque</td>
-                    <td>7</td>
-                    <td>2024</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>88º</td>
-                    <td>miguel albuquerque ricioni</td>
-                    <td>São Roque</td>
-                    <td>7</td>
-                    <td>2024</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>89º</td>
-                    <td>aylla helena branco canno</td>
-                    <td>São Roque</td>
-                    <td>7</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>90º</td>
-                    <td>josé miguel heleno de barros</td>
-                    <td>Guareí</td>
-                    <td>4</td>
-                    <td>2024</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>91º</td>
-                    <td>laura dos santos mazur</td>
-                    <td>São Roque</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>92º</td>
-                    <td>pedro henrique araujo pereira oliveira</td>
-                    <td>Guareí</td>
-                    <td>4</td>
-                    <td>2024</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>93º</td>
-                    <td>emanuely das almas albuquerque</td>
-                    <td>São Roque</td>
-                    <td>9</td>
-                    <td>2023</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>94º</td>
-                    <td>joão pedro ferreira de souza</td>
-                    <td>São Roque</td>
-                    <td>9</td>
-                    <td>2024</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>95º</td>
-                    <td>yago lucas rodrigues da silva cruz</td>
-                    <td>São Roque</td>
-                    <td>9</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>96º</td>
-                    <td>beatriz prates dos santos</td>
-                    <td>São Roque</td>
-                    <td>6</td>
-                    <td>2024</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>97º</td>
-                    <td>isabeli soares amaral</td>
-                    <td>São Roque</td>
-                    <td>9</td>
-                    <td>2022</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>98º</td>
-                    <td>julia de brito barata</td>
-                    <td>Mirassol</td>
-                    <td>4</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>99º</td>
-                    <td>kaique andrade silva milchert</td>
-                    <td>São Roque</td>
-                    <td>9</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>100º</td>
-                    <td>matheus pierre bertolo gomes</td>
-                    <td>São Roque</td>
-                    <td>8</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>101º</td>
-                    <td>julia delfino de oliveira</td>
-                    <td>São Roque</td>
-                    <td>9</td>
-                    <td>2022</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>102º</td>
-                    <td>ranny beatriz conceição souza</td>
-                    <td>São Roque</td>
-                    <td>9</td>
-                    <td>2022</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>103º</td>
-                    <td>samira hadassa</td>
-                    <td>São Roque</td>
-                    <td>8</td>
-                    <td>2024</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>104º</td>
-                    <td>mathias isao kuromoto</td>
-                    <td>São Roque</td>
-                    <td>7</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>105º</td>
-                    <td>joaquim delannes motta</td>
-                    <td>São Roque</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>106º</td>
-                    <td>vinicius antonio michelon leonardelli</td>
-                    <td>São Roque</td>
-                    <td>9</td>
-                    <td>2024</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>107º</td>
-                    <td>bianca sepulveda takaki</td>
-                    <td>São Roque</td>
-                    <td>9</td>
-                    <td>2022</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>108º</td>
-                    <td>weverton jorge da silva</td>
-                    <td>São Roque</td>
-                    <td>7</td>
-                    <td>2022</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>109º</td>
-                    <td>heloisa vitória rodrigues de oliveira</td>
-                    <td>São Roque</td>
-                    <td>9</td>
-                    <td>2022</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>110º</td>
-                    <td>maria fernanda milan</td>
-                    <td>São Roque</td>
-                    <td>9</td>
-                    <td>2024</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            
-                <tr>
-                    <td>111º</td>
-                    <td>yasmin valerio de oliveira</td>
-                    <td>São Roque</td>
-                    <td>9</td>
-                    <td>2024</td>
-                    <td><strong>0</strong></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
                 </tr>
             
             </tbody>
@@ -2228,65 +730,54 @@
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; padding: 2rem;">
                 <div>
                     <h3>Top 15 Alunos</h3>
-                    <iframe src="olimpiadas/grafico_top_alunos.html" style="width: 100%; height: 400px; border: none;"></iframe>
+                    <iframe src="olimpiadas/grafico_top_alunos.html" style="width: 100%; height: 650px; border: none;"></iframe>
                 </div>
                 <div>
                     <h3>Distribuição por Cidade</h3>
-                    <iframe src="olimpiadas/grafico_cidade.html" style="width: 100%; height: 400px; border: none;"></iframe>
+                    <iframe src="olimpiadas/grafico_cidade.html" style="width: 100%; height: 650px; border: none;"></iframe>
                 </div>
                 <div>
                     <h3>Distribuição por Série</h3>
-                    <iframe src="olimpiadas/grafico_serie.html" style="width: 100%; height: 400px; border: none;"></iframe>
+                    <iframe src="olimpiadas/grafico_serie.html" style="width: 100%; height: 650px; border: none;"></iframe>
                 </div>
                 <div>
                     <h3>Tipos de Olimpíadas</h3>
-                    <iframe src="olimpiadas/grafico_olimpiadas.html" style="width: 100%; height: 400px; border: none;"></iframe>
+                    <iframe src="olimpiadas/grafico_olimpiadas.html" style="width: 100%; height: 650px; border: none;"></iframe>
                 </div>
                 <div>
                     <h3>Distribuição de Pontuações</h3>
-                    <iframe src="olimpiadas/grafico_distribuicao.html" style="width: 100%; height: 400px; border: none;"></iframe>
-                </div>
-                <div>
-                    <h3>Categorias de Méritos</h3>
-                    <iframe src="olimpiadas/grafico_categorias.html" style="width: 100%; height: 400px; border: none;"></iframe>
+                    <iframe src="olimpiadas/grafico_distribuicao.html" style="width: 100%; height: 650px; border: none;"></iframe>
                 </div>
             </div>
         </section>
     </main>
 
-    <script src="script.js"></script>
+    
     <script>
         $(document).ready(function() {
-            $('#meritsTable').DataTable({
+            $('#olympiadsTable').DataTable({
                 "language": {
                     "url": "https://cdn.datatables.net/plug-ins/1.13.6/i18n/pt-BR.json"
                 },
                 "pageLength": 15,
                 "lengthMenu": [15, 25, 50, 100],
-                "order": [[5, "desc"]], // Ordenar por pontuação total
-                "columnDefs": [
-                    { "orderable": false, "targets": [10, 11, 12, 13] } // Detalhes não ordenáveis
-                ],
-                "dom": 'Bfrtip',
-                "buttons": [
-                    'copy', 'csv', 'excel', 'print'
-                ],
+                "order": [[5, "desc"]],
                 "responsive": true,
                 "scrollX": true
             });
             
-            // Aguardar DataTable ser inicializado e adicionar evento de clique
+            // Adicionar evento de clique
             setTimeout(function() {
-                $('#meritsTable tbody').on('click', 'tr', function() {
-                    var data = $('#meritsTable').DataTable().row(this).data();
+                $('#olympiadsTable tbody').on('click', 'tr', function() {
+                    var data = $('#olympiadsTable').DataTable().row(this).data();
                     if (data) {
-                        showStudentModal(data);
+                        showStudentModal(data, 'olympiads');
                     }
                 });
             }, 100);
         });
         
-        // Eventos de fechamento do modal (usando delegação de eventos)
+        // Eventos de fechamento do modal
         $(document).on('click', '.modal-close', function() {
             closeStudentModal();
         });
@@ -2297,94 +788,111 @@
             }
         });
         
-        function showStudentModal(data) {
-            var modal = `
-                <div class="modal-overlay">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3>📋 Detalhes do Aluno</h3>
-                            <span class="modal-close">&times;</span>
+        function showStudentModal(data, type) {
+            var modal = buildModalContent(data, type);
+            $('body').append(modal);
+            $('.modal-overlay').fadeIn(300);
+        }
+        
+        function buildModalContent(data, type) {
+            if (type === 'olympiads') {
+                return `
+                    <div class="modal-overlay">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3>📋 Detalhes do Aluno - Olimpíadas</h3>
+                                <span class="modal-close">&times;</span>
+                            </div>
+                            <div class="modal-body">
+                                <div class="student-info-grid">
+                                    <div class="info-section">
+                                        <h4>👤 Informações Pessoais</h4>
+                                        <div class="info-item">
+                                            <span class="info-label">Nome:</span>
+                                            <span class="info-value">${data[1]}</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Cidade:</span>
+                                            <span class="info-value">${data[2]}</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Série:</span>
+                                            <span class="info-value">${data[3]}º ano</span>
+                                        </div>
+                                    </div>
+                                    <div class="info-section">
+                                        <h4>🏆 Pontuação</h4>
+                                        <div class="score-display">
+                                            <div class="total-score">${data[5]}</div>
+                                            <div class="score-label">Pontos em Olimpíadas</div>
+                                        </div>
+                                    </div>
+                                    <div class="info-section full-width">
+                                        <h4>📝 Detalhes das Olimpíadas</h4>
+                                        <div class="detail-content">${data[6] || 'Nenhuma participação registrada'}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn-close" onclick="closeStudentModal()">Fechar</button>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            <div class="student-info-grid">
-                                <div class="info-section">
-                                    <h4>👤 Informações Pessoais</h4>
-                                    <div class="info-item">
-                                        <span class="info-label">Nome:</span>
-                                        <span class="info-value">${data[1]}</span>
-                                    </div>
-                                    <div class="info-item">
-                                        <span class="info-label">Cidade:</span>
-                                        <span class="info-value">${data[2]}</span>
-                                    </div>
-                                    <div class="info-item">
-                                        <span class="info-label">Série:</span>
-                                        <span class="info-value">${data[3]}º ano</span>
-                                    </div>
-                                    <div class="info-item">
-                                        <span class="info-label">Ano de Ingresso:</span>
-                                        <span class="info-value">${data[4]}</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="info-section">
-                                    <h4>🏆 Pontuação Geral</h4>
-                                    <div class="score-display">
-                                        <div class="total-score">${data[5]}</div>
-                                        <div class="score-label">Pontos Totais</div>
-                                    </div>
-                                    <div class="score-breakdown">
-                                        <div class="score-item">
-                                            <span class="score-category">Olimpíadas:</span>
-                                            <span class="score-points">${data[6]} pts</span>
+                    </div>
+                `;
+            } else {
+                return `
+                    <div class="modal-overlay">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3>📋 Detalhes do Aluno - Outros Méritos</h3>
+                                <span class="modal-close">&times;</span>
+                            </div>
+                            <div class="modal-body">
+                                <div class="student-info-grid">
+                                    <div class="info-section">
+                                        <h4>👤 Informações Pessoais</h4>
+                                        <div class="info-item">
+                                            <span class="info-label">Nome:</span>
+                                            <span class="info-value">${data[1]}</span>
                                         </div>
-                                        <div class="score-item">
-                                            <span class="score-category">Honrarias:</span>
-                                            <span class="score-points">${data[7]} pts</span>
-                                        </div>
-                                        <div class="score-item">
-                                            <span class="score-category">Outras Premiações:</span>
-                                            <span class="score-points">${data[8]} pts</span>
-                                        </div>
-                                        <div class="score-item">
-                                            <span class="score-category">Premiações PFC:</span>
-                                            <span class="score-points">${data[9]} pts</span>
+                                        <div class="info-item">
+                                            <span class="info-label">Cidade:</span>
+                                            <span class="info-value">${data[2]}</span>
                                         </div>
                                     </div>
-                                </div>
-                                
-                                <div class="info-section full-width">
-                                    <h4>📝 Detalhes dos Méritos</h4>
-                                    <div class="details-grid">
-                                        <div class="detail-item">
-                                            <h5>🏅 Olimpíadas</h5>
-                                            <div class="detail-content">${data[10] || 'Nenhuma participação registrada'}</div>
+                                    <div class="info-section">
+                                        <h4>🎖️ Pontuação Total</h4>
+                                        <div class="score-display">
+                                            <div class="total-score">${data[5]}</div>
+                                            <div class="score-label">Pontos Totais</div>
                                         </div>
-                                        <div class="detail-item">
-                                            <h5>🎖️ Honrarias</h5>
-                                            <div class="detail-content">${data[11] || 'Nenhuma honraria registrada'}</div>
-                                        </div>
-                                        <div class="detail-item">
-                                            <h5>🏆 Outras Premiações</h5>
-                                            <div class="detail-content">${data[12] || 'Nenhuma premiação registrada'}</div>
-                                        </div>
-                                        <div class="detail-item">
-                                            <h5>🎓 Premiações PFC</h5>
-                                            <div class="detail-content">${data[13] || 'Nenhuma premiação PFC registrada'}</div>
+                                    </div>
+                                    <div class="info-section full-width">
+                                        <h4>📝 Detalhes dos Méritos</h4>
+                                        <div class="details-grid">
+                                            <div class="detail-item">
+                                                <h5>🎖️ Honrarias</h5>
+                                                <div class="detail-content">${data[9] || 'Nenhuma honraria registrada'}</div>
+                                            </div>
+                                            <div class="detail-item">
+                                                <h5>🏆 Outras Premiações</h5>
+                                                <div class="detail-content">${data[10] || 'Nenhuma premiação registrada'}</div>
+                                            </div>
+                                            <div class="detail-item">
+                                                <h5>🎓 Premiações PFC</h5>
+                                                <div class="detail-content">${data[11] || 'Nenhuma premiação PFC registrada'}</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn-close" onclick="closeStudentModal()">Fechar</button>
+                            <div class="modal-footer">
+                                <button class="btn-close" onclick="closeStudentModal()">Fechar</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            `;
-            
-            $('body').append(modal);
-            $('.modal-overlay').fadeIn(300);
+                `;
+            }
         }
         
         function closeStudentModal() {
@@ -2393,6 +901,7 @@
             });
         }
     </script>
+        
 </body>
 </html>
         
