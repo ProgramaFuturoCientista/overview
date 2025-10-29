@@ -1,0 +1,907 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório Semanal PFC - Olimpíadas do Conhecimento</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="script.js"></script>
+    <style>
+        
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            max-width: 90%;
+            max-height: 90%;
+            width: 800px;
+            overflow: hidden;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -60%);
+                scale: 0.9;
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+                scale: 1;
+            }
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        .modal-close {
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            line-height: 1;
+        }
+        
+        .modal-close:hover {
+            color: #e74c3c;
+        }
+        
+        .modal-body {
+            padding: 25px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        .student-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .info-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .info-section.full-width {
+            grid-column: 1 / -1;
+            border-left-color: #e74c3c;
+        }
+        
+        .info-section h4 {
+            margin: 0 0 15px 0;
+            color: #2c3e50;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .info-item:last-child {
+            border-bottom: none;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        .info-value {
+            color: #2c3e50;
+            text-align: right;
+        }
+        
+        .score-display {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border-radius: 10px;
+            color: white;
+        }
+        
+        .total-score {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .score-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .score-breakdown {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        
+        .score-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 12px;
+            background: white;
+            border-radius: 6px;
+            border-left: 3px solid #3498db;
+        }
+        
+        .score-category {
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        .score-points {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .detail-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .detail-item h5 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .detail-content {
+            color: #495057;
+            line-height: 1.5;
+            font-size: 0.9rem;
+            max-height: 120px;
+            overflow-y: auto;
+            padding: 8px;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+        
+        .modal-footer {
+            padding: 20px 25px;
+            background: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+            text-align: center;
+        }
+        
+        .btn-close {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+        
+        .btn-close:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                margin: 10px;
+            }
+            
+            .student-info-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .details-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .score-breakdown {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Cursor pointer para linhas da tabela */
+        #olympiadsTable tbody tr,
+        #otherMeritsTable tbody tr {
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        #olympiadsTable tbody tr:hover,
+        #otherMeritsTable tbody tr:hover {
+            background-color: #f8f9fa !important;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="Logo PFC.png" alt="Logo PFC" class="logo">
+            <h1>Relatório Semanal PFC</h1>
+            <p class="subtitle">Olimpíadas do Conhecimento - 29/10/2025</p>
+        </div>
+    </header>
+
+    <nav class="nav-bar">
+        <a href="index.html" class="nav-link">Evasão</a>
+        <a href="assiduidade.html" class="nav-link">Assiduidade</a>
+        <a href="analises.html" class="nav-link">Análises</a>
+        <a href="auditoria.html" class="nav-link">Auditoria</a>
+        <a href="cursinho/cursinho.html" class="nav-link">🎓 Cursinho</a>
+        <a href="olimpiadas.html" class="nav-link active">🏆 Olimpíadas</a>
+        <a href="outros_meritos.html" class="nav-link">🎖️ Outros Méritos</a>
+    </nav>
+
+    <main class="main-content">
+        
+        <section class="summary-cards">
+            <div class="card">
+                <h3>Alunos com Olimpíadas</h3>
+                <div class="metric">39</div>
+            </div>
+            <div class="card">
+                <h3>Pontuação Média</h3>
+                <div class="metric">10.6</div>
+            </div>
+            <div class="card">
+                <h3>Pontuação Máxima</h3>
+                <div class="metric">125</div>
+            </div>
+            <div class="card">
+                <h3>Tipos de Olimpíadas</h3>
+                <div class="metric">6</div>
+            </div>
+        </section>
+        
+        
+        <section class="table-section">
+            <h2>Ranking de Olimpíadas do Conhecimento</h2>
+            
+        <table border="1" class="dataframe dataframe data-table" id="olympiadsTable">
+            <thead>
+                <tr style="text-align: right;">
+                    <th>Posição</th>
+                    <th>Aluno</th>
+                    <th>Cidade</th>
+                    <th>Série</th>
+                    <th>Ano de Ingresso</th>
+                    <th>Pontuação Olimpíadas</th>
+                    <th>Detalhes Olimpíadas</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+                <tr>
+                    <td>1º</td>
+                    <td>luís henrique martins silva dos santos</td>
+                    <td>Coronel Macedo</td>
+                    <td>6</td>
+                    <td>2024</td>
+                    <td><strong>125</strong></td>
+                    <td>OBMEP (participação); OBMEP - Prata (+40 pts); OLISP (participação); OLISP - Prata (+35 pts); OMASP (participação); OMASP - Prata (+35 pts)</td>
+                </tr>
+            
+                <tr>
+                    <td>2º</td>
+                    <td>luan pedro souza costa bragão de oliveira</td>
+                    <td>São Roque</td>
+                    <td>9</td>
+                    <td>2024</td>
+                    <td><strong>45</strong></td>
+                    <td>PORTUGUÊS (participação); PORTUGUÊS - 1º Lugar (+40 pts)</td>
+                </tr>
+            
+                <tr>
+                    <td>3º</td>
+                    <td>ana luisa soares lopes de oliveira</td>
+                    <td>São Roque</td>
+                    <td>6</td>
+                    <td>2025</td>
+                    <td><strong>20</strong></td>
+                    <td>OBMEP (participação); OBMEP - 2ª Fase (+15 pts)</td>
+                </tr>
+            
+                <tr>
+                    <td>4º</td>
+                    <td>mariana de souza rocha</td>
+                    <td>São Roque</td>
+                    <td>7</td>
+                    <td>2022</td>
+                    <td><strong>20</strong></td>
+                    <td>OBMEP (participação); OBMEP - Segunda Fase (+15 pts)</td>
+                </tr>
+            
+                <tr>
+                    <td>5º</td>
+                    <td>kerollyn thallya dos santos rodrigues</td>
+                    <td>Coronel Macedo</td>
+                    <td>7</td>
+                    <td>2023</td>
+                    <td><strong>15</strong></td>
+                    <td>OBMEP (participação); OLISP (participação); OMASP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>6º</td>
+                    <td>isabelle akemi kosaka</td>
+                    <td>Coronel Macedo</td>
+                    <td>6</td>
+                    <td>2023</td>
+                    <td><strong>15</strong></td>
+                    <td>OBMEP (participação); OLISP (participação); OBA (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>7º</td>
+                    <td>natália de barros macário</td>
+                    <td>Coronel Macedo</td>
+                    <td>5</td>
+                    <td>2024</td>
+                    <td><strong>10</strong></td>
+                    <td>OBMEP (participação); OLISP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>8º</td>
+                    <td>joão vitor garcia da rosa</td>
+                    <td>Coronel Macedo</td>
+                    <td>6</td>
+                    <td>2025</td>
+                    <td><strong>10</strong></td>
+                    <td>OLISP (participação); OMASP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>9º</td>
+                    <td>gabriel alfais roberto pereira</td>
+                    <td>São Roque</td>
+                    <td>9</td>
+                    <td>2023</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>10º</td>
+                    <td>marley gabriel vieira portilho de carvalho</td>
+                    <td>São Roque</td>
+                    <td>6</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>11º</td>
+                    <td>murillo henrique gonçalves de carvalho</td>
+                    <td>Capela do Alto</td>
+                    <td>6</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>12º</td>
+                    <td>gabriely moura de moraes</td>
+                    <td>Capela do Alto</td>
+                    <td>6</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>13º</td>
+                    <td>manuela aparecida leite de camargo almeida</td>
+                    <td>Capela do Alto</td>
+                    <td>6</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>14º</td>
+                    <td>arthur carriel pereira</td>
+                    <td>Guareí</td>
+                    <td>6</td>
+                    <td>2024</td>
+                    <td><strong>5</strong></td>
+                    <td>OBA (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>15º</td>
+                    <td>elisa priolli pereira</td>
+                    <td>Mirassol</td>
+                    <td>4</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>ROBÓTICA (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>16º</td>
+                    <td>cauã silva de alencar</td>
+                    <td>Corumbataí</td>
+                    <td>7</td>
+                    <td>2024</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>17º</td>
+                    <td>gabrielly carvalho muniz</td>
+                    <td>Mirassol</td>
+                    <td>4</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>ROBÓTICA (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>18º</td>
+                    <td>manuela dos santos gonçalves</td>
+                    <td>Mirassol</td>
+                    <td>4</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>ROBÓTICA (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>19º</td>
+                    <td>davi josé cardoso</td>
+                    <td>Mirassol</td>
+                    <td>4</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>ROBÓTICA (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>20º</td>
+                    <td>josé pedro boarroli</td>
+                    <td>Mirassol</td>
+                    <td>4</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>ROBÓTICA (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>21º</td>
+                    <td>miguel machado da silva</td>
+                    <td>Mirassol</td>
+                    <td>4</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>ROBÓTICA (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>22º</td>
+                    <td>victor felipe rahman querino de souza</td>
+                    <td>Mirassol</td>
+                    <td>4</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>ROBÓTICA (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>23º</td>
+                    <td>bryan samuel bastos</td>
+                    <td>Corumbataí</td>
+                    <td>7</td>
+                    <td>2024</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>24º</td>
+                    <td>nikael henrique pereira</td>
+                    <td>Corumbataí</td>
+                    <td>7</td>
+                    <td>2024</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>25º</td>
+                    <td>miguel fernando de oliveira rodrigues</td>
+                    <td>Corumbataí</td>
+                    <td>7</td>
+                    <td>2024</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>26º</td>
+                    <td>luann henrique dos santos lima kull</td>
+                    <td>Corumbataí</td>
+                    <td>7</td>
+                    <td>2024</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>27º</td>
+                    <td>lívia de oliveira schrank</td>
+                    <td>Corumbataí</td>
+                    <td>7</td>
+                    <td>2024</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>28º</td>
+                    <td>larissa milene nogueira</td>
+                    <td>Corumbataí</td>
+                    <td>7</td>
+                    <td>2024</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>29º</td>
+                    <td>joão marcos marcucci kviatkovski wenzel</td>
+                    <td>Corumbataí</td>
+                    <td>7</td>
+                    <td>2024</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>30º</td>
+                    <td>gabrielly cristina matos brielle</td>
+                    <td>Corumbataí</td>
+                    <td>7</td>
+                    <td>2024</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>31º</td>
+                    <td>sarah heloísa leite sarti</td>
+                    <td>Corumbataí</td>
+                    <td>7</td>
+                    <td>2024</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>32º</td>
+                    <td>eduardo higno appel</td>
+                    <td>São Roque</td>
+                    <td>7</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>33º</td>
+                    <td>ketlyn lavínia silva</td>
+                    <td>Corumbataí</td>
+                    <td>7</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>34º</td>
+                    <td>eloa c duarte</td>
+                    <td>Corumbataí</td>
+                    <td>7</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>35º</td>
+                    <td>felipe de angelis</td>
+                    <td>Corumbataí</td>
+                    <td>7</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>36º</td>
+                    <td>maria sophia nogueira</td>
+                    <td>Corumbataí</td>
+                    <td>7</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>37º</td>
+                    <td>isabeli quinalia padovani</td>
+                    <td>Corumbataí</td>
+                    <td>7</td>
+                    <td>2025</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>38º</td>
+                    <td>nicolly nunes neves</td>
+                    <td>São Roque</td>
+                    <td>7</td>
+                    <td>2024</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+                <tr>
+                    <td>39º</td>
+                    <td>kamila almeida andrade</td>
+                    <td>Coronel Macedo</td>
+                    <td>5</td>
+                    <td>2024</td>
+                    <td><strong>5</strong></td>
+                    <td>OBMEP (participação)</td>
+                </tr>
+            
+            </tbody>
+        </table>
+        
+        </section>
+        
+        <section class="table-section">
+            <h2>Análises e Gráficos</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; padding: 2rem;">
+                <div>
+                    <h3>Top 15 Alunos</h3>
+                    <iframe src="olimpiadas/grafico_top_alunos.html" style="width: 100%; height: 650px; border: none;"></iframe>
+                </div>
+                <div>
+                    <h3>Distribuição por Cidade</h3>
+                    <iframe src="olimpiadas/grafico_cidade.html" style="width: 100%; height: 650px; border: none;"></iframe>
+                </div>
+                <div>
+                    <h3>Distribuição por Série</h3>
+                    <iframe src="olimpiadas/grafico_serie.html" style="width: 100%; height: 650px; border: none;"></iframe>
+                </div>
+                <div>
+                    <h3>Tipos de Olimpíadas</h3>
+                    <iframe src="olimpiadas/grafico_olimpiadas.html" style="width: 100%; height: 650px; border: none;"></iframe>
+                </div>
+                <div>
+                    <h3>Distribuição de Pontuações</h3>
+                    <iframe src="olimpiadas/grafico_distribuicao.html" style="width: 100%; height: 650px; border: none;"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    
+    <script>
+        $(document).ready(function() {
+            $('#olympiadsTable').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.13.6/i18n/pt-BR.json"
+                },
+                "pageLength": 15,
+                "lengthMenu": [15, 25, 50, 100],
+                "order": [[5, "desc"]],
+                "responsive": true,
+                "scrollX": true
+            });
+            
+            // Adicionar evento de clique
+            setTimeout(function() {
+                $('#olympiadsTable tbody').on('click', 'tr', function() {
+                    var data = $('#olympiadsTable').DataTable().row(this).data();
+                    if (data) {
+                        showStudentModal(data, 'olympiads');
+                    }
+                });
+            }, 100);
+        });
+        
+        // Eventos de fechamento do modal
+        $(document).on('click', '.modal-close', function() {
+            closeStudentModal();
+        });
+        
+        $(document).on('click', '.modal-overlay', function(e) {
+            if (e.target === this) {
+                closeStudentModal();
+            }
+        });
+        
+        function showStudentModal(data, type) {
+            var modal = buildModalContent(data, type);
+            $('body').append(modal);
+            $('.modal-overlay').fadeIn(300);
+        }
+        
+        function buildModalContent(data, type) {
+            if (type === 'olympiads') {
+                return `
+                    <div class="modal-overlay">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3>📋 Detalhes do Aluno - Olimpíadas</h3>
+                                <span class="modal-close">&times;</span>
+                            </div>
+                            <div class="modal-body">
+                                <div class="student-info-grid">
+                                    <div class="info-section">
+                                        <h4>👤 Informações Pessoais</h4>
+                                        <div class="info-item">
+                                            <span class="info-label">Nome:</span>
+                                            <span class="info-value">${data[1]}</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Cidade:</span>
+                                            <span class="info-value">${data[2]}</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Série:</span>
+                                            <span class="info-value">${data[3]}º ano</span>
+                                        </div>
+                                    </div>
+                                    <div class="info-section">
+                                        <h4>🏆 Pontuação</h4>
+                                        <div class="score-display">
+                                            <div class="total-score">${data[5]}</div>
+                                            <div class="score-label">Pontos em Olimpíadas</div>
+                                        </div>
+                                    </div>
+                                    <div class="info-section full-width">
+                                        <h4>📝 Detalhes das Olimpíadas</h4>
+                                        <div class="detail-content">${data[6] || 'Nenhuma participação registrada'}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn-close" onclick="closeStudentModal()">Fechar</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                return `
+                    <div class="modal-overlay">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3>📋 Detalhes do Aluno - Outros Méritos</h3>
+                                <span class="modal-close">&times;</span>
+                            </div>
+                            <div class="modal-body">
+                                <div class="student-info-grid">
+                                    <div class="info-section">
+                                        <h4>👤 Informações Pessoais</h4>
+                                        <div class="info-item">
+                                            <span class="info-label">Nome:</span>
+                                            <span class="info-value">${data[1]}</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Cidade:</span>
+                                            <span class="info-value">${data[2]}</span>
+                                        </div>
+                                    </div>
+                                    <div class="info-section">
+                                        <h4>🎖️ Pontuação Total</h4>
+                                        <div class="score-display">
+                                            <div class="total-score">${data[5]}</div>
+                                            <div class="score-label">Pontos Totais</div>
+                                        </div>
+                                    </div>
+                                    <div class="info-section full-width">
+                                        <h4>📝 Detalhes dos Méritos</h4>
+                                        <div class="details-grid">
+                                            <div class="detail-item">
+                                                <h5>🎖️ Honrarias</h5>
+                                                <div class="detail-content">${data[9] || 'Nenhuma honraria registrada'}</div>
+                                            </div>
+                                            <div class="detail-item">
+                                                <h5>🏆 Outras Premiações</h5>
+                                                <div class="detail-content">${data[10] || 'Nenhuma premiação registrada'}</div>
+                                            </div>
+                                            <div class="detail-item">
+                                                <h5>🎓 Premiações PFC</h5>
+                                                <div class="detail-content">${data[11] || 'Nenhuma premiação PFC registrada'}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn-close" onclick="closeStudentModal()">Fechar</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        
+        function closeStudentModal() {
+            $('.modal-overlay').fadeOut(300, function() {
+                $(this).remove();
+            });
+        }
+    </script>
+        
+</body>
+</html>
+        
