@@ -1,0 +1,55 @@
+═══════════════════════════════════════════════════════════════
+   ARQUIVOS NOMEADOS CORRETAMENTE
+═══════════════════════════════════════════════════════════════
+
+✅ NOMES CORRETOS AGORA:
+
+index.html              → Landing Page (Bootstrap bonita)
+evasao.html             → Relatório de Evasão (com tabela)
+assiduidade.html        → Relatório de Assiduidade
+analises.html           → Análises Avançadas
+auditoria.html          → Auditoria
+olimpiadas.html         → Olimpíadas
+cursinho/cursinho.html  → Cursinho
+projeto_vida/           → Projeto de Vida
+
+═══════════════════════════════════════════════════════════════
+✅ NAVEGAÇÃO CORRIGIDA:
+═══════════════════════════════════════════════════════════════
+
+Landing Page (index.html):
+   • Botão "Acessar Relatório Completo" → evasao.html
+   • Card "Análise de Evasão" → evasao.html
+   • Card "Assiduidade" → assiduidade.html
+   • Card "Análises" → analises.html
+   • Card "Auditoria" → auditoria.html
+   • Card "Olimpíadas" → olimpiadas.html
+   • Card "Cursinho" → cursinho/cursinho.html
+   • Card "Projeto de Vida" → projeto_vida/projeto_vida.html
+
+Relatórios - Menu ☰:
+   • 🏠 Home → index.html (volta pra landing)
+   • 📉 Evasão → evasao.html
+   • 📅 Assiduidade → assiduidade.html
+   • E assim por diante...
+
+═══════════════════════════════════════════════════════════════
+✅ TESTE:
+═══════════════════════════════════════════════════════════════
+
+1. Abra: repo/index.html (landing page)
+2. Clique em "Análise de Evasão"
+3. Deve abrir: evasao.html (com tabela)
+4. Abra menu ☰
+5. Clique em "🏠 Home"
+6. Volta para index.html (landing)
+
+═══════════════════════════════════════════════════════════════
+✅ TUDO PRONTO E CORRETO!
+═══════════════════════════════════════════════════════════════
+
+Pressione: Ctrl + Shift + R para limpar cache
+E teste os links!
+
+═══════════════════════════════════════════════════════════════
+

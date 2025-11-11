@@ -1,0 +1,78 @@
+╔════════════════════════════════════════════════════════════════════╗
+║                                                                    ║
+║          🖼️ PASTA DE IMAGENS DO SISTEMA DE RELATÓRIOS              ║
+║                                                                    ║
+║               Programa Futuro Cientista® v12.0                     ║
+║                                                                    ║
+╚════════════════════════════════════════════════════════════════════╝
+
+
+🎯 OBJETIVO DESTA PASTA
+═══════════════════════════════════════════════════════════════════
+
+    Esta pasta contém TODAS as imagens editáveis do sistema de 
+    relatórios do PFC. Você pode substituir qualquer imagem aqui
+    para personalizar o visual do sistema.
+
+
+📂 ESTRUTURA DE SUBPASTAS
+═══════════════════════════════════════════════════════════════════
+
+    imagens_sistema/
+    │
+    ├── 🏢 logos/                  ← Logos do PFC e instituições
+    │   └── Logo_PFC.png
+    │
+    ├── 🖼️ backgrounds/             ← Imagens de fundo das páginas
+    │   ├── hero_evasao.jpg
+    │   ├── hero_assiduidade.jpg
+    │   ├── hero_olimpiadas.jpg
+    │   └── ...
+    │
+    ├── 🎯 icones/                  ← Ícones personalizados
+    │   ├── icone_evasao.svg
+    │   ├── icone_assiduidade.svg
+    │   └── ...
+    │
+    ├── 📊 graficos/                ← Imagens para gráficos (se houver)
+    │   └── (imagens estáticas de gráficos)
+    │
+    └── 👥 equipe/                  ← Fotos da equipe PFC
+        ├── fabio_leite.jpg
+        └── ...
+
+
+🔄 COMO FUNCIONA
+═══════════════════════════════════════════════════════════════════
+
+    1. Sistema de relatórios busca imagens NESTA pasta
+    2. Você pode substituir qualquer imagem
+    3. Mantenha os MESMOS NOMES de arquivo
+    4. Sistema usará automaticamente a nova imagem
+
+
+⚙️ REGRAS IMPORTANTES
+═══════════════════════════════════════════════════════════════════
+
+    ✅ Mantenha os nomes dos arquivos originais
+    ✅ Use formatos: PNG, JPG, SVG
+    ✅ Respeite tamanhos recomendados
+    ✅ Teste após substituir uma imagem
+
+
+💡 EXEMPLO DE USO
+═══════════════════════════════════════════════════════════════════
+
+    Quer mudar o logo do PFC?
+    
+    1. Abra: imagens_sistema/logos/
+    2. Substitua: Logo_PFC.png
+    3. Use o MESMO NOME de arquivo
+    4. Regere os relatórios
+    5. Pronto! Novo logo aparece em tudo
+
+
+═══════════════════════════════════════════════════════════════════
+🎓 Programa Futuro Cientista® 2025
+═══════════════════════════════════════════════════════════════════
+

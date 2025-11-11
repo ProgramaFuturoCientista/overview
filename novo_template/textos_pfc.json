@@ -1,0 +1,110 @@
+{
+  "sobre_pfc": {
+    "titulo": "Programa Futuro Cientista®",
+    "subtitulo": "Transformando Vidas pela Educação e Ciência",
+    "descricao_curta": "Tecnologia social que promove inclusão, desenvolvimento sustentável e acesso à universidade para jovens talentos em situação de vulnerabilidade.",
+    "descricao_completa": "Criado em 2009 pela UFSCar, o Programa Futuro Cientista® (PFC) é uma tecnologia social reconhecida e certificada que promove inclusão, desenvolvimento sustentável e acesso à universidade para jovens talentos em situação de vulnerabilidade. Com metodologia inovadora como a 'escola científica' e o Prodhase (habilidades socioemocionais), o PFC atua da educação básica ao ensino médio.",
+    "missao": "Formar estudantes de escolas públicas e instituições de acolhimento em ciência, tecnologia e inteligência emocional.",
+    "visao": "Ser referência nacional em programas de inclusão científica e acadêmica.",
+    "valores": [
+      "Inclusão Social",
+      "Excelência Educacional",
+      "Desenvolvimento Sustentável",
+      "Inteligência Emocional",
+      "Responsabilidade Social"
+    ]
+  },
+  
+  "hero": {
+    "titulo_principal": "Sistema de Relatórios PFC",
+    "subtitulo": "Monitoramento e Análise de Dados Educacionais",
+    "descricao": "Acompanhe em tempo real o desempenho, frequência e evolução dos alunos do Programa Futuro Cientista"
+  },
+  
+  "numeros": {
+    "titulo": "Nosso Impacto",
+    "cidades": "13+ cidades paulistas",
+    "alunos": "1000+ estudantes",
+    "escolas": "50+ escolas públicas",
+    "anos": "15 anos de história"
+  },
+  
+  "reconhecimentos": [
+    {
+      "titulo": "3º lugar no Prêmio Peter Muranyi",
+      "ano": "2022",
+      "descricao": "Reconhecimento pela excelência em tecnologia social"
+    },
+    {
+      "titulo": "The World's Children's Prize Foundation",
+      "ano": "2023",
+      "descricao": "Certificação internacional de impacto social"
+    }
+  ],
+  
+  "modulos_sistema": [
+    {
+      "id": "evasao",
+      "nome": "Evasão Escolar",
+      "icone": "bi-graph-down",
+      "descricao": "Monitoramento de frequência e identificação de riscos de evasão",
+      "cor": "#e74c3c"
+    },
+    {
+      "id": "assiduidade",
+      "nome": "Assiduidade",
+      "icone": "bi-calendar-check",
+      "descricao": "Análise detalhada da frequência dos alunos",
+      "cor": "#27ae60"
+    },
+    {
+      "id": "analises",
+      "nome": "Análises Avançadas",
+      "icone": "bi-graph-up-arrow",
+      "descricao": "Previsões e análises preditivas com Machine Learning",
+      "cor": "#3498db"
+    },
+    {
+      "id": "auditoria",
+      "nome": "Auditoria",
+      "icone": "bi-shield-check",
+      "descricao": "Validação e auditoria de dados do sistema",
+      "cor": "#f39c12"
+    },
+    {
+      "id": "olimpiadas",
+      "nome": "Olimpíadas",
+      "icone": "bi-trophy",
+      "descricao": "Acompanhamento de participação e premiações em olimpíadas científicas",
+      "cor": "#9b59b6"
+    },
+    {
+      "id": "cursinho",
+      "nome": "Cursinho Prepara Cientista",
+      "icone": "bi-book",
+      "descricao": "Gestão do cursinho preparatório para vestibulinhos",
+      "cor": "#e67e22"
+    },
+    {
+      "id": "projeto_vida",
+      "nome": "Projeto de Vida",
+      "icone": "bi-star",
+      "descricao": "Orientação profissional e universitária personalizada",
+      "cor": "#1abc9c"
+    }
+  ],
+  
+  "fundador": {
+    "nome": "Prof. Dr. Fábio de Lima Leite",
+    "titulo": "Idealizador e Criador do Programa Futuro Cientista",
+    "descricao": "Líder do Grupo de Pesquisa em Nanoneurobiofísica e Professor Associado da Universidade Federal de São Carlos (UFSCar)",
+    "mensagem": "Este sistema foi desenvolvido para acompanhar e potencializar o desenvolvimento de cada futuro cientista, fornecendo dados precisos para tomada de decisões estratégicas."
+  },
+  
+  "cidades_atendidas": [
+    "Anhembi", "Araçoiaba da Serra", "Capão Bonito", "Cesário Lange",
+    "Coronel Macedo", "Iperó", "Itu", "Pilar do Sul", "Salto de Pirapora",
+    "São Roque", "Sorocaba", "Tatuí", "Tietê", "Vargem Grande Paulista"
+  ]
+}
+

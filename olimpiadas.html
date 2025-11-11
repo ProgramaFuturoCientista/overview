@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relatório Semanal PFC - Olimpíadas do Conhecimento</title>
+    <title>Relatório de Olimpíadas PFC</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="script.js"></script>
     <style>
-        
         /* Modal Styles */
         .modal-overlay {
             display: none;
@@ -35,7 +35,7 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             max-width: 90%;
             max-height: 90%;
-            width: 800px;
+            width: 900px;
             overflow: hidden;
             animation: modalSlideIn 0.3s ease-out;
         }
@@ -87,23 +87,11 @@
             overflow-y: auto;
         }
         
-        .student-info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-bottom: 20px;
-        }
-        
         .info-section {
             background: #f8f9fa;
             padding: 20px;
             border-radius: 10px;
-            border-left: 4px solid #3498db;
-        }
-        
-        .info-section.full-width {
-            grid-column: 1 / -1;
-            border-left-color: #e74c3c;
+            margin-bottom: 15px;
         }
         
         .info-section h4 {
@@ -135,594 +123,393 @@
             text-align: right;
         }
         
-        .score-display {
-            text-align: center;
-            margin-bottom: 20px;
-            padding: 20px;
-            background: linear-gradient(135deg, #3498db, #2980b9);
-            border-radius: 10px;
-            color: white;
+        .participacoes-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
         
-        .total-score {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        .score-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-        
-        .score-breakdown {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-        
-        .score-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 12px;
+        .participacoes-list li {
+            padding: 10px;
+            margin-bottom: 8px;
             background: white;
-            border-radius: 6px;
-            border-left: 3px solid #3498db;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
         }
         
-        .score-category {
-            font-weight: 600;
-            color: #495057;
-        }
-        
-        .score-points {
-            color: #2c3e50;
-            font-weight: 600;
-        }
-        
-        .details-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        
-        .detail-item {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #e9ecef;
-        }
-        
-        .detail-item h5 {
-            margin: 0 0 10px 0;
-            color: #2c3e50;
-            font-size: 1rem;
-            font-weight: 600;
-        }
-        
-        .detail-content {
-            color: #495057;
-            line-height: 1.5;
-            font-size: 0.9rem;
-            max-height: 120px;
-            overflow-y: auto;
-            padding: 8px;
-            background: #f8f9fa;
-            border-radius: 4px;
-        }
-        
-        .modal-footer {
-            padding: 20px 25px;
-            background: #f8f9fa;
-            border-top: 1px solid #e9ecef;
-            text-align: center;
-        }
-        
-        .btn-close {
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
-        }
-        
-        .btn-close:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .modal-content {
-                width: 95%;
-                margin: 10px;
-            }
-            
-            .student-info-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            
-            .details-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            
-            .score-breakdown {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Cursor pointer para linhas da tabela */
-        #olympiadsTable tbody tr,
-        #otherMeritsTable tbody tr {
+        #olimpiadasTable tbody tr {
             cursor: pointer;
             transition: background-color 0.2s ease;
         }
         
-        #olympiadsTable tbody tr:hover,
-        #otherMeritsTable tbody tr:hover {
+        #olimpiadasTable tbody tr:hover {
             background-color: #f8f9fa !important;
         }
-        
     </style>
 </head>
 <body>
+    <!-- Botão Hambúrguer (3 tracinhos) -->
+    <button class="hamburger-btn" aria-label="Menu">
+        <div class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </button>
+
+    <!-- Overlay para fechar menu ao clicar fora -->
+    <div class="nav-overlay"></div>
+
+    <!-- Menu Sidebar -->
+    <nav class="nav-sidebar">
+        <button class="nav-close-btn" aria-label="Fechar menu">&times;</button>
+        <div class="nav-sidebar-header">
+            <h2>📊 Menu PFC</h2>
+        </div>
+        <div class="nav-sidebar-links">
+            <a href="index.html" class="nav-link nav-link-home">🏠 Home</a>
+            <a href="evasao.html" class="nav-link">📉 Evasão</a>
+            <a href="assiduidade.html" class="nav-link">📅 Assiduidade</a>
+            <a href="analises.html" class="nav-link">📈 Análises</a>
+            <a href="auditoria.html" class="nav-link">🔍 Auditoria</a>
+            <a href="cursinho/cursinho.html" class="nav-link">🎓 Cursinho</a>
+            <a href="olimpiadas.html" class="nav-link active">🏆 Olimpíadas</a>
+            <a href="projeto_vida/projeto_vida.html" class="nav-link">🎯 Projeto de Vida</a>
+        </div>
+    </nav>
+
     <header>
         <div class="header-content">
             <img src="Logo PFC.png" alt="Logo PFC" class="logo">
-            <h1>Relatório Semanal PFC</h1>
-            <p class="subtitle">Olimpíadas do Conhecimento - 29/10/2025</p>
+            <h1>Relatório de Olimpíadas PFC</h1>
+            <p class="subtitle">Ranking e Análises - 10/11/2025</p>
         </div>
     </header>
 
-    <nav class="nav-bar">
-        <a href="index.html" class="nav-link">Evasão</a>
-        <a href="assiduidade.html" class="nav-link">Assiduidade</a>
-        <a href="analises.html" class="nav-link">Análises</a>
-        <a href="auditoria.html" class="nav-link">Auditoria</a>
-        <a href="cursinho/cursinho.html" class="nav-link">🎓 Cursinho</a>
-        <a href="olimpiadas.html" class="nav-link active">🏆 Olimpíadas</a>
-        <a href="ranking_alunos_pfc.html" class="nav-link">🏅 Ranking Alunos PFC</a>
-    </nav>
-
     <main class="main-content">
-        
         <section class="summary-cards">
-            <div class="card">
-                <h3>Alunos com Olimpíadas</h3>
-                <div class="metric">39</div>
-            </div>
-            <div class="card">
-                <h3>Pontuação Média</h3>
-                <div class="metric">10.6</div>
-            </div>
-            <div class="card">
-                <h3>Pontuação Máxima</h3>
-                <div class="metric">125</div>
-            </div>
-            <div class="card">
-                <h3>Tipos de Olimpíadas</h3>
-                <div class="metric">6</div>
-            </div>
+            
+        <div class="card">
+            <h3>Total de Alunos</h3>
+            <div class="metric">48</div>
+        </div>
+        <div class="card">
+            <h3>Cidades Participantes</h3>
+            <div class="metric">7</div>
+        </div>
+        <div class="card">
+            <h3>Pontuação Média</h3>
+            <div class="metric">181.0</div>
+        </div>
+        <div class="card">
+            <h3>Maior Pontuação</h3>
+            <div class="metric">470</div>
+        </div>
+        
         </section>
         
-        
         <section class="table-section">
-            <h2>Ranking de Olimpíadas do Conhecimento</h2>
-            
-        <table border="1" class="dataframe dataframe data-table" id="olympiadsTable">
-            <thead>
-                <tr style="text-align: right;">
-                    <th>Posição</th>
-                    <th>Aluno</th>
-                    <th>Cidade</th>
-                    <th>Série</th>
-                    <th>Ano de Ingresso</th>
-                    <th>Pontuação Olimpíadas</th>
-                    <th>Detalhes Olimpíadas</th>
-                </tr>
-            </thead>
-            <tbody>
-        
-                <tr>
-                    <td>1º</td>
-                    <td>luís henrique martins silva dos santos</td>
-                    <td>Coronel Macedo</td>
-                    <td>6</td>
-                    <td>2024</td>
-                    <td><strong>125</strong></td>
-                    <td>OBMEP (participação); OBMEP - Prata (+40 pts); OLISP (participação); OLISP - Prata (+35 pts); OMASP (participação); OMASP - Prata (+35 pts)</td>
-                </tr>
-            
-                <tr>
-                    <td>2º</td>
-                    <td>luan pedro souza costa bragão de oliveira</td>
-                    <td>São Roque</td>
-                    <td>9</td>
-                    <td>2024</td>
-                    <td><strong>45</strong></td>
-                    <td>PORTUGUÊS (participação); PORTUGUÊS - 1º Lugar (+40 pts)</td>
-                </tr>
-            
-                <tr>
-                    <td>3º</td>
-                    <td>ana luisa soares lopes de oliveira</td>
-                    <td>São Roque</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>20</strong></td>
-                    <td>OBMEP (participação); OBMEP - 2ª Fase (+15 pts)</td>
-                </tr>
-            
-                <tr>
-                    <td>4º</td>
-                    <td>mariana de souza rocha</td>
-                    <td>São Roque</td>
-                    <td>7</td>
-                    <td>2022</td>
-                    <td><strong>20</strong></td>
-                    <td>OBMEP (participação); OBMEP - Segunda Fase (+15 pts)</td>
-                </tr>
-            
-                <tr>
-                    <td>5º</td>
-                    <td>kerollyn thallya dos santos rodrigues</td>
-                    <td>Coronel Macedo</td>
-                    <td>7</td>
-                    <td>2023</td>
-                    <td><strong>15</strong></td>
-                    <td>OBMEP (participação); OLISP (participação); OMASP (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>6º</td>
-                    <td>isabelle akemi kosaka</td>
-                    <td>Coronel Macedo</td>
-                    <td>6</td>
-                    <td>2023</td>
-                    <td><strong>15</strong></td>
-                    <td>OBMEP (participação); OLISP (participação); OBA (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>7º</td>
-                    <td>natália de barros macário</td>
-                    <td>Coronel Macedo</td>
-                    <td>5</td>
-                    <td>2024</td>
-                    <td><strong>10</strong></td>
-                    <td>OBMEP (participação); OLISP (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>8º</td>
-                    <td>joão vitor garcia da rosa</td>
-                    <td>Coronel Macedo</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>10</strong></td>
-                    <td>OLISP (participação); OMASP (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>9º</td>
-                    <td>gabriel alfais roberto pereira</td>
-                    <td>São Roque</td>
-                    <td>9</td>
-                    <td>2023</td>
-                    <td><strong>5</strong></td>
-                    <td>OBMEP (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>10º</td>
-                    <td>marley gabriel vieira portilho de carvalho</td>
-                    <td>São Roque</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>OBMEP (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>11º</td>
-                    <td>murillo henrique gonçalves de carvalho</td>
-                    <td>Capela do Alto</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>OBMEP (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>12º</td>
-                    <td>gabriely moura de moraes</td>
-                    <td>Capela do Alto</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>OBMEP (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>13º</td>
-                    <td>manuela aparecida leite de camargo almeida</td>
-                    <td>Capela do Alto</td>
-                    <td>6</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>OBMEP (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>14º</td>
-                    <td>arthur carriel pereira</td>
-                    <td>Guareí</td>
-                    <td>6</td>
-                    <td>2024</td>
-                    <td><strong>5</strong></td>
-                    <td>OBA (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>15º</td>
-                    <td>elisa priolli pereira</td>
-                    <td>Mirassol</td>
-                    <td>4</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>ROBÓTICA (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>16º</td>
-                    <td>cauã silva de alencar</td>
-                    <td>Corumbataí</td>
-                    <td>7</td>
-                    <td>2024</td>
-                    <td><strong>5</strong></td>
-                    <td>OBMEP (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>17º</td>
-                    <td>gabrielly carvalho muniz</td>
-                    <td>Mirassol</td>
-                    <td>4</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>ROBÓTICA (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>18º</td>
-                    <td>manuela dos santos gonçalves</td>
-                    <td>Mirassol</td>
-                    <td>4</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>ROBÓTICA (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>19º</td>
-                    <td>davi josé cardoso</td>
-                    <td>Mirassol</td>
-                    <td>4</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>ROBÓTICA (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>20º</td>
-                    <td>josé pedro boarroli</td>
-                    <td>Mirassol</td>
-                    <td>4</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>ROBÓTICA (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>21º</td>
-                    <td>miguel machado da silva</td>
-                    <td>Mirassol</td>
-                    <td>4</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>ROBÓTICA (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>22º</td>
-                    <td>victor felipe rahman querino de souza</td>
-                    <td>Mirassol</td>
-                    <td>4</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>ROBÓTICA (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>23º</td>
-                    <td>bryan samuel bastos</td>
-                    <td>Corumbataí</td>
-                    <td>7</td>
-                    <td>2024</td>
-                    <td><strong>5</strong></td>
-                    <td>OBMEP (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>24º</td>
-                    <td>nikael henrique pereira</td>
-                    <td>Corumbataí</td>
-                    <td>7</td>
-                    <td>2024</td>
-                    <td><strong>5</strong></td>
-                    <td>OBMEP (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>25º</td>
-                    <td>miguel fernando de oliveira rodrigues</td>
-                    <td>Corumbataí</td>
-                    <td>7</td>
-                    <td>2024</td>
-                    <td><strong>5</strong></td>
-                    <td>OBMEP (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>26º</td>
-                    <td>luann henrique dos santos lima kull</td>
-                    <td>Corumbataí</td>
-                    <td>7</td>
-                    <td>2024</td>
-                    <td><strong>5</strong></td>
-                    <td>OBMEP (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>27º</td>
-                    <td>lívia de oliveira schrank</td>
-                    <td>Corumbataí</td>
-                    <td>7</td>
-                    <td>2024</td>
-                    <td><strong>5</strong></td>
-                    <td>OBMEP (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>28º</td>
-                    <td>larissa milene nogueira</td>
-                    <td>Corumbataí</td>
-                    <td>7</td>
-                    <td>2024</td>
-                    <td><strong>5</strong></td>
-                    <td>OBMEP (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>29º</td>
-                    <td>joão marcos marcucci kviatkovski wenzel</td>
-                    <td>Corumbataí</td>
-                    <td>7</td>
-                    <td>2024</td>
-                    <td><strong>5</strong></td>
-                    <td>OBMEP (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>30º</td>
-                    <td>gabrielly cristina matos brielle</td>
-                    <td>Corumbataí</td>
-                    <td>7</td>
-                    <td>2024</td>
-                    <td><strong>5</strong></td>
-                    <td>OBMEP (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>31º</td>
-                    <td>sarah heloísa leite sarti</td>
-                    <td>Corumbataí</td>
-                    <td>7</td>
-                    <td>2024</td>
-                    <td><strong>5</strong></td>
-                    <td>OBMEP (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>32º</td>
-                    <td>eduardo higno appel</td>
-                    <td>São Roque</td>
-                    <td>7</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>OBMEP (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>33º</td>
-                    <td>ketlyn lavínia silva</td>
-                    <td>Corumbataí</td>
-                    <td>7</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>OBMEP (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>34º</td>
-                    <td>eloa c duarte</td>
-                    <td>Corumbataí</td>
-                    <td>7</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>OBMEP (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>35º</td>
-                    <td>felipe de angelis</td>
-                    <td>Corumbataí</td>
-                    <td>7</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>OBMEP (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>36º</td>
-                    <td>maria sophia nogueira</td>
-                    <td>Corumbataí</td>
-                    <td>7</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>OBMEP (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>37º</td>
-                    <td>isabeli quinalia padovani</td>
-                    <td>Corumbataí</td>
-                    <td>7</td>
-                    <td>2025</td>
-                    <td><strong>5</strong></td>
-                    <td>OBMEP (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>38º</td>
-                    <td>nicolly nunes neves</td>
-                    <td>São Roque</td>
-                    <td>7</td>
-                    <td>2024</td>
-                    <td><strong>5</strong></td>
-                    <td>OBMEP (participação)</td>
-                </tr>
-            
-                <tr>
-                    <td>39º</td>
-                    <td>kamila almeida andrade</td>
-                    <td>Coronel Macedo</td>
-                    <td>5</td>
-                    <td>2024</td>
-                    <td><strong>5</strong></td>
-                    <td>OBMEP (participação)</td>
-                </tr>
-            
-            </tbody>
-        </table>
-        
+            <h2>Ranking de Alunos nas Olimpíadas</h2>
+            <table border="1" class="dataframe data-table" id="olimpiadasTable">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Posição</th>
+      <th>Aluno</th>
+      <th>Cidade</th>
+      <th>Pontuação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>ISABELLE AKEMI KOSAKA</td>
+      <td>Coronel Macedo</td>
+      <td>470</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Luís Henrique Martins Silva dos Santos</td>
+      <td>Coronel Macedo</td>
+      <td>400</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>João Vitor Garcia da Rosa</td>
+      <td>Coronel Macedo</td>
+      <td>380</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Patricia Maria Machado de Oliveira</td>
+      <td>Guareí</td>
+      <td>300</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>KEROLLYN THALLYA DOS SANTOS RODRIGUES</td>
+      <td>Coronel Macedo</td>
+      <td>270</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>NATÁLIA DE BARROS MACÁRIO</td>
+      <td>Coronel Macedo</td>
+      <td>260</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Isabela Padovan</td>
+      <td>Iperó</td>
+      <td>240</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Nicolly Nunes Neves</td>
+      <td>São Roque</td>
+      <td>230</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>EDUARDO HIGNO APPEL</td>
+      <td>São Roque</td>
+      <td>230</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Milena Duarte de Santos Messias Ferreira</td>
+      <td>Iperó</td>
+      <td>230</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Sabrina da Silva Charles</td>
+      <td>Iperó</td>
+      <td>210</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>Ana Luisa Soares Lopes de Oliveira</td>
+      <td>São Roque</td>
+      <td>200</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>KAMILA ALMEIDA ANDRADE</td>
+      <td>Coronel Macedo</td>
+      <td>200</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>MARIANA DE SOUZA ROCHA</td>
+      <td>São Roque</td>
+      <td>200</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>GABRIELY MOURA DE MORAES</td>
+      <td>Capela do Alto</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>MANUELA APARECIDA LEITE DE CAMARGO ALMEIDA</td>
+      <td>Capela do Alto</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>MURILLO HENRIQUE GONÇALVES DE CARVALHO</td>
+      <td>Capela do Alto</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Bryan Samuel Bastos</td>
+      <td>Corumbataí</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Cauã Silva de Alencar</td>
+      <td>Corumbataí</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Gabrielly Cristina Matos Brielle</td>
+      <td>Corumbataí</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>João Marcos Marcucci Kviatkovski Wenzel</td>
+      <td>Corumbataí</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>Larissa Milene Nogueira</td>
+      <td>Corumbataí</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>Lívia de Oliveira Schrank</td>
+      <td>Corumbataí</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>Luann Henrique dos Santos Lima Kull</td>
+      <td>Corumbataí</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>Miguel Fernando de Oliveira Rodrigues</td>
+      <td>Corumbataí</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>Nikael Henrique Pereira</td>
+      <td>Corumbataí</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>Sarah Heloísa Leite Sarti</td>
+      <td>Corumbataí</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>Maria Sophia Nogueira</td>
+      <td>Corumbataí</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>Isabeli Quinalia Padovani</td>
+      <td>Corumbataí</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td>Felipe de Angelis</td>
+      <td>Corumbataí</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>31</td>
+      <td>Eloa C Duarte</td>
+      <td>Corumbataí</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>32</td>
+      <td>Ketlyn Lavínia Silva</td>
+      <td>Corumbataí</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>33</td>
+      <td>Gabriel Alfais Roberto Pereira</td>
+      <td>São Roque</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>34</td>
+      <td>Marley Gabriel Vieira Portilho de Carvalho</td>
+      <td>São Roque</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>35</td>
+      <td>Arthur Carriel Pereira</td>
+      <td>Guareí</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>36</td>
+      <td>Elisa Priolli Pereira</td>
+      <td>Mirassol</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>37</td>
+      <td>Gabrielly Carvalho Muniz</td>
+      <td>Mirassol</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>38</td>
+      <td>Manuela dos Santos Gonçalves</td>
+      <td>Mirassol</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>39</td>
+      <td>Lorena Pinheiro De Moraes</td>
+      <td>Guareí</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td>Sophia Mariana Machado De Oliveira</td>
+      <td>Guareí</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>41</td>
+      <td>VINICIUS ANTONIO MICHELON LEONARDELLI</td>
+      <td>São Roque</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>42</td>
+      <td>JOAQUIM DELANNES MOTTA</td>
+      <td>São Roque</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>43</td>
+      <td>Davi José Cardoso</td>
+      <td>Mirassol</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>44</td>
+      <td>José Pedro Boarroli</td>
+      <td>Mirassol</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>45</td>
+      <td>Miguel Machado da Silva</td>
+      <td>Mirassol</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>46</td>
+      <td>Victor Felipe Rahman Querino de Souza</td>
+      <td>Mirassol</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>47</td>
+      <td>Samuel Braz de Morais</td>
+      <td>Guareí</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <td>48</td>
+      <td>LUAN PEDRO SOUZA COSTA BRAGÃO DE OLIVEIRA</td>
+      <td>São Roque</td>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table>
         </section>
         
         <section class="table-section">
@@ -733,16 +520,12 @@
                     <iframe src="olimpiadas/grafico_top_alunos.html" style="width: 100%; height: 650px; border: none;"></iframe>
                 </div>
                 <div>
-                    <h3>Distribuição por Cidade</h3>
-                    <iframe src="olimpiadas/grafico_cidade.html" style="width: 100%; height: 650px; border: none;"></iframe>
+                    <h3>Top 10 Cidades por Quantidade</h3>
+                    <iframe src="olimpiadas/grafico_quantidade_cidade.html" style="width: 100%; height: 650px; border: none;"></iframe>
                 </div>
                 <div>
-                    <h3>Distribuição por Série</h3>
-                    <iframe src="olimpiadas/grafico_serie.html" style="width: 100%; height: 650px; border: none;"></iframe>
-                </div>
-                <div>
-                    <h3>Tipos de Olimpíadas</h3>
-                    <iframe src="olimpiadas/grafico_olimpiadas.html" style="width: 100%; height: 650px; border: none;"></iframe>
+                    <h3>Top 10 Cidades por Pontuação Média</h3>
+                    <iframe src="olimpiadas/grafico_pontuacao_cidade.html" style="width: 100%; height: 650px; border: none;"></iframe>
                 </div>
                 <div>
                     <h3>Distribuição de Pontuações</h3>
@@ -752,156 +535,100 @@
         </section>
     </main>
 
-    
+    <!-- Modal de detalhes -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Detalhes do Aluno</h3>
+                <span class="modal-close" id="modalClose">&times;</span>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Conteúdo será preenchido dinamicamente -->
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Dados completos para o modal
+        const olimpiadasData = [{"Posi\u00e7\u00e3o":1,"Aluno":"ISABELLE AKEMI KOSAKA","Cidade":"Coronel Macedo","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP e avan\u00e7ou para a 2\u00aa fase\nParticipa\u00e7\u00e3o OLISP e avan\u00e7ou para a 2\u00aa fase\nParticipa\u00e7\u00e3o OBA e avan\u00e7ou para a 2\u00aa fase","Pontua\u00e7\u00e3o":470,"_row_id":0},{"Posi\u00e7\u00e3o":2,"Aluno":"Lu\u00eds Henrique Martins Silva dos Santos","Cidade":"Coronel Macedo","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OMASP e alcan\u00e7ou 2\u00ba lugar\nParticipa\u00e7\u00e3o OBMEP e avan\u00e7ou para a 2\u00aa fase\nParticipa\u00e7\u00e3o OLISP","Pontua\u00e7\u00e3o":400,"_row_id":1},{"Posi\u00e7\u00e3o":3,"Aluno":"Jo\u00e3o Vitor Garcia da Rosa","Cidade":"Coronel Macedo","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OMASP e alcan\u00e7ou 1\u00ba lugar\nParticipa\u00e7\u00e3o OBMEP\nParticipa\u00e7\u00e3o OLISP","Pontua\u00e7\u00e3o":380,"_row_id":2},{"Posi\u00e7\u00e3o":4,"Aluno":"Patricia Maria Machado de Oliveira","Cidade":"Guare\u00ed","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o MATIFIC\nParticipa\u00e7\u00e3o OBLI","Pontua\u00e7\u00e3o":300,"_row_id":3},{"Posi\u00e7\u00e3o":5,"Aluno":"KEROLLYN THALLYA DOS SANTOS RODRIGUES","Cidade":"Coronel Macedo","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP\nParticipa\u00e7\u00e3o OMASP\nParticipa\u00e7\u00e3o OLISP","Pontua\u00e7\u00e3o":270,"_row_id":4},{"Posi\u00e7\u00e3o":6,"Aluno":"NAT\u00c1LIA DE BARROS MAC\u00c1RIO","Cidade":"Coronel Macedo","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP e avan\u00e7ou para a 2\u00aa fase\nParticipa\u00e7\u00e3o OLISP","Pontua\u00e7\u00e3o":260,"_row_id":5},{"Posi\u00e7\u00e3o":7,"Aluno":"Isabela Padovan ","Cidade":"Iper\u00f3","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o ONHB e alcan\u00e7ou 2\u00ba lugar","Pontua\u00e7\u00e3o":240,"_row_id":6},{"Posi\u00e7\u00e3o":8,"Aluno":"Nicolly Nunes Neves","Cidade":"S\u00e3o Roque","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP 2024 e alcan\u00e7ou 3\u00ba lugar","Pontua\u00e7\u00e3o":230,"_row_id":7},{"Posi\u00e7\u00e3o":9,"Aluno":"EDUARDO HIGNO APPEL","Cidade":"S\u00e3o Roque","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP 2024 e alcan\u00e7ou 3\u00ba lugar","Pontua\u00e7\u00e3o":230,"_row_id":8},{"Posi\u00e7\u00e3o":10,"Aluno":"Milena Duarte de Santos Messias Ferreira","Cidade":"Iper\u00f3","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o ONHB e alcan\u00e7ou 3\u00ba lugar","Pontua\u00e7\u00e3o":230,"_row_id":9},{"Posi\u00e7\u00e3o":11,"Aluno":"Sabrina da Silva Charles","Cidade":"Iper\u00f3","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o ONHB e alcan\u00e7ou 5\u00ba lugar","Pontua\u00e7\u00e3o":210,"_row_id":10},{"Posi\u00e7\u00e3o":12,"Aluno":"Ana Luisa Soares Lopes de Oliveira","Cidade":"S\u00e3o Roque","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP e avan\u00e7ou para a 2\u00aa fase","Pontua\u00e7\u00e3o":200,"_row_id":11},{"Posi\u00e7\u00e3o":13,"Aluno":"KAMILA ALMEIDA ANDRADE","Cidade":"Coronel Macedo","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP e avan\u00e7ou para a 2\u00aa fase","Pontua\u00e7\u00e3o":200,"_row_id":12},{"Posi\u00e7\u00e3o":14,"Aluno":"MARIANA DE SOUZA ROCHA","Cidade":"S\u00e3o Roque","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP e avan\u00e7ou para a 2\u00aa fase","Pontua\u00e7\u00e3o":200,"_row_id":13},{"Posi\u00e7\u00e3o":15,"Aluno":"GABRIELY MOURA DE MORAES","Cidade":"Capela do Alto","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP","Pontua\u00e7\u00e3o":150,"_row_id":14},{"Posi\u00e7\u00e3o":16,"Aluno":"MANUELA APARECIDA LEITE DE CAMARGO ALMEIDA","Cidade":"Capela do Alto","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP","Pontua\u00e7\u00e3o":150,"_row_id":15},{"Posi\u00e7\u00e3o":17,"Aluno":"MURILLO HENRIQUE GON\u00c7ALVES DE CARVALHO","Cidade":"Capela do Alto","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP","Pontua\u00e7\u00e3o":150,"_row_id":16},{"Posi\u00e7\u00e3o":18,"Aluno":"Bryan Samuel Bastos","Cidade":"Corumbata\u00ed","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP","Pontua\u00e7\u00e3o":150,"_row_id":17},{"Posi\u00e7\u00e3o":19,"Aluno":"Cau\u00e3 Silva de Alencar","Cidade":"Corumbata\u00ed","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP","Pontua\u00e7\u00e3o":150,"_row_id":18},{"Posi\u00e7\u00e3o":20,"Aluno":"Gabrielly Cristina Matos Brielle","Cidade":"Corumbata\u00ed","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP","Pontua\u00e7\u00e3o":150,"_row_id":19},{"Posi\u00e7\u00e3o":21,"Aluno":"Jo\u00e3o Marcos Marcucci Kviatkovski Wenzel","Cidade":"Corumbata\u00ed","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP","Pontua\u00e7\u00e3o":150,"_row_id":20},{"Posi\u00e7\u00e3o":22,"Aluno":"Larissa Milene Nogueira","Cidade":"Corumbata\u00ed","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP","Pontua\u00e7\u00e3o":150,"_row_id":21},{"Posi\u00e7\u00e3o":23,"Aluno":"L\u00edvia de Oliveira Schrank","Cidade":"Corumbata\u00ed","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP","Pontua\u00e7\u00e3o":150,"_row_id":22},{"Posi\u00e7\u00e3o":24,"Aluno":"Luann Henrique dos Santos Lima Kull","Cidade":"Corumbata\u00ed","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP","Pontua\u00e7\u00e3o":150,"_row_id":23},{"Posi\u00e7\u00e3o":25,"Aluno":"Miguel Fernando de Oliveira Rodrigues","Cidade":"Corumbata\u00ed","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP","Pontua\u00e7\u00e3o":150,"_row_id":24},{"Posi\u00e7\u00e3o":26,"Aluno":"Nikael Henrique Pereira","Cidade":"Corumbata\u00ed","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP","Pontua\u00e7\u00e3o":150,"_row_id":25},{"Posi\u00e7\u00e3o":27,"Aluno":"Sarah Helo\u00edsa Leite Sarti","Cidade":"Corumbata\u00ed","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP","Pontua\u00e7\u00e3o":150,"_row_id":26},{"Posi\u00e7\u00e3o":28,"Aluno":"Maria Sophia Nogueira","Cidade":"Corumbata\u00ed","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP","Pontua\u00e7\u00e3o":150,"_row_id":27},{"Posi\u00e7\u00e3o":29,"Aluno":"Isabeli Quinalia Padovani","Cidade":"Corumbata\u00ed","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP","Pontua\u00e7\u00e3o":150,"_row_id":28},{"Posi\u00e7\u00e3o":30,"Aluno":"Felipe de Angelis","Cidade":"Corumbata\u00ed","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP","Pontua\u00e7\u00e3o":150,"_row_id":29},{"Posi\u00e7\u00e3o":31,"Aluno":"Eloa C Duarte","Cidade":"Corumbata\u00ed","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP","Pontua\u00e7\u00e3o":150,"_row_id":30},{"Posi\u00e7\u00e3o":32,"Aluno":"Ketlyn Lav\u00ednia Silva","Cidade":"Corumbata\u00ed","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP","Pontua\u00e7\u00e3o":150,"_row_id":31},{"Posi\u00e7\u00e3o":33,"Aluno":"Gabriel Alfais Roberto Pereira","Cidade":"S\u00e3o Roque","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP","Pontua\u00e7\u00e3o":150,"_row_id":32},{"Posi\u00e7\u00e3o":34,"Aluno":"Marley Gabriel Vieira Portilho de Carvalho","Cidade":"S\u00e3o Roque","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBMEP","Pontua\u00e7\u00e3o":150,"_row_id":33},{"Posi\u00e7\u00e3o":35,"Aluno":"Arthur Carriel Pereira","Cidade":"Guare\u00ed","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBA","Pontua\u00e7\u00e3o":150,"_row_id":34},{"Posi\u00e7\u00e3o":36,"Aluno":"Elisa Priolli Pereira","Cidade":"Mirassol","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBR","Pontua\u00e7\u00e3o":150,"_row_id":35},{"Posi\u00e7\u00e3o":37,"Aluno":"Gabrielly Carvalho Muniz","Cidade":"Mirassol","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBR","Pontua\u00e7\u00e3o":150,"_row_id":36},{"Posi\u00e7\u00e3o":38,"Aluno":"Manuela dos Santos Gon\u00e7alves","Cidade":"Mirassol","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBR","Pontua\u00e7\u00e3o":150,"_row_id":37},{"Posi\u00e7\u00e3o":39,"Aluno":"Lorena Pinheiro De Moraes","Cidade":"Guare\u00ed","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o MATIFIC","Pontua\u00e7\u00e3o":150,"_row_id":38},{"Posi\u00e7\u00e3o":40,"Aluno":"Sophia Mariana Machado De Oliveira","Cidade":"Guare\u00ed","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o MATIFIC","Pontua\u00e7\u00e3o":150,"_row_id":39},{"Posi\u00e7\u00e3o":41,"Aluno":"VINICIUS ANTONIO MICHELON LEONARDELLI","Cidade":"S\u00e3o Roque","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o MATIFIC","Pontua\u00e7\u00e3o":150,"_row_id":40},{"Posi\u00e7\u00e3o":42,"Aluno":"JOAQUIM DELANNES MOTTA","Cidade":"S\u00e3o Roque","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o MATIFIC","Pontua\u00e7\u00e3o":150,"_row_id":41},{"Posi\u00e7\u00e3o":43,"Aluno":"Davi Jos\u00e9 Cardoso","Cidade":"Mirassol","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBR","Pontua\u00e7\u00e3o":150,"_row_id":42},{"Posi\u00e7\u00e3o":44,"Aluno":"Jos\u00e9 Pedro Boarroli","Cidade":"Mirassol","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBR","Pontua\u00e7\u00e3o":150,"_row_id":43},{"Posi\u00e7\u00e3o":45,"Aluno":"Miguel Machado da Silva","Cidade":"Mirassol","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBR","Pontua\u00e7\u00e3o":150,"_row_id":44},{"Posi\u00e7\u00e3o":46,"Aluno":"Victor Felipe Rahman Querino de Souza","Cidade":"Mirassol","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o OBR","Pontua\u00e7\u00e3o":150,"_row_id":45},{"Posi\u00e7\u00e3o":47,"Aluno":"Samuel Braz de Morais","Cidade":"Guare\u00ed","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o REDASP","Pontua\u00e7\u00e3o":60,"_row_id":46},{"Posi\u00e7\u00e3o":48,"Aluno":"LUAN PEDRO SOUZA COSTA BRAG\u00c3O DE OLIVEIRA","Cidade":"S\u00e3o Roque","Participa\u00e7\u00e3o\/ Premia\u00e7\u00e3o Olimp.":"Participa\u00e7\u00e3o olimp\u00edadas de portugu\u00eas da escola e alcan\u00e7ou 1\u00ba lugar","Pontua\u00e7\u00e3o":10,"_row_id":47}];
+        
         $(document).ready(function() {
-            $('#olympiadsTable').DataTable({
+            // Inicializar DataTable
+            const table = $('#olimpiadasTable').DataTable({
                 "language": {
                     "url": "https://cdn.datatables.net/plug-ins/1.13.6/i18n/pt-BR.json"
                 },
-                "pageLength": 15,
-                "lengthMenu": [15, 25, 50, 100],
-                "order": [[5, "desc"]],
-                "responsive": true,
-                "scrollX": true
+                "pageLength": 25,
+                "lengthMenu": [10, 25, 50, 100],
+                "order": [[0, "asc"]], // Ordenar por posição
+                "columnDefs": [
+                    { "orderable": true, "targets": "_all" }
+                ]
             });
             
-            // Adicionar evento de clique
-            setTimeout(function() {
-                $('#olympiadsTable tbody').on('click', 'tr', function() {
-                    var data = $('#olympiadsTable').DataTable().row(this).data();
-                    if (data) {
-                        showStudentModal(data, 'olympiads');
-                    }
-                });
-            }, 100);
-        });
-        
-        // Eventos de fechamento do modal
-        $(document).on('click', '.modal-close', function() {
-            closeStudentModal();
-        });
-        
-        $(document).on('click', '.modal-overlay', function(e) {
-            if (e.target === this) {
-                closeStudentModal();
-            }
-        });
-        
-        function showStudentModal(data, type) {
-            var modal = buildModalContent(data, type);
-            $('body').append(modal);
-            $('.modal-overlay').fadeIn(300);
-        }
-        
-        function buildModalContent(data, type) {
-            if (type === 'olympiads') {
-                return `
-                    <div class="modal-overlay">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h3>📋 Detalhes do Aluno - Olimpíadas</h3>
-                                <span class="modal-close">&times;</span>
-                            </div>
-                            <div class="modal-body">
-                                <div class="student-info-grid">
-                                    <div class="info-section">
-                                        <h4>👤 Informações Pessoais</h4>
-                                        <div class="info-item">
-                                            <span class="info-label">Nome:</span>
-                                            <span class="info-value">${data[1]}</span>
-                                        </div>
-                                        <div class="info-item">
-                                            <span class="info-label">Cidade:</span>
-                                            <span class="info-value">${data[2]}</span>
-                                        </div>
-                                        <div class="info-item">
-                                            <span class="info-label">Série:</span>
-                                            <span class="info-value">${data[3]}º ano</span>
-                                        </div>
-                                    </div>
-                                    <div class="info-section">
-                                        <h4>🏆 Pontuação</h4>
-                                        <div class="score-display">
-                                            <div class="total-score">${data[5]}</div>
-                                            <div class="score-label">Pontos em Olimpíadas</div>
-                                        </div>
-                                    </div>
-                                    <div class="info-section full-width">
-                                        <h4>📝 Detalhes das Olimpíadas</h4>
-                                        <div class="detail-content">${data[6] || 'Nenhuma participação registrada'}</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button class="btn-close" onclick="closeStudentModal()">Fechar</button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            } else {
-                return `
-                    <div class="modal-overlay">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h3>📋 Detalhes do Aluno - Ranking PFC</h3>
-                                <span class="modal-close">&times;</span>
-                            </div>
-                            <div class="modal-body">
-                                <div class="student-info-grid">
-                                    <div class="info-section">
-                                        <h4>👤 Informações Pessoais</h4>
-                                        <div class="info-item">
-                                            <span class="info-label">Nome:</span>
-                                            <span class="info-value">${data[1]}</span>
-                                        </div>
-                                        <div class="info-item">
-                                            <span class="info-label">Cidade:</span>
-                                            <span class="info-value">${data[2]}</span>
-                                        </div>
-                                    </div>
-                                    <div class="info-section">
-                                        <h4>🎖️ Pontuação Total</h4>
-                                        <div class="score-display">
-                                            <div class="total-score">${data[5]}</div>
-                                            <div class="score-label">Pontos Totais</div>
-                                        </div>
-                                    </div>
-                                    <div class="info-section full-width">
-                                        <h4>📝 Detalhes dos Méritos</h4>
-                                        <div class="details-grid">
-                                            <div class="detail-item">
-                                                <h5>🎖️ Honrarias</h5>
-                                                <div class="detail-content">${data[9] || 'Nenhuma honraria registrada'}</div>
-                                            </div>
-                                            <div class="detail-item">
-                                                <h5>🏆 Outras Premiações</h5>
-                                                <div class="detail-content">${data[10] || 'Nenhuma premiação registrada'}</div>
-                                            </div>
-                                            <div class="detail-item">
-                                                <h5>🎓 Premiações PFC</h5>
-                                                <div class="detail-content">${data[11] || 'Nenhuma premiação PFC registrada'}</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button class="btn-close" onclick="closeStudentModal()">Fechar</button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }
-        }
-        
-        function closeStudentModal() {
-            $('.modal-overlay').fadeOut(300, function() {
-                $(this).remove();
+            // Click na linha para abrir modal
+            $('#olimpiadasTable tbody').on('click', 'tr', function() {
+                const rowData = table.row(this).data();
+                if (rowData) {
+                    const posicao = parseInt(rowData[0]);
+                    const alunoData = olimpiadasData[posicao - 1];
+                    showModal(alunoData);
+                }
             });
+            
+            // Fechar modal
+            $('#modalClose, #modalOverlay').on('click', function(e) {
+                if (e.target === this) {
+                    $('#modalOverlay').hide();
+                }
+            });
+            
+            // Fechar modal com ESC
+            $(document).on('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    $('#modalOverlay').hide();
+                }
+            });
+        });
+        
+        function showModal(data) {
+            $('#modalTitle').text(`${data.Aluno} - Posição #${data['Posição']}`);
+            
+            // Preparar participações
+            const participacoes = data['Participação/ Premiação Olimp.'].split('\n').filter(p => p.trim());
+            const participacoesHtml = participacoes.map(p => `<li>${p}</li>`).join('');
+            
+            $('#modalBody').html(`
+                <div class="info-section">
+                    <h4>Informações Gerais</h4>
+                    <div class="info-item">
+                        <span class="info-label">Aluno:</span>
+                        <span class="info-value">${data.Aluno}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Cidade:</span>
+                        <span class="info-value">${data.Cidade}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Posição no Ranking:</span>
+                        <span class="info-value">#${data['Posição']}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Pontuação Total:</span>
+                        <span class="info-value" style="font-size: 1.5rem; font-weight: bold; color: #3498db;">${data['Pontuação']}</span>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h4>Participações e Premiações</h4>
+                    <ul class="participacoes-list">
+                        ${participacoesHtml}
+                    </ul>
+                </div>
+            `);
+            
+            $('#modalOverlay').show();
         }
     </script>
-        
 </body>
 </html>
-        

@@ -1,0 +1,1354 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alunos Pendentes - Projeto de Vida PFC</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="../script.js"></script>
+    <style>
+        /* Estilos do modal (mesmos da página principal) */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            max-width: 95%;
+            max-height: 90%;
+            width: 900px;
+            overflow-y: auto;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -60%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 15px 15px 0 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        .modal-close {
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            line-height: 1;
+        }
+        
+        .modal-close:hover {
+            color: #ffffff;
+        }
+        
+        .modal-body {
+            padding: 25px;
+        }
+        
+        .info-section {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .info-section h4 {
+            margin: 0 0 15px 0;
+            color: #721c24;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .info-item:last-child {
+            border-bottom: none;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        .info-value {
+            color: #2c3e50;
+            text-align: right;
+            max-width: 60%;
+        }
+        
+        .alert-box {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .priority-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .priority-a {
+            background: #3498db;
+            color: white;
+        }
+        
+        .priority-b {
+            background: #9b59b6;
+            color: white;
+        }
+        
+        #pendenteTable tbody tr {
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            background-color: #fff3cd !important;
+        }
+        
+        #pendenteTable tbody tr:hover {
+            background-color: #ffe69c !important;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <!-- Botão Hambúrguer (3 tracinhos) -->
+    <button class="hamburger-btn" aria-label="Menu">
+        <div class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </button>
+
+    <!-- Overlay para fechar menu ao clicar fora -->
+    <div class="nav-overlay"></div>
+
+    <!-- Menu Sidebar -->
+    <nav class="nav-sidebar">
+        <button class="nav-close-btn" aria-label="Fechar menu">&times;</button>
+        <div class="nav-sidebar-header">
+            <h2>📊 Menu PFC</h2>
+        </div>
+        <div class="nav-sidebar-links">
+            <a href="../index.html" class="nav-link nav-link-home">🏠 Home</a>
+            <a href="../evasao.html" class="nav-link">📉 Evasão</a>
+            <a href="../assiduidade.html" class="nav-link">📅 Assiduidade</a>
+            <a href="../analises.html" class="nav-link">📈 Análises</a>
+            <a href="../auditoria.html" class="nav-link">🔍 Auditoria</a>
+            <a href="../cursinho/cursinho.html" class="nav-link">🎓 Cursinho</a>
+            <a href="../olimpiadas.html" class="nav-link">🏆 Olimpíadas</a>
+            <a href="projeto_vida.html" class="nav-link active">🎯 Projeto de Vida</a>
+        </div>
+    </nav>
+
+    <header>
+        <div class="header-content">
+            <img src="../Logo PFC.png" alt="Logo PFC" class="logo">
+            <h1>⚠️ Alunos Pendentes - Projeto de Vida</h1>
+            <p class="subtitle">Alunos que necessitam preenchimento - 10/11/2025</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <a href="projeto_vida.html" class="back-btn">← Voltar para Projeto de Vida</a>
+        
+        <section style="margin: 2rem 0;">
+            <div class="alert-box">
+                <h3 style="margin: 0 0 0.5rem 0;">📢 Atenção</h3>
+                <p style="margin: 0;">
+                    Esta lista contém <strong>99 aluno(s)</strong> que ainda não possuem universidades cadastradas no sistema.
+                    Por favor, preencha as informações de orientação universitária para esses alunos.
+                </p>
+            </div>
+        </section>
+        
+        <section class="table-section">
+            <h2>Alunos que Necessitam Preenchimento</h2>
+            <table border="1" class="dataframe data-table" id="pendenteTable">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Nome</th>
+      <th>Cidade</th>
+      <th>Escola</th>
+      <th>Prioridade A</th>
+      <th>Prioridade B</th>
+      <th>Idade</th>
+      <th>Série</th>
+      <th>_row_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Alicia da Paz</td>
+      <td>São Roque</td>
+      <td>E.M. Barão de Piratininga</td>
+      <td>Direito</td>
+      <td>Artes Cênicas</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Ana Alice Nascimento da Silva</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Joaquim da Silveira Santos</td>
+      <td>Direito</td>
+      <td>NaN</td>
+      <td>12.0</td>
+      <td>7º</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>Ana Beatriz dos Santos Sales</td>
+      <td>São Roque</td>
+      <td>E.M. Sonia Maria Abreu Guilardi</td>
+      <td>Moda</td>
+      <td>Letras</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>Ana Julia Cilla Cargas</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Tibério Justo</td>
+      <td>Dança/Bailarina</td>
+      <td>NaN</td>
+      <td>14.0</td>
+      <td>8º</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>Ana Luiza de G. Melo</td>
+      <td>São Roque</td>
+      <td>E.M. Barão de Piratininga</td>
+      <td>Medicina Veterinária</td>
+      <td>Biologia/Moda</td>
+      <td>14.0</td>
+      <td>8º</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>Bruna Heloisa do C. de Maria</td>
+      <td>São Roque</td>
+      <td>E.M. Sonia Maria de Abreu Guilardi</td>
+      <td>Gastronomia</td>
+      <td>Biologia</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Bruna O. R. dos Santos</td>
+      <td>São Roque</td>
+      <td>E.M. Barão de Piratininga</td>
+      <td>Arquitetura</td>
+      <td>Artes Plásticas</td>
+      <td>14.0</td>
+      <td>8º</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>Camila Torres de Souza</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Joaquim da Silveira Santos</td>
+      <td>Moda</td>
+      <td>Direito</td>
+      <td>12.0</td>
+      <td>7º</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>Christian de Abreu Naziazeno</td>
+      <td>São Roque</td>
+      <td>E.M. Barão de Piratininga</td>
+      <td>Engenharia Robótica</td>
+      <td>Artes Cênicas</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>Dam Luis Faustino de Alburqueque</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Tibério Justo</td>
+      <td>Escritor/Produtor/Roteirista</td>
+      <td>Dublador</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>David Camargo Silva</td>
+      <td>São Roque</td>
+      <td>E.M. Barão de Piratininga</td>
+      <td>Medicina Veterinária</td>
+      <td>NaN</td>
+      <td>12.0</td>
+      <td>7º</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>Eduardo Alonso</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Barão de Piratininga</td>
+      <td>Astronomia</td>
+      <td>Artes Cênicas</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>Eduardo Higine Appel</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Joaquim Silveira Santos</td>
+      <td>Medicina Veterinária</td>
+      <td>Biomedicina</td>
+      <td>11.0</td>
+      <td>6º</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>Emanuelly Diniz de Sousa</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Tibério Justo</td>
+      <td>Medicina</td>
+      <td>Biologia</td>
+      <td>14.0</td>
+      <td>8º</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>Emanuely das Almas Albuqueque</td>
+      <td>São Roque</td>
+      <td>E.M. Tetsu Chinone</td>
+      <td>Medicina Veterinária</td>
+      <td>Gastronomia</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <td>Emanuely Leocadio</td>
+      <td>São Roque</td>
+      <td>E.M. Barão de Piratininga</td>
+      <td>Modelo</td>
+      <td>Fotografia</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>Emilly Victoria</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Joaquim da Silveira Santos</td>
+      <td>Medicina Veterinária</td>
+      <td>Policial</td>
+      <td>14.0</td>
+      <td>8º</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>Felipe de Camargo Sica</td>
+      <td>São Roque</td>
+      <td>E.M. Barão de Piratininga</td>
+      <td>Engenharia Robótica</td>
+      <td>Astronomia/Física</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <td>Gabriel Roberto Pereira</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Euclides de Oliveira</td>
+      <td>Biomedicina</td>
+      <td>Administração</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <td>Heloisa M. Di Cesar Rogrigues</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Joaquim da Silveira Santos</td>
+      <td>Medicina</td>
+      <td>NaN</td>
+      <td>12.0</td>
+      <td>7º</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <td>Heloisy S. Hernesto</td>
+      <td>São Roque</td>
+      <td>E.M. Barão de Piratininga</td>
+      <td>Psicologia</td>
+      <td>Música</td>
+      <td>13.0</td>
+      <td>7º</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <td>Heloisy Siqueroli Cazetta</td>
+      <td>São Roque</td>
+      <td>E.M. Barão de Piratininga</td>
+      <td>Artes Cênicas</td>
+      <td>Fotografia</td>
+      <td>14.0</td>
+      <td>8º</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <td>Henrique Miguel</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Joaquim da Silveira Santos</td>
+      <td>Barbearia</td>
+      <td>Engenharia Robótica</td>
+      <td>14.0</td>
+      <td>8º</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <td>Isabela Vieira da Cruz</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Antônio Cavaglieri</td>
+      <td>Direito</td>
+      <td>Gastronomia</td>
+      <td>14.0</td>
+      <td>8º</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <td>Isabeli Soares do Amaral</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Tibério Justo</td>
+      <td>Psicologia</td>
+      <td>Medicina Veterinária</td>
+      <td>14.0</td>
+      <td>8º</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <td>Jeaniffer Elis R. Ribeiro</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Antônio Cavaglieri</td>
+      <td>Educação Física</td>
+      <td>Direito</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <td>Jenifer L. Silva Lima</td>
+      <td>São Roque</td>
+      <td>E.M. Tetsu Chinone</td>
+      <td>Medicina</td>
+      <td>Gastronomia</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <td>João Pedro F. de Souza</td>
+      <td>São Roque</td>
+      <td>E.M. Tetsu Chinone</td>
+      <td>Psicologia</td>
+      <td>Astronomia</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <td>João Pedro Silva Almeida</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Barão de Piratininga</td>
+      <td>Engenharia Robótica</td>
+      <td>Educação Física</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <td>Jonathan da Silva Ribeiro</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Joaquim da Silveira Santos</td>
+      <td>Administração</td>
+      <td>NaN</td>
+      <td>11.0</td>
+      <td>6º</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <td>Julia Delfino de Oliveira</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Tibério Justo</td>
+      <td>Medicina</td>
+      <td>Turismo</td>
+      <td>14.0</td>
+      <td>8º</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <td>Kailon Jesus dos Santos</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Tibério Justo</td>
+      <td>Jornalismo</td>
+      <td>Moda</td>
+      <td>15.0</td>
+      <td>9º</td>
+      <td>31</td>
+    </tr>
+    <tr>
+      <td>Kauan da Silva</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Euclides de Oliveira</td>
+      <td>T.I.</td>
+      <td>Biologia</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <td>Kaylane</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Euclides de Oliveira</td>
+      <td>Enfermagem</td>
+      <td>Gastronomia</td>
+      <td>14.0</td>
+      <td>8º</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <td>Kevin Marcelino Labral</td>
+      <td>São Roque</td>
+      <td>E.M. Sonia Maria de Abreu Guilardi</td>
+      <td>Policial Militar</td>
+      <td>NaN</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <td>Laura Aparecida da Silva Almeida</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Joaquim Silveira Santos</td>
+      <td>Medicina</td>
+      <td>NaN</td>
+      <td>12.0</td>
+      <td>7º</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <td>Luan Pedro S. C. B. de Oliveira</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Antônio Cavaglieri</td>
+      <td>Engenharia Aeronáutica</td>
+      <td>Engenharia Elétrica</td>
+      <td>11.0</td>
+      <td>6º</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <td>Lucas Avelino</td>
+      <td>São Roque</td>
+      <td>E.M. Tetsu Chinone</td>
+      <td>Engenharia Civil</td>
+      <td>T.I.</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>37</td>
+    </tr>
+    <tr>
+      <td>Luis Gustavo Inacio</td>
+      <td>São Roque</td>
+      <td>E.M. Tetsu Chinone</td>
+      <td>Policial Militar</td>
+      <td>NaN</td>
+      <td>15.0</td>
+      <td>8º</td>
+      <td>38</td>
+    </tr>
+    <tr>
+      <td>Maria A. Batista</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Tibério Justo</td>
+      <td>Astronomia</td>
+      <td>Música/Letras</td>
+      <td>14.0</td>
+      <td>8º</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <td>Mateus Henrique da Paz Pereira</td>
+      <td>São Roque</td>
+      <td>E.M. Barão de Piratininga</td>
+      <td>Farmácia</td>
+      <td>NaN</td>
+      <td>12.0</td>
+      <td>7º</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <td>Matheus Gabriel de Alburqueque</td>
+      <td>São Roque</td>
+      <td>E.M. Tetsu Chinone</td>
+      <td>Educação Física</td>
+      <td>Atletismo</td>
+      <td>14.0</td>
+      <td>8º</td>
+      <td>41</td>
+    </tr>
+    <tr>
+      <td>Matheus Vinicius Silva Negrão</td>
+      <td>São Roque</td>
+      <td>E.M. Tetsu Chinone</td>
+      <td>Gastronomia</td>
+      <td>NaN</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <td>Mathias I. Kiromoto</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Joaquim da Silveira Santos</td>
+      <td>Engenharia Mêcanica</td>
+      <td>Engenharia Aeronáutica</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>43</td>
+    </tr>
+    <tr>
+      <td>Murilo Milan Ralla</td>
+      <td>São Roque</td>
+      <td>E.M. Sônia Maria de Abreu Guilardi</td>
+      <td>Letras</td>
+      <td>Cyber Segurança</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>44</td>
+    </tr>
+    <tr>
+      <td>Pedro Henrique</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Euclides de Oliveira</td>
+      <td>Medicina Veterinária</td>
+      <td>Educação Física</td>
+      <td>12.0</td>
+      <td>7º</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <td>Pietro Bez G. de Olifveira</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Euclides de Oliveira</td>
+      <td>Química</td>
+      <td>Medicina</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <td>Rafael Mendes</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Barão de Piratininga</td>
+      <td>Direito</td>
+      <td>NaN</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>47</td>
+    </tr>
+    <tr>
+      <td>Rebeca Nascimento da Silva</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Joaquim da Silveira Santos</td>
+      <td>Medicina Veterinária</td>
+      <td>Biologia/Psicologia</td>
+      <td>14.0</td>
+      <td>8º</td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <td>Samira H. L. de Amorim</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Joaquim da Silveira Santos</td>
+      <td>Direito</td>
+      <td>NaN</td>
+      <td>11.0</td>
+      <td>6º</td>
+      <td>49</td>
+    </tr>
+    <tr>
+      <td>Vinicius Antonio M. Leonardelli</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Antônio Cavaglieri</td>
+      <td>Química</td>
+      <td>Administração</td>
+      <td>11.0</td>
+      <td>6º</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <td>Vinicius de O. M.</td>
+      <td>São Roque</td>
+      <td>E.M. Professor Euclides de Oliveira</td>
+      <td>Medicina Veterinária</td>
+      <td>Medicina</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>51</td>
+    </tr>
+    <tr>
+      <td>Yago Lucas R. da Silva Cruz</td>
+      <td>São Roque</td>
+      <td>E.M. Tetsu Chione</td>
+      <td>Letras</td>
+      <td>Robótica</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>52</td>
+    </tr>
+    <tr>
+      <td>Yasmin Eduarda da Silva Polli</td>
+      <td>São Roque</td>
+      <td>E.M. Barão de Piratininga</td>
+      <td>Física</td>
+      <td>Medicina/Programação</td>
+      <td>13.0</td>
+      <td>7º</td>
+      <td>53</td>
+    </tr>
+    <tr>
+      <td>Yasmin Luiza Bello</td>
+      <td>São Roque</td>
+      <td>E.M. Sônia Maria Abreu Guilardi</td>
+      <td>Moda</td>
+      <td>NaN</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>54</td>
+    </tr>
+    <tr>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>55</td>
+    </tr>
+    <tr>
+      <td>Henrique Lima do Nascimento</td>
+      <td>Iperó</td>
+      <td>E.M. Roque Ayres de Oliveiras</td>
+      <td>Ciências Biológicas</td>
+      <td>Engenharia Civil</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <td>Italo Fonseca</td>
+      <td>Iperó</td>
+      <td>E.M. Roque Ayres de Oliveiras</td>
+      <td>Polícia Militar</td>
+      <td>Medicina</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>57</td>
+    </tr>
+    <tr>
+      <td>Suzane F. Portella</td>
+      <td>Iperó</td>
+      <td>E.M. Elisa Moreira dos Santos Dona</td>
+      <td>Medicina Veterinária</td>
+      <td>Jornalismo</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>58</td>
+    </tr>
+    <tr>
+      <td>Davi de Almeida</td>
+      <td>Iperó</td>
+      <td>E.M. Henory de Campos Goes Profa.</td>
+      <td>Direito</td>
+      <td>Bombeiro Civil</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>59</td>
+    </tr>
+    <tr>
+      <td>Nycollas da S. Rocha</td>
+      <td>Iperó</td>
+      <td>E.M. Roque Ayres de Oliveiras</td>
+      <td>Barbeiro</td>
+      <td>NaN</td>
+      <td>14.0</td>
+      <td>8º</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <td>Janaina M. Dias</td>
+      <td>Iperó</td>
+      <td>E.M. Elisa Moreira dos Santos Dona</td>
+      <td>Enfermagem</td>
+      <td>Dança</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>61</td>
+    </tr>
+    <tr>
+      <td>Manuelly Silveira</td>
+      <td>Iperó</td>
+      <td>E.M. Henory de Campos Goes Profa.</td>
+      <td>Medicina</td>
+      <td>Direito</td>
+      <td>14.0</td>
+      <td>8º</td>
+      <td>62</td>
+    </tr>
+    <tr>
+      <td>Alessandro de Souza</td>
+      <td>Iperó</td>
+      <td>E.M. Zilma Thibes Melo\t</td>
+      <td>Ciência da Computação</td>
+      <td>Medicina Veterinária</td>
+      <td>12.0</td>
+      <td>8º</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <td>Leonardo Castro dos Santos</td>
+      <td>Iperó</td>
+      <td>E.M. Zilma Thibes Melo\t</td>
+      <td>Ciências da Computação</td>
+      <td>Neurociências</td>
+      <td>14.0</td>
+      <td>8º</td>
+      <td>64</td>
+    </tr>
+    <tr>
+      <td>Miguel Felipe da S. D. Gomes</td>
+      <td>Iperó</td>
+      <td>E.M. Roque Ayres de Oliveiras\t</td>
+      <td>Medicina</td>
+      <td>Direito</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>65</td>
+    </tr>
+    <tr>
+      <td>Brendo Rodrigues</td>
+      <td>Iperó</td>
+      <td>E.M. Elisa Moreira dos Santos Dona</td>
+      <td>Astronomia</td>
+      <td>Química</td>
+      <td>14.0</td>
+      <td>8º</td>
+      <td>66</td>
+    </tr>
+    <tr>
+      <td>Maria Cecilia de Campos</td>
+      <td>Iperó</td>
+      <td>E.M. Henory de Campos Goes Profa.</td>
+      <td>Medicina Veterinária</td>
+      <td>Dança</td>
+      <td>14.0</td>
+      <td>8º</td>
+      <td>67</td>
+    </tr>
+    <tr>
+      <td>Maria Eduarda Faria</td>
+      <td>Iperó</td>
+      <td>E.M. Roque Ayres de Oliveiras</td>
+      <td>Direito</td>
+      <td>Medicina</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>68</td>
+    </tr>
+    <tr>
+      <td>Angelina Sophie G. Fernandes</td>
+      <td>Iperó</td>
+      <td>E.M. Henory de Campos Goes Profa.</td>
+      <td>Arquitetura</td>
+      <td>Biologia Marinha</td>
+      <td>14.0</td>
+      <td>8º</td>
+      <td>69</td>
+    </tr>
+    <tr>
+      <td>Ana Julia P. Francisco</td>
+      <td>Iperó</td>
+      <td>E.M. Elisa Moreira dos Santos Dona</td>
+      <td>Medicina Veterinária</td>
+      <td>Polícia Militar</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <td>Julia Duarte Couto</td>
+      <td>Iperó</td>
+      <td>E.M. Henory de Campos Goes Profa.</td>
+      <td>Música</td>
+      <td>Moda</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>71</td>
+    </tr>
+    <tr>
+      <td>Isabelly Ferreira</td>
+      <td>Iperó</td>
+      <td>E.M. Elisa Moreira dos Santos Dona</td>
+      <td>Ciências biológicas</td>
+      <td>Estilista</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>72</td>
+    </tr>
+    <tr>
+      <td>João Vitor Ribeiro</td>
+      <td>Iperó</td>
+      <td>E.M. Pedrina de Campos Pedrozo Rosa Profa</td>
+      <td>Educação Física</td>
+      <td>NaN</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>73</td>
+    </tr>
+    <tr>
+      <td>Luana R. Nomelini</td>
+      <td>Iperó</td>
+      <td>E.M. Dra. Gláucia Aparecida Andrade Nogueira</td>
+      <td>Direito</td>
+      <td>NaN</td>
+      <td>11.0</td>
+      <td>6º</td>
+      <td>74</td>
+    </tr>
+    <tr>
+      <td>Igor Candido Araujo</td>
+      <td>Iperó</td>
+      <td>E.M. Henory de Campos Goes Profa.</td>
+      <td>Medicina</td>
+      <td>Enfermagem</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <td>João Pedro da Silva</td>
+      <td>Iperó</td>
+      <td>E.M. Zilma Thibes Melo</td>
+      <td>Desenho</td>
+      <td>NaN</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>76</td>
+    </tr>
+    <tr>
+      <td>Julia G. A. dos Santos</td>
+      <td>Iperó</td>
+      <td>E.M. Roque Ayres de Oliveiras</td>
+      <td>Medicina</td>
+      <td>Jornalismo</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>77</td>
+    </tr>
+    <tr>
+      <td>Rafaela Andrade dos Santos</td>
+      <td>Iperó</td>
+      <td>E.M. Roque Ayres de Oliveiras</td>
+      <td>Enfermagem</td>
+      <td>Desenho</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>78</td>
+    </tr>
+    <tr>
+      <td>André Felipe Caetano</td>
+      <td>Iperó</td>
+      <td>E.M. Francisco Adolfo de Varnhagen</td>
+      <td>Engenharia da Produção</td>
+      <td>Cinema</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>79</td>
+    </tr>
+    <tr>
+      <td>Ryan Augusto S. de Jesus</td>
+      <td>Iperó</td>
+      <td>E.M. Zilma Thibes Melo</td>
+      <td>Desenho</td>
+      <td>NaN</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <td>Caio Monteiro de Oliveira</td>
+      <td>Iperó</td>
+      <td>E.M. Elisa Moreira dos Santos Dona</td>
+      <td>Ciência da Computação</td>
+      <td>Arquitetura</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>81</td>
+    </tr>
+    <tr>
+      <td>Miguel Rodrigues da Silva</td>
+      <td>Iperó</td>
+      <td>E.M. Zilma Thibes Melo</td>
+      <td>Desenho</td>
+      <td>NaN</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <td>Luiz Miguel</td>
+      <td>Iperó</td>
+      <td>E.M. Henory de Campos Goes Profa.</td>
+      <td>Medicina</td>
+      <td>Turismo</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>83</td>
+    </tr>
+    <tr>
+      <td>Jasmim Ribeiro Rosa</td>
+      <td>Iperó</td>
+      <td>E.M. Pedrina de Campos Pedrozo Rosa Profa</td>
+      <td>Direito</td>
+      <td>Medicina</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>84</td>
+    </tr>
+    <tr>
+      <td>Thiago H. R. Martins</td>
+      <td>Iperó</td>
+      <td>E.M. Elisa Moreira dos Santos Dona</td>
+      <td>Ciência da Computação</td>
+      <td>NaN</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <td>Gabrielle Oliveira de Barros</td>
+      <td>Iperó</td>
+      <td>E.M. Francisco Adolfo de Varnhagen</td>
+      <td>Gastronomia</td>
+      <td>Engenharia da produção</td>
+      <td>14.0</td>
+      <td>9º</td>
+      <td>86</td>
+    </tr>
+    <tr>
+      <td>Kethlyn de Sousa Oliveira</td>
+      <td>Iperó</td>
+      <td>E.M. Francisco Adolfo de Varnhagen</td>
+      <td>Medicina Veterinária</td>
+      <td>Direito</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <td>Maria Luisa De Sousa Ferreira</td>
+      <td>Iperó</td>
+      <td>E.M. Francisco Adolfo de Varnhagen</td>
+      <td>Medicina Veterinária</td>
+      <td>Artes Visuais</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>88</td>
+    </tr>
+    <tr>
+      <td>Maria Fernanda Rosa</td>
+      <td>Iperó</td>
+      <td>E.M. Henory de Campos Goes Profa.</td>
+      <td>Medicina Veterinária</td>
+      <td>Ciências biológicas</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>89</td>
+    </tr>
+    <tr>
+      <td>Helisa de Freitas Vaz</td>
+      <td>Iperó</td>
+      <td>E.M. Elisa Moreira dos Santos Dona</td>
+      <td>Moda</td>
+      <td>NaN</td>
+      <td>14.0</td>
+      <td>8º</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <td>Vitor Nathan Costa de Jesus</td>
+      <td>Iperó</td>
+      <td>E.M. Francisco Adolfo de Varnhagen</td>
+      <td>Engenharia Mecânica</td>
+      <td>NaN</td>
+      <td>14.0</td>
+      <td>8º</td>
+      <td>91</td>
+    </tr>
+    <tr>
+      <td>Alexsandra Eduarda A. Vieira</td>
+      <td>Iperó</td>
+      <td>E.M. Pedrina de Campos Pedrozo Rosa Profa</td>
+      <td>Direito</td>
+      <td>NaN</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>92</td>
+    </tr>
+    <tr>
+      <td>Cilas Gregório Paes Júnior</td>
+      <td>Iperó</td>
+      <td>E.M. Elisa Moreira dos Santos Dona</td>
+      <td>Farmácia</td>
+      <td>Psicologia</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>93</td>
+    </tr>
+    <tr>
+      <td>Larissa O. de Almeida</td>
+      <td>Iperó</td>
+      <td>E.M. Zilma Thibes Melo</td>
+      <td>Policia Militar</td>
+      <td>Bombeira Civil</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>94</td>
+    </tr>
+    <tr>
+      <td>Anthony Marcos Lima da Silva</td>
+      <td>São Roque</td>
+      <td>Antônio Cavaglieri</td>
+      <td>Engenheira Eletrotécnica</td>
+      <td>Gastronomia</td>
+      <td>12.0</td>
+      <td>7º Ano</td>
+      <td>95</td>
+    </tr>
+    <tr>
+      <td>Mariana de Souza Rocha</td>
+      <td>São Roque</td>
+      <td>EMEIF Professor Antônio Cavaglieri</td>
+      <td>Entrar na Etec ou no Instituto Federal, concluir o Ensino Médio e cursar biologia.</td>
+      <td>Conseguir achar um emprego na área (de preferência com um salário bom), conseguir uma casinha própria no meio do mato.</td>
+      <td>14.0</td>
+      <td>9</td>
+      <td>96</td>
+    </tr>
+    <tr>
+      <td>Maria Eduarda Costa de Oliveira</td>
+      <td>São Roque</td>
+      <td>Sônia Maria abril Guilhardi</td>
+      <td>Ciências Biológicas</td>
+      <td>Artes</td>
+      <td>14.0</td>
+      <td>9º Ano</td>
+      <td>97</td>
+    </tr>
+    <tr>
+      <td>Maria Mirelly Barbosa Moreira</td>
+      <td>São Roque</td>
+      <td>Tetsu Chinone</td>
+      <td>Administração</td>
+      <td>Técnico em informática</td>
+      <td>14.0</td>
+      <td>9ºB</td>
+      <td>98</td>
+    </tr>
+  </tbody>
+</table>
+        </section>
+    </main>
+
+    <!-- Modal de detalhes -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Detalhes do Aluno</h3>
+                <span class="modal-close" id="modalClose">&times;</span>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Conteúdo será preenchido dinamicamente -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const pendenteData = [{"Carimbo de data\/hora":"2025\/07\/31 16:40:37","Seu Nome completo":"Alicia da Paz","Escola":"E.M. Bar\u00e3o de Piratininga","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Direito","Sua Prioridade B":"Artes C\u00eanicas","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 15:53:57","Seu Nome completo":"Ana Alice Nascimento da Silva","Escola":"E.M. Professor Joaquim da Silveira Santos","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Direito","Sua Prioridade B":null,"Sua idade":12.0,"Sua s\u00e9rie na escola    ":"7\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 17:33:55","Seu Nome completo":"Ana Beatriz dos Santos Sales","Escola":"E.M. Sonia Maria Abreu Guilardi","Cidade":"S\u00e3o Roque ","Sua Prioridade A":"Moda","Sua Prioridade B":"Letras","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 16:15:11","Seu Nome completo":"Ana Julia Cilla Cargas","Escola":"E.M. Professor Tib\u00e9rio Justo","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Dan\u00e7a\/Bailarina","Sua Prioridade B":null,"Sua idade":14.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 15:23:02","Seu Nome completo":"Ana Luiza de G. Melo ","Escola":"E.M. Bar\u00e3o de Piratininga","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Medicina Veterin\u00e1ria","Sua Prioridade B":"Biologia\/Moda","Sua idade":14.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 17:31:28","Seu Nome completo":"Bruna Heloisa do C. de Maria","Escola":"E.M. Sonia Maria de Abreu Guilardi","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Gastronomia","Sua Prioridade B":"Biologia","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 15:25:12","Seu Nome completo":"Bruna O. R. dos Santos","Escola":"E.M. Bar\u00e3o de Piratininga","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Arquitetura","Sua Prioridade B":"Artes Pl\u00e1sticas","Sua idade":14.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 17:11:59","Seu Nome completo":"Camila Torres de Souza","Escola":"E.M. Professor Joaquim da Silveira Santos","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Moda","Sua Prioridade B":"Direito ","Sua idade":12.0,"Sua s\u00e9rie na escola    ":"7\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 16:24:38","Seu Nome completo":"Christian de Abreu Naziazeno","Escola":"E.M. Bar\u00e3o de Piratininga","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Engenharia Rob\u00f3tica","Sua Prioridade B":"Artes C\u00eanicas","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 16:17:25","Seu Nome completo":"Dam Luis Faustino de Alburqueque","Escola":"E.M. Professor Tib\u00e9rio Justo","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Escritor\/Produtor\/Roteirista","Sua Prioridade B":"Dublador","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 15:11:00","Seu Nome completo":"David Camargo Silva","Escola":"E.M. Bar\u00e3o de Piratininga","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Medicina Veterin\u00e1ria","Sua Prioridade B":null,"Sua idade":12.0,"Sua s\u00e9rie na escola    ":"7\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 16:26:20","Seu Nome completo":"Eduardo Alonso","Escola":"E.M. Professor Bar\u00e3o de Piratininga","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Astronomia","Sua Prioridade B":"Artes C\u00eanicas","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 17:17:31","Seu Nome completo":"Eduardo Higine Appel","Escola":"E.M. Professor Joaquim Silveira Santos","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Medicina Veterin\u00e1ria","Sua Prioridade B":"Biomedicina","Sua idade":11.0,"Sua s\u00e9rie na escola    ":"6\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 16:08:36","Seu Nome completo":"Emanuelly Diniz de Sousa","Escola":"E.M. Professor Tib\u00e9rio Justo","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Medicina","Sua Prioridade B":"Biologia","Sua idade":14.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 17:15:43","Seu Nome completo":"Emanuely das Almas Albuqueque","Escola":"E.M. Tetsu Chinone","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Medicina Veterin\u00e1ria","Sua Prioridade B":"Gastronomia","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 16:38:49","Seu Nome completo":"Emanuely Leocadio","Escola":"E.M. Bar\u00e3o de Piratininga","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Modelo","Sua Prioridade B":"Fotografia","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 16:00:38","Seu Nome completo":"Emilly Victoria","Escola":"E.M. Professor Joaquim da Silveira Santos","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Medicina Veterin\u00e1ria","Sua Prioridade B":"Policial ","Sua idade":14.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 15:50:06","Seu Nome completo":"Felipe de Camargo Sica","Escola":"E.M. Bar\u00e3o de Piratininga","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Engenharia Rob\u00f3tica","Sua Prioridade B":"Astronomia\/F\u00edsica","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 16:32:07","Seu Nome completo":"Gabriel Roberto Pereira","Escola":"E.M. Professor Euclides de Oliveira","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Biomedicina","Sua Prioridade B":"Administra\u00e7\u00e3o","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 17:43:49","Seu Nome completo":"Heloisa M. Di Cesar Rogrigues","Escola":"E.M. Professor Joaquim da Silveira Santos","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Medicina","Sua Prioridade B":null,"Sua idade":12.0,"Sua s\u00e9rie na escola    ":"7\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 15:21:25","Seu Nome completo":"Heloisy S. Hernesto ","Escola":"E.M. Bar\u00e3o de Piratininga","Cidade":"S\u00e3o Roque ","Sua Prioridade A":"Psicologia","Sua Prioridade B":"M\u00fasica","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"7\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 15:30:53","Seu Nome completo":"Heloisy Siqueroli Cazetta","Escola":"E.M. Bar\u00e3o de Piratininga","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Artes C\u00eanicas","Sua Prioridade B":"Fotografia","Sua idade":14.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 16:03:18","Seu Nome completo":"Henrique Miguel ","Escola":"E.M. Professor Joaquim da Silveira Santos","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Barbearia ","Sua Prioridade B":"Engenharia Rob\u00f3tica","Sua idade":14.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 17:38:20","Seu Nome completo":"Isabela Vieira da Cruz","Escola":"E.M. Professor Ant\u00f4nio Cavaglieri","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Direito ","Sua Prioridade B":"Gastronomia","Sua idade":14.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 15:35:50","Seu Nome completo":"Isabeli Soares do Amaral","Escola":"E.M. Professor Tib\u00e9rio Justo","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Psicologia","Sua Prioridade B":"Medicina Veterin\u00e1ria","Sua idade":14.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 17:36:12","Seu Nome completo":"Jeaniffer Elis R. Ribeiro","Escola":"E.M. Professor Ant\u00f4nio Cavaglieri ","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Educa\u00e7\u00e3o F\u00edsica","Sua Prioridade B":"Direito","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 17:14:11","Seu Nome completo":"Jenifer L. Silva Lima","Escola":"E.M. Tetsu Chinone","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Medicina","Sua Prioridade B":"Gastronomia","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 15:15:41","Seu Nome completo":"Jo\u00e3o Pedro F. de Souza","Escola":"E.M. Tetsu Chinone","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Psicologia","Sua Prioridade B":"Astronomia","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 16:30:32","Seu Nome completo":"Jo\u00e3o Pedro Silva Almeida","Escola":"E.M. Professor Bar\u00e3o de Piratininga","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Engenharia Rob\u00f3tica","Sua Prioridade B":"Educa\u00e7\u00e3o F\u00edsica","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 16:05:14","Seu Nome completo":"Jonathan da Silva Ribeiro","Escola":"E.M. Professor Joaquim da Silveira Santos","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Administra\u00e7\u00e3o","Sua Prioridade B":null,"Sua idade":11.0,"Sua s\u00e9rie na escola    ":"6\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 16:10:55","Seu Nome completo":"Julia Delfino de Oliveira","Escola":"E.M. Professor Tib\u00e9rio Justo","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Medicina","Sua Prioridade B":"Turismo","Sua idade":14.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 16:12:36","Seu Nome completo":"Kailon Jesus dos Santos","Escola":"E.M. Professor Tib\u00e9rio Justo","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Jornalismo","Sua Prioridade B":"Moda","Sua idade":15.0,"Sua s\u00e9rie na escola    ":"9\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 16:20:30","Seu Nome completo":"Kauan da Silva ","Escola":"E.M. Professor Euclides de Oliveira","Cidade":"S\u00e3o Roque","Sua Prioridade A":"T.I.","Sua Prioridade B":"Biologia","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 16:33:32","Seu Nome completo":"Kaylane","Escola":"E.M. Professor Euclides de Oliveira","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Enfermagem ","Sua Prioridade B":"Gastronomia","Sua idade":14.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 16:49:39","Seu Nome completo":"Kevin Marcelino Labral","Escola":"E.M. Sonia Maria de Abreu Guilardi","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Policial Militar","Sua Prioridade B":null,"Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 15:52:01","Seu Nome completo":"Laura Aparecida da Silva Almeida","Escola":"E.M. Professor Joaquim Silveira Santos","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Medicina","Sua Prioridade B":null,"Sua idade":12.0,"Sua s\u00e9rie na escola    ":"7\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 17:41:42","Seu Nome completo":"Luan Pedro S. C. B. de Oliveira","Escola":"E.M. Professor Ant\u00f4nio Cavaglieri","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Engenharia Aeron\u00e1utica","Sua Prioridade B":"Engenharia El\u00e9trica","Sua idade":11.0,"Sua s\u00e9rie na escola    ":"6\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 15:58:48","Seu Nome completo":"Lucas Avelino","Escola":"E.M. Tetsu Chinone","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Engenharia Civil","Sua Prioridade B":"T.I.","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 15:29:02","Seu Nome completo":"Luis Gustavo Inacio","Escola":" E.M. Tetsu Chinone","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Policial Militar","Sua Prioridade B":null,"Sua idade":15.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 15:33:38","Seu Nome completo":"Maria A. Batista","Escola":"E.M. Professor Tib\u00e9rio Justo","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Astronomia","Sua Prioridade B":"M\u00fasica\/Letras","Sua idade":14.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 15:12:40","Seu Nome completo":"Mateus Henrique da Paz Pereira","Escola":"E.M. Bar\u00e3o de Piratininga","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Farm\u00e1cia","Sua Prioridade B":null,"Sua idade":12.0,"Sua s\u00e9rie na escola    ":"7\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 15:38:48","Seu Nome completo":"Matheus Gabriel de Alburqueque","Escola":"E.M. Tetsu Chinone","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Educa\u00e7\u00e3o F\u00edsica","Sua Prioridade B":"Atletismo","Sua idade":14.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 16:18:55","Seu Nome completo":"Matheus Vinicius Silva Negr\u00e3o","Escola":"E.M. Tetsu Chinone","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Gastronomia","Sua Prioridade B":null,"Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 17:02:46","Seu Nome completo":"Mathias I. Kiromoto","Escola":"E.M. Professor Joaquim da Silveira Santos","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Engenharia M\u00eacanica","Sua Prioridade B":"Engenharia Aeron\u00e1utica ","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 16:48:18","Seu Nome completo":"Murilo Milan Ralla","Escola":"E.M. S\u00f4nia Maria de Abreu Guilardi","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Letras","Sua Prioridade B":"Cyber Seguran\u00e7a","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 16:36:50","Seu Nome completo":"Pedro Henrique","Escola":"E.M. Professor Euclides de Oliveira","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Medicina Veterin\u00e1ria ","Sua Prioridade B":"Educa\u00e7\u00e3o F\u00edsica","Sua idade":12.0,"Sua s\u00e9rie na escola    ":"7\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 16:35:07","Seu Nome completo":"Pietro Bez G. de Olifveira","Escola":"E.M. Professor Euclides de Oliveira","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Qu\u00edmica","Sua Prioridade B":"Medicina","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 16:29:01","Seu Nome completo":"Rafael Mendes","Escola":"E.M. Professor Bar\u00e3o de Piratininga","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Direito","Sua Prioridade B":null,"Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 15:56:08","Seu Nome completo":"Rebeca Nascimento da Silva","Escola":"E.M. Professor Joaquim da Silveira Santos ","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Medicina Veterin\u00e1ria ","Sua Prioridade B":"Biologia\/Psicologia","Sua idade":14.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 16:52:43","Seu Nome completo":"Samira H. L. de Amorim","Escola":"E.M. Professor Joaquim da Silveira Santos","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Direito","Sua Prioridade B":null,"Sua idade":11.0,"Sua s\u00e9rie na escola    ":"6\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 17:39:57","Seu Nome completo":"Vinicius Antonio M. Leonardelli","Escola":"E.M. Professor Ant\u00f4nio Cavaglieri","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Qu\u00edmica","Sua Prioridade B":"Administra\u00e7\u00e3o","Sua idade":11.0,"Sua s\u00e9rie na escola    ":"6\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 16:22:35","Seu Nome completo":"Vinicius de O. M.","Escola":"E.M. Professor Euclides de Oliveira","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Medicina Veterin\u00e1ria","Sua Prioridade B":"Medicina","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 15:09:07","Seu Nome completo":"Yago Lucas R. da Silva Cruz","Escola":"E.M. Tetsu Chione","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Letras","Sua Prioridade B":"Rob\u00f3tica","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 15:18:39","Seu Nome completo":"Yasmin Eduarda da Silva Polli","Escola":"E.M. Bar\u00e3o de Piratininga","Cidade":"S\u00e3o Roque","Sua Prioridade A":"F\u00edsica","Sua Prioridade B":"Medicina\/Programa\u00e7\u00e3o","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"7\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/07\/31 17:27:33","Seu Nome completo":"Yasmin Luiza Bello","Escola":"E.M. S\u00f4nia Maria Abreu Guilardi","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Moda","Sua Prioridade B":null,"Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2024.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":null,"Escola":null,"Cidade":null,"Sua Prioridade A":null,"Sua Prioridade B":null,"Sua idade":null,"Sua s\u00e9rie na escola    ":null,"Ano atual":null,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 16:25:42","Seu Nome completo":"Henrique Lima do Nascimento","Escola":"E.M. Roque Ayres de Oliveiras","Cidade":"Iper\u00f3","Sua Prioridade A":"Ci\u00eancias Biol\u00f3gicas","Sua Prioridade B":"Engenharia Civil","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 16:32:58","Seu Nome completo":"Italo Fonseca","Escola":"E.M. Roque Ayres de Oliveiras","Cidade":"Iper\u00f3","Sua Prioridade A":"Pol\u00edcia Militar","Sua Prioridade B":"Medicina","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 16:39:32","Seu Nome completo":"Suzane F. Portella","Escola":"E.M. Elisa Moreira dos Santos Dona","Cidade":"Iper\u00f3","Sua Prioridade A":"Medicina Veterin\u00e1ria ","Sua Prioridade B":"Jornalismo","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 16:42:02","Seu Nome completo":"Davi de Almeida","Escola":"E.M. Henory de Campos Goes Profa.","Cidade":"Iper\u00f3","Sua Prioridade A":"Direito","Sua Prioridade B":"Bombeiro Civil","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 16:44:21","Seu Nome completo":"Nycollas da S. Rocha","Escola":"E.M. Roque Ayres de Oliveiras","Cidade":"Iper\u00f3","Sua Prioridade A":"Barbeiro","Sua Prioridade B":null,"Sua idade":14.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 16:45:38","Seu Nome completo":"Janaina M. Dias","Escola":"E.M. Elisa Moreira dos Santos Dona","Cidade":"Iper\u00f3","Sua Prioridade A":"Enfermagem","Sua Prioridade B":"Dan\u00e7a","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 16:46:55","Seu Nome completo":"Manuelly Silveira","Escola":"E.M. Henory de Campos Goes Profa. ","Cidade":"Iper\u00f3","Sua Prioridade A":"Medicina","Sua Prioridade B":"Direito","Sua idade":14.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 16:49:17","Seu Nome completo":"Alessandro de Souza","Escola":"E.M. Zilma Thibes Melo\t","Cidade":"Iper\u00f3","Sua Prioridade A":"Ci\u00eancia da Computa\u00e7\u00e3o","Sua Prioridade B":"Medicina Veterin\u00e1ria","Sua idade":12.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 16:50:55","Seu Nome completo":"Leonardo Castro dos Santos","Escola":"E.M. Zilma Thibes Melo\t","Cidade":"Iper\u00f3","Sua Prioridade A":"Ci\u00eancias da Computa\u00e7\u00e3o","Sua Prioridade B":"Neuroci\u00eancias","Sua idade":14.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 16:55:38","Seu Nome completo":"Miguel Felipe da S. D. Gomes","Escola":"E.M. Roque Ayres de Oliveiras\t","Cidade":"Iper\u00f3","Sua Prioridade A":"Medicina","Sua Prioridade B":"Direito","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 16:57:05","Seu Nome completo":"Brendo Rodrigues","Escola":"E.M. Elisa Moreira dos Santos Dona","Cidade":"Iper\u00f3","Sua Prioridade A":"Astronomia","Sua Prioridade B":"Qu\u00edmica","Sua idade":14.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 16:58:40","Seu Nome completo":"Maria Cecilia de Campos","Escola":" E.M. Henory de Campos Goes Profa. ","Cidade":"Iper\u00f3","Sua Prioridade A":"Medicina Veterin\u00e1ria","Sua Prioridade B":"Dan\u00e7a","Sua idade":14.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:00:05","Seu Nome completo":"Maria Eduarda Faria","Escola":"E.M. Roque Ayres de Oliveiras","Cidade":"Iper\u00f3","Sua Prioridade A":"Direito","Sua Prioridade B":"Medicina","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:04:32","Seu Nome completo":"Angelina Sophie G. Fernandes","Escola":"E.M. Henory de Campos Goes Profa.","Cidade":"Iper\u00f3","Sua Prioridade A":"Arquitetura","Sua Prioridade B":"Biologia Marinha","Sua idade":14.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:06:13","Seu Nome completo":"Ana Julia P. Francisco","Escola":"E.M. Elisa Moreira dos Santos Dona","Cidade":"Iper\u00f3","Sua Prioridade A":"Medicina Veterin\u00e1ria ","Sua Prioridade B":"Pol\u00edcia Militar","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:07:34","Seu Nome completo":"Julia Duarte Couto","Escola":"E.M. Henory de Campos Goes Profa.","Cidade":"Iper\u00f3","Sua Prioridade A":"M\u00fasica","Sua Prioridade B":"Moda","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:15:21","Seu Nome completo":"Isabelly Ferreira","Escola":"E.M. Elisa Moreira dos Santos Dona","Cidade":"Iper\u00f3","Sua Prioridade A":"Ci\u00eancias biol\u00f3gicas","Sua Prioridade B":"Estilista","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:18:25","Seu Nome completo":"Jo\u00e3o Vitor Ribeiro","Escola":"E.M. Pedrina de Campos Pedrozo Rosa Profa","Cidade":"Iper\u00f3","Sua Prioridade A":"Educa\u00e7\u00e3o F\u00edsica","Sua Prioridade B":null,"Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:20:01","Seu Nome completo":"Luana R. Nomelini","Escola":"E.M. Dra. Gl\u00e1ucia Aparecida Andrade Nogueira","Cidade":"Iper\u00f3","Sua Prioridade A":"Direito","Sua Prioridade B":null,"Sua idade":11.0,"Sua s\u00e9rie na escola    ":"6\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:21:28","Seu Nome completo":"Igor Candido Araujo","Escola":"E.M. Henory de Campos Goes Profa. ","Cidade":"Iper\u00f3","Sua Prioridade A":"Medicina","Sua Prioridade B":"Enfermagem ","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:24:20","Seu Nome completo":"Jo\u00e3o Pedro da Silva","Escola":"E.M. Zilma Thibes Melo","Cidade":"Iper\u00f3","Sua Prioridade A":"Desenho","Sua Prioridade B":null,"Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:25:50","Seu Nome completo":"Julia G. A. dos Santos","Escola":"E.M. Roque Ayres de Oliveiras","Cidade":"Iper\u00f3","Sua Prioridade A":"Medicina","Sua Prioridade B":"Jornalismo","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:26:59","Seu Nome completo":"Rafaela Andrade dos Santos","Escola":"E.M. Roque Ayres de Oliveiras","Cidade":"Iper\u00f3","Sua Prioridade A":"Enfermagem","Sua Prioridade B":"Desenho","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:28:49","Seu Nome completo":"Andr\u00e9 Felipe Caetano","Escola":"E.M. Francisco Adolfo de Varnhagen","Cidade":"Iper\u00f3","Sua Prioridade A":"Engenharia da Produ\u00e7\u00e3o","Sua Prioridade B":"Cinema","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:31:31","Seu Nome completo":"Ryan Augusto S. de Jesus","Escola":"E.M. Zilma Thibes Melo","Cidade":"Iper\u00f3","Sua Prioridade A":"Desenho","Sua Prioridade B":null,"Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:34:51","Seu Nome completo":"Caio Monteiro de Oliveira","Escola":"E.M. Elisa Moreira dos Santos Dona","Cidade":"Iper\u00f3","Sua Prioridade A":"Ci\u00eancia da Computa\u00e7\u00e3o","Sua Prioridade B":"Arquitetura","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:38:32","Seu Nome completo":"Miguel Rodrigues da Silva","Escola":"E.M. Zilma Thibes Melo","Cidade":"Iper\u00f3","Sua Prioridade A":"Desenho","Sua Prioridade B":null,"Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:39:53","Seu Nome completo":"Luiz Miguel","Escola":" E.M. Henory de Campos Goes Profa.","Cidade":"Iper\u00f3","Sua Prioridade A":"Medicina","Sua Prioridade B":"Turismo","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:41:15","Seu Nome completo":"Jasmim Ribeiro Rosa","Escola":"E.M. Pedrina de Campos Pedrozo Rosa Profa","Cidade":"Iper\u00f3","Sua Prioridade A":"Direito","Sua Prioridade B":"Medicina","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:42:42","Seu Nome completo":"Thiago H. R. Martins","Escola":"E.M. Elisa Moreira dos Santos Dona","Cidade":"Iper\u00f3","Sua Prioridade A":"Ci\u00eancia da Computa\u00e7\u00e3o","Sua Prioridade B":null,"Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:44:05","Seu Nome completo":"Gabrielle Oliveira de Barros","Escola":"E.M. Francisco Adolfo de Varnhagen","Cidade":"Iper\u00f3","Sua Prioridade A":"Gastronomia","Sua Prioridade B":"Engenharia da produ\u00e7\u00e3o","Sua idade":14.0,"Sua s\u00e9rie na escola    ":"9\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:45:52","Seu Nome completo":"Kethlyn de Sousa Oliveira","Escola":"E.M. Francisco Adolfo de Varnhagen","Cidade":"Iper\u00f3","Sua Prioridade A":"Medicina Veterin\u00e1ria","Sua Prioridade B":"Direito","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:47:01","Seu Nome completo":"Maria Luisa De Sousa Ferreira","Escola":"E.M. Francisco Adolfo de Varnhagen","Cidade":"Iper\u00f3","Sua Prioridade A":"Medicina Veterin\u00e1ria","Sua Prioridade B":"Artes Visuais","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:48:32","Seu Nome completo":"Maria Fernanda Rosa","Escola":"E.M. Henory de Campos Goes Profa.","Cidade":"Iper\u00f3","Sua Prioridade A":"Medicina Veterin\u00e1ria","Sua Prioridade B":"Ci\u00eancias biol\u00f3gicas","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:51:21","Seu Nome completo":"Helisa de Freitas Vaz","Escola":"E.M. Elisa Moreira dos Santos Dona","Cidade":"Iper\u00f3","Sua Prioridade A":"Moda","Sua Prioridade B":null,"Sua idade":14.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:53:06","Seu Nome completo":"Vitor Nathan Costa de Jesus","Escola":"E.M. Francisco Adolfo de Varnhagen","Cidade":"Iper\u00f3","Sua Prioridade A":"Engenharia Mec\u00e2nica","Sua Prioridade B":null,"Sua idade":14.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:54:44","Seu Nome completo":"Alexsandra Eduarda A. Vieira","Escola":"E.M. Pedrina de Campos Pedrozo Rosa Profa","Cidade":"Iper\u00f3","Sua Prioridade A":"Direito","Sua Prioridade B":null,"Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:56:32","Seu Nome completo":"Cilas Greg\u00f3rio Paes J\u00fanior","Escola":"E.M. Elisa Moreira dos Santos Dona","Cidade":"Iper\u00f3","Sua Prioridade A":"Farm\u00e1cia","Sua Prioridade B":"Psicologia","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 17:57:56","Seu Nome completo":"Larissa O. de Almeida","Escola":"E.M. Zilma Thibes Melo","Cidade":"Iper\u00f3","Sua Prioridade A":"Policia Militar","Sua Prioridade B":"Bombeira Civil","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/19 18:48:35","Seu Nome completo":"Anthony Marcos Lima da Silva ","Escola":"Ant\u00f4nio Cavaglieri ","Cidade":"S\u00e3o Roque ","Sua Prioridade A":"Engenheira Eletrot\u00e9cnica ","Sua Prioridade B":"Gastronomia ","Sua idade":12.0,"Sua s\u00e9rie na escola    ":"7\u00ba Ano","Ano atual":"2025","UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/19 18:49:12","Seu Nome completo":"Mariana de Souza Rocha ","Escola":"EMEIF Professor Ant\u00f4nio Cavaglieri ","Cidade":"S\u00e3o Roque ","Sua Prioridade A":"Entrar na Etec ou no Instituto Federal, concluir o Ensino M\u00e9dio e cursar biologia.","Sua Prioridade B":"Conseguir achar um emprego na \u00e1rea (de prefer\u00eancia com um sal\u00e1rio bom), conseguir uma casinha pr\u00f3pria no meio do mato.","Sua idade":14.0,"Sua s\u00e9rie na escola    ":"9","Ano atual":"2025","UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/19 18:51:27","Seu Nome completo":"Maria Eduarda Costa de Oliveira ","Escola":"S\u00f4nia Maria abril Guilhardi","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Ci\u00eancias Biol\u00f3gicas ","Sua Prioridade B":"Artes ","Sua idade":14.0,"Sua s\u00e9rie na escola    ":"9\u00ba Ano ","Ano atual":"9\u00ba Ano ","UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/19 18:59:30","Seu Nome completo":"Maria Mirelly Barbosa Moreira","Escola":"Tetsu Chinone ","Cidade":"S\u00e3o Roque","Sua Prioridade A":"Administra\u00e7\u00e3o ","Sua Prioridade B":"T\u00e9cnico em inform\u00e1tica ","Sua idade":14.0,"Sua s\u00e9rie na escola    ":"9\u00baB","Ano atual":"9\u00baB - 2025","UniversidadeA":null,"LogoUniversidadeA":null,"UniversidadeB":null,"LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":null,"CursoUnivB":null,"CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":null,"TipoUnivB":null,"TipoUnivC":null,"TipoUnivD":null,"CampusA":null,"CampusB":null,"CampusC":null,"CampusD":null,"InfoCursoA":null,"InfoCursoB":null,"InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":null,"Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null}];
+        
+        $(document).ready(function() {
+            const table = $('#pendenteTable').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.13.6/i18n/pt-BR.json"
+                },
+                "pageLength": 25,
+                "lengthMenu": [10, 25, 50, 100],
+                "order": [[0, "asc"]]
+            });
+            
+            $('#pendenteTable tbody').on('click', 'tr', function() {
+                const rowData = table.row(this).data();
+                if (rowData && rowData.length > 0) {
+                    // O _row_id é sempre a última coluna
+                    const rowId = parseInt(rowData[rowData.length - 1]);
+                    if (!isNaN(rowId) && pendenteData[rowId]) {
+                        showModal(pendenteData[rowId]);
+                    }
+                }
+            });
+            
+            $('#modalClose, #modalOverlay').on('click', function(e) {
+                if (e.target === this) {
+                    $('#modalOverlay').hide();
+                }
+            });
+            
+            $(document).on('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    $('#modalOverlay').hide();
+                }
+            });
+        });
+        
+        function showModal(data) {
+            $('#modalTitle').text(data['Seu Nome completo'] || 'Aluno');
+            
+            const idade = data['Sua idade'] || data['Idade atual'] || data['Sua data de nascimento    '] || '-';
+            const serie = data['Sua série na escola    '] || data['Sua série na escola '] || data['Sua série na escola'] || '-';
+            
+            let modalHtml = `
+                <div class="info-section">
+                    <h4>⚠️ Aluno Pendente</h4>
+                    <div class="alert-box">
+                        <strong>Este aluno ainda não possui universidades cadastradas!</strong>
+                        <br>Por favor, preencha as informações de orientação universitária.
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h4>Informações Pessoais</h4>
+                    <div class="info-item">
+                        <span class="info-label">Nome:</span>
+                        <span class="info-value">${data['Seu Nome completo'] || '-'}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Escola:</span>
+                        <span class="info-value">${data['Escola'] || '-'}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Cidade:</span>
+                        <span class="info-value">${data['Cidade'] || '-'}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Idade:</span>
+                        <span class="info-value">${idade}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Série:</span>
+                        <span class="info-value">${serie}</span>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h4>Escolhas Profissionais</h4>
+                    <div class="info-item">
+                        <span class="info-label">Prioridade A:</span>
+                        <span class="info-value"><span class="priority-badge priority-a">${data['Sua Prioridade A'] || 'Não definida'}</span></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Prioridade B:</span>
+                        <span class="info-value"><span class="priority-badge priority-b">${data['Sua Prioridade B'] || 'Não definida'}</span></span>
+                    </div>
+                </div>
+            `;
+            
+            $('#modalBody').html(modalHtml);
+            $('#modalOverlay').show();
+        }
+    </script>
+</body>
+</html>

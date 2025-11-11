@@ -1,0 +1,1022 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Projeto de Vida PFC</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="../script.js"></script>
+    <style>
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            max-width: 95%;
+            max-height: 90%;
+            width: 1200px;
+            overflow-y: auto;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -60%);
+                scale: 0.9;
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+                scale: 1;
+            }
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 15px 15px 0 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        .modal-close {
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            line-height: 1;
+        }
+        
+        .modal-close:hover {
+            color: #e74c3c;
+        }
+        
+        .modal-body {
+            padding: 25px;
+        }
+        
+        .info-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .info-section h4 {
+            margin: 0 0 15px 0;
+            color: #2c3e50;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .info-item:last-child {
+            border-bottom: none;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        .info-value {
+            color: #2c3e50;
+            text-align: right;
+            max-width: 60%;
+        }
+        
+        .universidade-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid #27ae60;
+        }
+        
+        .universidade-card h5 {
+            margin: 0 0 15px 0;
+            color: #27ae60;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .univ-logo {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            border-radius: 5px;
+            background: white;
+            padding: 5px;
+        }
+        
+        .priority-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .priority-a {
+            background: #3498db;
+            color: white;
+        }
+        
+        .priority-b {
+            background: #9b59b6;
+            color: white;
+        }
+        
+        #projetoVidaTable tbody tr {
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        #projetoVidaTable tbody tr:hover {
+            background-color: #f8f9fa !important;
+        }
+        
+        .no-data {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botão Hambúrguer (3 tracinhos) -->
+    <button class="hamburger-btn" aria-label="Menu">
+        <div class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </button>
+
+    <!-- Overlay para fechar menu ao clicar fora -->
+    <div class="nav-overlay"></div>
+
+    <!-- Menu Sidebar -->
+    <nav class="nav-sidebar">
+        <button class="nav-close-btn" aria-label="Fechar menu">&times;</button>
+        <div class="nav-sidebar-header">
+            <h2>📊 Menu PFC</h2>
+        </div>
+        <div class="nav-sidebar-links">
+            <a href="../index.html" class="nav-link nav-link-home">🏠 Home</a>
+            <a href="../evasao.html" class="nav-link">📉 Evasão</a>
+            <a href="../assiduidade.html" class="nav-link">📅 Assiduidade</a>
+            <a href="../analises.html" class="nav-link">📈 Análises</a>
+            <a href="../auditoria.html" class="nav-link">🔍 Auditoria</a>
+            <a href="../cursinho/cursinho.html" class="nav-link">🎓 Cursinho</a>
+            <a href="../olimpiadas.html" class="nav-link">🏆 Olimpíadas</a>
+            <a href="projeto_vida.html" class="nav-link active">🎯 Projeto de Vida</a>
+        </div>
+    </nav>
+
+    <header>
+        <div class="header-content">
+            <img src="../Logo PFC.png" alt="Logo PFC" class="logo">
+            <h1>Projeto de Vida PFC</h1>
+            <p class="subtitle">Orientação Profissional e Universitária - 10/11/2025</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="summary-cards">
+            
+        <div class="card">
+            <h3>Alunos Completos</h3>
+            <div class="metric" style="color: #27ae60;">50</div>
+            <p style="font-size: 0.9rem; color: #7f8c8d; margin-top: 0.5rem;">Com universidades</p>
+        </div>
+        <div class="card">
+            <h3>Alunos Pendentes</h3>
+            <div class="metric" style="color: #e74c3c;">99</div>
+            <p style="font-size: 0.9rem; color: #7f8c8d; margin-top: 0.5rem;">Sem universidades</p>
+        </div>
+        <div class="card">
+            <h3>Total Geral</h3>
+            <div class="metric">149</div>
+        </div>
+        <div class="card">
+            <h3>Taxa de Conclusão</h3>
+            <div class="metric" style="color: #3498db;">33.6%</div>
+        </div>
+        <div class="card">
+            <h3>Cidades</h3>
+            <div class="metric">5</div>
+        </div>
+        <div class="card">
+            <h3>Escolas</h3>
+            <div class="metric">47</div>
+        </div>
+        
+        </section>
+        
+        <section class="table-section">
+            <h2>Alunos - Projeto de Vida</h2>
+            <table border="1" class="dataframe data-table" id="projetoVidaTable">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Nome</th>
+      <th>Cidade</th>
+      <th>Escola</th>
+      <th>Prioridade A</th>
+      <th>Prioridade B</th>
+      <th>Idade</th>
+      <th>Série</th>
+      <th>_row_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ana Beatriz R. Coelho</td>
+      <td>Coronel Macedo</td>
+      <td>E.E. Antonio Tonon</td>
+      <td>Medicina Veterinária</td>
+      <td>Agronomia</td>
+      <td>14.0</td>
+      <td>8º</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Ana Carolina de Campos Vieira</td>
+      <td>Coronel Macedo</td>
+      <td>E.E. Antonio Tonon</td>
+      <td>Medicina</td>
+      <td>Nutrição</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>Ana Clara de Souza</td>
+      <td>Coronel Macedo</td>
+      <td>E.E. Antonio Tonon</td>
+      <td>Medicina Veterinária</td>
+      <td>Direito</td>
+      <td>13.0</td>
+      <td>7º</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>Ana Lara Dias R. Roque</td>
+      <td>Coronel Macedo</td>
+      <td>E.E. Antonio Tonon</td>
+      <td>Polícia Militar</td>
+      <td>Enfermagem</td>
+      <td>13.0</td>
+      <td>7º</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>Caroline Vitoria</td>
+      <td>Coronel Macedo</td>
+      <td>E.E. Antonio Tonon</td>
+      <td>Área da Beleza</td>
+      <td>Medicina Veterinária</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>Davi Lucas Natal</td>
+      <td>Coronel Macedo</td>
+      <td>E.E. Antonio Tonon</td>
+      <td>Agronomia</td>
+      <td>Astronomia</td>
+      <td>12.0</td>
+      <td>7º</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Eron Carlos G. de Morais</td>
+      <td>Coronel Macedo</td>
+      <td>E.E. Antonio Tonon</td>
+      <td>Agronomia</td>
+      <td>Polícia Militar</td>
+      <td>12.0</td>
+      <td>7º</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>Gabryelly Dos Santos</td>
+      <td>Coronel Macedo</td>
+      <td>E.E. Antonio Tonon</td>
+      <td>Ciências Biológicas</td>
+      <td>NaN</td>
+      <td>12.0</td>
+      <td>7º</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>Isabelle A. Kosaka</td>
+      <td>Coronel Macedo</td>
+      <td>E.E. Antonio Tonon</td>
+      <td>Direito</td>
+      <td>Arte</td>
+      <td>12.0</td>
+      <td>7º</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>Jane Celina Simão</td>
+      <td>Coronel Macedo</td>
+      <td>E.E. Antonio Tonon</td>
+      <td>Cirurgia Plástica</td>
+      <td>NaN</td>
+      <td>14.0</td>
+      <td>8º</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>João Vitor Garcia da Rosa</td>
+      <td>Coronel Macedo</td>
+      <td>E.M. Professor Mitsuo Matsura</td>
+      <td>Medicina</td>
+      <td>Biologia</td>
+      <td>12.0</td>
+      <td>6º</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>Julia Camily de Souza</td>
+      <td>Coronel Macedo</td>
+      <td>E.E. Antonio Tonon</td>
+      <td>Estética</td>
+      <td>Medicina</td>
+      <td>12.0</td>
+      <td>7º</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>Julia Pontos</td>
+      <td>Coronel Macedo</td>
+      <td>E.E. Antonio Tonon</td>
+      <td>Educação Física</td>
+      <td>NaN</td>
+      <td>14.0</td>
+      <td>8º</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>Kerollyn Thallya Dos S. Rodrigues</td>
+      <td>Coronel Macedo</td>
+      <td>E.E. Antonio Tonon</td>
+      <td>Perícia Criminal</td>
+      <td>Eduação Física</td>
+      <td>13.0</td>
+      <td>7º</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>Melissa Leal Ribeiro</td>
+      <td>Coronel Macedo</td>
+      <td>E.E. Antonio Tonon</td>
+      <td>Nutrição</td>
+      <td>Medicina</td>
+      <td>12.0</td>
+      <td>7º</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <td>Miguel Fernando Dos Santos</td>
+      <td>Coronel Macedo</td>
+      <td>E.E. Antonio Tonon</td>
+      <td>Perícia Criminal</td>
+      <td>Agronomia</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>Miguel Soares da S. Santos</td>
+      <td>Coronel Macedo</td>
+      <td>E.E. Antonio Tonon</td>
+      <td>História</td>
+      <td>Jogador de Futebol</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>Mirella Rafaela</td>
+      <td>Coronel Macedo</td>
+      <td>E.E. Antonio Tonon</td>
+      <td>Medicina Veterinária</td>
+      <td>Medicina</td>
+      <td>13.0</td>
+      <td>8º</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <td>Pietro Henrique A. D. R. Oliveira</td>
+      <td>Coronel Macedo</td>
+      <td>E.E. Antonio Tonon</td>
+      <td>Engenharia Mecânica</td>
+      <td>NaN</td>
+      <td>13.0</td>
+      <td>7º</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <td>Rafaela A. P. Rodrigues</td>
+      <td>Coronel Macedo</td>
+      <td>E.E. Antonio Tonon</td>
+      <td>Agronomia</td>
+      <td>Polícia Militar</td>
+      <td>12.0</td>
+      <td>7º</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <td>AGATHA GUERREIRO BUENO</td>
+      <td>SALTO</td>
+      <td>CEMUS 1 - MARIA CONSTANÇA (ENCONTROS NA CEMUS 5)</td>
+      <td>PSICOLOGIA</td>
+      <td>NaN</td>
+      <td>13</td>
+      <td>NaN</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <td>AGATHA SILVA BARCELOS</td>
+      <td>SALTO</td>
+      <td>E. E. OTILIA DE PAULA LEITE</td>
+      <td>MATEMÁTICA</td>
+      <td>NaN</td>
+      <td>12</td>
+      <td>NaN</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <td>ALINE DA SILVA DE LIMA</td>
+      <td>SALTO</td>
+      <td>E. E. LEONOR FERNANDES DA SILVA</td>
+      <td>CIÊNCIAS BIOLÓGICAS</td>
+      <td>NaN</td>
+      <td>12</td>
+      <td>NaN</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <td>ARTHUR YOSHIOKA SANTOS</td>
+      <td>SALTO</td>
+      <td>CEMUS 1 - MARIA CONSTANÇA (ENCONTROS NA CEMUS 5)</td>
+      <td>LETRAS</td>
+      <td>NaN</td>
+      <td>14</td>
+      <td>NaN</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <td>AUGUSTO HENRIQUE BEVILAQUA</td>
+      <td>SALTO</td>
+      <td>E. E. LEONOR FERNANDES DA SILVA</td>
+      <td>MEDICINA</td>
+      <td>NaN</td>
+      <td>12</td>
+      <td>NaN</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <td>BEATRIZ CAZELATTO FALCOCHIO</td>
+      <td>SALTO</td>
+      <td>E. E. TANCREDO DO AMARAL</td>
+      <td>PALEONTOLOGIA</td>
+      <td>NaN</td>
+      <td>12</td>
+      <td>NaN</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <td>CHRISTIAN DE SOUZA RIBEIRO</td>
+      <td>SALTO</td>
+      <td>CEMUS 1 - MARIA CONSTANÇA (ENCONTROS NA CEMUS 5)</td>
+      <td>FÍSICA</td>
+      <td>NaN</td>
+      <td>13</td>
+      <td>NaN</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <td>DAVI DE FARA TAGLIARI</td>
+      <td>SALTO</td>
+      <td>CEMUS 1 - MARIA CONSTANÇA (ENCONTROS NA CEMUS 5)</td>
+      <td>CIÊNCIAS DA COMPUTAÇÃO</td>
+      <td>NaN</td>
+      <td>13</td>
+      <td>NaN</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <td>DAVI DOS SANTOS SIMÕES</td>
+      <td>SALTO</td>
+      <td>E. E. PROFª MARIA DE LOURDES MORAES COSTELLA</td>
+      <td>QUÍMICA</td>
+      <td>NaN</td>
+      <td>12</td>
+      <td>NaN</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <td>DAVI LUIZ TEODORO CAMARGO</td>
+      <td>SALTO</td>
+      <td>E. E. ACYLLINO AMARAL</td>
+      <td>CIÊNCIAS BIOLÓGICAS</td>
+      <td>NaN</td>
+      <td>12</td>
+      <td>NaN</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <td>ELOÁ FERNANDA HONORATO</td>
+      <td>SALTO</td>
+      <td>E. E. MIRINHA TONELLO</td>
+      <td>QUÍMICA</td>
+      <td>NaN</td>
+      <td>13</td>
+      <td>NaN</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <td>ENZO GASPAR SINI</td>
+      <td>SALTO</td>
+      <td>E. E. PAULA SANTOS</td>
+      <td>MEDICINA</td>
+      <td>NaN</td>
+      <td>12</td>
+      <td>NaN</td>
+      <td>31</td>
+    </tr>
+    <tr>
+      <td>GUILHERME MARINHO DE MELO SOUTO</td>
+      <td>SALTO</td>
+      <td>CEMUS 1 - MARIA CONSTANÇA (ENCONTROS NA CEMUS 5)</td>
+      <td>BOMBEIRO CIVIL</td>
+      <td>NaN</td>
+      <td>13</td>
+      <td>NaN</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <td>JOÃO PEDRO COUTO DOS SANTOS</td>
+      <td>SALTO</td>
+      <td>E. E. PROF. JOSEANO COSTA PINTO</td>
+      <td>CIÊNCIAS DA COMPUTAÇÃO</td>
+      <td>NaN</td>
+      <td>12</td>
+      <td>NaN</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <td>JONATHAN LEITE FERNANDES</td>
+      <td>SALTO</td>
+      <td>CEMUS 1 - MARIA CONSTANÇA (ENCONTROS NA CEMUS 5)</td>
+      <td>ENGENHARIA CIVIL</td>
+      <td>NaN</td>
+      <td>14</td>
+      <td>NaN</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <td>KAUAN DE SOUZA</td>
+      <td>SALTO</td>
+      <td>E. E. DOLORES ANTUNES DA SILVA</td>
+      <td>CIÊNCIAS BIOLÓGICAS</td>
+      <td>NaN</td>
+      <td>12</td>
+      <td>NaN</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <td>LARA BEATRIZ BENITO TEIXEIRA A</td>
+      <td>SALTO</td>
+      <td>E. E. MIRINHA TONELLO</td>
+      <td>DIREITO</td>
+      <td>NaN</td>
+      <td>13</td>
+      <td>NaN</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <td>LUCAS DE JESUS OLIVEIRA</td>
+      <td>SALTO</td>
+      <td>E. E. JOSEANO COSTA PINTO</td>
+      <td>ARQUITETURA E URBANISMO</td>
+      <td>NaN</td>
+      <td>13</td>
+      <td>NaN</td>
+      <td>37</td>
+    </tr>
+    <tr>
+      <td>LUCAS RODRIGUES OLIVEIRA</td>
+      <td>SALTO</td>
+      <td>E. E. DOLORES ANTUNES DA SILVA</td>
+      <td>CIÊNCIAS BIOLÓGICAS</td>
+      <td>NaN</td>
+      <td>12</td>
+      <td>NaN</td>
+      <td>38</td>
+    </tr>
+    <tr>
+      <td>LUIZ RENATO BATISTA DE JESUS</td>
+      <td>SALTO</td>
+      <td>E.E. TANCREDO DO AMARAL</td>
+      <td>EDUCAÇÃO FÍSICA</td>
+      <td>NaN</td>
+      <td>12</td>
+      <td>NaN</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <td>MARIA ALICE PEREIRA</td>
+      <td>SALTO</td>
+      <td>E. E. DOLORES ANTUNES DA SILVA</td>
+      <td>MEDICINA</td>
+      <td>NaN</td>
+      <td>12</td>
+      <td>NaN</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <td>MARIA EDUARDA GOMES DE CARVALHO</td>
+      <td>SALTO</td>
+      <td>E. E. LEONOR FERNANDES DA SILVA</td>
+      <td>DIREITO</td>
+      <td>NaN</td>
+      <td>13</td>
+      <td>NaN</td>
+      <td>41</td>
+    </tr>
+    <tr>
+      <td>MARIA JULIA ALVES ROSSI</td>
+      <td>SALTO</td>
+      <td>E. E. MIRINHA TONELLO</td>
+      <td>ASTRONOMIA</td>
+      <td>NaN</td>
+      <td>12</td>
+      <td>NaN</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <td>MATHEUS LÁZARO DE SOUZA C. DE ALMEIDA</td>
+      <td>SALTO</td>
+      <td>E. E. PADRE FRANCISCO RIGOLIM (CAIC)</td>
+      <td>QUÍMICA</td>
+      <td>NaN</td>
+      <td>13</td>
+      <td>NaN</td>
+      <td>43</td>
+    </tr>
+    <tr>
+      <td>MELISSA BRITO CUNHA</td>
+      <td>SALTO</td>
+      <td>E. E. DOLORES ANTUNES DA SILVA</td>
+      <td>ARTES CÊNICAS</td>
+      <td>NaN</td>
+      <td>12</td>
+      <td>NaN</td>
+      <td>44</td>
+    </tr>
+    <tr>
+      <td>MIGUEL SANTIAGO MILHASSI</td>
+      <td>SALTO</td>
+      <td>CEMUS 1 - MARIA CONSTANÇA (ENCONTROS NA CEMUS 5)</td>
+      <td>FÍSICA</td>
+      <td>NaN</td>
+      <td>13</td>
+      <td>NaN</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <td>NÍCOLAS REIS DE ALMEIDA</td>
+      <td>SALTO</td>
+      <td>CEMUS 1 - MARIA CONSTANÇA (ENCONTROS NA CEMUS 5)</td>
+      <td>CIÊNCIAS DA COMPUTAÇÃO</td>
+      <td>NaN</td>
+      <td>13</td>
+      <td>NaN</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <td>PEDRO SPIGUEL MARRI</td>
+      <td>SALTO</td>
+      <td>CEMUS 1 - MARIA CONSTANÇA (ENCONTROS NA CEMUS 5)</td>
+      <td>FÍSICA</td>
+      <td>NaN</td>
+      <td>13</td>
+      <td>NaN</td>
+      <td>47</td>
+    </tr>
+    <tr>
+      <td>THAMIRES BARBOSA VILAS BOAS</td>
+      <td>SALTO</td>
+      <td>E. E. MIRINHA TONELLO</td>
+      <td>PSICOLOGIA</td>
+      <td>NaN</td>
+      <td>12</td>
+      <td>NaN</td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <td>YAGO CRUVINEL DE OLIVEIRA</td>
+      <td>SALTO</td>
+      <td>E. E. PADRE FRANCISCO RIGOLIM (CAIC)</td>
+      <td>GESTÃO DE EMPRESA</td>
+      <td>NaN</td>
+      <td>13</td>
+      <td>NaN</td>
+      <td>49</td>
+    </tr>
+  </tbody>
+</table>
+        </section>
+        
+        <!-- Alerta de alunos pendentes -->
+        
+        <section style="margin: 2rem 0;">
+            <div style="background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center;">
+                <h3 style="margin: 0 0 1rem 0; font-size: 1.5rem;">⚠️ Atenção: Alunos Pendentes</h3>
+                <p style="font-size: 1.2rem; margin: 0 0 1.5rem 0;">
+                    <strong>99 aluno(s)</strong> ainda não possuem universidades cadastradas
+                </p>
+                <a href="projeto_vida_pendentes.html" style="display: inline-block; background: white; color: #e74c3c; padding: 15px 30px; border-radius: 25px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                    📋 Ver Alunos Pendentes
+                </a>
+            </div>
+        </section>
+        
+        
+        <section class="table-section">
+            <h2>Análises e Gráficos</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; padding: 2rem;">
+                <div>
+                    <h3>Top 15 Profissões Escolhidas</h3>
+                    <iframe src="grafico_profissoes.html" style="width: 100%; height: 650px; border: none;"></iframe>
+                </div>
+                <div>
+                    <h3>Alunos por Cidade</h3>
+                    <iframe src="grafico_cidades.html" style="width: 100%; height: 650px; border: none;"></iframe>
+                </div>
+                <div>
+                    <h3>Top 15 Escolas</h3>
+                    <iframe src="grafico_escolas.html" style="width: 100%; height: 650px; border: none;"></iframe>
+                </div>
+                <div>
+                    <h3>Distribuição por Série</h3>
+                    <iframe src="grafico_series.html" style="width: 100%; height: 650px; border: none;"></iframe>
+                </div>
+                <div>
+                    <h3>Distribuição de Opções de Universidades</h3>
+                    <iframe src="grafico_distribuicao_universidades.html" style="width: 100%; height: 650px; border: none;"></iframe>
+                </div>
+                <div>
+                    <h3>Top 15 Universidades Mais Sugeridas</h3>
+                    <iframe src="grafico_top_universidades.html" style="width: 100%; height: 650px; border: none;"></iframe>
+                </div>
+                <div>
+                    <h3>Status do Preenchimento</h3>
+                    <iframe src="grafico_status.html" style="width: 100%; height: 650px; border: none;"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal de detalhes -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Detalhes do Aluno</h3>
+                <span class="modal-close" id="modalClose">&times;</span>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Conteúdo será preenchido dinamicamente -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dados completos para o modal
+        const projetoVidaData = [{"Carimbo de data\/hora":"2025\/08\/07 15:06:41","Seu Nome completo":"Ana Beatriz R. Coelho","Escola":"E.E. Antonio Tonon","Cidade":"Coronel Macedo","Sua Prioridade A":"Medicina Veterin\u00e1ria","Sua Prioridade B":"Agronomia","Sua idade":14.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":"USP","LogoUniversidadeA":null,"UniversidadeB":"UNESP","LogoUniversidadeB":null,"UniversidadeC":"UENP","LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":"MEDICINA VETERIN\u00c1RIA","CursoUnivB":"MEDICINA VETERIN\u00c1RIA","CursoUnivC":"MEDICINA VETERIN\u00c1RIA","CursoUnivD":null,"TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":null,"CampusA":"S\u00c3O PAULO","CampusB":"BOTUCATU","CampusC":"BANDEIRANTES","CampusD":null,"InfoCursoA":"https:\/\/portal.fmvz.usp.br\/ensino\/","InfoCursoB":"https:\/\/www.fmvz.unesp.br\/#!\/ensino\/graduacao\/medicina-veterinaria\/","InfoCursoC":"https:\/\/uenp.edu.br\/index.php\/medicina-veterinaria","InfoCursoD":null,"AnoVestibular":2029.0,"DuracaoAnosCursoA":"5 ANOS","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"5 ANOS","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"5 ANOS","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":"FUVEST\/ENEM","VestibularB":"VUNESP\/ENEM","VestibularC":"UENP\/ENEM","VestibularD":null,"Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 15:26:42","Seu Nome completo":"Ana Carolina de Campos Vieira","Escola":"E.E. Antonio Tonon","Cidade":"Coronel Macedo","Sua Prioridade A":"Medicina","Sua Prioridade B":"Nutri\u00e7\u00e3o","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":"UFSCAR ","LogoUniversidadeA":null,"UniversidadeB":"USP","LogoUniversidadeB":null,"UniversidadeC":"UNICAMP","LogoUniversidadeC":null,"UniversidadeD":"UNESP","LogoUniversidadeD":null,"CursoUnivA":"MEDICINA ","CursoUnivB":"MEDICINA ","CursoUnivC":"MEDICINA ","CursoUnivD":"MEDICINA ","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"P\u00daBLICA","CampusA":"S\u00c3O CARLOS","CampusB":"S\u00c3O PAULO","CampusC":"CAMPINAS","CampusD":"BOTUCATU","InfoCursoA":"https:\/\/www.prograd.ufscar.br\/pt-br\/cursos\/cursos-oferecidos\/medicina\/medicina","InfoCursoB":"https:\/\/www.fm.usp.br\/fmusp\/portal\/","InfoCursoC":"https:\/\/www.dac.unicamp.br\/sistemas\/catalogos\/grad\/catalogo2025\/cursos\/15g\/index.html","InfoCursoD":"https:\/\/www.fmb.unesp.br\/#!\/ensino\/graduacao\/medicina\/","AnoVestibular":2029.0,"DuracaoAnosCursoA":"6 ANOS","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"6 ANOS","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"6 ANOS","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":"6 ANOS","PeriodoD":"INTEGRAL","VestibularA":"ENEM","VestibularB":"FUVEST\/ENEM","VestibularC":"COMVEST\/ENEM","VestibularD":"VUNESP\/ENEM","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 15:34:39","Seu Nome completo":"Ana Clara de Souza","Escola":"E.E. Antonio Tonon","Cidade":"Coronel Macedo","Sua Prioridade A":"Medicina Veterin\u00e1ria","Sua Prioridade B":"Direito","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"7\u00ba","Ano atual":2025.0,"UniversidadeA":"USP","LogoUniversidadeA":null,"UniversidadeB":"UNESP","LogoUniversidadeB":null,"UniversidadeC":"UENP","LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":"MEDICINA VETERIN\u00c1RIA","CursoUnivB":"MEDICINA VETERIN\u00c1RIA","CursoUnivC":"MEDICINA VETERIN\u00c1RIA","CursoUnivD":null,"TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":null,"CampusA":"S\u00c3O PAULO","CampusB":"BOTUCATU","CampusC":"BANDEIRANTES","CampusD":null,"InfoCursoA":"https:\/\/portal.fmvz.usp.br\/ensino\/","InfoCursoB":"https:\/\/www.fmvz.unesp.br\/#!\/ensino\/graduacao\/medicina-veterinaria\/","InfoCursoC":"https:\/\/uenp.edu.br\/index.php\/medicina-veterinaria","InfoCursoD":null,"AnoVestibular":2030.0,"DuracaoAnosCursoA":"5 ANOS","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"5 ANOS","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"5 ANOS","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":"FUVEST\/ENEM","VestibularB":"VUNESP\/ENEM","VestibularC":"UENP\/ENEM","VestibularD":null,"Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 15:21:51","Seu Nome completo":"Ana Lara Dias R. Roque","Escola":"E.E. Antonio Tonon","Cidade":"Coronel Macedo","Sua Prioridade A":"Pol\u00edcia Militar","Sua Prioridade B":"Enfermagem","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"7\u00ba","Ano atual":2025.0,"UniversidadeA":"KULTIVI","LogoUniversidadeA":null,"UniversidadeB":"ALFA BRASIL","LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":"PREPARAT\u00d3RIO PARA CONCURSO","CursoUnivB":"PREPARAT\u00d3RIO PARA CONCURSO","CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":"P\u00daBLICA","TipoUnivB":"PARTICULAR","TipoUnivC":null,"TipoUnivD":null,"CampusA":"EAD","CampusB":"EAD","CampusC":null,"CampusD":null,"InfoCursoA":"https:\/\/kultivi.com\/cursos\/concursos\/soldado-pm-sp","InfoCursoB":"https:\/\/alfabrasil.com.br\/cursos-presenciais\/policia-militar\/","InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":null,"DuracaoAnosCursoA":null,"PeriodoA":null,"DuracaoAnosCursoB":null,"PeriodoB":null,"DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 15:09:04","Seu Nome completo":"Caroline Vitoria","Escola":"E.E. Antonio Tonon","Cidade":"Coronel Macedo","Sua Prioridade A":"\u00c1rea da Beleza","Sua Prioridade B":"Medicina Veterin\u00e1ria ","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":"INSTITUTO EMBELLEZE","LogoUniversidadeA":null,"UniversidadeB":"SENAC","LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":"CURSOS RELACIONADOS A BELEZA","CursoUnivB":"CONSTRU\u00c7\u00c3O DE CARREIRA PARA PROFISSIONAIS DA BELEZA","CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":"PARTICULAR","TipoUnivB":"PARTICULAR","TipoUnivC":null,"TipoUnivD":null,"CampusA":"SOROCABA","CampusB":"SOROCABA","CampusC":null,"CampusD":null,"InfoCursoA":"https:\/\/sorocaba.embelleze.me\/?utm_source=&utm_medium=&utm_campaign=&utm_content=&utm_term=instituto%20embelleze&gad_source=1&gad_campaignid=22123582742&gbraid=0AAAAACMiYTZMoxnuL2vtT9HVfmGJDK1Vj&gclid=CjwKCAjwwNbEBhBpEiwAFYLtGKCUAjUX3ezBVqmihPVEz7swttgV_UL02IuVgzjcePihf4s2FEAuBRoCPhkQAvD_BwE","InfoCursoB":"https:\/\/www.sp.senac.br\/cursos-livres\/curso-de-construcao-de-carreira-para-profissionais-de-beleza","InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":2029.0,"DuracaoAnosCursoA":"-","PeriodoA":"-","DuracaoAnosCursoB":"36H","PeriodoB":"MATUTINO\/NOTURNO","DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 15:37:14","Seu Nome completo":"Davi Lucas Natal","Escola":"E.E. Antonio Tonon","Cidade":"Coronel Macedo","Sua Prioridade A":"Agronomia","Sua Prioridade B":"Astronomia","Sua idade":12.0,"Sua s\u00e9rie na escola    ":"7\u00ba","Ano atual":2025.0,"UniversidadeA":"UENP","LogoUniversidadeA":null,"UniversidadeB":"ANHANGUERA","LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":"AGRONOMIA","CursoUnivB":"AGRONOMIA","CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":"P\u00daBLICA","TipoUnivB":"PARTICULAR","TipoUnivC":null,"TipoUnivD":null,"CampusA":"BANDEIRANTES - PARAN\u00c1","CampusB":"SOROCABA","CampusC":null,"CampusD":null,"InfoCursoA":"https:\/\/uenp.edu.br\/agronomia","InfoCursoB":"https:\/\/cursos.anhanguera.com\/inscricao?gclsrc=aw.ds&utm_source=google&utm_medium=cpc&utm_term=anhanguera+sorocaba&utm_content=gagp-007-001-0001_gads_sch-l1_prim_grad_aedu_aon_grad_ecomm_exata_conversao_roas_inscricoes_auto_kwd_institucional-exata_texto_na_na_na_na&utm_campaign=gagp-007_gads_sch-l1_prim_grad_aedu_aon_grad_ecomm_exata_conversao_roas_inscricoes&gad_source=1&gad_campaignid=21854449121&gclid=CjwKCAjwwNbEBhBpEiwAFYLtGH9KSv9_RhzPNZCMXvJXMtU_DecKaHbZlrmpyihoKQ76W1SF_ems5BoCUC8QAvD_BwE","InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":2030.0,"DuracaoAnosCursoA":"5 ANOS","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"5 ANOS","PeriodoB":"MATUTINO\/NOTURNO","DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":"UENP\/ENEM","VestibularB":"VESTIBULAR PR\u00d3PRIO\/ENEM","VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 14:48:06","Seu Nome completo":"Eron Carlos G. de Morais","Escola":"E.E. Antonio Tonon","Cidade":"Coronel Macedo","Sua Prioridade A":"Agronomia","Sua Prioridade B":"Pol\u00edcia Militar","Sua idade":12.0,"Sua s\u00e9rie na escola    ":"7\u00ba","Ano atual":2025.0,"UniversidadeA":"UENP","LogoUniversidadeA":null,"UniversidadeB":"ANHANGUERA","LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":"AGRONOMIA","CursoUnivB":"AGRONOMIA","CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":"P\u00daBLICA","TipoUnivB":"PARTICULAR","TipoUnivC":null,"TipoUnivD":null,"CampusA":"BANDEIRANTES - PARAN\u00c1","CampusB":"SOROCABA","CampusC":null,"CampusD":null,"InfoCursoA":"https:\/\/uenp.edu.br\/agronomia","InfoCursoB":"https:\/\/cursos.anhanguera.com\/inscricao?gclsrc=aw.ds&utm_source=google&utm_medium=cpc&utm_term=anhanguera+sorocaba&utm_content=gagp-007-001-0001_gads_sch-l1_prim_grad_aedu_aon_grad_ecomm_exata_conversao_roas_inscricoes_auto_kwd_institucional-exata_texto_na_na_na_na&utm_campaign=gagp-007_gads_sch-l1_prim_grad_aedu_aon_grad_ecomm_exata_conversao_roas_inscricoes&gad_source=1&gad_campaignid=21854449121&gclid=CjwKCAjwwNbEBhBpEiwAFYLtGH9KSv9_RhzPNZCMXvJXMtU_DecKaHbZlrmpyihoKQ76W1SF_ems5BoCUC8QAvD_BwE","InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":2030.0,"DuracaoAnosCursoA":"5 ANOS","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"5 ANOS","PeriodoB":"MATUTINO\/NOTURNO","DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":"UENP\/ENEM","VestibularB":"VESTIBULAR PR\u00d3PRIO\/ENEM","VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 15:02:57","Seu Nome completo":"Gabryelly Dos Santos","Escola":"E.E. Antonio Tonon","Cidade":"Coronel Macedo","Sua Prioridade A":"Ci\u00eancias Biol\u00f3gicas","Sua Prioridade B":null,"Sua idade":12.0,"Sua s\u00e9rie na escola    ":"7\u00ba","Ano atual":2025.0,"UniversidadeA":"UENP","LogoUniversidadeA":null,"UniversidadeB":"UFSCAR","LogoUniversidadeB":null,"UniversidadeC":"UNESP","LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":"CI\u00caNCIAS BIOL\u00d3GICAS","CursoUnivB":"CI\u00caNCIAS BIOL\u00d3GICAS","CursoUnivC":"CI\u00caNCIAS BIOL\u00d3GICAS","CursoUnivD":null,"TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":null,"CampusA":"CORN\u00c9LIO PROC\u00d3PIO","CampusB":"SOROCABA","CampusC":"BOTUCATU","CampusD":null,"InfoCursoA":"https:\/\/uenp.edu.br\/ciencias-biologicas","InfoCursoB":"https:\/\/www.prograd.ufscar.br\/pt-br\/cursos\/cursos-oferecidos\/ciencias-biologicas\/sorocaba","InfoCursoC":"https:\/\/www.ibb.unesp.br\/#!\/ensino\/graduacao\/curso\/ciencias-biologicas\/","InfoCursoD":null,"AnoVestibular":2030.0,"DuracaoAnosCursoA":"4 ANOS","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"4 ANOS","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"4 ANOS","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":"UENP\/ENEM","VestibularB":"ENEM","VestibularC":"VUNESP\/ENEM","VestibularD":null,"Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 15:24:30","Seu Nome completo":"Isabelle A. Kosaka","Escola":"E.E. Antonio Tonon","Cidade":"Coronel Macedo","Sua Prioridade A":"Direito","Sua Prioridade B":"Arte","Sua idade":12.0,"Sua s\u00e9rie na escola    ":"7\u00ba","Ano atual":2025.0,"UniversidadeA":"UENP","LogoUniversidadeA":null,"UniversidadeB":"USP","LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":"DIREITO","CursoUnivB":"DIREITO","CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":null,"TipoUnivD":null,"CampusA":"JACAR\u00c9ZINHO - PARAN\u00c1","CampusB":"S\u00c3O PAULO","CampusC":null,"CampusD":null,"InfoCursoA":"https:\/\/uenp.edu.br\/direito","InfoCursoB":"https:\/\/www.direito.usp.br\/","InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":2030.0,"DuracaoAnosCursoA":"5 ANOS","PeriodoA":"MATUTINO\/NOTURNO","DuracaoAnosCursoB":"5 ANOS","PeriodoB":"MATUTINO\/NOTURNO","DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":"UENP\/ENEM","VestibularB":"FUVEST\/ENEM","VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 15:16:07","Seu Nome completo":"Jane Celina Sim\u00e3o","Escola":"E.E. Antonio Tonon","Cidade":"Coronel Macedo","Sua Prioridade A":"Cirurgia Pl\u00e1stica","Sua Prioridade B":null,"Sua idade":14.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":"UFSCAR ","LogoUniversidadeA":null,"UniversidadeB":"USP","LogoUniversidadeB":null,"UniversidadeC":"UNICAMP","LogoUniversidadeC":null,"UniversidadeD":"UNESP","LogoUniversidadeD":null,"CursoUnivA":"MEDICINA ","CursoUnivB":"MEDICINA ","CursoUnivC":"MEDICINA ","CursoUnivD":"MEDICINA ","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"P\u00daBLICA","CampusA":"S\u00c3O CARLOS","CampusB":"S\u00c3O PAULO","CampusC":"CAMPINAS","CampusD":"BOTUCATU","InfoCursoA":"https:\/\/www.prograd.ufscar.br\/pt-br\/cursos\/cursos-oferecidos\/medicina\/medicina","InfoCursoB":"https:\/\/www.fm.usp.br\/fmusp\/portal\/","InfoCursoC":"https:\/\/www.dac.unicamp.br\/sistemas\/catalogos\/grad\/catalogo2025\/cursos\/15g\/index.html","InfoCursoD":"https:\/\/www.fmb.unesp.br\/#!\/ensino\/graduacao\/medicina\/","AnoVestibular":2029.0,"DuracaoAnosCursoA":"6 ANOS","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"6 ANOS","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"6 ANOS","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":"6 ANOS","PeriodoD":"INTEGRAL","VestibularA":"ENEM","VestibularB":"FUVEST\/ENEM","VestibularC":"COMVEST\/ENEM","VestibularD":"VUNESP\/ENEM","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 14:53:32","Seu Nome completo":"Jo\u00e3o Vitor Garcia da Rosa","Escola":"E.M. Professor Mitsuo Matsura","Cidade":"Coronel Macedo","Sua Prioridade A":"Medicina","Sua Prioridade B":"Biologia","Sua idade":12.0,"Sua s\u00e9rie na escola    ":"6\u00ba","Ano atual":2025.0,"UniversidadeA":"UFSCAR ","LogoUniversidadeA":null,"UniversidadeB":"USP","LogoUniversidadeB":null,"UniversidadeC":"UNICAMP","LogoUniversidadeC":null,"UniversidadeD":"UNESP","LogoUniversidadeD":null,"CursoUnivA":"MEDICINA ","CursoUnivB":"MEDICINA ","CursoUnivC":"MEDICINA ","CursoUnivD":"MEDICINA ","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"P\u00daBLICA","CampusA":"S\u00c3O CARLOS","CampusB":"S\u00c3O PAULO","CampusC":"CAMPINAS","CampusD":"BOTUCATU","InfoCursoA":"https:\/\/www.prograd.ufscar.br\/pt-br\/cursos\/cursos-oferecidos\/medicina\/medicina","InfoCursoB":"https:\/\/www.fm.usp.br\/fmusp\/portal\/","InfoCursoC":"https:\/\/www.dac.unicamp.br\/sistemas\/catalogos\/grad\/catalogo2025\/cursos\/15g\/index.html","InfoCursoD":"https:\/\/www.fmb.unesp.br\/#!\/ensino\/graduacao\/medicina\/","AnoVestibular":2031.0,"DuracaoAnosCursoA":"6 ANOS","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"6 ANOS","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"6 ANOS","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":"6 ANOS","PeriodoD":"INTEGRAL","VestibularA":"ENEM","VestibularB":"FUVEST\/ENEM","VestibularC":"COMVEST\/ENEM","VestibularD":"VUNESP\/ENEM","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 15:28:42","Seu Nome completo":"Julia Camily de Souza","Escola":"E.E. Antonio Tonon","Cidade":"Coronel Macedo","Sua Prioridade A":"Est\u00e9tica","Sua Prioridade B":"Medicina","Sua idade":12.0,"Sua s\u00e9rie na escola    ":"7\u00ba","Ano atual":2025.0,"UniversidadeA":"SENAC","LogoUniversidadeA":null,"UniversidadeB":"UNISO","LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":"EST\u00c9TICA E COSM\u00c9TICA","CursoUnivB":"EST\u00c9TICA E COSM\u00c9TICA","CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":"PARTICULAR","TipoUnivB":"PARTICULAR","TipoUnivC":null,"TipoUnivD":null,"CampusA":"S\u00c3O PAULO","CampusB":"SOROCABA","CampusC":null,"CampusD":null,"InfoCursoA":"https:\/\/www.sp.senac.br\/graduacao\/bacharelado-em-estetica-e-cosmetica","InfoCursoB":"https:\/\/uniso.br\/graduacao\/presencial\/estetica-e-cosmetica\/","InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":2030.0,"DuracaoAnosCursoA":"3 ANOS","PeriodoA":"MATUTINO\/NOTURNO","DuracaoAnosCursoB":"3 ANOS","PeriodoB":"MATUTINO\/NOTURNO","DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":"-","VestibularB":"VESTIBULAR PR\u00d3PRIO\/ENEM","VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 15:23:21","Seu Nome completo":"Julia Pontos","Escola":"E.E. Antonio Tonon","Cidade":"Coronel Macedo","Sua Prioridade A":"Educa\u00e7\u00e3o F\u00edsica","Sua Prioridade B":null,"Sua idade":14.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":"UENP","LogoUniversidadeA":null,"UniversidadeB":"USP","LogoUniversidadeB":null,"UniversidadeC":"UNICAMP","LogoUniversidadeC":null,"UniversidadeD":"UNESP","LogoUniversidadeD":null,"CursoUnivA":"EDUCA\u00c7\u00c3O F\u00cdSICA","CursoUnivB":"EDUCA\u00c7\u00c3O F\u00cdSICA","CursoUnivC":"EDUCA\u00c7\u00c3O F\u00cdSICA","CursoUnivD":"EDUCA\u00c7\u00c3O F\u00cdSICA","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"P\u00daBLICA","CampusA":"JACAR\u00c9ZINHO - PARAN\u00c1","CampusB":"S\u00c3O PAULO","CampusC":"CAMPINAS","CampusD":"BAURU","InfoCursoA":"https:\/\/uenp.edu.br\/educacao-fisica","InfoCursoB":"https:\/\/www.eefe.usp.br\/","InfoCursoC":"https:\/\/www.dac.unicamp.br\/sistemas\/catalogos\/grad\/catalogo2025\/cursos\/27g\/index.html","InfoCursoD":"https:\/\/www.fc.unesp.br\/#!\/departamentos\/dep-educacao-fisica\/","AnoVestibular":2029.0,"DuracaoAnosCursoA":"4 ANOS","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"4 ANOS","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"4 ANOS","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":"4 ANOS","PeriodoD":"INTEGRAL","VestibularA":"UENP\/ENEM","VestibularB":"FUVEST\/ENEM","VestibularC":"COMVEST\/ENEM","VestibularD":"VUNESP\/ENEM","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 14:59:30","Seu Nome completo":"Kerollyn Thallya Dos S. Rodrigues","Escola":"E.E. Antonio Tonon","Cidade":"Coronel Macedo","Sua Prioridade A":"Per\u00edcia Criminal","Sua Prioridade B":"Edua\u00e7\u00e3o F\u00edsica","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"7\u00ba","Ano atual":2025.0,"UniversidadeA":"UENP","LogoUniversidadeA":null,"UniversidadeB":"UFSCAR","LogoUniversidadeB":null,"UniversidadeC":"UNESP","LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":"CI\u00caNCIAS BIOL\u00d3GICAS","CursoUnivB":"CI\u00caNCIAS BIOL\u00d3GICAS","CursoUnivC":"CI\u00caNCIAS BIOL\u00d3GICAS","CursoUnivD":null,"TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":null,"CampusA":"CORN\u00c9LIO PROC\u00d3PIO","CampusB":"SOROCABA","CampusC":"BOTUCATU","CampusD":null,"InfoCursoA":"https:\/\/uenp.edu.br\/ciencias-biologicas","InfoCursoB":"https:\/\/www.prograd.ufscar.br\/pt-br\/cursos\/cursos-oferecidos\/ciencias-biologicas\/sorocaba","InfoCursoC":"https:\/\/www.ibb.unesp.br\/#!\/ensino\/graduacao\/curso\/ciencias-biologicas\/","InfoCursoD":null,"AnoVestibular":2030.0,"DuracaoAnosCursoA":"4 ANOS","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"4 ANOS","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"4 ANOS","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":"UENP\/ENEM","VestibularB":"ENEM","VestibularC":"VUNESP\/ENEM","VestibularD":null,"Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 14:51:22","Seu Nome completo":"Melissa Leal Ribeiro","Escola":"E.E. Antonio Tonon","Cidade":"Coronel Macedo","Sua Prioridade A":"Nutri\u00e7\u00e3o","Sua Prioridade B":"Medicina","Sua idade":12.0,"Sua s\u00e9rie na escola    ":"7\u00ba","Ano atual":2025.0,"UniversidadeA":"USP","LogoUniversidadeA":null,"UniversidadeB":"UNESP","LogoUniversidadeB":null,"UniversidadeC":"UNISO","LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":"NUTRI\u00c7\u00c3O","CursoUnivB":"NUTRI\u00c7\u00c3O","CursoUnivC":"NUTRI\u00c7\u00c3O","CursoUnivD":null,"TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"PARTICULAR","TipoUnivD":null,"CampusA":"S\u00c3O PAULO","CampusB":"BOTUCATU","CampusC":"SOROCABA","CampusD":null,"InfoCursoA":"https:\/\/www.fsp.usp.br\/site\/graduacao-de-nutricao\/mostra\/930","InfoCursoB":"https:\/\/www.ibb.unesp.br\/#!\/ensino\/graduacao\/curso\/nutricao\/","InfoCursoC":"https:\/\/uniso.br\/graduacao\/presencial\/nutricao\/","InfoCursoD":null,"AnoVestibular":2030.0,"DuracaoAnosCursoA":"5 ANOS","PeriodoA":"MATUTINO\/NOTURNO","DuracaoAnosCursoB":"5 ANOS","PeriodoB":"NOTURNO","DuracaoAnosCursoC":"4 ANOS","PeriodoC":"MATUTINO\/NOTURNO","DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":"FUVEST\/ENEM","VestibularB":"VUNESP\/ENEM","VestibularC":"VESTIBULAR PR\u00d3PRIO\/ENEM","VestibularD":null,"Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 15:04:55","Seu Nome completo":"Miguel Fernando Dos Santos","Escola":"E.E. Antonio Tonon","Cidade":"Coronel Macedo","Sua Prioridade A":"Per\u00edcia Criminal","Sua Prioridade B":"Agronomia","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":"UENP","LogoUniversidadeA":null,"UniversidadeB":"UFSCAR","LogoUniversidadeB":null,"UniversidadeC":"UNESP","LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":"CI\u00caNCIAS BIOL\u00d3GICAS","CursoUnivB":"CI\u00caNCIAS BIOL\u00d3GICAS","CursoUnivC":"CI\u00caNCIAS BIOL\u00d3GICAS","CursoUnivD":null,"TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":null,"CampusA":"CORN\u00c9LIO PROC\u00d3PIO","CampusB":"SOROCABA","CampusC":"BOTUCATU","CampusD":null,"InfoCursoA":"https:\/\/uenp.edu.br\/ciencias-biologicas","InfoCursoB":"https:\/\/www.prograd.ufscar.br\/pt-br\/cursos\/cursos-oferecidos\/ciencias-biologicas\/sorocaba","InfoCursoC":"https:\/\/www.ibb.unesp.br\/#!\/ensino\/graduacao\/curso\/ciencias-biologicas\/","InfoCursoD":null,"AnoVestibular":2029.0,"DuracaoAnosCursoA":"4 ANOS","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"4 ANOS","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"4 ANOS","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":"UENP\/ENEM","VestibularB":"ENEM","VestibularC":"VUNESP\/ENEM","VestibularD":null,"Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 15:10:30","Seu Nome completo":"Miguel Soares da S. Santos","Escola":"E.E. Antonio Tonon","Cidade":"Coronel Macedo","Sua Prioridade A":"Hist\u00f3ria","Sua Prioridade B":"Jogador de Futebol","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":"UENP","LogoUniversidadeA":null,"UniversidadeB":"UNESP","LogoUniversidadeB":null,"UniversidadeC":"USP","LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":"HIST\u00d3RIA","CursoUnivB":"HIST\u00d3RIA","CursoUnivC":"HIST\u00d3RIA","CursoUnivD":null,"TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":null,"CampusA":"JACAR\u00c9ZINHO - PARAN\u00c1","CampusB":"ASSIS","CampusC":"S\u00c3O PAULO","CampusD":null,"InfoCursoA":"https:\/\/uenp.edu.br\/historia","InfoCursoB":"https:\/\/www.assis.unesp.br\/#!\/ensino\/graduacao\/cursos\/historia\/","InfoCursoC":"https:\/\/graduacao.fflch.usp.br\/historia","InfoCursoD":null,"AnoVestibular":2029.0,"DuracaoAnosCursoA":"4 ANOS","PeriodoA":"VESPERTINO\/NOTURNO","DuracaoAnosCursoB":"4 ANOS","PeriodoB":"VESPERTINO\/NOTURNO","DuracaoAnosCursoC":"4 ANOS","PeriodoC":"VESPERTINO\/NOTURNO","DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":"UENP\/ENEM","VestibularB":"VUNESP\/ENEM","VestibularC":"FUVEST\/ENEM","VestibularD":null,"Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 15:01:28","Seu Nome completo":"Mirella Rafaela","Escola":"E.E. Antonio Tonon","Cidade":"Coronel Macedo","Sua Prioridade A":"Medicina Veterin\u00e1ria","Sua Prioridade B":"Medicina","Sua idade":13.0,"Sua s\u00e9rie na escola    ":"8\u00ba","Ano atual":2025.0,"UniversidadeA":"USP","LogoUniversidadeA":null,"UniversidadeB":"UNESP","LogoUniversidadeB":null,"UniversidadeC":"UENP","LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":"MEDICINA VETERIN\u00c1RIA","CursoUnivB":"MEDICINA VETERIN\u00c1RIA","CursoUnivC":"MEDICINA VETERIN\u00c1RIA","CursoUnivD":null,"TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":null,"CampusA":"S\u00c3O PAULO","CampusB":"BOTUCATU","CampusC":"BANDEIRANTES","CampusD":null,"InfoCursoA":"https:\/\/portal.fmvz.usp.br\/ensino\/","InfoCursoB":"https:\/\/www.fmvz.unesp.br\/#!\/ensino\/graduacao\/medicina-veterinaria\/","InfoCursoC":"https:\/\/uenp.edu.br\/index.php\/medicina-veterinaria","InfoCursoD":null,"AnoVestibular":2029.0,"DuracaoAnosCursoA":"5 ANOS","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"5 ANOS","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"5 ANOS","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":"FUVEST\/ENEM","VestibularB":"VUNESP\/ENEM","VestibularC":"UENP\/ENEM","VestibularD":null,"Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 15:39:09","Seu Nome completo":"Pietro Henrique A. D. R. Oliveira","Escola":"E.E. Antonio Tonon","Cidade":"Coronel Macedo","Sua Prioridade A":"Engenharia Mec\u00e2nica","Sua Prioridade B":null,"Sua idade":13.0,"Sua s\u00e9rie na escola    ":"7\u00ba","Ano atual":2025.0,"UniversidadeA":"UFSCAR ","LogoUniversidadeA":null,"UniversidadeB":"USP","LogoUniversidadeB":null,"UniversidadeC":"UNICAMP ","LogoUniversidadeC":null,"UniversidadeD":"UNESP","LogoUniversidadeD":null,"CursoUnivA":"ENGENHARIA MEC\u00c2NICA","CursoUnivB":"ENGENHARIA MEC\u00c2NICA","CursoUnivC":"ENGENHARIA MEC\u00c2NICA","CursoUnivD":"ENGENHARIA MEC\u00c2NICA","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"P\u00daBLICA","CampusA":"S\u00c3O CARLOS","CampusB":"S\u00c3O CARLOS","CampusC":"CAMPINAS","CampusD":"BAURU","InfoCursoA":"https:\/\/www.prograd.ufscar.br\/pt-br\/cursos\/cursos-oferecidos\/engenharia-mecanica\/engenharia-mecanica","InfoCursoB":"https:\/\/eesc.usp.br\/","InfoCursoC":"https:\/\/www.dac.unicamp.br\/sistemas\/catalogos\/grad\/catalogo2025\/cursos\/10g\/index.html","InfoCursoD":"https:\/\/www.feb.unesp.br\/#!\/departamentos\/engenharia-mecanica\/graduacao\/curso\/","AnoVestibular":2030.0,"DuracaoAnosCursoA":"5 ANOS","PeriodoA":"INTEGRAL\/MATUTINO\/VESPERTINO","DuracaoAnosCursoB":"5 ANOS","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"5 ANOS","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":"5 ANOS","PeriodoD":"INTEGRAL\/MATUTINO","VestibularA":"ENEM","VestibularB":"FUVEST\/ENEM","VestibularC":"COMVEST\/ENEM","VestibularD":"VUNESP\/ENEM","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":"2025\/08\/07 14:49:56","Seu Nome completo":"Rafaela A. P. Rodrigues","Escola":"E.E. Antonio Tonon","Cidade":"Coronel Macedo","Sua Prioridade A":"Agronomia","Sua Prioridade B":"Pol\u00edcia Militar","Sua idade":12.0,"Sua s\u00e9rie na escola    ":"7\u00ba","Ano atual":2025.0,"UniversidadeA":"UENP","LogoUniversidadeA":null,"UniversidadeB":"ANHANGUERA","LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":"AGRONOMIA","CursoUnivB":"AGRONOMIA","CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":"P\u00daBLICA","TipoUnivB":"PARTICULAR","TipoUnivC":null,"TipoUnivD":null,"CampusA":"BANDEIRANTES - PARAN\u00c1","CampusB":"SOROCABA","CampusC":null,"CampusD":null,"InfoCursoA":"https:\/\/uenp.edu.br\/agronomia","InfoCursoB":"https:\/\/cursos.anhanguera.com\/inscricao?gclsrc=aw.ds&utm_source=google&utm_medium=cpc&utm_term=anhanguera+sorocaba&utm_content=gagp-007-001-0001_gads_sch-l1_prim_grad_aedu_aon_grad_ecomm_exata_conversao_roas_inscricoes_auto_kwd_institucional-exata_texto_na_na_na_na&utm_campaign=gagp-007_gads_sch-l1_prim_grad_aedu_aon_grad_ecomm_exata_conversao_roas_inscricoes&gad_source=1&gad_campaignid=21854449121&gclid=CjwKCAjwwNbEBhBpEiwAFYLtGH9KSv9_RhzPNZCMXvJXMtU_DecKaHbZlrmpyihoKQ76W1SF_ems5BoCUC8QAvD_BwE","InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":2030.0,"DuracaoAnosCursoA":"5 ANOS","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"5 ANOS","PeriodoB":"MATUTINO\/NOTURNO","DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":"UENP\/ENEM","VestibularB":"VESTIBULAR PR\u00d3PRIO\/ENEM","VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":null,"Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"AGATHA GUERREIRO BUENO","Escola":"CEMUS 1 - MARIA CONSTAN\u00c7A (ENCONTROS NA CEMUS 5)","Cidade":"SALTO","Sua Prioridade A":"PSICOLOGIA","Sua Prioridade B":null,"Sua idade":"13","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"UFSCAR","LogoUniversidadeA":null,"UniversidadeB":"USP","LogoUniversidadeB":null,"UniversidadeC":"UNIFESP","LogoUniversidadeC":null,"UniversidadeD":"CEUNSP","LogoUniversidadeD":null,"CursoUnivA":"PSICOLOGIA","CursoUnivB":"PSICOLOGIA","CursoUnivC":"PSICOLOGIA","CursoUnivD":"PSICOLOGIA","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"PRIVADA","CampusA":"S\u00c3O CARLOS, SP","CampusB":"S\u00c3O PAULO, SP","CampusC":"SANTOS, SP","CampusD":"SALTO, SP","InfoCursoA":"https:\/\/www.prograd.ufscar.br\/pt-br\/cursos\/cursos-oferecidos\/psicologia\/sao-carlos","InfoCursoB":"https:\/\/uspdigital.usp.br\/jupiterweb\/","InfoCursoC":"https:\/\/ingressounifesp.fap.unifesp.br","InfoCursoD":"https:\/\/vestibular.ceunsp.edu.br\/cursos\/psicologia","AnoVestibular":2028.0,"DuracaoAnosCursoA":"5","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"4","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"5","PeriodoC":"MATUTINO","DuracaoAnosCursoD":5.0,"PeriodoD":"NOTURNO OU INTEGRAL","VestibularA":"ENEM (SISU)","VestibularB":"FUVEST","VestibularC":"VUNESP","VestibularD":"VESTIBULAR CEUNSP\/ ENEM (prouni)","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"9\u00b0","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"AGATHA SILVA BARCELOS","Escola":"E. E. OTILIA DE PAULA LEITE","Cidade":"SALTO","Sua Prioridade A":"MATEM\u00c1TICA","Sua Prioridade B":null,"Sua idade":"12","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"IFSP","LogoUniversidadeA":null,"UniversidadeB":"UFSCAR","LogoUniversidadeB":null,"UniversidadeC":"UNICAMP","LogoUniversidadeC":null,"UniversidadeD":"USP","LogoUniversidadeD":null,"CursoUnivA":"MATEM\u00c1TICA","CursoUnivB":"MATEM\u00c1TICA","CursoUnivC":"MATEM\u00c1TICA","CursoUnivD":"MATEM\u00c1TICA","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"P\u00daBLICA","CampusA":"SALTO, SP","CampusB":"SOROCABA, SP","CampusC":"CAMPINAS, SP","CampusD":"S\u00c3O PAULO, SP","InfoCursoA":"LINK: https:\/\/salto.ifsp.edu.br\/index.php\/ensino\/superior","InfoCursoB":"LINK: https:\/\/www.ufscar.br\/cursos?area=MATEM%C3%81TICA","InfoCursoC":"LINK: https:\/\/www.pg.unicamp.br\/cursos\/CM203","InfoCursoD":"LINK: https:\/\/www.ime.usp.br\/matematica","AnoVestibular":2029.0,"DuracaoAnosCursoA":"4","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"3","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"4","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":4.0,"PeriodoD":"INTEGRAL","VestibularA":"ENEM (SISU)","VestibularB":"ENEM (SISU)","VestibularC":"COMVEST","VestibularD":"FUVEST","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"8\u00ba","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"ALINE DA SILVA DE LIMA","Escola":"E. E. LEONOR FERNANDES DA SILVA","Cidade":"SALTO","Sua Prioridade A":"CI\u00caNCIAS BIOL\u00d3GICAS","Sua Prioridade B":null,"Sua idade":"12","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"UFSCAR","LogoUniversidadeA":null,"UniversidadeB":"USP","LogoUniversidadeB":null,"UniversidadeC":"UNICAMP","LogoUniversidadeC":null,"UniversidadeD":"UNISO","LogoUniversidadeD":null,"CursoUnivA":"CI\u00caNCIAS BIOL\u00d3GICAS","CursoUnivB":"CI\u00caNCIAS BIOL\u00d3GICAS","CursoUnivC":"CI\u00caNCIAS BIOL\u00d3GICAS","CursoUnivD":"CI\u00caNCIAS BIOL\u00d3GICAS","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"PRIVADA","CampusA":"SOROCABA, SP","CampusB":"PIRACICABA, SP","CampusC":"CAMPINAS, SP","CampusD":"SOROCABA, SP","InfoCursoA":"https:\/\/www.prograd.ufscar.br\/pt-br\/cursos\/cursos-oferecidos\/ciencias-biologicas\/sorocaba","InfoCursoB":"https:\/\/www.esalq.usp.br\/graduacao\/cursos\/ciencias-biologicas","InfoCursoC":"Gradua\u00e7\u00e3o | Instituto de Biologia","InfoCursoD":"https:\/\/uniso.br\/graduacao\/presencial\/ciencias-biologicas-bacharelado\/","AnoVestibular":2029.0,"DuracaoAnosCursoA":"5 OU 4","PeriodoA":"NOTURNO OU INTEGRAL","DuracaoAnosCursoB":"5","PeriodoB":"NOTURNO","DuracaoAnosCursoC":"4","PeriodoC":"NOTURNO OU INTEGRAL","DuracaoAnosCursoD":4.0,"PeriodoD":"NOTURNO E MATUTINO","VestibularA":"ENEM (SISU)","VestibularB":"FUVEST","VestibularC":"COMVEST","VestibularD":"VESTIBULAR CEUNSP\/ ENEM (prouni)","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"8\u00b0","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"ARTHUR YOSHIOKA SANTOS","Escola":"CEMUS 1 - MARIA CONSTAN\u00c7A (ENCONTROS NA CEMUS 5)","Cidade":"SALTO","Sua Prioridade A":"LETRAS","Sua Prioridade B":null,"Sua idade":"14","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"IFSP","LogoUniversidadeA":null,"UniversidadeB":"UFSCAR","LogoUniversidadeB":null,"UniversidadeC":"UNICAMP","LogoUniversidadeC":null,"UniversidadeD":"USP","LogoUniversidadeD":null,"CursoUnivA":"LETRAS","CursoUnivB":"LETRAS","CursoUnivC":"LETRAS","CursoUnivD":"LETRAS","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"P\u00daBLICA","CampusA":"SALTO, SP","CampusB":"S\u00c3O CARLOS, SP","CampusC":"CAMPINAS , SP","CampusD":"S\u00c3O PAULO, SP","InfoCursoA":"https:\/\/slt.ifsp.edu.br\/index.php\/component\/content\/article?id=506","InfoCursoB":"https:\/\/www.prograd.ufscar.br\/pt-br\/cursos\/cursos-oferecidos\/letras","InfoCursoC":"https:\/\/www.iel.unicamp.br\/graduacao\/cursos\/cursos-do-iel-unicamp\/licenciatura-em-letras-diurno\/","InfoCursoD":"https:\/\/uspdigital.usp.br\/jupiterweb\/listarGradeCurricular?codcg=8&codcur=8051&codhab=1600&tipo=N","AnoVestibular":2028.0,"DuracaoAnosCursoA":"4","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"4","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"5 OU 4","PeriodoC":"NOTURNO OU INTEGRAL","DuracaoAnosCursoD":4.0,"PeriodoD":"INTEGRAL","VestibularA":"ENEM (SISU)","VestibularB":"ENEM (SISU)","VestibularC":"COMVEST","VestibularD":"FUVEST","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"9\u00b0","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"AUGUSTO HENRIQUE BEVILAQUA","Escola":"E. E. LEONOR FERNANDES DA SILVA","Cidade":"SALTO","Sua Prioridade A":"MEDICINA","Sua Prioridade B":null,"Sua idade":"12","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"USP","LogoUniversidadeA":null,"UniversidadeB":"UFSCAR","LogoUniversidadeB":null,"UniversidadeC":"UNICAMP","LogoUniversidadeC":null,"UniversidadeD":"PUC","LogoUniversidadeD":null,"CursoUnivA":"MEDICINA","CursoUnivB":"MEDICINA","CursoUnivC":"MEDICINA","CursoUnivD":"MEDICINA","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"PRIVADA","CampusA":"S\u00c3O PAULO, SP","CampusB":"S\u00c3O CARLOS, SP","CampusC":"CAMPINAS, SP","CampusD":"SOROCABA, SP","InfoCursoA":"https:\/\/www.fm.usp.br\/","InfoCursoB":"https:\/\/www.prograd.ufscar.br\/cursos\/medicina","InfoCursoC":"https:\/\/www.fcm.unicamp.br\/","InfoCursoD":"https:\/\/www.pucsp.br\/medicina","AnoVestibular":2029.0,"DuracaoAnosCursoA":"6","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"6","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"6","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":6.0,"PeriodoD":"INTEGRAL","VestibularA":"FUVEST","VestibularB":"ENEM","VestibularC":"COMVEST","VestibularD":"VESTIBULAR PUC-SP","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"8\u00ba","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"BEATRIZ CAZELATTO FALCOCHIO","Escola":"E. E. TANCREDO DO AMARAL","Cidade":"SALTO","Sua Prioridade A":"PALEONTOLOGIA","Sua Prioridade B":null,"Sua idade":"12","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"UFSCAR","LogoUniversidadeA":null,"UniversidadeB":"USP","LogoUniversidadeB":null,"UniversidadeC":"UNICAMP","LogoUniversidadeC":null,"UniversidadeD":"UNISO","LogoUniversidadeD":null,"CursoUnivA":"CI\u00caNCIAS BIOL\u00d3GICAS","CursoUnivB":"CI\u00caNCIAS BIOL\u00d3GICAS","CursoUnivC":"CI\u00caNCIAS BIOL\u00d3GICAS","CursoUnivD":"CI\u00caNCIAS BIOL\u00d3GICAS","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"PRIVADA","CampusA":"SOROCABA, SP","CampusB":"PIRACICABA, SP","CampusC":"CAMPINAS, SP","CampusD":"SOROCABA, SP","InfoCursoA":"https:\/\/www.prograd.ufscar.br\/pt-br\/cursos\/cursos-oferecidos\/ciencias-biologicas\/sorocaba","InfoCursoB":"https:\/\/www.esalq.usp.br\/graduacao\/cursos\/ciencias-biologicas","InfoCursoC":"https:\/\/www.ib.unicamp.br\/main_graduacao","InfoCursoD":"https:\/\/uniso.br\/graduacao\/presencial\/ciencias-biologicas-bacharelado\/","AnoVestibular":2029.0,"DuracaoAnosCursoA":"5 OU 4","PeriodoA":"NOTURNO OU MATUTINO","DuracaoAnosCursoB":"5","PeriodoB":"NOTURNO","DuracaoAnosCursoC":"5 OU 4","PeriodoC":"NOTURNO OU INTEGRAL","DuracaoAnosCursoD":4.0,"PeriodoD":"NOTURNO OU MATUTINO","VestibularA":"ENEM (SISU)","VestibularB":"FUVEST","VestibularC":"COMVEST","VestibularD":"VESTIBULAR CEUNSP \/ ENEM (prouni)","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"8\u00b0","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"CHRISTIAN DE SOUZA RIBEIRO","Escola":"CEMUS 1 - MARIA CONSTAN\u00c7A (ENCONTROS NA CEMUS 5)","Cidade":"SALTO","Sua Prioridade A":"F\u00cdSICA","Sua Prioridade B":null,"Sua idade":"13","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"UNESP","LogoUniversidadeA":null,"UniversidadeB":"UFSCAR","LogoUniversidadeB":null,"UniversidadeC":"IFSP","LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":"F\u00cdSICA","CursoUnivB":"QU\u00cdMICA","CursoUnivC":"CI\u00caNCIA DA COMPUTA\u00c7\u00c3O","CursoUnivD":null,"TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":null,"CampusA":"BAURU, SP","CampusB":"SOROCABA, SP","CampusC":"S\u00c3O PAULO, SP","CampusD":null,"InfoCursoA":"LINK: https:\/\/www2.unesp.br\/portal#!\/curso?codigo=30","InfoCursoB":"LINK: https:\/\/www.ufscar.br\/cursos?area=QU%C3%8DMICA","InfoCursoC":"LINK: https:\/\/salto.ifsp.edu.br\/index.php\/ensino\/superior","InfoCursoD":null,"AnoVestibular":2028.0,"DuracaoAnosCursoA":"4","PeriodoA":"NOTURNO","DuracaoAnosCursoB":"4","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"4","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":"VUNESP \/ ENEM","VestibularB":"ENEM (SISU)","VestibularC":"ENEM (SISU)","VestibularD":null,"Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"9\u00ba","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"DAVI DE FARA TAGLIARI","Escola":"CEMUS 1 - MARIA CONSTAN\u00c7A (ENCONTROS NA CEMUS 5)","Cidade":"SALTO","Sua Prioridade A":"CI\u00caNCIAS DA COMPUTA\u00c7\u00c3O","Sua Prioridade B":null,"Sua idade":"13","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"UNICAMP","LogoUniversidadeA":null,"UniversidadeB":"UFSCAR","LogoUniversidadeB":null,"UniversidadeC":"IFSP","LogoUniversidadeC":null,"UniversidadeD":"CEUNSP","LogoUniversidadeD":null,"CursoUnivA":"CI\u00caNCIA DA COMPUTA\u00c7\u00c3O","CursoUnivB":"CI\u00caNCIA DA COMPUTA\u00c7\u00c3O","CursoUnivC":"CI\u00caNCIA DA COMPUTA\u00c7\u00c3O","CursoUnivD":"CI\u00caNCIA DA COMPUTA\u00c7\u00c3O","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"PRIVADA","CampusA":"CAMPINAS, SP","CampusB":"SOROCABA, SP","CampusC":"SALTO, SP","CampusD":"SALTO, SP","InfoCursoA":"https:\/\/www.ic.unicamp.br\/","InfoCursoB":"https:\/\/www.prograd.ufscar.br\/cursos\/ciencia-da-computacao-sorocaba","InfoCursoC":"https:\/\/www.ifsp.edu.br\/","InfoCursoD":"https:\/\/vestibular.ceunsp.edu.br","AnoVestibular":2029.0,"DuracaoAnosCursoA":"4","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"4","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"4","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":4.0,"PeriodoD":"NOTURNO OU INTEGRAL","VestibularA":"COMVEST","VestibularB":"ENEM","VestibularC":"ENEM","VestibularD":"VESTIBULAR CEUNSP\/ENEM (Prouni)","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"9\u00ba","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"DAVI DOS SANTOS SIM\u00d5ES","Escola":"E. E. PROF\u00aa MARIA DE LOURDES MORAES COSTELLA","Cidade":"SALTO","Sua Prioridade A":"QU\u00cdMICA","Sua Prioridade B":null,"Sua idade":"12","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"UFSCAR","LogoUniversidadeA":null,"UniversidadeB":"IFSP","LogoUniversidadeB":null,"UniversidadeC":"USP","LogoUniversidadeC":null,"UniversidadeD":"UNICAMP","LogoUniversidadeD":null,"CursoUnivA":"QU\u00cdMICA","CursoUnivB":"QU\u00cdMICA","CursoUnivC":"QU\u00cdMICA","CursoUnivD":"QU\u00cdMICA","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"P\u00daBLICA","CampusA":"SOROCABA, SP","CampusB":"SALTO, SP","CampusC":"S\u00c3O PAULO, SP","CampusD":"CAMPINAS, SP","InfoCursoA":"https:\/\/www.prograd.ufscar.br\/cursos\/quimica-sorocaba","InfoCursoB":"https:\/\/www.ifsp.edu.br\/","InfoCursoC":"https:\/\/quimica.usp.br\/","InfoCursoD":"https:\/\/www.iqm.unicamp.br","AnoVestibular":2029.0,"DuracaoAnosCursoA":"4","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"4","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"4","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":4.0,"PeriodoD":"INTEGRAL","VestibularA":"ENEM (SISU)","VestibularB":"ENEM","VestibularC":"FUVEST","VestibularD":"COMVEST","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"8\u00ba","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"DAVI LUIZ TEODORO CAMARGO","Escola":"E. E. ACYLLINO AMARAL","Cidade":"SALTO","Sua Prioridade A":"CI\u00caNCIAS BIOL\u00d3GICAS","Sua Prioridade B":null,"Sua idade":"12","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"UFSCAR","LogoUniversidadeA":null,"UniversidadeB":"USP","LogoUniversidadeB":null,"UniversidadeC":"UNICAMP","LogoUniversidadeC":null,"UniversidadeD":"UNISO","LogoUniversidadeD":null,"CursoUnivA":"CI\u00caNCIAS BIOL\u00d3GICAS (BIOLOGIA TERRESTRE)","CursoUnivB":"CI\u00caNCIAS BIOL\u00d3GICAS","CursoUnivC":"CI\u00caNCIAS BIOL\u00d3GICAS","CursoUnivD":"CI\u00caNCIAS BIOL\u00d3GICAS","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"PRIVADA","CampusA":"SOROCABA, SP","CampusB":"PIRACICABA, SP","CampusC":"CAMPINAS, SP","CampusD":"SOROCABA, SP","InfoCursoA":"https:\/\/www.prograd.ufscar.br\/cursos\/ciencias-biologicas-sorocaba","InfoCursoB":"http:\/\/www.ib.usp.br\/","InfoCursoC":"https:\/\/www.ib.unicamp.br","InfoCursoD":"https:\/\/uniso.br\/graduacao\/presencial\/biologia","AnoVestibular":2029.0,"DuracaoAnosCursoA":"5","PeriodoA":"NOTURNO OU INTEGRAL","DuracaoAnosCursoB":"3","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"4","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":4.0,"PeriodoD":"NOTURNO OU INTEGRAL","VestibularA":"ENEM (SISU)","VestibularB":"FUVEST","VestibularC":"COMVEST","VestibularD":"VESTIBULAR CEUNSP\/ENEM (Prouni)","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"8\u00ba","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"ELO\u00c1 FERNANDA HONORATO","Escola":"E. E. MIRINHA TONELLO","Cidade":"SALTO","Sua Prioridade A":"QU\u00cdMICA","Sua Prioridade B":null,"Sua idade":"13","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"UFSCAR","LogoUniversidadeA":null,"UniversidadeB":"IFSP","LogoUniversidadeB":null,"UniversidadeC":"UNICAMP","LogoUniversidadeC":null,"UniversidadeD":"USP","LogoUniversidadeD":null,"CursoUnivA":"QU\u00cdMICA","CursoUnivB":"QU\u00cdMICA","CursoUnivC":"QU\u00cdMICA","CursoUnivD":"QU\u00cdMICA","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"P\u00daBLICA","CampusA":"SOROCABA, SP","CampusB":"S\u00c3O PAULO, SP","CampusC":"CAMPINAS, SP","CampusD":"S\u00c3O CARLOS,SP","InfoCursoA":"https:\/\/www.prograd.ufscar.br\/pt-br\/cursos\/cursos-oferecidos\/quimica\/sorocaba","InfoCursoB":"https:\/\/spo.ifsp.edu.br\/quimica","InfoCursoC":"https:\/\/www.iqm.unicamp.br\/","InfoCursoD":"https:\/\/www5.iqsc.usp.br\/","AnoVestibular":2029.0,"DuracaoAnosCursoA":"5","PeriodoA":"NOTURNO","DuracaoAnosCursoB":"4","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"4","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":4.0,"PeriodoD":"INTEGRAL","VestibularA":"ENEM (SISU)","VestibularB":"ENEM (SISU)","VestibularC":"COMVEST","VestibularD":"FUVEST","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"8\u00b0","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"ENZO GASPAR SINI","Escola":"E. E. PAULA SANTOS","Cidade":"SALTO","Sua Prioridade A":"MEDICINA","Sua Prioridade B":null,"Sua idade":"12","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"USP","LogoUniversidadeA":null,"UniversidadeB":"UFSCAR","LogoUniversidadeB":null,"UniversidadeC":"UNICAMP","LogoUniversidadeC":null,"UniversidadeD":"PUC","LogoUniversidadeD":null,"CursoUnivA":"MEDICINA","CursoUnivB":"MEDICINA","CursoUnivC":"MEDICINA","CursoUnivD":"MEDICINA","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"PRIVADA","CampusA":"S\u00c3O PAULO, SP","CampusB":"S\u00c3O CARLOS, SP","CampusC":"CAMPINAS, SP","CampusD":"SOROCABA, SP","InfoCursoA":"https:\/\/www.fm.usp.br\/","InfoCursoB":"https:\/\/www.prograd.ufscar.br\/cursos\/medicina","InfoCursoC":"https:\/\/www.fcm.unicamp.br\/","InfoCursoD":"https:\/\/www.pucsp.br\/medicina","AnoVestibular":2029.0,"DuracaoAnosCursoA":"6","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"6","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"6","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":6.0,"PeriodoD":"INTEGRAL","VestibularA":"FUVEST","VestibularB":"ENEM","VestibularC":"COMVEST","VestibularD":"VESTIBULAR PUC-SP","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"8\u00ba","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"GUILHERME MARINHO DE MELO SOUTO","Escola":"CEMUS 1 - MARIA CONSTAN\u00c7A (ENCONTROS NA CEMUS 5)","Cidade":"SALTO","Sua Prioridade A":"BOMBEIRO CIVIL","Sua Prioridade B":null,"Sua idade":"13","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"SENAC SALTO","LogoUniversidadeA":null,"UniversidadeB":"CENTRO EDUCACIONAL CAMILO","LogoUniversidadeB":null,"UniversidadeC":null,"LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":"Bombeiro Civil","CursoUnivB":"Forma\u00e7\u00e3o Bombeiro","CursoUnivC":null,"CursoUnivD":null,"TipoUnivA":"PRIVADA","TipoUnivB":"PRIVADA","TipoUnivC":null,"TipoUnivD":null,"CampusA":"SALTO, SP","CampusB":"SALTO, SP","CampusC":null,"CampusD":null,"InfoCursoA":"LINK: https:\/\/www.sp.senac.br\/web\/tecnico\/tecnico-em-seguranca-do-trabalho","InfoCursoB":"LINK: https:\/\/www.colegiocamilo.com.br\/cursos\/curso-de-formacao-de-bombeiro-civil\/","InfoCursoC":null,"InfoCursoD":null,"AnoVestibular":2028.0,"DuracaoAnosCursoA":"1,5","PeriodoA":"INT\/NOT","DuracaoAnosCursoB":"1,5","PeriodoB":"INT\/NOT","DuracaoAnosCursoC":null,"PeriodoC":null,"DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":null,"VestibularB":null,"VestibularC":null,"VestibularD":null,"Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"9\u00ba","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"JO\u00c3O PEDRO COUTO DOS SANTOS","Escola":"E. E. PROF. JOSEANO COSTA PINTO","Cidade":"SALTO","Sua Prioridade A":"CI\u00caNCIAS DA COMPUTA\u00c7\u00c3O","Sua Prioridade B":null,"Sua idade":"12","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"UNICAMP","LogoUniversidadeA":null,"UniversidadeB":"UFSCAR","LogoUniversidadeB":null,"UniversidadeC":"IFSP","LogoUniversidadeC":null,"UniversidadeD":"CEUNSP","LogoUniversidadeD":null,"CursoUnivA":"CI\u00caNCIA DA COMPUTA\u00c7\u00c3O","CursoUnivB":"CI\u00caNCIA DA COMPUTA\u00c7\u00c3O","CursoUnivC":"CI\u00caNCIA DA COMPUTA\u00c7\u00c3O","CursoUnivD":"CI\u00caNCIA DA COMPUTA\u00c7\u00c3O","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"PRIVADA","CampusA":"CAMPINAS, SP","CampusB":"SOROCABA, SP","CampusC":"SALTO, SP","CampusD":"SALTO, SP","InfoCursoA":"https:\/\/www.ic.unicamp.br\/","InfoCursoB":"https:\/\/www.prograd.ufscar.br\/cursos\/ciencia-da-computacao-sorocaba","InfoCursoC":"https:\/\/www.ifsp.edu.br\/","InfoCursoD":"https:\/\/vestibular.ceunsp.edu.br","AnoVestibular":2029.0,"DuracaoAnosCursoA":"4","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"4","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"4","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":4.0,"PeriodoD":"NOTURNO OU INTEGRAL","VestibularA":"COMVEST","VestibularB":"ENEM","VestibularC":"ENEM","VestibularD":"VESTIBULAR CEUNSP\/ENEM (Prouni)","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"8\u00ba","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"JONATHAN LEITE FERNANDES","Escola":"CEMUS 1 - MARIA CONSTAN\u00c7A (ENCONTROS NA CEMUS 5)","Cidade":"SALTO","Sua Prioridade A":"ENGENHARIA CIVIL","Sua Prioridade B":null,"Sua idade":"14","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"UFSCAR","LogoUniversidadeA":null,"UniversidadeB":"USP","LogoUniversidadeB":null,"UniversidadeC":"IFSP","LogoUniversidadeC":null,"UniversidadeD":"UNICAMP","LogoUniversidadeD":null,"CursoUnivA":"ENGENHARIA CIVIL","CursoUnivB":"ENGENHARIA CIVIL","CursoUnivC":"ENGENHARIA CIVIL","CursoUnivD":"ENGENHARIA CIVIL","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"P\u00daBLICA","CampusA":"S\u00c3O CARLOS, SP","CampusB":"S\u00c3O CARLOS, SP","CampusC":"S\u00c3O PAULO, SP","CampusD":"CAMPINAS, SP","InfoCursoA":"https:\/\/www.prograd.ufscar.br\/pt-br\/cursos\/cursos-oferecidos\/engenharia-civil","InfoCursoB":"https:\/\/eesc.usp.br\/graduacao\/curso.php?id=18023","InfoCursoC":"https:\/\/spo.ifsp.edu.br\/engenharia-civil","InfoCursoD":"https:\/\/www.siarq.unicamp.br\/difusao\/exposicoes\/2-uncategorised\/221-faculdade-de-engenharia-civil-fec","AnoVestibular":2028.0,"DuracaoAnosCursoA":"5","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"5","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"5","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":5.0,"PeriodoD":"INTEGRAL","VestibularA":"ENEM (SISU)","VestibularB":"FUVEST","VestibularC":"ENEM (SISU)","VestibularD":"COMVEST","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"9\u00b0","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"KAUAN DE SOUZA","Escola":"E. E. DOLORES ANTUNES DA SILVA","Cidade":"SALTO","Sua Prioridade A":"CI\u00caNCIAS BIOL\u00d3GICAS","Sua Prioridade B":null,"Sua idade":"12","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"UFSCAR","LogoUniversidadeA":null,"UniversidadeB":"USP","LogoUniversidadeB":null,"UniversidadeC":"UNICAMP","LogoUniversidadeC":null,"UniversidadeD":"UNISO","LogoUniversidadeD":null,"CursoUnivA":"CI\u00caNCIAS BIOL\u00d3GICAS","CursoUnivB":"CI\u00caNCIAS BIOL\u00d3GICAS","CursoUnivC":"CI\u00caNCIAS BIOL\u00d3GICAS","CursoUnivD":"CI\u00caNCIAS BIOL\u00d3GICAS","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"PRIVADA","CampusA":"SOROCABA, SP","CampusB":"PIRACICABA, SP","CampusC":"CAMPINAS, SP","CampusD":"SOROCABA, SP","InfoCursoA":"https:\/\/www.prograd.ufscar.br\/cursos\/ciencias-biologicas-sorocaba","InfoCursoB":"http:\/\/www.ib.usp.br\/","InfoCursoC":"https:\/\/www.ib.unicamp.br","InfoCursoD":"https:\/\/uniso.br\/graduacao\/presencial\/biologia","AnoVestibular":2029.0,"DuracaoAnosCursoA":"5","PeriodoA":"NOTURNO OU INTEGRAL","DuracaoAnosCursoB":"3","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"4","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":4.0,"PeriodoD":"NOTURNO OU INTEGRAL","VestibularA":"ENEM (SISU)","VestibularB":"FUVEST","VestibularC":"COMVEST","VestibularD":"VESTIBULAR CEUNSP\/ENEM (Prouni)","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"8\u00ba","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"LARA BEATRIZ BENITO TEIXEIRA A","Escola":"E. E. MIRINHA TONELLO","Cidade":"SALTO","Sua Prioridade A":"DIREITO","Sua Prioridade B":null,"Sua idade":"13","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"UNESP","LogoUniversidadeA":null,"UniversidadeB":"UFRJ","LogoUniversidadeB":null,"UniversidadeC":"USP","LogoUniversidadeC":null,"UniversidadeD":"FADI","LogoUniversidadeD":null,"CursoUnivA":"DIREITO","CursoUnivB":"DIREITO","CursoUnivC":"DIREITO","CursoUnivD":"DIREITO","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"PRIVADA","CampusA":"FRANCA, SP","CampusB":"RIO DE JANEIRO","CampusC":"S\u00c3O PAULO, SP","CampusD":"SOROCABA, SP","InfoCursoA":"https:\/\/faac.unesp.br\/#!\/cursos\/direito","InfoCursoB":"https:\/\/direito.ufrj.br\/","InfoCursoC":"https:\/\/www.direito.usp.br","InfoCursoD":"https:\/\/www.fadi.br\/","AnoVestibular":2029.0,"DuracaoAnosCursoA":"5","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"5","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"5","PeriodoC":"NOTURNO","DuracaoAnosCursoD":5.0,"PeriodoD":"NOTURNO OU INTEGRAL","VestibularA":"VUNESP","VestibularB":"ENEM","VestibularC":"FUVEST","VestibularD":"VESTIBULAR FADI","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"8\u00ba","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"LUCAS DE JESUS OLIVEIRA","Escola":"E. E. JOSEANO COSTA PINTO","Cidade":"SALTO","Sua Prioridade A":"ARQUITETURA E URBANISMO","Sua Prioridade B":null,"Sua idade":"13","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"UNICAMP","LogoUniversidadeA":null,"UniversidadeB":"USP","LogoUniversidadeB":null,"UniversidadeC":"IFSP","LogoUniversidadeC":null,"UniversidadeD":"CEUNSP","LogoUniversidadeD":null,"CursoUnivA":"ARQUITETURA E URBANISMO","CursoUnivB":"ARQUITETURA E URBANISMO","CursoUnivC":"ARQUITETURA E URBANISMO","CursoUnivD":"ARQUITETURA E URBANISMO","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"PRIVADA","CampusA":"CAMPINAS , SP","CampusB":"S\u00c3O PAULO, SP","CampusC":"S\u00c3O PAULO, SP","CampusD":"SALTO, SP","InfoCursoA":"https:\/\/www.comvest.unicamp.br\/cursos\/curso-arquitetura-urbanismo\/","InfoCursoB":"https:\/\/www.fau.usp.br\/ensino\/graduacao\/arquitetura-e-urbanismo\/?utm_source=chatgpt.com","InfoCursoC":"https:\/\/drive.ifsp.edu.br\/s\/ZBYsEhnS2mguXeb","InfoCursoD":"https:\/\/cursos.ceunsp.edu.br\/grad-arquitetura-e-urbanismo-ceunsp\/p","AnoVestibular":2029.0,"DuracaoAnosCursoA":"6","PeriodoA":"NOTURNO","DuracaoAnosCursoB":"5","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"5","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":5.0,"PeriodoD":"NOTURNO","VestibularA":"COMVEST","VestibularB":"FUVEST","VestibularC":"VESTIBULAS FO IFSP\/ ENEM (SISU)","VestibularD":"VESTIBULAR CEUNSP\/ ENEM (prouni)","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"8\u00b0","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"LUCAS RODRIGUES OLIVEIRA","Escola":"E. E. DOLORES ANTUNES DA SILVA","Cidade":"SALTO","Sua Prioridade A":"CI\u00caNCIAS BIOL\u00d3GICAS","Sua Prioridade B":null,"Sua idade":"12","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"UFSCAR","LogoUniversidadeA":null,"UniversidadeB":"USP","LogoUniversidadeB":null,"UniversidadeC":"UNICAMP","LogoUniversidadeC":null,"UniversidadeD":"UNISO","LogoUniversidadeD":null,"CursoUnivA":"CI\u00caNCIAS BIOL\u00d3GICAS","CursoUnivB":"CI\u00caNCIAS BIOL\u00d3GICAS","CursoUnivC":"CI\u00caNCIAS BIOL\u00d3GICAS","CursoUnivD":"CI\u00caNCIAS BIOL\u00d3GICAS","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"PRIVADA","CampusA":"SOROCABA, SP","CampusB":"PIRACICABA, SP","CampusC":"CAMPINAS, SP","CampusD":"SOROCABA, SP","InfoCursoA":"https:\/\/www.prograd.ufscar.br\/pt-br\/cursos\/cursos-oferecidos\/ciencias-biologicas\/sorocaba","InfoCursoB":"https:\/\/www.esalq.usp.br\/graduacao\/cursos\/ciencias-biologicas","InfoCursoC":"https:\/\/www.ib.unicamp.br\/main_graduacao","InfoCursoD":"https:\/\/uniso.br\/graduacao\/presencial\/ciencias-biologicas-bacharelado\/","AnoVestibular":2029.0,"DuracaoAnosCursoA":"5 OU 4","PeriodoA":"NOTURNO OU INTEGRAL","DuracaoAnosCursoB":"5","PeriodoB":"NOTURNO","DuracaoAnosCursoC":"4","PeriodoC":"NOTURNO OU INTEGRAL","DuracaoAnosCursoD":4.0,"PeriodoD":"NOTURNO E MATUTINO","VestibularA":"ENEM (SISU)","VestibularB":"FUVEST","VestibularC":"COMVEST","VestibularD":"VESTIBULAR CEUNSP\/ ENEM (prouni)","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"8\u00b0","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"LUIZ RENATO BATISTA DE JESUS","Escola":"E.E. TANCREDO DO AMARAL","Cidade":"SALTO","Sua Prioridade A":"EDUCA\u00c7\u00c3O F\u00cdSICA","Sua Prioridade B":null,"Sua idade":"12","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"UNIFESP","LogoUniversidadeA":null,"UniversidadeB":"UFSCAR","LogoUniversidadeB":null,"UniversidadeC":"UNICAMP","LogoUniversidadeC":null,"UniversidadeD":"CEUNSP","LogoUniversidadeD":null,"CursoUnivA":"EDUCA\u00c7\u00c3O F\u00cdSICA","CursoUnivB":"EDUCA\u00c7\u00c3O F\u00cdSICA","CursoUnivC":"EDUCA\u00c7\u00c3O F\u00cdSICA","CursoUnivD":"EDUCA\u00c7\u00c3O F\u00cdSICA","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"PRIVADA","CampusA":"SANTOS, SP","CampusB":"S\u00c3O CARLOS, SP","CampusC":"CAMPINAS, SP","CampusD":"ITU, SP","InfoCursoA":"LINK: https:\/\/www.unifesp.br\/campus\/san7\/graduacao\/educacao-fisica","InfoCursoB":"LINK: https:\/\/www.ufscar.br\/cursos?area=EDUCA%C3%87%C3%83O%20F%C3%8DSICA","InfoCursoC":"LINK: https:\/\/www.pg.unicamp.br\/cursos\/EE104","InfoCursoD":"LINK: https:\/\/ceunsp.cps.sp.gov.br\/cursos\/graduacao\/educacao-fisica","AnoVestibular":2029.0,"DuracaoAnosCursoA":"4","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"4","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"4","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":4.0,"PeriodoD":"INTEGRAL","VestibularA":"ENEM (SISU)","VestibularB":"ENEM (SISU)","VestibularC":"COMVEST","VestibularD":"VESTIBULAR CEUNSP","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"8\u00ba","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"MARIA ALICE PEREIRA","Escola":"E. E. DOLORES ANTUNES DA SILVA","Cidade":"SALTO","Sua Prioridade A":"MEDICINA","Sua Prioridade B":null,"Sua idade":"12","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"USP","LogoUniversidadeA":null,"UniversidadeB":"UFSCAR","LogoUniversidadeB":null,"UniversidadeC":"UNICAMP","LogoUniversidadeC":null,"UniversidadeD":"PUC","LogoUniversidadeD":null,"CursoUnivA":"MEDICINA","CursoUnivB":"MEDICINA","CursoUnivC":"MEDICINA","CursoUnivD":"MEDICINA","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"PRIVADA","CampusA":"S\u00c3O PAULO, SP","CampusB":"S\u00c3O CARLOS, SP","CampusC":"CAMPINAS, SP","CampusD":"SOROCABA, SP","InfoCursoA":"LINK: https:\/\/www.fm.usp.br\/en\/ensino\/graduacao\/medicina","InfoCursoB":"LINK: https:\/\/www.ufscar.br\/cursos?area=MEDICINA","InfoCursoC":"LINK: https:\/\/www.pg.unicamp.br\/cursos\/MC100","InfoCursoD":"LINK: https:\/\/www.pucsp.br\/graduacao\/medicina","AnoVestibular":2029.0,"DuracaoAnosCursoA":"6","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"6","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"6","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":6.0,"PeriodoD":"INTEGRAL","VestibularA":"FUVEST","VestibularB":"ENEM (SISU)","VestibularC":"COMVEST","VestibularD":"VESTIBULAR PUC-SP","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"8\u00ba","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"MARIA EDUARDA GOMES DE CARVALHO","Escola":"E. E. LEONOR FERNANDES DA SILVA","Cidade":"SALTO","Sua Prioridade A":"DIREITO","Sua Prioridade B":null,"Sua idade":"13","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"UNESP","LogoUniversidadeA":null,"UniversidadeB":"UFRJ","LogoUniversidadeB":null,"UniversidadeC":"USP","LogoUniversidadeC":null,"UniversidadeD":"FADI","LogoUniversidadeD":null,"CursoUnivA":"DIREITO","CursoUnivB":"DIREITO","CursoUnivC":"DIREITO","CursoUnivD":"DIREITO","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"PRIVADA","CampusA":"FRANCA, SP","CampusB":"RIO DE JANEIRO","CampusC":"S\u00c3O PAULO, SP","CampusD":"SOROCABA, SP","InfoCursoA":"https:\/\/faac.unesp.br\/#!\/cursos\/direito","InfoCursoB":"https:\/\/direito.ufrj.br\/","InfoCursoC":"https:\/\/www.direito.usp.br","InfoCursoD":"https:\/\/www.fadi.br\/","AnoVestibular":2029.0,"DuracaoAnosCursoA":"5","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"5","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"5","PeriodoC":"NOTURNO","DuracaoAnosCursoD":5.0,"PeriodoD":"NOTURNO OU INTEGRAL","VestibularA":"VUNESP","VestibularB":"ENEM","VestibularC":"FUVEST","VestibularD":"VESTIBULAR FADI","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"8\u00ba","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"MARIA JULIA ALVES ROSSI","Escola":"E. E. MIRINHA TONELLO","Cidade":"SALTO","Sua Prioridade A":"ASTRONOMIA","Sua Prioridade B":null,"Sua idade":"12","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"USP","LogoUniversidadeA":null,"UniversidadeB":"UNESP","LogoUniversidadeB":null,"UniversidadeC":"UNESP","LogoUniversidadeC":null,"UniversidadeD":"UFSCAR","LogoUniversidadeD":null,"CursoUnivA":"ASTRONOMIA","CursoUnivB":"F\u00cdSICA (com \u00eanfase em astronomia)","CursoUnivC":"F\u00cdSICA (especializar em Astronomia","CursoUnivD":"F\u00cdSICA (Especializar em Astronomia)","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"P\u00daBLICA","CampusA":"S\u00c3O PAULO, SP","CampusB":"BAURU, SP","CampusC":"RIO CLARO, SP","CampusD":"SOROCABA, SP","InfoCursoA":"https:\/\/guiausp.com\/bacharelados\/astronomia\/?utm_source=chatgpt.com","InfoCursoB":"https:\/\/www.fc.unesp.br\/#!\/departamentos\/fisica\/cursos\/fsica\/apresentacaoteste\/","InfoCursoC":"https:\/\/igce.rc.unesp.br\/#!\/departamentos\/fisica\/graduacao\/apresentacao\/ S\u00c3O PAULO - ","InfoCursoD":"https:\/\/www.prograd.ufscar.br\/pt-br\/cursos\/cursos-oferecidos\/fisica\/sorocaba","AnoVestibular":2029.0,"DuracaoAnosCursoA":"4","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"4","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"4","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":5.0,"PeriodoD":"INTEGRAL","VestibularA":"FUVEST","VestibularB":"VUNESP \/ ENEM (SISU)","VestibularC":"VUNESP \/ ENEM (SISU)","VestibularD":"ENEM (SISU)","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"8\u00b0","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"MATHEUS L\u00c1ZARO DE SOUZA C. DE ALMEIDA","Escola":"E. E. PADRE FRANCISCO RIGOLIM (CAIC)","Cidade":"SALTO","Sua Prioridade A":"QU\u00cdMICA","Sua Prioridade B":null,"Sua idade":"13","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"UFSCAR","LogoUniversidadeA":null,"UniversidadeB":"IFSP","LogoUniversidadeB":null,"UniversidadeC":"UNICAMP","LogoUniversidadeC":null,"UniversidadeD":"USP","LogoUniversidadeD":null,"CursoUnivA":"QU\u00cdMICA","CursoUnivB":"QU\u00cdMICA","CursoUnivC":"QU\u00cdMICA","CursoUnivD":"QU\u00cdMICA","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"P\u00daBLICA","CampusA":"SOROCABA, SP","CampusB":"S\u00c3O PAULO, SP","CampusC":"CAMPINAS, SP","CampusD":"S\u00c3O CARLOS,SP","InfoCursoA":"https:\/\/www.prograd.ufscar.br\/pt-br\/cursos\/cursos-oferecidos\/quimica\/sorocaba","InfoCursoB":"https:\/\/spo.ifsp.edu.br\/quimica","InfoCursoC":"https:\/\/www.iqm.unicamp.br\/","InfoCursoD":"https:\/\/www5.iqsc.usp.br\/","AnoVestibular":2029.0,"DuracaoAnosCursoA":"5","PeriodoA":"NOTURNO","DuracaoAnosCursoB":"4","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"4","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":4.0,"PeriodoD":"INTEGRAL","VestibularA":"ENEM (SISU)","VestibularB":"ENEM (SISU)","VestibularC":"COMVEST","VestibularD":"FUVEST","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"8\u00b0","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"MELISSA BRITO CUNHA","Escola":"E. E. DOLORES ANTUNES DA SILVA","Cidade":"SALTO","Sua Prioridade A":"ARTES C\u00caNICAS","Sua Prioridade B":null,"Sua idade":"12","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"UNESP","LogoUniversidadeA":null,"UniversidadeB":"UNICAMP","LogoUniversidadeB":null,"UniversidadeC":"USP","LogoUniversidadeC":null,"UniversidadeD":"UFRJ","LogoUniversidadeD":null,"CursoUnivA":"ARTES C\u00caNICAS","CursoUnivB":"ARTES C\u00caNICAS","CursoUnivC":"ARTES C\u00caNICAS","CursoUnivD":"ARTES C\u00caNICAS","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"P\u00daBLICA","CampusA":"CAMPINAS, SP","CampusB":"S\u00c3O PAULO, SP","CampusC":"S\u00c3O PAULO, SP","CampusD":"RIO DE JANEIRO, RJ","InfoCursoA":"https:\/\/ingressounesp.fat.unesp.br\/","InfoCursoB":"https:\/\/www.comvest.unicamp.br\/cursos\/","InfoCursoC":"https:\/\/uspdigital.usp.br\/jupiterweb\/","InfoCursoD":"https:\/\/www.artes.ufrj.br","AnoVestibular":2029.0,"DuracaoAnosCursoA":"4","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"4","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"4","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":4.0,"PeriodoD":"INTEGRAL","VestibularA":"VUNESP","VestibularB":"COMVEST","VestibularC":"FUVEST","VestibularD":"ENEM (SISU)","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"8\u00b0","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"MIGUEL SANTIAGO MILHASSI","Escola":"CEMUS 1 - MARIA CONSTAN\u00c7A (ENCONTROS NA CEMUS 5)","Cidade":"SALTO","Sua Prioridade A":"F\u00cdSICA","Sua Prioridade B":null,"Sua idade":"13","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"UNESP","LogoUniversidadeA":null,"UniversidadeB":"UFSCAR","LogoUniversidadeB":null,"UniversidadeC":"IFSP","LogoUniversidadeC":null,"UniversidadeD":null,"LogoUniversidadeD":null,"CursoUnivA":"F\u00cdSICA","CursoUnivB":"F\u00cdSICA","CursoUnivC":"F\u00cdSICA","CursoUnivD":null,"TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":null,"CampusA":"BAURU, SP","CampusB":"RIO CLARO, SP","CampusC":"ITAPETININGA","CampusD":null,"InfoCursoA":"LINK: https:\/\/www2.unesp.br\/portal#!\/curso?codigo=30","InfoCursoB":"LINK: https:\/\/www.ufscar.br\/cursos?area=F%C3%8DSICA","InfoCursoC":"LINK: https:\/\/salto.ifsp.edu.br\/index.php\/ensino\/superior","InfoCursoD":null,"AnoVestibular":2028.0,"DuracaoAnosCursoA":"4","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"4","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"4","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":null,"PeriodoD":null,"VestibularA":"VUNESP \/ ENEM","VestibularB":"ENEM (SISU)","VestibularC":"ENEM (SISU)","VestibularD":null,"Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"9\u00ba","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"N\u00cdCOLAS REIS DE ALMEIDA","Escola":"CEMUS 1 - MARIA CONSTAN\u00c7A (ENCONTROS NA CEMUS 5)","Cidade":"SALTO","Sua Prioridade A":"CI\u00caNCIAS DA COMPUTA\u00c7\u00c3O","Sua Prioridade B":null,"Sua idade":"13","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"UNICAMP","LogoUniversidadeA":null,"UniversidadeB":"UFSCAR","LogoUniversidadeB":null,"UniversidadeC":"IFSP","LogoUniversidadeC":null,"UniversidadeD":"CEUNSP","LogoUniversidadeD":null,"CursoUnivA":"CI\u00caNCIA DA COMPUTA\u00c7\u00c3O","CursoUnivB":"CI\u00caNCIA DA COMPUTA\u00c7\u00c3O","CursoUnivC":"CI\u00caNCIA DA COMPUTA\u00c7\u00c3O","CursoUnivD":"CI\u00caNCIA DA COMPUTA\u00c7\u00c3O","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"PRIVADA","CampusA":"CAMPINAS. SP","CampusB":"SOROCABA, SP","CampusC":"SALTO, SP","CampusD":"SALTO, SP","InfoCursoA":"https:\/\/ic.unicamp.br\/graduacao\/ciencia-da-computacao\/","InfoCursoB":"https:\/\/www.prograd.ufscar.br\/pt-br\/cursos\/cursos-oferecidos\/ciencia-da-computacao\/sorocaba","InfoCursoC":"https:\/\/slt.ifsp.edu.br\/index.php\/component\/content\/article\/2-uncategorised\/509-bacharelado-em-ciencias-da-computacao","InfoCursoD":"https:\/\/cursos.ceunsp.edu.br\/grad-ciencia-da-computacao-ceunsp\/p?...","AnoVestibular":2029.0,"DuracaoAnosCursoA":"5","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"4","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"4","PeriodoC":"INTEGRAL","DuracaoAnosCursoD":4.0,"PeriodoD":"NOTURNO","VestibularA":"COMVEST","VestibularB":"ENEM (SISU)","VestibularC":"VESTIBULAS FO IFSP\/ ENEM (SISU)","VestibularD":"VESTIBULAR CEUNSP\/ ENEM (prouni)","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"9\u00b0","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"PEDRO SPIGUEL MARRI","Escola":"CEMUS 1 - MARIA CONSTAN\u00c7A (ENCONTROS NA CEMUS 5)","Cidade":"SALTO","Sua Prioridade A":"F\u00cdSICA","Sua Prioridade B":null,"Sua idade":"13","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"UNESP","LogoUniversidadeA":null,"UniversidadeB":"UNESP","LogoUniversidadeB":null,"UniversidadeC":"UFSCAR","LogoUniversidadeC":null,"UniversidadeD":"IFSP","LogoUniversidadeD":null,"CursoUnivA":"F\u00cdSICA","CursoUnivB":"F\u00cdSICA","CursoUnivC":"F\u00cdSICA","CursoUnivD":"F\u00cdSICA","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"P\u00daBLICA","CampusA":"BAURU, SP","CampusB":"RIO CLARO, SP","CampusC":"SOROCABA, SP","CampusD":"ITAPETININGA, SP","InfoCursoA":"https:\/\/www.fc.unesp.br\/#!\/departamentos\/fisica\/cursos\/fsica\/apresentacaoteste\/","InfoCursoB":"https:\/\/igce.rc.unesp.br\/#!\/departamentos\/fisica\/graduacao\/apresentacao\/","InfoCursoC":"https:\/\/www.prograd.ufscar.br\/pt-br\/cursos\/cursos-oferecidos\/fisica\/sorocaba","InfoCursoD":"https:\/\/cursos.ifsp.edu.br\/graduacao\/curso\/ITP25300\/","AnoVestibular":2028.0,"DuracaoAnosCursoA":"4","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"4","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"5","PeriodoC":"NOTURNO","DuracaoAnosCursoD":4.0,"PeriodoD":"INTEGRAL","VestibularA":"VUNESP \/ ENEM (SISU)","VestibularB":"VUNESP \/ ENEM (SISU)","VestibularC":"ENEM (SISU)","VestibularD":"ENEM (SISU)","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"9\u00b0","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"THAMIRES BARBOSA VILAS BOAS","Escola":"E. E. MIRINHA TONELLO","Cidade":"SALTO","Sua Prioridade A":"PSICOLOGIA","Sua Prioridade B":null,"Sua idade":"12","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"UFSCAR","LogoUniversidadeA":null,"UniversidadeB":"USP","LogoUniversidadeB":null,"UniversidadeC":"UNIFESP","LogoUniversidadeC":null,"UniversidadeD":"CEUNSP","LogoUniversidadeD":null,"CursoUnivA":"PSICOLOGIA","CursoUnivB":"PSICOLOGIA","CursoUnivC":"PSICOLOGIA","CursoUnivD":"PSICOLOGIA","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"PRIVADA","CampusA":"S\u00c3O CARLOS, SP","CampusB":"S\u00c3O PAULO, SP","CampusC":"SANTOS, SP","CampusD":"SALTO, SP","InfoCursoA":"https:\/\/www.prograd.ufscar.br\/pt-br\/cursos\/cursos-oferecidos\/psicologia\/sao-carlos","InfoCursoB":"https:\/\/uspdigital.usp.br\/jupiterweb\/","InfoCursoC":"https:\/\/ingressounifesp.fap.unifesp.br","InfoCursoD":"https:\/\/vestibular.ceunsp.edu.br\/cursos\/psicologia","AnoVestibular":2029.0,"DuracaoAnosCursoA":"5","PeriodoA":"INTEGRAL","DuracaoAnosCursoB":"4","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"5","PeriodoC":"MATUTINO","DuracaoAnosCursoD":5.0,"PeriodoD":"NOTURNO OU INTEGRAL","VestibularA":"ENEM (SISU)","VestibularB":"FUVEST","VestibularC":"VUNESP","VestibularD":"VESTIBULAR CEUNSP\/ ENEM (prouni)","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"8\u00b0","Sua data de nascimento    ":null,"Idade atual":null},{"Carimbo de data\/hora":null,"Seu Nome completo":"YAGO CRUVINEL DE OLIVEIRA","Escola":"E. E. PADRE FRANCISCO RIGOLIM (CAIC)","Cidade":"SALTO","Sua Prioridade A":"GEST\u00c3O DE EMPRESA","Sua Prioridade B":null,"Sua idade":"13","Sua s\u00e9rie na escola    ":null,"Ano atual":2025.0,"UniversidadeA":"UFSCAR","LogoUniversidadeA":null,"UniversidadeB":"UNICAMP","LogoUniversidadeB":null,"UniversidadeC":"USP","LogoUniversidadeC":null,"UniversidadeD":"UNISO","LogoUniversidadeD":null,"CursoUnivA":"ADMINISTRA\u00c7\u00c3O (com especializa\u00e7\u00e3o em Gest\u00e3o Empresarial)","CursoUnivB":"ADMINISTRA\u00c7\u00c3O (com especializa\u00e7\u00e3o em Gest\u00e3o Empresarial)","CursoUnivC":"ADMINISTRA\u00c7\u00c3O (com especializa\u00e7\u00e3o em Gest\u00e3o Empresarial)","CursoUnivD":"ADMINISTRA\u00c7\u00c3O (com especializa\u00e7\u00e3o em Gest\u00e3o Empresarial)","TipoUnivA":"P\u00daBLICA","TipoUnivB":"P\u00daBLICA","TipoUnivC":"P\u00daBLICA","TipoUnivD":"PRIVADA","CampusA":"SOROCABA, SP","CampusB":"LIMEIRA, SP","CampusC":"PIRACICABA, SP","CampusD":"BAURU, SP","InfoCursoA":"https:\/\/www.prograd.ufscar.br\/pt-br\/cursos\/cursos-oferecidos\/administracao-publica\/sorocaba","InfoCursoB":"https:\/\/www.comvest.unicamp.br\/cursos\/","InfoCursoC":"https:\/\/www.fea.usp.br\/","InfoCursoD":"https:\/\/uniso.br\/graduacao\/presencial\/administracao","AnoVestibular":2029.0,"DuracaoAnosCursoA":"4","PeriodoA":"NOTURNO","DuracaoAnosCursoB":"4","PeriodoB":"INTEGRAL","DuracaoAnosCursoC":"4","PeriodoC":"NOTURNO","DuracaoAnosCursoD":4.0,"PeriodoD":"NOTURNO OU INTEGRAL","VestibularA":"ENEM (SISU)","VestibularB":"COMVEST","VestibularC":"FUVEST","VestibularD":"VESTIBULAR CEUNSP\/ ENEM (prouni)","Situa\u00e7\u00e3o":"Ativo","Sua s\u00e9rie na escola ":"8\u00b0","Sua data de nascimento    ":null,"Idade atual":null}];
+        
+        $(document).ready(function() {
+            // Inicializar DataTable
+            const table = $('#projetoVidaTable').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.13.6/i18n/pt-BR.json"
+                },
+                "pageLength": 25,
+                "lengthMenu": [10, 25, 50, 100],
+                "order": [[0, "asc"]]
+            });
+            
+            // Click na linha para abrir modal
+            $('#projetoVidaTable tbody').on('click', 'tr', function() {
+                const rowData = table.row(this).data();
+                if (rowData && rowData.length > 0) {
+                    // O _row_id é sempre a última coluna
+                    const rowId = parseInt(rowData[rowData.length - 1]);
+                    if (!isNaN(rowId) && projetoVidaData[rowId]) {
+                        showModal(projetoVidaData[rowId]);
+                    }
+                }
+            });
+            
+            // Fechar modal
+            $('#modalClose, #modalOverlay').on('click', function(e) {
+                if (e.target === this) {
+                    $('#modalOverlay').hide();
+                }
+            });
+            
+            // Fechar modal com ESC
+            $(document).on('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    $('#modalOverlay').hide();
+                }
+            });
+        });
+        
+        function showModal(data) {
+            $('#modalTitle').text(data['Seu Nome completo'] || 'Aluno');
+            
+            // Identificar a coluna correta de idade
+            const idade = data['Sua idade'] || data['Idade atual'] || data['Sua data de nascimento    '] || '-';
+            
+            // Identificar a coluna correta de série
+            const serie = data['Sua série na escola    '] || data['Sua série na escola '] || data['Sua série na escola'] || '-';
+            
+            let modalHtml = `
+                <div class="info-section">
+                    <h4>Informações Pessoais</h4>
+                    <div class="info-item">
+                        <span class="info-label">Nome:</span>
+                        <span class="info-value">${data['Seu Nome completo'] || '-'}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Escola:</span>
+                        <span class="info-value">${data['Escola'] || '-'}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Cidade:</span>
+                        <span class="info-value">${data['Cidade'] || '-'}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Idade:</span>
+                        <span class="info-value">${idade}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Série:</span>
+                        <span class="info-value">${serie}</span>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h4>Escolhas Profissionais</h4>
+                    <div class="info-item">
+                        <span class="info-label">Prioridade A:</span>
+                        <span class="info-value"><span class="priority-badge priority-a">${data['Sua Prioridade A'] || 'Não definida'}</span></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Prioridade B:</span>
+                        <span class="info-value"><span class="priority-badge priority-b">${data['Sua Prioridade B'] || 'Não definida'}</span></span>
+                    </div>
+                </div>
+            `;
+            
+            // Adicionar universidades se disponíveis
+            const universidades = ['A', 'B', 'C', 'D'];
+            let temUniversidade = false;
+            
+            universidades.forEach(letra => {
+                const univ = data['Universidade' + letra];
+                const curso = data['CursoUniv' + letra];
+                const tipo = data['TipoUniv' + letra];
+                const campus = data['Campus' + letra];
+                const duracao = data['DuracaoAnosCurso' + letra];
+                const periodo = data['Periodo' + letra];
+                const vestibular = data['Vestibular' + letra];
+                const logo = data['LogoUniversidade' + letra];
+                
+                if (univ) {
+                    if (!temUniversidade) {
+                        modalHtml += '<div class="info-section"><h4>Opções de Universidades</h4>';
+                        temUniversidade = true;
+                    }
+                    
+                    const logoUrl = logo && logo.startsWith('http') ? logo : 'https://via.placeholder.com/50x50?text=' + (univ ? univ.substring(0, 3) : 'Uni');
+                    
+                    modalHtml += `
+                        <div class="universidade-card">
+                            <h5>
+                                <img src="${logoUrl}" alt="${univ}" class="univ-logo" onerror="this.src='https://via.placeholder.com/50x50?text=Logo'">
+                                <span>${univ}</span>
+                            </h5>
+                            <div class="info-item">
+                                <span class="info-label">Curso:</span>
+                                <span class="info-value">${curso || '-'}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Tipo:</span>
+                                <span class="info-value">${tipo || '-'}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Campus:</span>
+                                <span class="info-value">${campus || '-'}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Duração:</span>
+                                <span class="info-value">${duracao ? duracao + ' anos' : '-'}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Período:</span>
+                                <span class="info-value">${periodo || '-'}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Vestibular:</span>
+                                <span class="info-value">${vestibular || '-'}</span>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+            
+            if (temUniversidade) {
+                modalHtml += '</div>';
+            } else {
+                modalHtml += '<div class="info-section"><h4>Universidades</h4><p class="no-data">Nenhuma universidade definida ainda</p></div>';
+            }
+            
+            // Adicionar botão Ver Projeto de Vida
+            const nomeArquivo = data['Seu Nome completo']
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')  // Remove acentos
+                .replace(/\./g, '')                // Remove pontos
+                .replace(/\s+/g, '_');             // Substitui espaços por underscore
+            modalHtml += `
+                <div style="text-align: center; margin-top: 30px; padding: 20px; background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%); border-radius: 10px;">
+                    <a href="../../../projeto_de_vida/projeto_de_vida_system/projeto_de_vida_generator/htmls_gerados/${nomeArquivo}.html" 
+                       target="_blank"
+                       style="display: inline-block; background: white; color: #2c3e50; padding: 15px 40px; border-radius: 25px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2);"
+                       onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.3)';"
+                       onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.2)';">
+                        📄 Ver Projeto de Vida Completo
+                    </a>
+                    <p style="color: white; margin-top: 15px; font-size: 0.9rem; opacity: 0.9;">
+                        Documento personalizado com todas as informações
+                    </p>
+                </div>
+            `;
+            
+            $('#modalBody').html(modalHtml);
+            $('#modalOverlay').show();
+        }
+    </script>
+</body>
+</html>

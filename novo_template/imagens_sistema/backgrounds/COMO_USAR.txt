@@ -1,0 +1,46 @@
+═══════════════════════════════════════════════════════════════
+  🖼️ IMAGENS DE FUNDO (BACKGROUNDS)
+  Backgrounds das páginas do sistema
+═══════════════════════════════════════════════════════════════
+
+🎯 OBJETIVO:
+   Imagens de fundo para cada seção/página do relatório
+
+📋 ARQUIVOS:
+
+   hero_evasao.jpg              - Página principal (Evasão)
+   hero_assiduidade.jpg         - Página de Assiduidade
+   hero_analises.jpg            - Página de Análises
+   hero_auditoria.jpg           - Página de Auditoria
+   hero_olimpiadas.jpg          - Página de Olimpíadas
+   hero_cursinho.jpg            - Página do Cursinho
+   hero_projeto_vida.jpg        - Página do Projeto de Vida
+   
+📏 ESPECIFICAÇÕES:
+
+   - Formato: JPG ou PNG
+   - Tamanho: 1920x1080 pixels (Full HD)
+   - Proporção: 16:9
+   - Peso máximo: 500KB (otimizado)
+   - Estilo: Profissional, educacional
+   - Legibilidade: Texto deve ser legível sobre a imagem
+
+💡 SUGESTÕES:
+
+   ✓ Use filtros de escurecimento (overlay)
+   ✓ Imagens relacionadas à educação
+   ✓ Cores suaves, não muito vibrantes
+   ✓ Boa qualidade, mas otimizadas
+
+🔄 COMO SUBSTITUIR:
+
+   1. Escolha uma imagem educacional/inspiradora
+   2. Redimensione para 1920x1080
+   3. Otimize o arquivo (reduza peso)
+   4. Salve com o MESMO NOME
+   5. Substitua nesta pasta
+
+═══════════════════════════════════════════════════════════════
+🎓 Programa Futuro Cientista® 2025
+═══════════════════════════════════════════════════════════════
+

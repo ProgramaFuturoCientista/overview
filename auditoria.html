@@ -7,27 +7,48 @@
     <title>Auditoria PFC</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
+    <!-- Botão Hambúrguer (3 tracinhos) -->
+    <button class="hamburger-btn" aria-label="Menu">
+        <div class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </button>
+
+    <!-- Overlay para fechar menu ao clicar fora -->
+    <div class="nav-overlay"></div>
+
+    <!-- Menu Sidebar -->
+    <nav class="nav-sidebar">
+        <button class="nav-close-btn" aria-label="Fechar menu">&times;</button>
+        <div class="nav-sidebar-header">
+            <h2>📊 Menu PFC</h2>
+        </div>
+        <div class="nav-sidebar-links">
+            <a href="index.html" class="nav-link nav-link-home">🏠 Home</a>
+            <a href="evasao.html" class="nav-link">📉 Evasão</a>
+            <a href="assiduidade.html" class="nav-link">📅 Assiduidade</a>
+            <a href="analises.html" class="nav-link">📈 Análises</a>
+            <a href="auditoria.html" class="nav-link active">🔍 Auditoria</a>
+            <a href="cursinho/cursinho.html" class="nav-link">🎓 Cursinho</a>
+            <a href="olimpiadas.html" class="nav-link">🏆 Olimpíadas</a>
+            <a href="projeto_vida/projeto_vida.html" class="nav-link">🎯 Projeto de Vida</a>
+        </div>
+    </nav>
+
     <header>
         <div class="header-content">
             <img src="Logo PFC.png" alt="Logo PFC" class="logo">
             <h1>Auditoria PFC</h1>
-            <p class="subtitle">Verificação de Inconsistências - 29/10/2025</p>
+            <p class="subtitle">Verificação de Inconsistências - 10/11/2025</p>
         </div>
     </header>
-
-    <nav class="nav-bar">
-        <a href="index.html" class="nav-link">Evasão</a>
-        <a href="assiduidade.html" class="nav-link">Assiduidade</a>
-        <a href="analises.html" class="nav-link">Análises</a>
-        <a href="auditoria.html" class="nav-link active">Auditoria</a>
-        <a href="cursinho/cursinho.html" class="nav-link">🎓 Cursinho</a>
-        <a href="olimpiadas.html" class="nav-link">🏆 Olimpíadas</a>
-        <a href="ranking_alunos_pfc.html" class="nav-link">🏅 Ranking Alunos PFC</a>
-    </nav>
 
     <main class="main-content">
         <section class="summary-cards">
@@ -37,15 +58,15 @@
             </div>
             <div class="card">
                 <h3>Registros Consistentes</h3>
-                <div class="metric">730</div>
+                <div class="metric">727</div>
             </div>
             <div class="card">
                 <h3>Inconsistências Encontradas</h3>
-                <div class="metric">5</div>
+                <div class="metric">8</div>
             </div>
             <div class="card">
                 <h3>Taxa de Consistência</h3>
-                <div class="metric">99.3%</div>
+                <div class="metric">98.9%</div>
             </div>
         </section>
 
@@ -66,12 +87,22 @@
   </thead>
   <tbody>
     <tr>
+      <td>luna maiane santos</td>
+      <td>E.M. Francisco Munhoz</td>
+      <td>Capela do Alto-SP</td>
+      <td>Paulo Miranda</td>
+      <td>Desligado</td>
+      <td>presente</td>
+      <td>inconsistente</td>
+      <td>cadastro_desligado_mas_ultima_chamada_nao</td>
+    </tr>
+    <tr>
       <td>mayara gabriely almeida de moraes</td>
       <td>E.M. Franciso Mariano</td>
       <td>Capela do Alto-SP</td>
       <td>Julia Fernanda de Camargo Teles Miranda</td>
       <td>Desligado</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>inconsistente</td>
       <td>cadastro_desligado_mas_ultima_chamada_nao</td>
     </tr>
@@ -96,11 +127,31 @@
       <td>cadastro_desligado_mas_ultima_chamada_nao</td>
     </tr>
     <tr>
+      <td>rafaela santos de oliveira</td>
+      <td>E.M. Joaquim Salvador</td>
+      <td>Capela do Alto-SP</td>
+      <td>Paulo Miranda</td>
+      <td>Desligado</td>
+      <td>falta</td>
+      <td>inconsistente</td>
+      <td>cadastro_desligado_mas_ultima_chamada_nao</td>
+    </tr>
+    <tr>
       <td>sofia dos santos</td>
       <td>EMEF Leonidas Antonio de Moreas Professor</td>
       <td>São Roque-SP</td>
       <td>Mirela Silva Gondim Garcia</td>
       <td></td>
+      <td>desligado</td>
+      <td>inconsistente</td>
+      <td>cadastro_ativo_mas_ultima_chamada_desligado</td>
+    </tr>
+    <tr>
+      <td>augusto saroba de oliveira</td>
+      <td>EMEF Prof. Joao Alcindo Vieira</td>
+      <td>Guareí-SP</td>
+      <td>Jose (Vinicius Lima Cardozo)</td>
+      <td>Ativo</td>
       <td>desligado</td>
       <td>inconsistente</td>
       <td>cadastro_ativo_mas_ultima_chamada_desligado</td>
@@ -721,7 +772,7 @@
       <td>Iperó-SP</td>
       <td>Jamilli Veloso de Souza</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -741,7 +792,7 @@
       <td>Iperó-SP</td>
       <td>Jamilli Veloso de Souza</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -751,7 +802,7 @@
       <td>Iperó-SP</td>
       <td>Jamilli Veloso de Souza</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -801,7 +852,7 @@
       <td>Iperó-SP</td>
       <td>Jamilli Veloso de Souza</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -821,7 +872,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -831,7 +882,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -841,7 +892,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -851,7 +902,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -861,7 +912,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -871,7 +922,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -891,7 +942,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -911,7 +962,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -921,7 +972,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -961,7 +1012,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -991,7 +1042,7 @@
       <td>Iperó-SP</td>
       <td>Jamilli Veloso de Souza</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1011,7 +1062,7 @@
       <td>Iperó-SP</td>
       <td>Jamilli Veloso de Souza</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1021,7 +1072,7 @@
       <td>Iperó-SP</td>
       <td>Jamilli Veloso de Souza</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1041,7 +1092,7 @@
       <td>Iperó-SP</td>
       <td>Jamilli Veloso de Souza</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1051,7 +1102,7 @@
       <td>Iperó-SP</td>
       <td>Jamilli Veloso de Souza</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1061,7 +1112,7 @@
       <td>Iperó-SP</td>
       <td>Jamilli Veloso de Souza</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1111,7 +1162,7 @@
       <td>Iperó-SP</td>
       <td>Jamilli Veloso de Souza</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1161,7 +1212,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1171,7 +1222,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1181,7 +1232,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1191,7 +1242,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1201,7 +1252,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1211,7 +1262,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1221,7 +1272,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1231,7 +1282,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1241,7 +1292,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1251,7 +1302,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1261,7 +1312,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1271,7 +1322,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1281,7 +1332,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1291,7 +1342,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1301,7 +1352,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1311,7 +1362,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1361,7 +1412,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1381,7 +1432,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1601,7 +1652,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>falta justificada</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1611,7 +1662,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>falta justificada</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1621,7 +1672,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>falta justificada</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1631,7 +1682,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>falta justificada</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1641,7 +1692,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>falta justificada</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1651,7 +1702,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>falta justificada</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1661,7 +1712,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>falta justificada</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1671,7 +1722,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>falta justificada</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1681,7 +1732,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>falta justificada</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1691,7 +1742,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>falta justificada</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1701,7 +1752,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>falta justificada</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1711,7 +1762,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>falta justificada</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1721,7 +1772,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>presente</td>
+      <td>falta justificada</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1731,7 +1782,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>falta justificada</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1741,7 +1792,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>falta justificada</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1751,7 +1802,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>falta justificada</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1761,7 +1812,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>falta justificada</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1771,7 +1822,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>falta justificada</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1781,7 +1832,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>falta justificada</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1791,7 +1842,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td></td>
-      <td>2</td>
+      <td>falta justificada</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1811,7 +1862,7 @@
       <td>Capela do Alto-SP</td>
       <td>Paulo Miranda</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1821,7 +1872,7 @@
       <td>Capela do Alto-SP</td>
       <td>Paulo Miranda</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1831,9 +1882,19 @@
       <td>Capela do Alto-SP</td>
       <td>Paulo Miranda</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
+    </tr>
+    <tr>
+      <td>luna maiane santos</td>
+      <td>E.M. Francisco Munhoz</td>
+      <td>Capela do Alto-SP</td>
+      <td>Paulo Miranda</td>
+      <td>Desligado</td>
+      <td>presente</td>
+      <td>inconsistente</td>
+      <td>cadastro_desligado_mas_ultima_chamada_nao</td>
     </tr>
     <tr>
       <td>samuel luis souza toledo</td>
@@ -1841,7 +1902,7 @@
       <td>Capela do Alto-SP</td>
       <td>Paulo Miranda</td>
       <td>Ativo</td>
-      <td>presente</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1851,7 +1912,7 @@
       <td>Capela do Alto-SP</td>
       <td>Paulo Miranda</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1871,7 +1932,7 @@
       <td>Capela do Alto-SP</td>
       <td>Paulo Miranda</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1891,7 +1952,7 @@
       <td>Capela do Alto-SP</td>
       <td>Paulo Miranda</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1901,7 +1962,7 @@
       <td>Capela do Alto-SP</td>
       <td>Paulo Miranda</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1921,7 +1982,7 @@
       <td>Capela do Alto-SP</td>
       <td>Paulo Miranda</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1931,7 +1992,7 @@
       <td>Capela do Alto-SP</td>
       <td>Julia Fernanda de Camargo Teles Miranda</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>falta justificada</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1941,7 +2002,7 @@
       <td>Capela do Alto-SP</td>
       <td>Julia Fernanda de Camargo Teles Miranda</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -1951,7 +2012,7 @@
       <td>Capela do Alto-SP</td>
       <td>Julia Fernanda de Camargo Teles Miranda</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2001,7 +2062,7 @@
       <td>Capela do Alto-SP</td>
       <td>Julia Fernanda de Camargo Teles Miranda</td>
       <td>Desligado</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>inconsistente</td>
       <td>cadastro_desligado_mas_ultima_chamada_nao</td>
     </tr>
@@ -2021,7 +2082,7 @@
       <td>Capela do Alto-SP</td>
       <td>Julia Fernanda de Camargo Teles Miranda</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>falta justificada</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2041,7 +2102,7 @@
       <td>Capela do Alto-SP</td>
       <td>Julia Fernanda de Camargo Teles Miranda</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2081,7 +2142,7 @@
       <td>Capela do Alto-SP</td>
       <td>Julia Fernanda de Camargo Teles Miranda</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2131,7 +2192,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2141,7 +2202,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>0</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2151,7 +2212,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2161,7 +2222,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2171,7 +2232,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td></td>
-      <td>falta</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2201,7 +2262,7 @@
       <td>Capela do Alto-SP</td>
       <td>Paulo Miranda</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2221,7 +2282,7 @@
       <td>Capela do Alto-SP</td>
       <td>Paulo Miranda</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2231,7 +2292,7 @@
       <td>Capela do Alto-SP</td>
       <td>Paulo Miranda</td>
       <td>Ativo</td>
-      <td>presente</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2261,7 +2322,7 @@
       <td>Capela do Alto-SP</td>
       <td>Paulo Miranda</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2271,9 +2332,19 @@
       <td>Capela do Alto-SP</td>
       <td>Paulo Miranda</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
+    </tr>
+    <tr>
+      <td>rafaela santos de oliveira</td>
+      <td>E.M. Joaquim Salvador</td>
+      <td>Capela do Alto-SP</td>
+      <td>Paulo Miranda</td>
+      <td>Desligado</td>
+      <td>falta</td>
+      <td>inconsistente</td>
+      <td>cadastro_desligado_mas_ultima_chamada_nao</td>
     </tr>
     <tr>
       <td>raiane kelle cardoso de souza</td>
@@ -2291,7 +2362,7 @@
       <td>Capela do Alto-SP</td>
       <td>Paulo Miranda</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2301,7 +2372,7 @@
       <td>Capela do Alto-SP</td>
       <td>Paulo Miranda</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2331,7 +2402,7 @@
       <td>Capela do Alto-SP</td>
       <td>Julia Fernanda de Camargo Teles Miranda</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2371,7 +2442,7 @@
       <td>Capela do Alto-SP</td>
       <td>Julia Fernanda de Camargo Teles Miranda</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2381,7 +2452,7 @@
       <td>Capela do Alto-SP</td>
       <td>Julia Fernanda de Camargo Teles Miranda</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2451,7 +2522,7 @@
       <td>Capela do Alto-SP</td>
       <td>Julia Fernanda de Camargo Teles Miranda</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2481,7 +2552,7 @@
       <td>Capela do Alto-SP</td>
       <td>Paulo Miranda</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2501,7 +2572,7 @@
       <td>Capela do Alto-SP</td>
       <td>Paulo Miranda</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2511,7 +2582,7 @@
       <td>Capela do Alto-SP</td>
       <td>Paulo Miranda</td>
       <td>Ativo</td>
-      <td>presente</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2521,7 +2592,7 @@
       <td>Capela do Alto-SP</td>
       <td>Paulo Miranda</td>
       <td>Ativo</td>
-      <td>presente</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2551,7 +2622,7 @@
       <td>Capela do Alto-SP</td>
       <td>Paulo Miranda</td>
       <td>Ativo</td>
-      <td>presente</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2611,7 +2682,7 @@
       <td>Capela do Alto-SP</td>
       <td>Julia Fernanda de Camargo Teles Miranda</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2641,7 +2712,7 @@
       <td>Capela do Alto-SP</td>
       <td>Julia Fernanda de Camargo Teles Miranda</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2721,7 +2792,7 @@
       <td>Capela do Alto-SP</td>
       <td>Julia Fernanda de Camargo Teles Miranda</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2761,7 +2832,7 @@
       <td>Capela do Alto-SP</td>
       <td>Julia Fernanda de Camargo Teles Miranda</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2791,7 +2862,7 @@
       <td>Guareí-SP</td>
       <td>Jose (Vinicius Lima Cardozo)</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2861,7 +2932,7 @@
       <td>Guareí-SP</td>
       <td>Jose (Vinicius Lima Cardozo)</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>0</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2871,7 +2942,7 @@
       <td>Guareí-SP</td>
       <td>Jose (Vinicius Lima Cardozo)</td>
       <td>Ativo</td>
-      <td>presente</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2891,7 +2962,7 @@
       <td>Guareí-SP</td>
       <td>Jose (Vinicius Lima Cardozo)</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2931,7 +3002,7 @@
       <td>Coronel Macedo-SP</td>
       <td>Gustavo Eduardo Cardoso</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2971,7 +3042,7 @@
       <td>Coronel Macedo-SP</td>
       <td>Gustavo Eduardo Cardoso</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -2981,7 +3052,7 @@
       <td>Coronel Macedo-SP</td>
       <td>Gustavo Eduardo Cardoso</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3021,7 +3092,7 @@
       <td>Coronel Macedo-SP</td>
       <td>Gustavo Eduardo Cardoso</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3031,7 +3102,7 @@
       <td>Coronel Macedo-SP</td>
       <td>Gustavo Eduardo Cardoso</td>
       <td>Ativo</td>
-      <td>0</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3051,7 +3122,7 @@
       <td>Coronel Macedo-SP</td>
       <td>Gustavo Eduardo Cardoso</td>
       <td>Ativo</td>
-      <td>0</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3061,7 +3132,7 @@
       <td>Coronel Macedo-SP</td>
       <td>Gustavo Eduardo Cardoso</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3071,7 +3142,7 @@
       <td>Coronel Macedo-SP</td>
       <td>Gustavo Eduardo Cardoso</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3091,7 +3162,7 @@
       <td>Coronel Macedo-SP</td>
       <td>Gustavo Eduardo Cardoso</td>
       <td>Ativo</td>
-      <td>0</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3101,7 +3172,7 @@
       <td>Coronel Macedo-SP</td>
       <td>Gustavo Eduardo Cardoso</td>
       <td>Ativo</td>
-      <td>0</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3111,7 +3182,7 @@
       <td>Coronel Macedo-SP</td>
       <td>Gustavo Eduardo Cardoso</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3121,7 +3192,7 @@
       <td>Coronel Macedo-SP</td>
       <td>Gustavo Eduardo Cardoso</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3131,7 +3202,7 @@
       <td>Coronel Macedo-SP</td>
       <td>Gustavo Eduardo Cardoso</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3141,7 +3212,7 @@
       <td>Coronel Macedo-SP</td>
       <td>Gustavo Eduardo Cardoso</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3191,7 +3262,7 @@
       <td>Coronel Macedo-SP</td>
       <td>Gustavo Eduardo Cardoso</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3221,7 +3292,7 @@
       <td>Coronel Macedo-SP</td>
       <td>Gustavo Eduardo Cardoso</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3311,7 +3382,7 @@
       <td>Coronel Macedo-SP</td>
       <td>Gustavo Eduardo Cardoso</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3381,7 +3452,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3391,7 +3462,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3401,7 +3472,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3411,7 +3482,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3421,7 +3492,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3431,7 +3502,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3441,7 +3512,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3451,7 +3522,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3461,7 +3532,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3471,7 +3542,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3481,7 +3552,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>0</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3491,7 +3562,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3501,7 +3572,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3511,7 +3582,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3521,7 +3592,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3531,7 +3602,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3541,7 +3612,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3551,7 +3622,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3561,7 +3632,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3571,7 +3642,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3581,7 +3652,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3591,7 +3662,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3601,7 +3672,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3611,7 +3682,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3631,7 +3702,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3671,7 +3742,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3691,7 +3762,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3721,7 +3792,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3731,7 +3802,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3751,7 +3822,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>presente</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3761,7 +3832,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3771,7 +3842,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3781,7 +3852,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3811,7 +3882,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3821,7 +3892,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3831,7 +3902,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -3851,7 +3922,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4041,7 +4112,7 @@
       <td>Guareí-SP</td>
       <td>Jose (Vinicius Lima Cardozo)</td>
       <td>Ativo</td>
-      <td>presente</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4051,7 +4122,7 @@
       <td>Guareí-SP</td>
       <td>Jose (Vinicius Lima Cardozo)</td>
       <td>Ativo</td>
-      <td>presente</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4061,7 +4132,7 @@
       <td>Guareí-SP</td>
       <td>Jose (Vinicius Lima Cardozo)</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4071,9 +4142,9 @@
       <td>Guareí-SP</td>
       <td>Jose (Vinicius Lima Cardozo)</td>
       <td>Ativo</td>
-      <td>falta</td>
-      <td>ok</td>
-      <td></td>
+      <td>desligado</td>
+      <td>inconsistente</td>
+      <td>cadastro_ativo_mas_ultima_chamada_desligado</td>
     </tr>
     <tr>
       <td>eliza blézins martins .</td>
@@ -4091,7 +4162,7 @@
       <td>Guareí-SP</td>
       <td>Jose (Vinicius Lima Cardozo)</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4131,7 +4202,7 @@
       <td>Guareí-SP</td>
       <td>Jose (Vinicius Lima Cardozo)</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>0</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4161,7 +4232,7 @@
       <td>Guareí-SP</td>
       <td>Jose (Vinicius Lima Cardozo)</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4171,7 +4242,7 @@
       <td>Guareí-SP</td>
       <td>Jose (Vinicius Lima Cardozo)</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4181,7 +4252,7 @@
       <td>Guareí-SP</td>
       <td>Jose (Vinicius Lima Cardozo)</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4191,7 +4262,7 @@
       <td>Guareí-SP</td>
       <td>Jose (Vinicius Lima Cardozo)</td>
       <td>Ativo</td>
-      <td>presente</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4231,7 +4302,7 @@
       <td>Guareí-SP</td>
       <td>Jose (Vinicius Lima Cardozo)</td>
       <td>Ativo</td>
-      <td>presente</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4251,7 +4322,7 @@
       <td>Guareí-SP</td>
       <td>Jose (Vinicius Lima Cardozo)</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>0</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4261,7 +4332,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4271,7 +4342,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4281,7 +4352,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4291,7 +4362,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4301,7 +4372,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4311,7 +4382,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4321,7 +4392,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4331,7 +4402,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4341,7 +4412,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4351,7 +4422,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4361,7 +4432,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4371,7 +4442,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4381,7 +4452,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4391,7 +4462,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4401,7 +4472,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4411,7 +4482,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4421,7 +4492,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4431,7 +4502,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4441,7 +4512,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4451,7 +4522,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4461,7 +4532,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4471,7 +4542,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4481,7 +4552,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4491,7 +4562,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4501,7 +4572,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4661,7 +4732,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4671,7 +4742,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>presente</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4691,7 +4762,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>presente</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4701,7 +4772,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>presente</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4721,7 +4792,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4751,7 +4822,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>presente</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4771,7 +4842,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4811,7 +4882,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>presente</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -4871,7 +4942,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5091,7 +5162,7 @@
       <td>Mirassol-SP</td>
       <td>Synara Sajonetti Maistrello</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5121,7 +5192,7 @@
       <td>Mirassol-SP</td>
       <td>Synara Sajonetti Maistrello</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5171,7 +5242,7 @@
       <td>Mirassol-SP</td>
       <td>Synara Sajonetti Maistrello</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5201,7 +5272,7 @@
       <td>Mirassol-SP</td>
       <td>Synara Sajonetti Maistrello</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5211,7 +5282,7 @@
       <td>Mirassol-SP</td>
       <td>Synara Sajonetti Maistrello</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5231,7 +5302,7 @@
       <td>Mirassol-SP</td>
       <td>Synara Sajonetti Maistrello</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5261,7 +5332,7 @@
       <td>Mirassol-SP</td>
       <td>Synara Sajonetti Maistrello</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5281,7 +5352,7 @@
       <td>Mirassol-SP</td>
       <td>Synara Sajonetti Maistrello</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5291,7 +5362,7 @@
       <td>Mirassol-SP</td>
       <td>Synara Sajonetti Maistrello</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5301,7 +5372,7 @@
       <td>Mirassol-SP</td>
       <td>Synara Sajonetti Maistrello</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5311,7 +5382,7 @@
       <td>Mirassol-SP</td>
       <td>Synara Sajonetti Maistrello</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5321,7 +5392,7 @@
       <td>Mirassol-SP</td>
       <td>Synara Sajonetti Maistrello</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5331,7 +5402,7 @@
       <td>Mirassol-SP</td>
       <td>Synara Sajonetti Maistrello</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5341,7 +5412,7 @@
       <td>Mirassol-SP</td>
       <td>Synara Sajonetti Maistrello</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5351,7 +5422,7 @@
       <td>Mirassol-SP</td>
       <td>Synara Sajonetti Maistrello</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5361,7 +5432,7 @@
       <td>Mirassol-SP</td>
       <td>Synara Sajonetti Maistrello</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5371,7 +5442,7 @@
       <td>Mirassol-SP</td>
       <td>Synara Sajonetti Maistrello</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5381,7 +5452,7 @@
       <td>Mirassol-SP</td>
       <td>Synara Sajonetti Maistrello</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5391,7 +5462,7 @@
       <td>Mirassol-SP</td>
       <td>Synara Sajonetti Maistrello</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5401,7 +5472,7 @@
       <td>Mirassol-SP</td>
       <td>Synara Sajonetti Maistrello</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5411,7 +5482,7 @@
       <td>Mirassol-SP</td>
       <td>Synara Sajonetti Maistrello</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5421,7 +5492,7 @@
       <td>Mirassol-SP</td>
       <td>Synara Sajonetti Maistrello</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5431,7 +5502,7 @@
       <td>Mirassol-SP</td>
       <td>Synara Sajonetti Maistrello</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5451,7 +5522,7 @@
       <td>Mirassol-SP</td>
       <td>Synara Sajonetti Maistrello</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5471,7 +5542,7 @@
       <td>Corumbataí-SP</td>
       <td>Pedro Henrique Prado Alves</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5581,7 +5652,7 @@
       <td>Corumbataí-SP</td>
       <td>Pedro Henrique Prado Alves</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5591,7 +5662,7 @@
       <td>Corumbataí-SP</td>
       <td>Pedro Henrique Prado Alves</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5621,7 +5692,7 @@
       <td>Corumbataí-SP</td>
       <td>Pedro Henrique Prado Alves</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5641,7 +5712,7 @@
       <td>Corumbataí-SP</td>
       <td>Pedro Henrique Prado Alves</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5661,7 +5732,7 @@
       <td>Corumbataí-SP</td>
       <td>Pedro Henrique Prado Alves</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5681,7 +5752,7 @@
       <td>Corumbataí-SP</td>
       <td>Pedro Henrique Prado Alves</td>
       <td>Ativo</td>
-      <td>0</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5691,7 +5762,7 @@
       <td>Corumbataí-SP</td>
       <td>Pedro Henrique Prado Alves</td>
       <td></td>
-      <td>2</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5871,7 +5942,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5931,7 +6002,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5961,7 +6032,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>falta</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -5971,7 +6042,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6041,7 +6112,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6091,7 +6162,7 @@
       <td>São Roque-SP</td>
       <td>Gabriella Lhóren</td>
       <td></td>
-      <td>falta</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6101,7 +6172,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6111,7 +6182,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6121,7 +6192,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6131,7 +6202,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6151,7 +6222,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6161,7 +6232,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6171,7 +6242,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6181,7 +6252,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6191,7 +6262,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6201,7 +6272,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6211,7 +6282,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6221,7 +6292,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6231,7 +6302,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6241,7 +6312,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6251,7 +6322,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>4</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6261,7 +6332,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6271,7 +6342,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6361,7 +6432,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>falta justificada</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6381,7 +6452,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6421,7 +6492,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6441,7 +6512,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6461,7 +6532,7 @@
       <td>São Roque-SP</td>
       <td>Vittoria Christina Santos Rocha</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>presente</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6471,7 +6542,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>presente</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6491,7 +6562,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6511,7 +6582,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>2</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6521,7 +6592,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6571,7 +6642,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6581,7 +6652,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>4</td>
+      <td>2</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6601,7 +6672,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>0</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6611,7 +6682,7 @@
       <td>Iperó-SP</td>
       <td>Emilly Vitoria Alves Ribeiro</td>
       <td>Ativo</td>
-      <td>0</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6671,7 +6742,7 @@
       <td>Bofete-SP</td>
       <td>Andressa Da Costa</td>
       <td>Ativo</td>
-      <td>presente</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6781,7 +6852,7 @@
       <td>Bofete-SP</td>
       <td>Andressa Da Costa</td>
       <td>Ativo</td>
-      <td>presente</td>
+      <td>falta</td>
       <td>ok</td>
       <td></td>
     </tr>
@@ -6946,16 +7017,6 @@
       <td></td>
     </tr>
     <tr>
-      <td>luna maiane santos</td>
-      <td>E.M. Francisco Munhoz</td>
-      <td>Capela do Alto-SP</td>
-      <td>Paulo Miranda</td>
-      <td>Desligado</td>
-      <td>desligado</td>
-      <td>ok</td>
-      <td></td>
-    </tr>
-    <tr>
       <td>beatriz rodrigues de lima</td>
       <td>E.M. Francisco Munhoz</td>
       <td>Capela do Alto-SP</td>
@@ -7047,16 +7108,6 @@
     </tr>
     <tr>
       <td>pietra machado</td>
-      <td>E.M. Joaquim Salvador</td>
-      <td>Capela do Alto-SP</td>
-      <td>Paulo Miranda</td>
-      <td>Desligado</td>
-      <td>desligado</td>
-      <td>ok</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>rafaela santos de oliveira</td>
       <td>E.M. Joaquim Salvador</td>
       <td>Capela do Alto-SP</td>
       <td>Paulo Miranda</td>

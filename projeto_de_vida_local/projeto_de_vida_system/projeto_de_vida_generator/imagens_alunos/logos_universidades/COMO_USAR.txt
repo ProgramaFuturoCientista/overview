@@ -1,0 +1,131 @@
+═══════════════════════════════════════════════════════════════
+  🎓 LOGOS DAS UNIVERSIDADES
+  Adicione logos das universidades sugeridas
+═══════════════════════════════════════════════════════════════
+
+🎯 OBJETIVO DESTA PASTA:
+   Armazenar os logos/brasões das universidades que serão
+   exibidos no Projeto de Vida de cada aluno.
+
+📋 COMO ADICIONAR LOGOS:
+
+   1. FORMATO DO NOME DO ARQUIVO:
+      • Use a SIGLA ou NOME da universidade
+      • Letras MAIÚSCULAS
+      • Sem espaços (use underline se necessário)
+      • Extensão: .png (preferencial) ou .jpg
+      
+      ✅ Exemplos CORRETOS:
+         - USP.png
+         - UNICAMP.png
+         - UFSCAR.png
+         - IFSP.png
+         - ETEC.png
+         - UNESP.png
+         - UNIFESP.png
+      
+      ❌ Exemplos INCORRETOS:
+         - usp.png           (minúscula)
+         - logo_usp.png      (prefixo desnecessário)
+         - universidade.png  (não identifica qual)
+
+   2. ESPECIFICAÇÕES TÉCNICAS:
+      • Formato: PNG (com fundo transparente) OU JPG
+      • Tamanho recomendado: 300x300 pixels (quadrado)
+      • Tamanho máximo: 500KB por logo
+      • Qualidade: Vetorial ou alta resolução
+      • Fundo: Transparente (PNG) preferencial
+      • Cores: Oficiais da universidade
+
+   3. CARACTERÍSTICAS IDEAIS:
+      ✓ Logo oficial da universidade
+      ✓ Fundo transparente (PNG)
+      ✓ Boa resolução
+      ✓ Cores fiéis ao original
+      ✓ Formato quadrado ou circular
+      ✓ Brasão completo (preferencial)
+
+📂 ESTRUTURA DE EXEMPLO:
+
+   imagens_alunos/
+   └── logos_universidades/
+       ├── USP.png
+       ├── UNICAMP.png
+       ├── UFSCAR.png
+       ├── IFSP.png
+       ├── ETEC.png
+       ├── UNESP.png
+       ├── UNIFESP.png
+       ├── PUC.png
+       ├── MACKENZIE.png
+       └── logo_padrao.png  ← Logo genérico (opcional)
+
+🔄 FUNCIONAMENTO:
+
+   Quando o sistema gerar o Projeto de Vida:
+   
+   1. Para cada universidade sugerida ao aluno
+   2. Procura o logo correspondente nesta pasta
+   3. Se encontrar: exibe o logo da universidade
+   4. Se NÃO encontrar: exibe um placeholder ou ícone padrão
+   
+   Exemplo:
+   • Aluno tem USP como opção A
+   • Sistema procura: "USP.png"
+   • Se encontrar: exibe logo da USP
+   • Se não: exibe ícone genérico de universidade
+
+📝 LISTA DE UNIVERSIDADES COMUNS (para referência):
+
+   PÚBLICAS ESTADUAIS (SP):
+   • USP.png        - Universidade de São Paulo
+   • UNICAMP.png    - Universidade Estadual de Campinas
+   • UNESP.png      - Universidade Estadual Paulista
+   
+   FEDERAIS:
+   • UFSCAR.png     - Universidade Federal de São Carlos
+   • UNIFESP.png    - Universidade Federal de São Paulo
+   • UFABC.png      - Universidade Federal do ABC
+   
+   INSTITUTOS E ESCOLAS TÉCNICAS:
+   • IFSP.png       - Instituto Federal de São Paulo
+   • ETEC.png       - Escola Técnica Estadual
+   • FATEC.png      - Faculdade de Tecnologia
+   
+   PRIVADAS:
+   • PUC.png        - Pontifícia Universidade Católica
+   • MACKENZIE.png  - Universidade Presbiteriana Mackenzie
+   • FGV.png        - Fundação Getúlio Vargas
+
+🌐 ONDE ENCONTRAR LOGOS OFICIAIS:
+
+   1. Site oficial da universidade (seção "Marca" ou "Downloads")
+   2. Wikipédia (página da universidade)
+   3. Google Imagens: "logo [nome da universidade] png"
+   4. Brasões oficiais em alta resolução
+
+⚠️ IMPORTANTE:
+
+   • Use APENAS logos oficiais das universidades
+   • Respeite as diretrizes de uso de marca
+   • Prefira PNG com fundo transparente
+   • Mantenha as proporções originais
+   • Não distorça ou modifique as cores
+
+💡 DICA PARA UNIFORMIZAÇÃO:
+
+   Use um editor de imagens (Photoshop, GIMP, etc.) para:
+   • Redimensionar todos os logos para 300x300px
+   • Converter para PNG com fundo transparente
+   • Salvar com qualidade alta
+   • Manter proporção (adicionar padding se necessário)
+
+🔍 SCRIPT DE VERIFICAÇÃO:
+
+   Execute para listar universidades sem logo:
+   python verificar_logos_faltantes.py
+
+═══════════════════════════════════════════════════════════════
+🎓 Programa Futuro Cientista® 2025
+═══════════════════════════════════════════════════════════════
+

@@ -1,0 +1,103 @@
+═══════════════════════════════════════════════════════════════
+   ESTRUTURA DA PASTA REPO - VERIFICAÇÃO
+═══════════════════════════════════════════════════════════════
+
+✅ RESTAURADO: index.html original (landing page que funcionava)
+
+📁 Estrutura da Pasta Repo:
+
+repo/
+├── index.html                      ← Landing Page (Bootstrap original)
+├── evasao.html                     ← Relatório de Evasão
+├── assiduidade.html
+├── analises.html
+├── auditoria.html
+├── olimpiadas.html
+├── ranking_alunos_pfc.html
+├── style.css                       ← Estilos dos relatórios (tema escuro)
+├── script.js                       ← Scripts do menu hambúrguer
+├── Logo PFC.png
+├── dados_completos.csv
+├── novo_template/                  ← Recursos da landing page
+│   ├── model/
+│   │   └── assets/
+│   │       ├── css/
+│   │       ├── js/
+│   │       └── vendor/
+│   └── imagens_sistema/
+│       └── logos/
+│           └── landingPage_op2.png
+├── cursinho/
+│   └── cursinho.html
+├── olimpiadas/
+│   └── [gráficos]
+└── projeto_vida/
+    ├── projeto_vida.html           ← Com botão restaurado!
+    └── projeto_vida_pendentes.html
+
+═══════════════════════════════════════════════════════════════
+✅ CHECKLIST
+═══════════════════════════════════════════════════════════════
+
+[✓] index.html (landing page original)
+[✓] novo_template/ (recursos)
+[✓] Todos os relatórios HTML
+[✓] style.css e script.js
+[✓] Logo PFC.png
+[✓] Subpastas (cursinho, projeto_vida, olimpiadas)
+[✓] Botão "Ver Projeto de Vida Completo" restaurado
+
+═══════════════════════════════════════════════════════════════
+🎯 LINKS NA LANDING PAGE (repo/index.html):
+═══════════════════════════════════════════════════════════════
+
+Cards de módulos apontam para:
+• evasao.html
+• assiduidade.html
+• analises.html
+• auditoria.html
+• olimpiadas.html
+• cursinho/cursinho.html
+• projeto_vida/projeto_vida.html
+
+═══════════════════════════════════════════════════════════════
+🔗 LINKS NOS RELATÓRIOS:
+═══════════════════════════════════════════════════════════════
+
+Menu hambúrguer (☰):
+• 🏠 Home → index.html
+• 📉 Evasão → evasao.html
+• 📅 Assiduidade → assiduidade.html
+• 📈 Análises → analises.html
+• 🔍 Auditoria → auditoria.html
+• 🎓 Cursinho → cursinho/cursinho.html
+• 🏆 Olimpíadas → olimpiadas.html
+• 🎯 Projeto de Vida → projeto_vida/projeto_vida.html
+
+═══════════════════════════════════════════════════════════════
+📄 BOTÃO PROJETO DE VIDA:
+═══════════════════════════════════════════════════════════════
+
+Caminho: ../../../projeto_de_vida/projeto_de_vida_system/projeto_de_vida_generator/htmls_gerados/
+
+Leva para os modelos pré-prontos dos alunos!
+
+═══════════════════════════════════════════════════════════════
+🧪 TESTE:
+═══════════════════════════════════════════════════════════════
+
+1. Abra: repo/index.html (já aberto)
+2. Clique em qualquer card de módulo
+3. Deve funcionar!
+
+Se não funcionar:
+• Pressione Ctrl + Shift + R (limpar cache)
+• Ou feche e reabra o navegador
+
+═══════════════════════════════════════════════════════════════
+
+Pronto! Versão original restaurada na pasta repo.
+Tudo deve funcionar agora! ✅
+
+═══════════════════════════════════════════════════════════════
+

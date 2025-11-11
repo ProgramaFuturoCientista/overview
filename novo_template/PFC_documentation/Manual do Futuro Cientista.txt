@@ -1,0 +1,4108 @@
+﻿Prof. Dr. Fábio de Lima Leite
+Lorena Alves Rodrigues 
+Isabelle Karolline Chaves de Oliveira
+Tayna Roberta Alves Brisola
+
+
+
+Ilustrações 
+Lorena Alves Rodrigues 
+
+Autores
+Prof. Dr. Fábio de Lima Leite
+Lorena Alves Rodrigues 
+Isabelle Karolline Chaves de Oliveira
+Tayna Roberta Alves Brisola
+
+Lei Copyright do texto © 2024
+
+Todos os direitos reservados. Nenhuma parte deste livro pode ser
+reproduzida ou usada de qualquer forma ou por qualquer meio,
+eletrônico ou mecânico, inclusive fotocópias, gravações ou sistema de
+armazenamento em banco de dados, sem permissão por escrito, exceto
+nos casos de trechos curtos citados em resenhas críticas ou artigos de
+revistas. 
+
+
+
+Sumário 
+
+PREFÁCIO............................................................................................................ 01
+AGRADECIMENTOS.............................................................................................02 
+INTRODUÇÃO.......................................................................................................03
+O QUE É CIÊNCIA?.....................................................................................……...04
+O QUE É UM CIENTISTA?.............................................................................……05
+QUEM PODE SER UM CIENTISTA?................................................................… 06
+ATITUDES DE UM CIENTISTA........................................................……..............07
+COMO UM CIENTISTA TRABALHA?....................................................................15
+MÉTODO CIENTÍFICO.......................................................................................…16
+ENCONTRANDO UM PROBLEMA........................................................................17
+SOLUCIONANDO O PROBLEMA.........................................................................20
+REALIZAÇÃO DA PESQUISA: O QUE É?............................................................25
+COMO TORNAR-SE UM CIENTISTA?...............................................…….………30
+ENTENDENDO O ENSINO SUPERIOR..................................………….…………34
+O CAMINHO ATÉ A UNIVERSIDADE............................………………..…….……38
+AS DIFERENTES ÁREAS DO CONHECIMENTO..........................…........………42
+E AGORA, COMO ESCOLHER UMA PROFISSÃO?.................….…….…………45
+DÚVIDAS INTRIGRANTES DE CIENTISTAS AFICIONADOS .....................……47
+O PROGRAMA FUTURO CIENTISTA (PFC)............................…..........…………57
+REFERÊNCIAS BIBLIOGRÁFICAS ..................................…………….…………..58
+ANEXO I (Cursos de graduação)………………………………………………….......61
+ANEXO II (Instituições de ensino superior)………....…………………..….………..65
+ANEXO III (Feiras de ciências)…...........…….………………………………………..73
+ANEXO IV (Olimpíadas científicas)………....……………………….………………..79
+ANEXO V (Filmografia científica)…….....……………………………………………..91
+ANEXO VI (Cientistas e comunicadores científicos)……....………………………..99
+
+
+
+Prefácio
+Olá futuro cientista, tudo bem? 
+
+Este livro é um manual para
+estudantes do nível básico
+(fundamental e médio), redigido por
+cientistas do Programa Futuro
+Cientista® (PFC) com intuito de
+guiar-lhe pelos possíveis caminhos
+existentes para se tornar um
+cientista. A ideia de redigir este
+manual surgiu da necessidade que
+vários alunos do Ensino Básico têm
+para iniciar sua carreira no mundo da
+Ciência. Tornar-se um cientista é
+uma tarefa que requer persistência,
+paixão pela ciência e,
+indubitavelmente, um plano de vida.
+Se você planejar sua carreira
+profissional conseguirá conquistar
+seus sonhos, transformar seus ideais
+em realidade. O PFC lhe ajudará
+nesta tarefa dando-lhe as
+ferramentas necessárias para se
+alcançar os objetivos traçados.
+
+Prof. Dr. Fábio de Lima
+Leite  Este livro vai traçar o “mapa do
+
+ I dea l i zador  e  c r iador  do tesouro”, um verdadeiro “plano de
+Programa Futuro  C ient i s ta , vida” com a receita para se chegar ao
+
+L íder  do  Grupo  de  Pesqu isa  em sucesso. Siga as sugestões e persista
+Nanoneurob io f í s i ca  e  Pro fessor
+
+Assoc iado  da  Un ivers idade nos seus sonhos!
+Federa l  de  São  Car los
+
+(UFSCar ) .
+
+1
+
+
+
+Agradecimentos
+Agradecemos a ajuda e colaboração de alunos do Programa
+Futuro Cientista que realizaram a revisão minuciosa da obra,
+dando dicas, sugestões e corrigindo possíveis erros na escrita e
+nas ilustrações. Segue abaixo os nomes dos alunos que
+realizaram o trabalho de revisão desta obra!
+
+Anye Gabrielle de Lima Sonvensso Aluna do Programa Futuro Cientista desde
+
+2016; é embaixadora sênior da cidade de Capão Bonito - SP.  Se formou em
+
+Processos Gerenciais e atua em Mercado Financeiro. 
+
+Bruna Batista da Silva – Aluna do Programa Futuro Cientista desde 2014; é
+
+embaixadora sênior da cidade de Anhembi - SP. Se formou em técnica de
+
+enfermagem e atualmente é empresária no ramo da confeitaria. 
+
+Flávia Alves Corrêa – Aluna do Programa Futuro Cientista desde 2014; é
+
+embaixadora sênior da cidade de Pilar do Sul-SP.  Se formou em Técnica de
+
+enfermagem e atualmente trabalha em laboratório.
+
+Giovanna Lidiane – Aluna do Programa Futuro Cientista desde 2016; é
+
+embaixadora sênior da cidade de Iperó - SP.  Pretende se formar em
+
+Neurociências ou Relações Internacionais. 
+
+Stela Coelho Teodoro Aires – Aluna do Programa Futuro Cientista desde 2013;
+
+é embaixadora sênior da cidade de Cesário Lange -SP. Está cursando
+
+pedagogia no IFSP, Campus Boituva.
+
+A obra faz uso de uma
+linguagem didática, sem o
+uso de palavras difíceis. O
+
+livro é perfeito para aqueles
+que sonham em se tornar
+
+um cientista!
+
+2
+
+
+
+Introdução 
+Você deve se perguntar frequentemente: como um cientista realiza
+uma descoberta? Quais métodos são utilizados para conseguirem
+resultados? Como um cientista torna-se reconhecido
+mundialmente? O estudante que inicia sua vida cientifica
+realizando tais indagações está efetivamente no caminho certo.
+Construir ciência requer disciplina, determinação e reflexões sobre
+a vida. A jornada é longa e repleta de obstáculos, mas o seu sonho
+deve se manter vivo! 
+
+TORNAR-SE UM CIENTISTA!
+Nos tópicos a seguir
+descreveremos de forma simples o
+que é Ciência, como se faz Ciência
+e quais os caminhos que você deve
+seguir para tornar-se um grande
+pesquisador. Siga-os! O trabalho de
+um cientista é muito bem
+planejado, com alguns objetivos
+iniciais e um cronograma. O
+trabalho planejado permite aos
+cientistas abordar problemas,
+explicar fenômenos e realizar
+descobertas. A razão pela escolha
+de um tema de pesquisa é
+puramente pessoal e prende-se ao
+fato de que este fenômeno lhe
+desperta atenção. Neste manual
+vamos guiar-lhe para uma escolha
+ideal para o seu futuro acadêmico e
+profissional. Vamos adotá-lo!  Você
+estará a um passo de realizar seus
+sonhos...
+
+3
+
+
+
+O que é Ciência?
+A ciência nasce de nossa vontade natural de entender
+aquilo que é interessante, que nos chama a atenção.
+Geralmente, fenômenos que motivam nosso interesse
+também despertam nossa curiosidade e atraem nossa
+observação. A ciência nasce da percepção e da
+curiosidade em querer entender algo.
+
+Para isto não precisamos, necessariamente, dos
+grandes laboratórios ou de fórmulas
+matemáticas. Quando observamos algo que nos
+interessa, queremos entender, saber mais,
+encontrar explicações para o que notamos. Para
+responder a estes questionamentos utilizamos
+uma atividade chamada “pesquisa”. Pesquisar é
+uma atividade extremamente racional de busca,
+de engenhosidade e de atrevimento. 
+
+Ciência é
+feita de
+pesquisa!
+
+4
+
+
+
+O que é um Cientista?
+Cientista aprende experimentando
+e pensando, questionando sobre a
+vida e como as coisas funcionam.
+Ele sempre observa, experimenta e
+questiona, além de dedicar grande
+parte de sua vida a buscar meios
+para melhorar a qualidade de vida e
+a saúde das pessoas, encontrando
+novas soluções para os problemas
+da Humanidade. 
+
+             Todo cientista usa como           
+           “roteiro” de trabalho o método
+científico, que representa uma forma
+
+organizada de desenvolver sua pesquisa e
+propor suas descobertas. 
+
+5
+
+
+
+Quem pode ser um Cientista?
+Os cientistas são os “Peter Pans” da sociedade, aqueles que não
+querem crescer, que passam a vida perguntando “por quê”. Uma
+criança é um cientista, um explorador nato, já que vive tocando e
+olhando tudo, participando das atividades com entusiasmo,
+botando o dedo aqui e ali, pegando coisas, subindo e descendo a
+mesma escada várias vezes até, por exemplo, desenvolver uma
+melhor percepção da gravidade e melhorar sua habilidade motora.
+Para uma criança, a vida é um grande experimento, uma grande
+aventura de descoberta. 
+
+ Para ser cientista basta ser uma eterna
+criança! Dê asas ao espírito criativo, seja
+
+um inventor, sonhador e cultive a
+imaginação!
+
+6
+
+
+
+Atitudes de Cientista! 
+Para ser um cientista é necessário ter 7 atitudes de cientista.
+Estudaremos cada característica individualmente!
+
+01 CRIATIVIDADE
+
+02 CURIOSIDADE
+
+03 IMAGINAÇÃO
+
+04 INTUIÇÃO
+
+05 OBSERVAÇÃO
+
+06 PAIXÃO
+
+07 DEDICAÇÃO
+
+7
+
+
+
+Criatividade
+Picasso dizia que “todo ato de criação se inicia com um ato de
+destruição”, ou seja, ninguém cria nada parado. Criar é uma ação
+de desequilíbrio, como acontece com o nosso caminhar, da qual
+uma perna vai à frente para evitar uma queda iminente. Está claro
+que as crianças perdem a criatividade e a imaginação com o
+passar dos anos, devido ao surgimento do pensamento racional ou
+do grau de racionalidade utilizado nas escolas e dentro de casa. 
+
+A razão começa a ser um
+empecilho muito grande à
+criação, pois ela lança dúvidas da
+possibilidade baseada no que já
+é conhecido e comprovado.
+Acredita-se que a criatividade
+esteja intimamente ligada à
+imaginação e ao entusiasmo,
+dois ingredientes que ajudam na
+superação dos desafios de um
+cientista. 
+
+A criatividade nasce em mentes
+inquietas e insatisfeitas com o modo
+como as coisas estão ou como elas
+
+funcionam!
+
+8
+
+
+
+Curiosidade
+A curiosidade é aquilo que nos move a
+querer saber. Sem curiosidade não há
+ciência!
+
+A pessoa curiosa é mergulhada por um
+Espírito Crítico, que gosta de analisar,
+questionar, submeter a exame, julgar a
+validade, a fundamentação das soluções
+estabelecidas. 
+
+Perguntaram um dia a Einstein o
+que é que o distinguia das outras
+
+pessoas. Ele disse minha
+"curiosidade apaixonada”.
+
+Einstein tinha uma curiosidade
+obsessiva, que só a paixão
+
+transmite.
+
+Só a evidência dos fatos sacia o desejo do(a) cientista de conhecer
+o “como” e os “porquês” dos fenômenos da natureza. Ou seja, aa
+pessoa que vive da ciência prefere ficar sem respostas a aceitar
+soluções pouco apoiada nos fatos. Tais pessoas põem em prática
+as lições do “duvidar com sabedoria”, isto é: 
+
+Não aceitar nada
+como verdadeiro
+
+sem saber
+evidentemente o
+
+que é!
+9
+
+
+
+Imaginação
+A imaginação é uma capacidade intelectual preciosa que,
+aparentemente, é exclusiva à espécie humana. Não há dúvida que
+ela transformou os humanos no que hoje são. A imaginação esteve
+presente tanto na invenção do machado de pedra pré-histórico e
+das primeiras fogueiras nas cavernas, quanto no desenvolvimento
+das máquinas e ferramentas atuais, nas teorias mais ousadas
+sobre o universo e, através dos tempos, vem sendo a essência das
+artes. Sem imaginação não há a mínima possibilidade de se
+praticar ciência. 
+
+“A imaginação é mais
+importante do que o
+
+conhecimento. O
+conhecimento é limitado. 
+ A imaginação dá a volta
+
+ao mundo!”
+
+(Albert Einstein)
+
+Assim, um grande passo para se descobrir um futuro cientista é
+“dar asas à imaginação”! Um exemplo clássico de cientista é o
+artista, o poeta ou escritor, que tenta transportar sua criação para
+o mundo real, ainda que ela mesma não a seja. O cientista tem o
+poder de transformar ideias, vindas da imaginação, em linguagem
+(escrita)!
+
+10
+
+
+
+Intuição
+Sabe aquele insight
+[1] que, de repente,
+ilumina uma difícil
+decisão, ou aquela
+sensação de que
+
+“alguma coisa lhe
+diz” para agir desta
+
+ou daquela maneira? 
+
+Pois é, estas são provavelmente manifestações da sua intuição. E,
+se você aprender a lidar com elas, isso pode realmente facilitar sua
+vida. A palavra intuição vem do latim “intuire”, que significa “ver
+por dentro”. De um modo geral, as pessoas criativas são mais
+intuitivas e têm facilidade de entrar em contato com as emoções e
+com a imaginação. Para desenvolver a intuição, três medidas são
+necessárias: ler, aprender e alimentar sua curiosidade!
+
+Intuição é o ato de ver algum
+objeto ou fenômeno de
+
+maneira diferente daquela
+normalmente vista pela
+maioria das pessoas!
+
+[1] Insight pode ser sinônimo de compreensão, conhecimento ou intuição. É uma perspicácia ou
+capacidade de aprender algo e pode acontecer quando uma solução surge de forma repentina.
+Esta palavra, que surgiu do inglês arcaico, é formada pelo prefixo in (dentro) e a palavra sight
+(vista), então esta palavra pode significar “vista de dentro” ou “ver com os olhos da mente”. 
+
+11
+
+
+
+Observação
+As informações científicas que
+obtemos sobre um fenômeno são
+inteiramente diferentes das que
+conseguimos quando fazemos uma
+observação. 
+A observação procura coletar dados que
+sejam válidos e confiáveis para sua
+pesquisa. Para um cientista não basta
+simplesmente olhar, deve, certamente,
+saber ver, identificar e descrever o
+fenômeno. 
+A observação ajuda a entender o
+comportamento de um fenômeno ou
+ainda permite identificar um problema
+do cotidiano.
+
+Observar representa uma
+visão mais ampla de um
+fenômeno e é o primeiro
+
+passo de qualquer atividade
+mental. Observar é uma arte!
+
+Por exemplo, se você observar o céu, num dia de sol entre chuvas,
+verá um fenômeno lindo que ocorre quando a luz solar incide sobre
+as gotículas de água da chuva. Nós chamamos este fenômeno de
+“arco-íris”. Observe que para ver um arco-íris é necessário que
+estejamos localizados numa região entre o sol e a chuva, com um
+ângulo que eu possa observar o lindo espetáculo no céu.
+
+12
+
+
+
+Paixão (Entusiasmo)
+Além das características citadas anteriormente, é preciso lembrar-
+se de outro elemento muito importante na vida de um cientista: a
+paixão ou o entusiasmo. O termo entusiasmo deriva do latim
+enthusiasmus, que significa basicamente “ter um Deus dentro de
+si”, ou seja, esta palavra foi criada para descrever a pessoa que é
+guiada pela força e sabedoria divina. 
+
+Se você não tiver paixão, é provável
+que a imaginação acabe virando um
+
+Entusiasmo é a fantasma em sua mente e a
+exaltação do ânimo criatividade um invasor rabugento. Um
+que se produz por cientista que tem paixão pela Ciência é
+
+algo que cativa ou dono de uma inteligência brilhante e
+de um agudo senso de observação.
+
+que se admira.
+Enfim, o cientista apaixonado é um ser
+
+É um estado de humano capaz de penetrar nos
+grande mistérios da vida por várias vertentes
+
+arrebatamento e distintas e complementares,
+
+alegria! trabalhando de forma incansável em
+busca de respostas aos seus
+problemas.
+
+13
+
+
+
+Dedicação
+Quer brilhar na vida? Passe mais de 10 mil horas praticando. Pelo
+menos, foi isso que os grandes cientistas de todas as áreas
+fizeram. Os genes não determinam o sucesso. Dependa apenas do
+seu suor para chegar lá! O segredo para se descobrir algo na
+ciência é persistir!
+
+Thomas E
+re d
+
+f i
+e s
+r o
+i n
+u ,
+ um
+
+ge  
+n d
+i i
+a a
+l : 
+i “
+d A
+ad
+
+in e
+s  é
+p  
+i 1
+r %
+aç  
+
+ã d
+o e
+ e 9
+
+tr 9
+a %
+ns  d
+
+p e
+iração”
+
+(Thomas Edison)
+
+Esta frase diz praticamente tudo.
+Basta 1% de inspiração, ou seja,
+ideias originais. Todo o resto é
+trabalho, tempo, melhoramento
+por meio do erro, resistência e
+persistência. Mozart nasceu com
+um dom para a música e aos 5
+anos já compunha músicas, mas
+aos 4 anos de idade já trabalhava
+8 horas diárias na música. O seu
+sucesso começou com a aptidão
+com que nasceu, mas só se (Wolfgang Amadeus Mozart)
+concretizou com o trabalho e
+dedicação. 
+
+14
+
+
+
+Como um Cientista Trabalha?
+Bem, agora que já aprendeu as 7 atitudes de um
+
+cientista, vamos iniciar os trabalhos?
+
+Ciência é uma palavra que deriva
+do termo latino “scientia” cujo
+significado é conhecimento ou
+saber. Este conhecimento pode
+ser adquirido por intermédio de
+estudo ou prática, baseado em
+certos princípios.
+
+A ciência é baseada na exploração – fazer perguntas, criar teorias
+e realizar experimentos para obter resultados. As pessoas que
+conduzem esta exploração são chamadas de Cientistas. Antes que
+os cientistas possam fazer qualquer afirmação, suas ideias passam
+por um processo chamado: 
+
+Método científico!
+
+15
+
+
+
+Método científico
+O método científico não é o mesmo para todas as áreas da ciência
+e pode passar por revisões se for necessário! No geral, o método
+científico é um “passo a passo” de como uma pesquisa é
+desenvolvida! 
+
+observação conclusões
+•Sondagem •Generalização dos resultados
+•Observação assistemática   observados
+(preferencial) •Formulação das Leis
+•Padrões / analisa o fenômeno •Conclusões
+
+problema análise de
+resultados
+
+•Estudo de caso •Observação e Análise dos
+•Faz-se uma pergunta que resultados
+motiva o início e •Enumeração
+desenvolvimento da pesquisa •Observação sistemática
+
+hipótese experimento
+•Planejamento/Escrita do projeto
+
+•Pesquisa e  experimentos
+•Pesquisa Bibliográfia e
+Documental •Repetição/Levantamento
+
+•Dedução e análise das •Estudo de caso
+evidências; •Testes das hipóteses
+
+16
+
+
+
+Encontrando “O problema”
+A primeira tarefa de um cientista é encontrar um problema para
+resolver. Tal problema pode surgir de duas formas: 
+
+Observação
+Por intermédio de uma
+observação, sem motivo qualquer,
+de um fenômeno ou algo parecido.
+Por exemplo, você pode se
+perguntar como e por quê as
+ondas se formam no mar ou num
+lago, somente observando as
+mesmas. Pode também questionar
+por quê os ovos possuem o
+formato oval.
+
+Demanda
+Por intermédio de uma demanda
+do dia-a-dia. Por exemplo, ao
+atravessar uma rua você observa
+que a mesma é muito
+movimentada e que, em
+determinadas horas do dia, é
+quase impossível atravessá-la.
+Este é um problema sério para
+ser resolvido. Você pode se
+perguntar quais as condições ou
+situações favoráveis para eu
+atravessar esta rua. Um
+semáforo resolveria este
+problema?
+
+17
+
+
+
+Encontrando “O problema”
+O problema pode também surgir em uma conversa (debate) com
+colegas, por exemplo, questionando os motivos, situações
+políticas, econômicas, históricas e sociais que levam o ser humano
+a praticar o ódio e o preconceito contra determinados grupos
+sociais, (mulheres, negros, população LGBTQIA+ , indígenas,
+pessoas com deficiência, etc.). 
+
+ Após realizar a observação de um fenômeno ou de vários
+fenômenos, entender seus motivos e achar alguns padrões, você
+analisa estes padrões e faz as seguintes perguntas: 
+
+Por quê? Como?
+
+Surge um Problema, cuja solução deve ser
+ansiosamente procurada. Conclui-se então
+que, à medida que os problemas vão sendo
+solucionados, o conhecimento científico
+vai aumentando. À medida que o ser
+humano vai aprendendo, vai construindo
+um conhecimento (informações,
+experiências) e, com esse arsenal, orienta-
+se na vida.
+
+18
+
+
+
+Encontrando “O Problema”
+Quando o ser humano se depara com algo ou
+com alguma situação e descobre que não tem
+conhecimento suficiente para entender o que
+está ocorrendo, fica intrigado ou sente-se
+ameaçado.
+
+Então, surge em sua mente uma grande
+interrogação ou problema e, graças ao
+desconforto que essa circunstância provoca,
+ele parte em busca de uma solução (teoria). 
+
+Nós temos um problema quando não temos repertório suficiente
+para entender ou compreender uma situação ou responder uma
+interrogação (pergunta). Desta forma, sempre que você não está
+entendendo bem alguma coisa por ter conhecimento insuficiente,
+é possível dizer que está diante de um Problema. Este problema
+vai sinalizar o foco de sua Pesquisa. 
+
+A partir dessa frase podemos
+compreender que o
+
+Frequentemente, a conhecimento só ocorre em
+formulação de um problema situações - problema. Por
+
+de pesquisa é mais essencial exemplo, você é capaz de
+do que sua solução
+
+conduzir veículos sem refletir
+(Albert Einstein) sobre seus modos de
+
+funcionamento. 
+Entretanto, quando enfrenta uma situação problema, onde o
+veículo que você está conduzindo deixa de funcionar, será levado a
+refletir sobre as possíveis razões do não funcionamento do veículo.
+Uma observação dos fatos (motor, sistema elétrico, bateria, tanque
+de gasolina...) associada às suas visões sobre funcionamento de
+veículos, poderá servir para levantar hipóteses acerca do problema
+e associá-las com possíveis respostas. 
+
+19
+
+
+
+Solucionando “O Problema”
+1. Coleta de dados e hipóteses
+A solução do problema inicia-se com a Coleta de Dados ou de
+informações que possam explicar o fenômeno. A coleta de dados
+pode ser realizada via leitura de livros e artigos científicos
+publicados sobre o assunto ou tema, discussões com outros
+cientistas, professores, colegas ou mais observações. Os dados
+levantados nesta etapa da pesquisa são, geralmente, organizados
+na forma de tabelas e gráficos. 
+
+Os dados podem ser do tipo primário (variáveis observadas pelo
+próprio pesquisador) e secundário (análise de dados ou revisões
+bibliográficas da literatura). Com o levantamento de dados
+completo é possível enxergar Tendências. Com base nestas
+tendências, formula-se uma explicação provisória para o problema:
+
+A hipótese!
+
+Com a hipótese em mãos, o cientista precisa agora escrever um
+plano de ação para sua pesquisa, conforme descreveremos a
+seguir. Nesse plano de ação o cientista vai traçar as metas para
+validar sua hipótese, comprovando ou não sua suposição. 
+
+2. Plano de Ação (Plano de Pesquisa)
+
+Geralmente, quando um cientista tem
+um problema nas mãos ele traça um
+plano de ação (planejamento de sua
+pesquisa). Um plano de ação deve
+conter os seguintes tópicos:
+
+20
+
+
+
+Solucionando “O Problema”
+
+PLANO DE PESQUISA
+
+    Os objetivos de sua
+pesquisa;
+    Os métodos e materiais
+utilizados para encontrar as
+possíveis respostas às suas
+perguntas;
+    As possíveis hipóteses para
+resolver o problema.
+
+ Um bom plano de ação deve tentar responder 6 (seis) perguntas, a
+fim de tentar encontrar hipóteses para resolver o problema:
+
+01. O quê? - Qual o problema a 1.Quando?- Quanto tempo vai
+ser estudado? durar sua pesquisa?
+2.Por quê? - Quais os objetivos 2.Quem? - Quem vai participar
+da pesquisa? da pesquisa?
+3.Como? - Como será realizada a 3.Onde? - Onde será realizada a
+pesquisa? pesquisa?
+
+21
+
+
+
+O Plano de Pesquisa
+Ressalta-se que, normalmente, os objetivos de uma pesquisa são
+definidos em dois níveis distintos: geral e específico. Assim, toda
+pesquisa terá um único objetivo geral e um ou mais objetivos
+específicos. 
+Neste exemplo (plano de ação abaixo), o problema que temos que
+resolver é a “falta de água numa escola”. Utilizaremos todas as 6
+perguntas básicas para construção do plano de ação. 
+
+O cientista acredita que isso se deva a três causas distintas
+(hipóteses): causa 1, causa 2 e causa 3. Estas causas vão
+transformar-se em objetivos específicos do plano de ação. Desta
+forma, os objetivos específicos expressam o que é necessário
+fazer para cumprir o objetivo geral. 
+
+Após decidir sobre o problema a ser estudado, os objetivos da sua
+pesquisa e as possíveis hipóteses (causas) para solução do seu
+problema, deve-se prever os métodos e materiais que serão
+utilizados em sua pesquisa. No plano de ação precisa estar
+especificado os procedimentos que serão utilizados para a
+realização dos experimentos ou levantamentos. Observe que até
+esse momento o pesquisador não realizou praticamente pesquisa,
+do ponto de vista concreto: apenas determinou o plano de ação.
+
+22
+
+
+
+O Plano de Pesquisa
+
+Modelo de um plano de ação
+
+O que? (Problema): Falta de água potável na Escola
+Por que? (Objetivo da pesquisa): Encontrar soluções
+para a falta d’água potável.
+
+Hipóteses para explicar o problema (a falta d’água): 
+HIPÓTESE 1: Consumo excessivo de água pela
+população local; 
+HIPÓTESE 2: Pouca chuva na região, neste período; 
+HIPÓTESE 3: Falhas da infraestrutura dos serviços de
+água e esgoto da escola.
+
+ Tarefas                   Como?                       Quem?
+Pesquisar junto ao serviço de água
+e esgoto o consumo de água em
+
+01 Cientista A
+horários de almoço e janta para
+cada dia da semana no bairro.
+
+Pesquisar a quantidade de chuva
+02 Cientista B
+
+para cada período do ano.
+
+03 Levantar dados sobre vazamento Cientista C
+de água nos bairros da cidade.
+
+04 Construir um pluviômetro. Cientista D
+
+05 Construir uma estação Cientista E
+meteorológica.
+
+23
+
+
+
+Neste modelo, são estimadas cinco tarefas para testar as
+hipóteses iniciais. A tarefa 1 tem a função de descrever o
+consumo de água por habitantes da cidade, avaliando a primeira
+hipótese. A tarefa 2, de conhecer e descrever a quantidade de
+água armazenada para cada período do ano. A tarefa 3, que faz a
+contagem de vazamentos de água, visa conhecer os problemas de
+infraestrutura de água e esgoto, avaliando a terceira hipótese. As
+tarefas 4 e 5 visam, respectivamente, medir a quantidade de
+chuva durante o período de seca na cidade e possibilitar a
+previsão do tempo para analisar a segunda hipótese. 
+
+Por fim, ao término da descrição das tarefas, para testar as
+hipóteses, deve-se agora atentar para a construção de mais uma
+tabela com os tipos de tarefas e respondendo às perguntas: onde
+e quando fazer. 
+
+Tipo de tarefa              Onde?                          Quando?
+Entrevista Na escola, visitando
+
+1º ao 2º
+01 (levantamento) instituições de tratamento de
+
+mês
+água e esgoto
+
+02 Levantamento Órgão oficial de previsão do
+3º mês
+
+tempo
+03 Levantamento Ruas da Cidade 4º mês
+
+04 1º ao 4º
+Experimento Escola
+
+mês
+1º ao 4º
+
+05 Experimento Escola
+mês
+
+24
+
+
+
+Realização da Pesquisa: O que é?
+Após realizar o plano de ação, o cientista deve partir para a
+prática, realizando as 5 tarefas da tabela anterior. O próximo passo
+é realizar a experimentação ou levantamento, que consiste
+basicamente na verificação das hipóteses previamente indicadas
+no plano de ação, estabelecendo uma relação entre causa e efeito. 
+
+A hipótese ou hipóteses sobre o comportamento observado podem
+ser refutadas ou comprovadas (colocadas à prova) via realização de
+experimentos (experiência ou testes) ou pesquisa por
+levantamento (qualitativa). 
+
+Experimento é uma situação criada pelo pesquisador com
+o propósito de pôr a prova (testar) alguma hipótese. 
+
+Pesquisa por levantamento é aquela em que as
+características de interesse de um determinado
+fenômeno são levantadas (observadas ou medidas), mas
+sem manipulação. Pode-se conseguir estes dados
+utilizando questionários, formulários ou entrevistas. Os
+dados são tabulados e analisados estatisticamente. 
+
+25
+
+
+
+Realização da Pesquisa: Analisando
+A experimentação prevê a interferência, introdução e manipulação
+das condições ambientais ou quaisquer outros fatores pelo
+pesquisador. Neste tipo de pesquisa pode-se reproduzir um fato ou
+fenômeno da realidade com o objetivo de descobrir fatores que o
+produzem ou que por ele são produzidos. 
+
+3. Análise dos resultados
+Nesta etapa de pesquisa, o cientista vai analisar os resultados
+alcançados na experimentação ou levantamento. Para isso, o
+cientista deve resumir os dados inicialmente de forma bruta,
+fazendo o uso de tabelas e gráficos, colocando-os em tabelas
+(tabulação de dados). Para o caso do plano de ação redigido
+anteriormente, o cientista vai comprovar ou não as suas 3
+hipóteses de acordo com os seus resultados.
+
+HIPÓTESE 1: Consumo excessivo de água
+por parte da população local.
+
+HIPÓTESE 2: Falta de chuva na região.
+
+HIPÓTESE 3: Problemas de infraestrutura
+por parte dos serviços de água e esgoto da
+escola.
+
+26
+
+
+
+Se as hipóteses forem aprovadas, o cientista deve partir para a
+próxima etapa. Caso alguma hipótese não esteja de acordo com os
+resultados alcançados, pode-se realizar uma nova bateria de
+experimentos ou levantamentos para chegar a alguma nova
+hipótese. Em algumas ocasiões pode-se definir que a hipótese não
+é verdadeira e ela é descartada das conclusões finais. Desta forma,
+as análises dos resultados levarão a uma conclusão que provará se
+a hipótese ou hipóteses iniciais estavam corretas ou não.
+
+ A HIPÓTESE ESTARIA
+CORRETA?
+
+As hipóteses quando comprovadas
+levam à solução do problema,
+podendo transformar-se em teorias
+ou modelos (conclusões). Se a
+hipótese estiver errada, inicia-se
+todo o processo de pesquisa
+novamente, com novas hipóteses e
+novos experimentos ou
+levantamentos
+
+4. Conclusões - teorias e/ou modelos
+
+Finalmente, atingimos o
+ponto alto do esforço de
+produção de uma pesquisa
+cientifica: as conclusões! É
+precisamente nesse momento
+que o pesquisador deve
+fornecer uma resposta
+conclusiva ao problema
+formulado no plano de ação. 
+
+27
+
+
+
+Realização da Pesquisa: Teorias
+Nesta etapa da pesquisa você conclui e escreve um modelo ou
+teoria sobre o problema abordado. Para o caso de nosso exemplo
+que vem sendo trabalhado neste capítulo, pode-se escrever uma
+teoria para o problema de falta de água na sua cidade:
+
+ A falta de água na cidade, durante os
+meses mais frios do ano, deve-se,
+
+principalmente, a estiagem e ao consumo
+excessivo de água por parte da população!
+
+Teoria é uma síntese aceita de um vasto
+campo de conhecimento, consistindo de
+hipóteses que foram devidamente
+testadas, por meio de fatos científicos
+que descrevem os fenômenos naturais.
+Sempre que observamos algum fato, que
+contraria esta teoria, devemos abandoná-
+la ou modificá-la. 
+
+5. Leis
+
+Se a hipótese “resiste” por muito tempo, i.e., quando ela consegue
+ser não rejeitada em todas as situações de teste, acaba sendo
+chamada de Lei. Uma boa maneira de entender o significado de
+teoria é imaginar um edifício em forma de pirâmide, como no
+desenho da Figura a seguir. Situando um problema na base dessa
+pirâmide e caminhando para cima, vão surgindo as  hipóteses que,
+depois de testadas, originam as teorias. As leis ficam situadas no
+topo da pirâmide!
+
+28
+
+
+
+Leis Pirâmide do
+caminho da
+
+Teorias ciência!
+
+Hipóteses
+
+Problemas
+
+29
+
+
+
+Como tornar-se um(a) Cientista?
+Tornar-se um cientista é uma
+tarefa bastante difícil, acredito
+até que desanimadora, pela
+dificuldade que se tem em
+conhecer ou encontrar um
+durante sua infância e
+adolescência. Na maioria das
+vezes, só encontraremos um
+cientista na universidade.
+
+Mas isso se reflete na
+Querer tornar-se desinformação, na falta de
+cientista é algo oportunidade de conhecer no que
+
+RARO! um cientista trabalha ou pesquisa e
+até mesmo a falta de oportunidade
+
+de visitar os locais onde a ciência é realizada, como as
+universidades e centros de pesquisa.
+Se alguém pedir para mencionar o
+nome de dez grandes cientistas a
+todos os estudantes de uma escola,
+é bem provável que nem 1% dos
+alunos conseguirá mencionar ao
+menos cinco nomes (veja uma lista
+de grandes cientistas no anexo VI).
+Isso se deve à ausência de
+informação com relação a esta
+profissão tão maravilhosa e
+benéfica a população. Se ninguém
+conhece um(a) cientista, com
+exceção ao que se vê em filmes
+(homens malucos de cabelos em
+pé) fica difícil contemplar a
+possibilidade da carreira de um(a)
+cientista (veja a lista de filmografia
+no anexo V)!
+
+30
+
+
+
+Como tornar-se um(a) Cientista?
+Bom, para se tornar um(a) cientista primeiramente você precisa saber
+responder duas perguntas: 
+
+Por que fazer ciência?
+
+Para quê tornar-se
+cientista?
+
+A primeira razão para se fazer ciência é ter amor declarado pela
+natureza, um desejo insaciável de desbravar os mistérios do nosso
+universo. Isso é ciência! Fazer ciência permite entender como
+funciona a vida, o universo e as coisas ao nosso redor. A
+segunda razão está ligada a demanda ou necessidade; fazer
+ciência significa progresso e desenvolvimento. Desta forma, para
+ser um cientista não basta ter um problema, é necessário ter
+paixão para que você tenha motivação extra quando deparar-se
+com um problema difícil de resolver. 
+
+Como ser um(a) cientista?
+Nas próximas páginas daremos as
+
+Programa Futuro Cientista ferramentas necessárias para que
+você consiga concretizar seu sonho
+de ser cientista! Assim como você
+terá uma chance para dar asas a sua
+imaginação...
+
+Temos aqui uma sequência de 11
+passos que você deverá realizar com
+afinco para tornar-se um(a) grande
+cientista, atenção:
+
+31
+
+
+
+Como tornar-se um(a) Cientista?
+Responder verdadeiramente a estas três perguntas: 
+a) Eu gosto de ciência? 
+b) Eu sou feliz praticando ciência?
+c) Eu quero ser um cientista?
+
+Analisar as respostas anteriores. Se as respostas anteriores
+forem positivas (sim), então passe para o passo seguinte. Se
+for não, então procure um profissional que realize um teste
+vocacional com você ou que te oriente na profissão que você
+goste;
+
+Participar das olimpíadas e feiras de ciências de diversas
+áreas do conhecimento (leia os anexos III e IV para mais
+informações sobre estes eventos). 
+
+Praticar ciência, realizando pesquisa em temas que instigam
+você. Procurar respostas para os fenômenos que você não
+compreende. Você pode praticar ciência de várias maneiras:
+
+Na escola, com a seus/suas professores(as);
+Em casa, com seus pais ou sozinho(a),
+consultando livros e documentários da TV;
+Em conjunto com outros jovens, criando clubes
+de ciências;
+Participar das feiras de ciências de sua escola;
+
+Informar-se sobre projetos universitários que
+incentivam a formação de um cientista, em
+especial, o Programa Futuro Cientista!
+
+32
+
+
+
+Como tornar-se um(a) Cientista?
+Cultivar as 7 atitudes de cientista que você
+aprendeu neste manual!
+
+Informar-se sobre as várias áreas da ciência e quais as
+oportunidades para prestar um vestibular e/ou prova para
+entrar em um curso superior;
+
+Ciências da
+Linguagens Natureza
+
+Ciências
+Ciências Exatas
+Humanas
+
+Prestar o vestibular para ingressar numa universidade na
+área que você escolheu e que gostaria de iniciar sua carreira
+científica (quando tiver no 3º ano do ensino médio). Leia os
+anexos I e II para mais informações). 
+
+Ao ingressar na universidade, procurar um professor e começar
+uma iniciação científica. Ao chegar neste ponto, você já
+estará atuando com um cientista e trabalhando entre eles!
+
+Fazer pós-graduação (mestrado e doutorado) na área
+que mais instiga sua curiosidade (ao terminar a
+graduação).
+
+Prestar um concurso/entrevista de emprego para
+pesquisador ou professor numa instituição de pesquisa
+(ao terminar o doutorado). 
+
+33
+
+
+
+Entendendo o Ensino Superior
+Denominação das instituições
+As instituições de ensino se dividem basicamente em privadas (com
+ou sem fins lucrativos) ou públicas (federal, estadual ou municipal). 
+
+Instituições privadas
+As instituições de Ensino Superior privadas, são instituições com ou
+sem fins lucrativos (comunitária, filantrópicas ou confessionais) que
+cobram uma taxa mensal para manter o funcionamento da instituição.
+Essas instituições têm autonomia para decidir o valor da mensalidade,
+que varia de acordo com o curso e a área de atuação. As
+características mais marcantes das instituições de ensino superior
+privadas são: estar em maior quantidade no território nacional, ou seja,
+há mais instituições de ensino superior privadas no Brasil e, em sua
+maioria, a forma de ingresso aos cursos é mais fácil, porém, tem um
+custo.
+
+Instituições públicas
+As instituições de Ensino Superior Públicas, são aquelas criadas e
+mantidas pelos poderes públicos federais, estaduais ou municipais. Os
+aspectos mais atrativos são a gratuidade, a grande variedade de
+cursos e a alta qualidade do corpo docentes vinculadas a elas
+(professores doutores e pesquisadores há anos). Assim, podemos
+considerar o advento da Universidade Pública no Brasil um grande
+avanço para a democratização do Ensino Superior.
+
+34
+
+
+
+Entendendo o Ensino Superior
+As diferentes instituições de ensino superior
+Geralmente, durante o ensino médio
+muitas dúvidas pairam sobre nossas
+mentes, incontestavelmente é um
+período bem complexo, pois diversas
+mudanças e responsabilidades
+começam a surgir, dentre elas a
+escolha de uma carreira profissional é
+um dos maiores conflitos nessa fase.
+Primeiramente, precisamos compreender as diferenças entre as
+instituições de ensino superior: universidade, faculdade e centro
+universitário, para que assim possamos compreender melhor esse
+universo e fazer escolhas sábias, cautelosas e conscientes. 
+
+Universidades
+Quando pensamos em ciência logo associamos a universidade, pois lá
+é o espaço que grande parte das pesquisas científicas acontecem. Mas
+você sabe o que de fato é uma universidade? Que tipo de atividades
+são desenvolvidas nesse espaço? 
+Uma universidade é uma instituição de
+Ensino Superior, pesquisa e extensão
+(atividades realizadas para o
+atendimento da comunidade, por
+exemplo, o Programa Futuro Cientista é
+um programa de extensão da UFSCar-
+Sorocaba) nas diversas áreas de
+conhecimento. 
+
+35
+
+
+
+Entendendo o Ensino Superior
+O corpo docente (professores, técnicos de laboratório, etc) de uma
+universidade deve ser em sua maioria contratado em regime integral
+de dedicação exclusiva, para que possam efetivamente executar as
+atividades de ensino, pesquisa e extensão com qualidade. 
+
+Outra característica desse tipo de
+instituição, é a autonomia para criar cursos
+e o dever em oferecer mestrado e
+doutorado com boa qualidade, ou seja, com
+uma boa avaliação pelo Ministério da
+Educação e Cultura. Podemos considerar a
+universidade um espaço repleto de
+diversidades, que incentiva o debate sobre
+questões políticas, sociais, econômicas e
+tecnológicas de forma democrática. O
+intuito fundamental da universidade é a
+formação de sujeitos críticos, que de fato
+farão diferença na sociedade, auxiliando no
+desenvolvimento de uma sociedade mais
+ética, justa e desenvolvida.
+Para isso, são formados uma enorme gama de grupos de estudo e
+pesquisa, que auxiliam nesse processo de formação crítica dos
+educandos.
+Além disso, a universidade é um espaço de lazer, que oferece
+entretenimento pelos e para os estudantes, como rodas de maracatu,
+samba, apresentação de peças teatrais, aulas de expressão artística,
+aulas de dança, capoeira, apresentações de bandas nos mais variados
+estilos, festas típicas entre inúmeras outras formas de entretenimento.
+Sem dúvidas se o seu intuito for desenvolver pesquisas, a universidade
+é o melhor lugar para você, pois lá esses tipos de atividades são
+extremamente incentivados e com o compromisso de rigor e
+qualidade! (Claro que existem faculdades e centros universitários de
+excelência, que realizam tais atividades com muito comprometimento).
+
+36
+
+
+
+Entendendo o Ensino Superior
+Institutos Federais - IF
+
+Institutos federais são instituições de
+educação superior e profissional,
+pluricurricular e multicampi, especializadas
+na oferta de educação profissional e
+tecnológica nas diferentes áreas e
+modalidades de ensino. São semelhantes as
+universidades, porém menores do que elas,
+além de ter menor exigência em ofertar
+programas de pós-graduação.
+Obrigatoriamente, esse tipo de instituição
+deve possuir um corpo docente qualificado
+com mestrado ou doutorado.
+
+Faculdades
+Comparado às universidades e aos institutos
+federais, as faculdades são instituições que
+atuam em uma gama restrita de áreas do
+saber, geralmente especializadas em uma
+determinada área de conhecimento. Outra
+diferença é que a faculdade não tem
+autonomia para criar cursos sem autorização
+do MEC e tem seu corpo docente, na maioria Faculdades
+das vezes, com qualificação em nível de
+graduação e especialização.
+
+37
+
+
+
+O caminho até a Universidade
+Como ingressar em uma instituição de ensino superior 
+
+Essa resposta vai depender das suas escolhas. Após compreender os
+três diferentes tipos de Instituições de Ensino Superior, é preciso
+saber se tratasse de uma instituição pública ou privada, bem como, a
+forma de ingresso adotada para a seleção dos estudantes. Em geral, o
+Exame Nacional do Ensino Médio (ENEM) tem sido utilizado como nota
+integral ou parcial para o ingresso em ambas instituições. 
+
+O que é o ENEM?
+
+O Enem é tem como objetivo
+verificar as habilidades e
+competências dos estudantes
+concluintes do Ensino Médio. O
+Enem é uma prova de múltipla
+escolha, dividida em 4 áreas de
+conhecimento: Ciências Humanas
+e suas Tecnologias (História,
+Geografia, Filosofia e Sociologia); 
+Linguagens, Códigos e suas Tecnologias (Língua Portuguesa,
+Literatura, Língua Estrangeira, Artes, Educação Física e Tecnologias da
+Informação e Comunicação.); Matemática e suas Tecnologias
+(Geometria e Álgebra) e Ciências da Natureza e suas Tecnologias
+(Química, Física e Biologia), com 45 questões para cada área e uma
+redação. 
+
+Para que eu utilizo o ENEM?
+O ENEM hoje serve como vestibular para a maior
+parte das universidades públicas do Brasil. Após
+realizar a prova o estudante inscreve-se no SISU
+(Sistema de Seleção Unificada), criado pelo Governo
+Federal para selecionar os alunos às instituições
+públicas de Ensino Superior. O estudante pode
+selecionar até dois cursos de graduação, de diversas
+instituições brasileiras, de todos os Estados do
+território nacional.
+
+38
+
+
+
+O caminho até a Universidade
+Durante esse período de seleção, que tem início normalmente em
+janeiro, o sistema gera diariamente as notas de corte das carreiras,
+fornecendo a pontuação mínima para que o candidato que realizou a
+prova possa ser aprovado e admitido no curso pretendido. A chamada
+“nota de corte”, decorre da relação da quantidade de concorrentes
+para determinada vaga e as notas obtidas pelos candidatos. Além do
+ingresso pelo SISU, o Enem também é utilizado para: 
+
+Obtenção de bolsas de estudos pelo Programa Universidade para
+Todos (PROUNI);
+Concessão do Programa de Financiamento Estudantil (NOVO
+FIES);
+Alcançar o Certificado de conclusão do Ensino médio (caso
+tenha média mínima de 450 pontos nas provas objetivas e 500 na
+redação);
+
+Por isso é tão importante que,
+você estudante, dedique-se para
+a realização dessa prova, que se
+faz de forma muito interessante,
+
+Desta forma, estudando os
+visto que avalia não apenas os
+
+conteúdos propostos e ficando
+conteúdos em si, mas uma por dentro das atualidades, é
+compreensão crítica desses, a possível realizar uma
+partir de questões bem excelente prova!
+interpretativas. 
+
+Ingresso na Instituição de Ensino Superior Pública
+Como já dito anteriormente, a maior parte das instituições públicas
+utilizam a nota do Enem para a admissão de estudantes, porém
+algumas Universidades, como a USP, UNESP e UNICAMP, tem um
+processo seletivo próprio, o chamado vestibular, que consiste em uma
+prova contemplando as diversas áreas de conhecimento a nível de
+Ensino Médio e uma redação. 
+
+39
+
+
+
+Geralmente essa seleção ocorre em 2 fases, a primeira prova é de
+conhecimentos gerais e se o candidato atingir a nota de corte (nota
+mínima exigida para cada curso) passará para a segunda fase, que
+consiste em uma redação e prova dissertativa dos conhecimentos
+gerais e específicos de cada área. 
+
+Por exemplo: se o curso
+pretendido for pedagogia,
+será aplicado uma prova
+
+com conteúdo gerais e outra
+avaliação abordando a área
+
+de humanidades (língua
+portuguesa, história,
+geografia, sociologia,
+
+filosofia); essa última terá
+peso maior na nota final!
+
+Geralmente essa seleção ocorre em 2 fases, a primeira prova é de
+conhecimentos gerais e se o candidato atingir a nota de corte (nota
+mínima exigida para cada curso) passará para a segunda fase, que
+consiste em uma redação e prova dissertativa dos conhecimentos
+gerais e específicos de cada área. 
+
+Ingresso na Instituição de Ensino Superior Privada 
+
+Para ingressar nas instituições de Ensino Superior privadas, é preciso
+realizar um exame de vestibular próprio, no qual o estudante,
+geralmente, tem a possibilidade de se inscrever em vários períodos
+diferentes ao longo do ano. Normalmente os vestibulares ocorrem no
+início, meio e final do ano. Após a realização é divulgada uma lista de
+colocação dos candidatos e posteriormente é feita a convocação para
+matrícula. 
+O ingresso do estudante, em algumas instituições, é feito
+exclusivamente pela nota do ENEM, ou essa é utilizada como
+acréscimo a nota do vestibular. A instituição de ensino é que
+determina o uso ou não do ENEM. 
+
+40
+
+
+
+Algumas das possibilidades para quem não tem
+condições de arcar com as despesas mensais de
+um curso superior privado, é a tentativa de bolsas
+de estudo (de 100% ou outras porcentagens de
+desconto na mensalidade), oferecidas pelas
+instituições aos alunos que obtém as melhores
+notas em seu  exame admissional. 
+Há também programas instituídos pelo governo a fim de democratizar
+o acesso ao ensino superior como o Fies e o ProUni.
+
+Para concorrer a uma bolsa de
+estudos pelo ProUni, o candidato deve
+ter participado da última edição do
+Enem, ter obtido no mínimo a média
+de 450 pontos nas provas, sem zerar
+na redação. 
+
+Mas se o estudante almeja uma bolsa integral (100%), esse deve ter
+renda familiar bruta mensal de até um salário mínimo e meio por
+pessoa. Já para bolsas de 50%, o candidato precisa comprovar renda
+familiar bruta mensal de até três salários mínimos por pessoa. 
+Quem pode concorrer ao ProUni? 
+Quem cursou o ensino médio completo em escola pública ou
+comprovar que o tenha cursado em rede privada como bolsista
+integral; aqueles que cursaram o ensino médio parcialmente em escola
+pública e parcialmente em escola privada como bolsista integral;
+pessoas com deficiência ou professores efetivos da rede pública de
+ensino básico, que estão concorrendo a uma vaga em curso de
+licenciatura, normal superior ou pedagogia.
+
+O Fies é um outro programa do Governo
+Federal que promove o acesso ao ensino
+superior privado concedendo empréstimos a
+juros baixos para pagar as mensalidades da
+Instituição de Ensino Superior. Para
+concorrer ao FIES, o candidato precisa
+comprovar renda familiar bruta mensal de 
+
+no máximo três salários mínimos por pessoa, ter obtido média mínima
+de 450 pontos nas provas do Enem e não zerar na redação. 
+
+41
+
+
+
+As diferentes Áreas do
+Conhecimento
+
+Após compreender sobre os tipos de instituições e as formas de
+acesso a elas é preciso conhecer um pouco sobre as áreas de
+conhecimento que as instituições de graduação utilizam!
+
+Ciências humanas e linguagens
+
+A graduação na área das
+ciências humanas e
+
+linguagens, refere-se aos
+cursos que tem como ciência
+o ser humano, ou seja, esse é
+
+seu objeto de estudo. São
+profissões que tem como eixo
+
+o estudo dos aspectos
+humanos, apoiando-se na
+
+filosofia, artes e comunicação
+(linguagem e comunicação). 
+
+Nessa área há um trabalho muito profundo com as subjetividades,
+a busca pela compreensão da complexidade humana e as relações
+sociais.
+
+Alguns cursos nessa área são:
+Administração, direito, pedagogia,
+
+jornalismo, letras, marketing,
+publicidade e propaganda,
+
+geografia, filosofia, sociologia,
+história, teatro, psicologia...
+
+42
+
+
+
+As diferentes Áreas do
+Conhecimento
+Ciências da natureza
+
+Os cursos na área das
+ciências da natureza
+
+(ou da terra) e da
+saúde, buscam
+
+possuem a biologia, a
+química e a física
+
+como principal objeto
+de estudo. 
+
+Nessa área, a ciência é estudada desde a sua escala atômica, com
+transformações químicas e energia, os organismos vivos e sua
+interação com o meio em que vivem, até as forças da natureza,
+como elas atuam no funcionamento do universo e como podem ser
+aplicadas. 
+
+Alguns cursos nessa área
+são: Medicina, biomedicina,
+
+química, física, biologia,
+farmácia, agronomia,
+medicina veterinária,
+
+astronomia, arqueologia...
+
+43
+
+
+
+As diferentes Áreas do
+Conhecimento
+Ciências exatas
+
+Ciências Exatas são
+as ciências que têm a
+
+Matemática e
+engenharia como
+
+peças fundamentais
+dos seus estudos.
+
+A principal característica das carreiras e dos profissionais da área
+de exatas é o raciocínio lógico, ligadas a cálculos e números. Se
+você for escolher algum curso de exatas, é importante gostar ou ter
+afinidade com matemática.
+
+Alguns cursos nessa área
+são: Engenharias (civil,
+elétrica, mecânica, etc),
+
+análise e desenvolvimento
+de sistemas, estatística,
+matemática, analista de
+
+dados...
+
+44
+
+
+
+E agora, como escolher uma
+Profissão?
+
+Essa fase da vida em que se está no
+processo da escolha profissional,
+observando as possibilidades existentes
+para determinar aquela que parece se
+encaixar melhor com o seu perfil, não é
+um período nada fácil. 
+
+Escolher uma profissão é algo extremamente difícil, o processo
+normalmente é lento e complexo, demandando da pessoa muita
+pesquisa e coragem para fazer essa definição.  Por isso, é preciso
+avaliar a sua trajetória de vida, tentando compreender o que ao
+longo da vida sempre fez parte dos seus interesses, avaliando suas
+habilidades, quais valores estão arraigados em você, as
+experiências de vida que teve e como buscou solucionar seus
+problemas, os desafios por quais passou, analisando seus aspectos
+negativos e positivos. 
+
+Ao longo desse
+questionamento pense nos
+
+objetivos que sempre teve e
+aquilo que sempre te
+
+motivou a continuar lutando!
+
+Primeiramente, descarte as profissões que estão dentro das áreas
+de conhecimento (ciências humanas e linguagens, exatas e da
+natureza) que você não tem afinidade. Pesquise os cursos
+existentes dentro dessas áreas de conhecimento que você mais
+tenha interesse, tentando entender qual a atuação de cada
+profissão. 
+
+45
+
+
+
+E agora, como escolher uma
+Profissão?
+
+Procure entender como é a grade
+curricular do curso (disciplinas que
+são ofertadas), o mercado de
+trabalho existente, as dificuldades
+de cada carreira e, se possível,
+converse abertamente com alguém
+que já atue na área, assim você terá
+uma compreensão mais ampla de
+como funciona cada curso!
+
+O mais importante é que a
+decisão parta de você!
+
+Não se deixe levar pelas pressões existentes na sociedade ou
+no seu núcleo familiar! As pessoas não compreendem aquilo que
+nos faz ter satisfação e sem dúvidas isso é determinante para que
+você seja feliz com a decisão que tomou. Não há nada mais triste
+que trabalhar com que não gostamos, pois é exatamente a paixão
+pelo que você faz que te possibilitará enfrentar as
+adversidades existentes em cada profissão, superando os
+fracassos em busca de desafios recompensadores que deem
+sentido a nossa existência!
+
+46
+
+
+
+Dúvidas intrigantes de Cientistas
+Aficionados
+
+1. Como tornar-se um cientista?
+Matricule-se no Programa Futuro Cientista, leia este manual e
+use-o como “livro de cabeceira” ou de “bolso”. A caminhada
+consiste em aplicar as etapas básicas do método científico nos
+projetos: observar, identificar um problema, formular hipóteses,
+montar experimentos, analisar resultados e elaborar uma
+conclusão. Nesta empreitada, o aluno antecipa sua vida acadêmica,
+aprendendo a relatar as discussões em um diário de bordo e
+elaborar um relatório científico. Além disso, compreende como
+funciona o processo de descoberta. Afinal, o aluno precisa
+compreender que o mérito do cientista necessariamente não está
+ligado exclusivamente a sua intelectualidade, mas também à sua
+dedicação, perseverança, criatividade e entusiasmo pelo que faz.
+
+2. Como se pratica ciência?
+A melhor forma de se aprender
+algo é praticando – aprendizado
+pela descoberta. Mesmo que
+algo saia errado, o importante foi
+ter tentado. Quantos
+experimentos ou modelos foram
+realizados sem êxito até que
+descobrissem à cura de uma
+determinada doença? Em
+ciência, não se deve esmorecer.
+Para fazer ou praticar ciência é
+imprescindível ler bons livros,
+revistas, assistir as aulas de
+ciências com atenção, participar
+de eventos científicos e
+frequentar museus de ciências.
+
+47
+
+
+
+Dúvidas intrigantes de Cientistas
+Aficionados
+
+3. Como elaborar um projeto de pesquisa?
+Primeiro passo: organizar-se!
+
+Você vai precisar montar um clube de ciências, arrumar um local
+para realizar as reuniões e conseguir tempo para realizar os
+experimentos. Caso precise, peça ajuda a um profissional da área
+(professor ou supervisores do Programa Futuro Cientista) e consiga
+apoio de amigos e parentes. Tenha sempre em mãos uma
+caderneta ou caderno de bordo para anotar as ideias
+momentâneas, sugestões, tipo de material, etc. Para garantir a
+qualidade do experimento, tudo deverá ser anotado.
+ 
+
+Segundo passo: escolha do tema!
+Tente escolher algo novo para estimular seu raciocínio e não
+parecer rotina, mas, também não se empolgue muito escolhendo
+temas mirabolantes que não se consiga chegar a lugar algum com
+êxito. Lembre-se de que você é um estudante e não um cientista
+com uma vasta bagagem profissional, materiais, equipamentos e
+toda uma equipe de apoio. Ouse, mas saiba dosar essa ousadia. De
+preferência a escolha de um tema que possa abrir pesquisas para
+os anos seguintes. Peça a ajuda de seus professores, discuta seu
+projeto de pesquisa com eles.
+
+48
+
+
+
+Terceiro passo: Parcerias
+Após a escolha do tema, listar todas as necessidades de serviços
+para elaboração da pesquisa. De posse de uma caderneta de
+anotações, fazer contato com os profissionais dos serviços
+necessários e avaliar os custos. Tente fazer parcerias. Quanto mais
+parcerias conseguir, mas baixo ficará o custo do projeto de
+pesquisa. Para conseguir uma parceria deve-se conversar com o
+profissional do serviço desejado e explicar o objetivo do projeto
+bem como a que se destina, solicitando ajuda. Esta pode ser a mão
+de obra ou até mesmo material para a elaboração do projeto; em
+troca, deve-se agradecer ao estabelecimento bem como uma
+propaganda do serviço prestado numa rede social e também se o
+trabalho tiver algum tipo de publicação. 
+
+Quarto passo: Materiais e início da pesquisa
+Após o contato com o prestador de serviço, listar todos os
+materiais necessários para a elaboração do projeto. Lembre-se que
+o profissional dos serviços solicitados não pode elaborar seu
+projeto; o autor é você. Você terá que aprender a manusear
+equipamentos como furadeiras, chave de fenda, martelo, etc. Se
+não souber, peça ajuda de um adulto. Sempre é fundamental a
+supervisão de um adulto em caso de manuseio de equipamentos
+perigosos! Você deverá conversar com seus pais para assegurar
+uma fundamental ajuda tanto em relação ao reaproveitamento de
+materiais quanto ao local para o desenvolvimento do projeto. 
+
+49
+
+
+
+Quinto passo: Analisar e Apresentar Resultados
+Tudo deve estar do jeito que o visitante gosta de ver, porque
+exposição é tudo aquilo que o público verá. Para isto existem dois
+pontos muito importantes para o planejamento da exposição, que
+são: a organização e a limpeza. Segue abaixo algumas dicas de
+apresentação de seu trabalho no encontro regional de futuros
+cientistas:
+    a) Você pode elaborar folhetos explicativos sobre a sua
+pesquisa. Esses folhetos são muito importantes e devem ser
+distribuídos aos visitantes para que eles tomem conhecimento do
+que se trata a sua pesquisa. Neste folheto deve conter uma síntese
+breve sobre a pesquisa, uma introdução com informações básicas,
+o material e a técnica utilizada, alguns dados obtidos, a
+bibliografia, os agradecimentos e a identificação do(s) autor(es)
+com seu(s) respectivo(s) contatos (normalmente e-mail) no caso de
+algum visitante se interessar pela pesquisa ou até mesmo tirar
+dúvidas sobre a mesma. No ato da entrega do folheto deve-se falar
+somente o necessário, pois o visitante tem muito o que ver numa
+feira; tenha certeza que, se houver interesse, ele voltará;
+      b) Fazer a apresentação por meio de amostras do objeto da
+pesquisa, aparelhos e equipamentos que demonstrem claramente
+o projeto desenvolvido; 
+      c) A aparência dos apresentadores também é importante, por
+isso atentem aos cabelos (devem estar penteados), as roupas bem
+arrumadas e o painel de apresentação bem organizado. No dia
+do evento o clube pode levar um uniforme do clube de ciências,
+com o nome do clube, da escola e o logo do PFC;
+
+50
+
+
+
+d) Monte um stand para
+apresentar seu trabalho. Traga
+para o evento papelão ou
+compensado, fita crepe, fita
+dupla face, cartolina colorida, etc.
+Você pode precisar para montar
+seu stand com qualidade, de
+maneira que chame atenção do
+público!
+
+4. Como formar ou criar um clube de ciências?
+Ainda que no princípio os cientistas concebessem suas ideias e
+experimentassem sobre elas solitariamente, na atualidade essa
+forma de trabalho está totalmente superada. Hoje em dia, homens
+e mulheres da ciência se associam em equipes mais ou menos
+numerosas e juntam esforços para explicar os fatos e fenômenos
+que estudam. Segue abaixo os passos necessários para iniciar o
+clube:
+
+Fase 1 - Escolha os alunos que
+gostem de ciências e que sempre
+estão interessados em descobrir
+algo diferente. Aconselhamos
+manter uma ficha de inscrição
+para os componentes do clube,
+contendo seus principais dados e
+forma de contato, além de
+nomear o clube. Tais clubes
+podem reunir estudantes de
+várias classes e séries.
+
+Fase 2 – Escolha um líder! Escolha um líder de forma cautelosa,
+pois este é o cientista que vai liderar as reuniões, a entrega dos
+relatórios e vai cobrar resultados.
+
+51
+
+
+
+Fase 3 – Defina o local de encontro e os horários das reuniões e
+das atividades. Geralmente, os clubes de ciências funcionam no
+contra turno, ou seja, em horários alternativos e contrários às aulas
+da escola. 
+
+Fase 4 – Defina o tema da
+pesquisa e/ou o protótipo que
+irá desenvolver. Na próxima
+pergunta daremos algumas
+dicas de trabalhos intrigantes
+para vocês desenvolverem. 
+
+5. Quais as dicas para temas de pesquisa que posso
+desenvolver em meu clube de ciências?
+A escolha do tema está diretamente ligada a criatividade e
+imaginação dos membros do clube de ciência. Na maioria das
+vezes, esta escolha está ligada a demanda local de seu bairro, de
+sua cidade ou de sua escola. Mas isso não é uma regra e o tema
+para pesquisa é livre! Segue abaixo algumas sugestões:
+
+Ábaco 
+A cor e a cura de doenças 
+A história da música e a física 
+A história dos Judeus e a terra prometida 
+A história dos Muçulmanos e o Islã 
+A história das invenções 
+A moda através dos tempos 
+A música e a cura de doenças 
+Ativismo anti-apartheid da África do Sul: (a) Steve Biko e (b)
+Nelson Mandela (Prêmio Nobel da Paz) 
+Atlântida, o continente perdido 
+Batata como pilha elétrica 
+Biodigestor 
+Biografia de um grande cientista
+
+52
+
+
+
+Carro movido a energia solar 
+Carro movido a vela 
+Casa autossustentável 
+Crescimento de cristais 
+Criação de borboletas 
+Construção de uma Pilha elétrica 
+Construção de uma eclusa: comportas 
+Detenção de rochas, plantas ou animais da sua região 
+Efeito do magnetismo nas pessoas e nas plantas 
+Enxofre e outros elementos químicos 
+Estação meteorológica 
+Estórias em quadrinhos de grandes cientistas 
+Evolução cinematográfica 
+Exposição de desenhos em temas diversos 
+Extração e observação da molécula de DNA 
+Fitogeografia mundial 
+Fotografia 
+Fotossíntese 
+Fuso horário 
+Genocídio Armênio e Assírio 
+Genocídio Congolês 
+Genocídio em Ruanda (Tutsi e Hutus) 
+Genocídio Muçulmano e Hindu - Bangladesh (Separação da Índia do
+Paquistão) 
+Gengis Khan e Tarmelão (Mongol) 
+História de sua cidade 
+História do calendário 
+Holocausto dos Judeus
+Holografia (imagens em 3D) 
+Ilusões de ótica 
+Levantamento de rochas, plantas ou animais da sua região 
+Máquina a vapor 
+Máquina de perguntas e respostas
+
+53
+
+
+
+Máquina fotográfica 
+Mapa da sua cidade (maquete) 
+Martin Luther King Jr (Prêmio Nobel da Paz) 
+Matéria e energia escura 
+Maquete de sua escola 
+Maquete: dunas, recifes, delta, etc. 
+Minifoguete 
+Mini submarino 
+Mini usina hidrelétrica 
+Movimentos tectônicos 
+O coração, o pulmão e outros órgãos do corpo humano 
+Observatório astronômico 
+Opus Dei (igreja católica) 
+Os Illuminati 
+Os Templários (as cruzadas) 
+Perna mecânica (futebol) 
+Pinça ótica 
+Planta carnívora 
+Probabilidade e prognósticos 
+Produção energia elétrica 
+Protótipo de um veículo flutuante (hovercraft) 
+Quadrados mágicos 
+Rádio 
+Reciclagem eletrônica 
+Refrigerador 
+Santo Sudário 
+Sistema de aquecimento de água 
+Símbolos do passado e do presente 
+Supercondutor 
+Telefone 
+Televisão 
+Terapias chinesas 
+Tintura invisível 
+Torre Eiffel 
+Vulcão 
+Yasser Arafat
+
+54
+
+
+
+6. Como escolher o tema de pesquisa?
+O tema pode ser escolhido devido a uma demanda em sua casa,
+em sua escola ou em seu bairro. Esta demanda pode estar
+relacionada a um transtorno ou problema diretamente relacionada
+a comunidade em que você vive. O tema também pode ser
+escolhido de acordo com a sua imaginação e criatividade,
+interligado com seu grau de ousadia. Por exemplo, você pode
+tentar montar uma mini usina hidrelétrica em sua casa somente
+para mostrar para si mesmo e para os outros que é possível
+construir algo desta magnitude no quintal de sua casa. 
+
+7. Onde devo coletar dados (informações) acerca do tema
+escolhido para pesquisa?
+O trabalho científico e uma pesquisa apoiam-se em
+conhecimentos já existentes e publicados. O primeiro passo é se
+informar sobre o tema que irá ser pesquisado. Colete dados sobre
+o assunto nas bibliotecas públicas, na internet (google acadêmico
+por exemplo), em revistas especializadas e com professores. Você
+também pode realizar visitas em centros de pesquisa e museus de
+ciências para coletar informações importantes acerca do tema que
+irá estudar. 
+
+8. Como devo proceder para montar o protótipo ou maquete do
+sistema que estou estudando?
+Para montar um protótipo deve-se iniciar a pesquisa por materiais
+de baixo custo e que sejam recicláveis. Este é o primeiro passo
+antes de iniciar a montagem da maquete ou do protótipo. Informe-
+se em sua escola dos materiais disponíveis e que podem ser
+utilizados; posteriormente veja o que você tem em sua casa, no
+ferro-velho do seu bairro, etc. Após esta exploração veja o que
+você precisa comprar (somente o necessário) e inicie a montagem
+de seu protótipo. Lembre-se que o principal papel de um cientista
+é encontrar soluções para os problemas da sociedade; a solução
+para os problemas deve ser com o menor custo possível e de
+maneira sustentável. 
+
+55
+
+
+
+9. Como e onde apresentar os resultados da pesquisa?
+a)  Adquirir um caderno de bordo para anotações do clube de
+ciências. Anotar os experimentos, as discussões, hipóteses,
+sugestões de mudanças, detalhes da pesquisa, etc;
+b)  Submeter seu trabalho (resumo dos resultados) no Encontro
+Regional de Futuros Cientistas, via Programa Futuro Cientista;
+c)  Montar a apresentação dos resultados. Você pode apresentar
+seus resultados utilizando um pôster ou banner e ainda uma
+maquete ou protótipo do equipamento desenvolvido na pesquisa;
+
+56
+
+
+
+O Programa Futuro Cientista (PFC)
+O Programa Futuro Cientista© (PFC) é uma
+tecnologia social certificada pela Fundação
+Banco do Brasil e Laureada com o Prêmio
+Péter Murányi de Educação, em 2022. O PFC
+é um programa de extensão da Universidade
+Federal de São Carlos - UFSCar - campus
+Sorocaba, que visa "acolher cientificamente"
+o estudante em condições de vulnerabilidade
+socioeconômica para que o mesmo chegue
+ao ensino superior.
+
+O programa visa soluções efetivas de transformação social,
+promovendo a inclusão socioprodutiva, desenvolvimento sustentável
+e educação inclusiva, buscando prover as condições necessárias
+para o êxito do jovem talento em seu percurso escolar, até a
+Universidade. A ideia principal é investir em estudantes de escolas
+públicas e unidades de acolhimento institucional, respeitando o
+paradigma de ética, cidadania e democracia. O programa oferece
+um verdadeiro plano de vida ao estudante, permitindo que jovens
+promissores, em situações de vulnerabilidade, tenham acesso à
+Universidade, consolidando a inclusão e a igualdade de
+oportunidades. Ressalta-se que os espaços educativos criados pelo
+PFC® nas escolas conveniadas vêm sendo direcionados para
+aplicação de conteúdo científico e tecnológico, métodos de
+investigação e raciocínio lógico, além de temas relacionados a
+valores e relações humanas, contextualizados com a sociedade
+contemporânea. 
+
+Rod. João Leme dos Santos, Km 110 (SP-264) Bairro do Itinga
+Sorocaba, SP – CEP 18052-780
+
+Tel.: (15) 3229-8818 | programafuturocientista@gmail.com
+
+57
+
+
+
+REFERÊNCIAS BIBLIOGRÁFICAS
+
+BARROS, A. de J. P. de; LEHFELD, N. A. de Souza. Fundamentos de
+metodologia: um guia para a iniciação científica. 3. ed. São Paulo:
+Pearson Prentice Hall, 2007.
+BRITO, L. O. de; FIREMAN, E. C. Ensino de ciências por
+investigação: uma estratégia pedagógica para promoção da
+alfabetização científica nos primeiros anos do ensino fundamental.
+Ensaio Pesquisa em Educação em Ciências (Belo Horizonte), v. 18,
+n. 1, p. 123–146, abr. 2016.
+CAPECCHI, M. C. V. de M. Ensino de ciências por investigação:
+condições para implementação em sala de aula. In: Ensino de
+ciências por investigação: condições para implementação em sala
+de aula. São Paulo: Cortez, 2013. p. VII–IX.
+CARNEIRO, M. C.; ARAÚJO, R. S. Metodologia de pesquisa para
+iniciantes: um guia prático. Porto Alegre: Editora Sulina, 2021.
+CARVALHO, A.; SILVA, B. S. R. da. Arqueologia e socialização do
+conhecimento: Indiana Jones, mostre-nos o que sabes. Ciência e
+Cultura, v. 65, n. 2, p. 45–48, jun. 2013.
+CARVALHO, M. C. M. de. Construindo o saber: metodologia
+científica, fundamentos e técnicas. 3. ed. São Paulo: Pearson, 2014.
+CHASSOT, A. Alfabetização científica: uma possibilidade para a
+inclusão social. Revista Brasileira de Educação, n. 22, p. 89–100,
+abr. 2003.
+DEHAENE, S. É assim que aprendemos: por que o cérebro funciona
+melhor do que qualquer máquina (ainda...). São Paulo: Editora
+Valentina, 2022.
+DELIZOICOV, D.; ANGOTTI, J. A.; PERNAMBUCO, M. M. Ensino de
+ciências: fundamentos e métodos. Em Aberto, v. 11, n. 55, p. 9–16,
+1992.
+DEMO, P. Metodologia científica em ciências sociais. 2. ed. São
+Paulo: Atlas, 2000.
+
+58
+
+
+
+DEMO, P. Metodologia científica em ciências sociais. 2. ed. São
+Paulo: Atlas, 2000.
+FRACALANZA, H. et al. Clubes de ciências: uma estratégia de
+alfabetização científica. Revista Brasileira de Educação em
+Ciências, v. 30, n. 1, p. 50–67, 2017.
+GIL, A. C. Métodos e técnicas de pesquisa social. 6. ed. São Paulo:
+Atlas, 2019.
+GLYNN, S. M.; AULTMAN, L. P.; OWENS, A. M. Motivation to Learn in
+General Education Programs. The Journal of General Education, v.
+54, n. 2, p. 150–170, 1 jan. 2005.
+JUCIVANIO, F.; DE SOUSA, F.; VIEIRA DA, L.; CAVALCANTE, S.;
+CLAUDIO, J.; PINO, D. Alfabetização científica e/ou letramento
+científico: reflexões sobre o Ensino de Ciências. Revista Educar
+Mais, v. 5, n. 5, p. 1299–1312, 17 out. 2021.
+LAKATOS, E. M.; MARCONI, M. A. Fundamentos de metodologia
+científica. 7. ed. São Paulo: Atlas, 2010.
+LOPES, R. S.; PEREIRA, L. M. Clubes de ciências e a formação de
+jovens cientistas. Ensaio Pesquisa em Educação em Ciências, v. 21,
+n. 3, p. 65–82, set./dez. 2019.
+MINAYO, M. C. de S. O desafio do conhecimento: pesquisa
+qualitativa em saúde. 14. ed. São Paulo: Hucitec, 2014.
+MORAN, J. M. Ciência para crianças: métodos inovadores para o
+ensino de ciências. Educação em Revista, v. 36, n. 2, p. 80–95,
+jul./dez. 2020.
+SANTOS, F. M. dos; GONÇALVES, V. O. Clube de ciências: uma
+proposta de popularização científica para jovens. Ciência &
+Educação, v. 22, n. 1, p. 201–216, jan./mar. 2016.
+SHINYASHIKI, R. T. Problemas? Oba! A revolução para você vencer
+no mundo dos negócios. São Paulo: Editora Gente, 2011.
+SILVA, D. A. et al. Ensino de ciências para crianças: uma
+abordagem lúdica e investigativa. Revista Brasileira de Ensino de
+Ciências, v. 40, n. 2, p. 123–140, abr./jun. 2018.
+
+59
+
+
+
+SOUZA, S. A. A introdução do empreendedorismo na educação
+brasileira: primeiras considerações. Educação & Linguagem, v. 15,
+n. 26, p. 77–94, 31 dez. 2012.
+VALLE, M. G. do; SOARES, K. J. C. B.; SÁ-SILVA, J. R. A
+alfabetização científica na formação cidadã: perspectivas e
+desafios no ensino de ciências. [s.l.: s.n.], [s.d.].
+VILLANI, A.; LOPES, J.; PACCA, A. Construtivismo, conhecimento
+científico e habilidade didática no ensino de ciências. Revista da
+Faculdade de Educação, v. 23, [s.d.].
+ZANCAN, G. T. Educação científica: uma prioridade nacional. São
+Paulo em Perspectiva, v. 14, n. 3, p. 3–7, jul. 2000.
+
+60
+
+
+
+ANEXO I
+CURSOS DE GRADUAÇÃO
+
+61
+
+
+
+BIOLÓGICAS E SAÚDE EXATAS E CIÊNCIA DA
+1.   Biologia NATUREZA
+2.   Biologia marinha 1.   Agronomia
+3.   Biomedicina 2.   Astronomia
+4.   Botânica 3.   Bioengenharia
+5.   Ciências Agrárias 4.   Biofísica
+6.   Ciências Ambientais 5.   Ciência da Computação
+7.   Ciências Biológicas 6.   Ciências Biomoleculares
+8.   Ecologia 7.   Ciências Naturais
+9.   Educação física 8.   Ciências da Terra
+10.  Enfermagem 9.   Computação científica
+11.  Fisioterapia 10.  Ciência & Tecnologia
+12.  Fonoaudiologia 11.   Educação do Campo:
+13.  Gerontologia Matemática, Física e Química
+14.  Medicina 12.  Engenharia aeroespacial
+15.  Medicina veterinária 13.  Engenharia aeronáutica
+16.  Meteorologia 14.  Engenharia Agrícola
+17.  Microbiologia e Imunologia 15.  Engenharia de Alimentos
+18.  Naturologia 16.  Engenharia Ambiental
+19.  Nutrição 17.  Engenharia biomédica
+20.  Obstetrícia 18.  Engenharia Cartográfica
+21.  Odontologia 19.  Engenharia Civil
+22.  Psicologia 20.  Engenharia de Computação
+23.  Quiropraxia 21.  Engenharia de controle e
+24.  Saúde Coletiva automação
+25.  Terapia ocupacional 22.  Engenharia Elétrica
+26.  Zootecnia 23.  Engenharia Física
+
+24.  Engenharia Florestal
+25.  Engenharia geológica
+26.  Engenharia Industrial 
+
+62
+
+
+
+27. Engenharia de manufatura 57.   Matemática computacional
+28. Engenharia de Materiais 58.  Nanotecnologia
+29. Engenharia Mecânica 59.  Oceanografia
+30. Engenharia Mecatrônica 60.  Química
+31.  Engenharia Metalúrgica 61.   Química ambiental
+32.  Engenharia Militar 62.  Química industrial
+33.  Engenharia de Minas
+34.  Engenharia Naval e
+Oceânica
+35.  Engenharia Nuclear
+36. Engenharia de Pesca
+37. Engenharia de Petróleo
+38. Engenharia de Produção
+39. Engenharia Química
+40. Engenharia Sanitária
+41. Engenharia de Sistemas
+Eletrônicos
+42. Engenharia de Software
+43. Engenharia de Tecidos
+44. Engenharia de
+Telecomunicações
+45. Engenharia Têxtil
+46. Estatística
+47. Farmácia (ou Bioquímica)
+48. Física
+49. Física computacional
+50. Física médica
+51. Geofísica
+52. Geologia
+53. Geoprocessamento e
+Sensoreamento Remoto
+54. Informática biomédica
+55. Matemática
+56. Matemática Aplicada
+
+63
+
+
+
+CIÊNCIAS HUMANAS E LINGUAGENS
+
+1.   Administração 29. Gastronomia
+2.   Antropologia 30. Geografia
+3.   Arqueologia 31. Gestão Ambiental
+4.   Arquitetura 32. Gestão Pública
+5.   Arquivologia 33. Gravurismo
+6.   Artes Cênicas 34. História
+7.   Artes Visuais 35. História da Arte
+8.   Biblioteconomia
+
+36. Hotelaria
+9.   Ciências Atuariais
+
+37. Jornalismo
+10. Ciências Aeronáuticas
+
+38. Letras
+11. Ciências Humanas
+12. Ciência Política (ou do 39. Linguística
+
+Estado) 40. Museologia
+13. Ciências Sociais 41. Música
+14. Cinema 42. Ordenamento do Território
+15. Comunicação social 43. Paisagismo
+16. Contabilidade 44. Pedagogia
+17. Dança 45. Pintura
+18. Defesa e Gestão Estratégica 46. Psicologia
+Internacional 47. Publicidade & Propaganda
+19. Desenho Industrial 48. Produção Audiovisual
+20. Design de Interiores Relações Internacionais
+21. Design de Moda 49. Relações Públicas
+22. Direito 50. Segurança Pública
+23. Economia
+
+51. Serviço Social
+24. Economia Doméstica
+
+52. Sociologia
+25. Editoração
+
+53. Teatro
+26. Educação Artística
+27. Escultura 54. Teologia
+
+28. Filosofia 55. Transporte Terrestre
+56. Turismologia
+57.  Urbanismo
+
+64
+
+
+
+ANEXO II
+INSTITUIÇÕES DE ENSINO SUPERIOR
+
+65
+
+
+
+NORDESTE
+Institutos Federais 
+
+·Instituto Federal de Alagoas
+·Instituto Federal da Bahia
+·Instituto Federal Baiano 
+·Instituto Federal do Ceará 
+·Instituto Federal do Maranhão
+·Instituto Federal da Paraíba
+·Instituto Federal de Pernambuco
+·Instituto Federal do Sertão Pernambucano
+·Instituto Federal do Piauí
+·Instituto Federal do Rio Grande do Norte
+·Instituto Federal de Sergipe
+
+Universidade Federais, Estaduais e Municipais
+·Universidade da Integração Internacional da Lusofonia Afro-
+Brasileira (UNILAB)
+·Universidade de Pernambuco (UPE)
+·Universidade do Estado da Bahia (UNEB)
+·Universidade do Estado do Rio Grande do Norte (UERN)
+·Universidade Estadual da Paraíba (UEPB)
+·Universidade Estadual de Alagoas (UNEAL)
+·Universidade Estadual de Ciências da Saúde de Alagoas
+(UNCISAL)
+·Universidade Estadual de Feira de Santana (UEFS)
+·Universidade Estadual de Santa Cruz (UESC)
+·Universidade Estadual do Ceará (UECE)
+·Universidade Estadual do Maranhão (UEMA)
+·Universidade Estadual do Piauí (UESPI)
+·Universidade Estadual do Sudoeste da Bahia (UESB)
+·Universidade Estadual Vale do Acaraú (UVA)
+·Universidade Federal da Bahia (UFBA)
+·Universidade Federal da Paraíba (UFPB)
+
+66
+
+
+
+·Universidade Federal de Alagoas (UFAL)
+·Universidade Federal de Campina Grande (UFCG)
+·Universidade Federal de Pernambuco (UFPE)
+·Universidade Federal da Região do Cariri (UFCA)
+·Universidade Federal de Sergipe (UFS)
+·Universidade Federal do Ceará (UFC)
+·Universidade Federal do Maranhão (UFMA)
+·Universidade Federal do Piauí (UFPI)
+·Universidade Federal do Recôncavo Baiano (UFRB)
+·Universidade Federal do Rio Grande do Norte (UFRN)
+·Universidade Federal do Vale do São Francisco (UNIVASF)
+·Universidade Federal Rural de Pernambuco (UFRPE)
+·Universidade Federal Rural do Semi-Árido (UFERSA)
+·Universidade Regional do Cariri (URCA)
+
+SUDESTE
+Institutos Federais
+
+·Instituto Federal do Espírito Santo
+·Instituto Federal de Minas Gerais
+·Instituto Federal do Norte de Minas Gerais
+·Instituto Federal do Sudeste de Minas
+·Instituto Federal do Sul de Minas
+·Instituto Federal do Triângulo Mineiro
+·Instituto Federal do Rio de Janeiro
+·Instituto Federal Fluminense
+·Colégio Pedro II
+·Instituto Federal de São Paulo
+·Campus Araraquara
+·Campus Avançado Ilha Solteira
+·Campus Avançado Jundiaí
+·Campus Avançado Limeira
+·Campus Avançado Mococa
+
+67
+
+
+
+·Campus Avançado Pirassununga
+·Campus Avançado Tupã
+·Campus Avaré
+·Campus Barretos
+·Campus Birigui
+·Campus Boituva
+·Campus Bragança Paulista
+·Campus Campinas
+·Campus Campos Do Jordão
+·Campus Capivari
+·Campus Caraguatatuba
+·Campus Catanduva
+·Campus Cubatão
+·Campus Guarulhos
+·Campus Hortolândia
+·Campus Itapetininga
+·Campus Itaquaquecetuba
+·Campus Jacareí
+·Campus Matão
+·Campus Piracicaba
+·Campus Presidente Epitácio
+·Campus Registro
+·Campus Salto
+·Campus São Carlos
+·Campus São João Da Boa Vista
+·Campus São José Dos Campos
+·Campus São Paulo
+·Campus São Paulo Pirituba
+·Campus São Roque
+·Campus Sertãozinho
+·Campus Sorocaba
+·Campus Suzano
+·Campus Votuporanga
+·Inpe - Instituto Nacional de Pesquisas Espaciais
+
+68
+
+
+
+Universidade Federais, Estaduais e Municipais
+·Universidade de São Paulo (USP)
+·Universidade do Estado de Minas Gerais (UEMG)
+·Universidade do Estado do Rio de Janeiro (UERJ)
+·Universidade Estadual da Zona Oeste (UEZO)
+·Universidade Estadual de Campinas (UNICAMP)
+·Universidade Estadual de Montes Claros (UNIMONTES)
+·Universidade Estadual do Norte Fluminense Darcy Ribeiro (UENF)
+·Universidade Estadual Paulista Júlio de Mesquita Filho (UNESP)
+·Universidade Federal de Alfenas (UNIFAL)
+·Universidade Federal de Itajubá (UNIFEI)
+·Universidade Federal de Juiz de Fora (UFJF)
+·Universidade Federal de Lavras (UFLA)
+·Universidade Federal de Minas Gerais (UFMG)
+·Universidade Federal de Ouro Preto (UFOP)
+·Universidade Federal de São Carlos (UFSCar)
+·Universidade Federal de São João del-Rei (UFSJ)
+·Universidade Federal de São Paulo (UNIFESP)
+·Universidade Federal de Uberlândia (UFU)
+·Universidade Federal de Viçosa (UFV)
+·Universidade Federal do ABC (UFABC)
+·Universidade Federal do Espírito Santo (UFES)
+·Universidade Federal do Estado do Rio de Janeiro (UNIRIO)
+·Universidade Federal do Rio de Janeiro (UFRJ)
+·Universidade Federal do Triângulo Mineiro (UFTM)
+·Universidade Federal dos Vales do Jequitinhonha e Mucuri
+(UFVJM)
+·Universidade Federal Fluminense (UFF)
+·Universidade Federal Rural do Rio de Janeiro (UFRRJ)
+·Universidade Municipal de São Caetano do Sul (USCS)
+·Universidade Municipal de Taubaté (UNITAU)
+·Universidade Virtual do Estado de São Paulo (UNIVESP)
+
+69
+
+
+
+SUL
+Institutos Federais
+
+·Instituto Federal do Paraná
+·Instituto Federal do Rio Grande do Sul
+·Instituto Federal Farroupilha
+·Instituto Federal Sul-rio-grandense
+·Instituto Federal de Santa Catarina
+·Instituto Federal Catarinense
+
+Universidade Federais, Estaduais e Municipais
+·Universidade do Estado de Santa Catarina (UDESC)
+·Universidade Estadual de Londrina (UEL)
+·Universidade Estadual de Maringá (UEM)
+·Universidade Estadual de Ponta Grossa (UEPG)
+·Universidade Estadual do Centro-Oeste (UNICENTRO)
+·Universidade Estadual do Norte do Paraná (UENP)
+·Universidade Estadual do Oeste do Paraná (UNIOESTE)
+·Universidade Estadual do Paraná (UNESPAR)
+·Universidade Estadual do Rio Grande do Sul (UERGS)
+·Universidade Federal da Fronteira do Sul (UFFS)
+·Universidade Federal da Integração Latino-Americana (UNILA)
+·Universidade Federal de Ciências da Saúde de Porto Alegre
+(UFCSPA)
+·Universidade Federal de Pelota (UFPEL)
+·Universidade Federal de Santa Catarina (UFSC)
+·Universidade Federal de Santa Maria (UFSM)
+·Universidade Federal do Pampa (UNIPAMPA)
+·Universidade Federal do Paraná (UFPR)
+·Universidade Federal do Rio Grande (FURG)
+·Universidade Federal do Rio Grande do Sul (UFRGS)
+Universidade Tecnológica Federal do Paraná (UTFPR)
+
+70
+
+
+
+NORTE
+Institutos Federais 
+
+·Instituto Federal de Educação, ciência e tecnologia do Acre
+·Instituto Federal de Educação, Ciência e Tecnologia do Amapá
+·Instituto Federal de Educação, Ciência e Tecnologia do Amazonas
+·Instituto Federal de Educação, Ciência e Tecnologia do Pará 
+·Instituto Federal de Educação, Ciência e Tecnologia de Rondônia
+·Instituto Federal de Educação, Ciência e Tecnologia de Roraima
+
+Universidade Federais, Estaduais e Municipais
+·Universidade Estadual do Amapá (UEAP)
+·Universidade do Estado do Amazonas (UEA)
+·Universidade do Estado do Pará (UEPA)
+·Universidade do Tocantins (UNITINS)
+·Universidade Estadual de Roraima (UERR)
+·Universidade Federal de Rondônia (UNIR)
+·Universidade Federal de Roraima (UFRR)
+·Universidade Federal do Acre (UFAC)
+·Universidade Federal do Amapá (UNIFAP)
+·Universidade Federal do Amazonas (UFAM)
+·Universidade Federal do Oeste do Pará (UFOPA)
+·Universidade Federal do Pará (UFPA)
+·Universidade Federal do Tocantins (UFT)
+·Universidade Federal Rural da Amazônia (UFRA)
+·Universidade Federal do Sul e Sudeste do Pará (UNIFESSPA)
+
+71
+
+
+
+CENTRO-OESTE
+Institutos Federais 
+
+·Instituto Federal de Brasília
+·Instituto Federal Goiano
+·Instituto Federal de Mato Grosso
+·Instituto Federal de Mato Grosso do Sul
+
+Universidade Federais, Estaduais e Municipais
+·Universidade de Brasília (UnB) 
+·Universidade de Rio Verde (FESURV)
+·Universidade do Estado de Mato Grosso (UNEMAT)
+·Universidade Estadual de Goiás (UEG)
+·Universidade Estadual de Mato Grosso do Sul (UEMS)
+·Universidade Federal da Grande Dourados (UFGD)
+·Universidade Federal de Goiás (UFG)
+·Universidade Federal de Mato Grosso (UFMT)
+Universidade Federal de Mato Grosso do Sul (UFMS)
+
+72
+
+
+
+ANEXO III
+FEIRAS DE CIÊNCIAS
+
+73
+
+
+
+LISTA DAS FEIRAS DE CIÊNCIAS
+
+CAMPUS PARTY
+CIÊNCIA JOVEM
+CIENCTEC E FEIRA TECNOLÓGICA DO CENTRO PAULO
+SOUZA
+COTUCA
+FEIRA BRASILEIRA DE CIÊNCIAS E ENGENHARIA (FEBRACE)
+FEIRA BRASILEIRA DE INIICIAÇÃO CIENTÍFICA (FEBIC)
+FEIRA BRASILEIRA DE JOVENS CIENTISTAS (FBJC)
+FEIRA INTERNACIONAL DE MÁQUINAS E EQUIPAMENTOS
+(FEIMEC)
+MOSTRA INERNACIONAL DE CIÊNCIA E TECNOLOGIA
+(MOSTRATEC)
+
+CAMPUS PARTY
+
+A Campus Party é o maior festival de
+tecnologia, empreendedorismo, ciência e
+disruptividade do mundo, com mais de 70
+edições realizadas em 30 países. Esse evento
+proporciona um ambiente imersivo de
+disrupção, educação e criatividade, onde
+nossas comunidades são parte essencial da
+experiência , mobilizando a transformação. A
+Campus Party tem como objetivo incentivar a
+cada participante a utilizar seus talentos para
+desenvolver soluções para melhorar o mundo
+por meio da tecnologia. A edição de 2024
+está programada para acontecer no Pavilhão
+de Exposições- Anhembi Parque, em Santana,
+São Paulo. Para se inscrever na Campus Party
+é necessário realizar a inscrição através do
+site oficial da página (https://brasil.campus-
+party.org). 
+
+74
+
+Escaneie o QR code pela
+câmera do seu celular!
+
+
+
+CIÊNCIA JOVEM
+
+A Ciência Jovem é uma das feiras mais
+antigas do país, realizada desde 1994 em
+Pernambuco, reúne cerca de 300 projetos
+nas áreas de ciências humanas e sociais,
+exatas e da terra. A feira acontece
+anualmente em novembro e é aberta para
+alunos da Educação Infantil ao Ensino
+Médio, nas Redes Públicas e Privadas. Ela
+tem como objetivo não apenas revelar os
+talentos científicos individuais, mas,
+sobretudo fomentar a Educação Científica,
+com realização de pesquisas e projetos na
+escola. A inscrição pode ser realizada
+através do site oficial da feira
+(https://www.espacociencia.pe.gov.br/ciencia
+-jovem/).
+
+Cientec e feira tecnológica do Centro
+Paulo Souza
+
+A cientec é um parque de Ciência e
+Tecnologia vinculado à Universidade de
+São Paulo (USP). Seu objetivo é oferecer
+conhecimento e encantamento por meio
+de atrações que estimulam o interesse
+pela ciência e pela preservação da
+natureza. O evento no parque é gratuito e
+é necessário agendamento para grupos
+acima de 10 pessoas, através do site
+oficial da página. 
+www.parquecientec.usp.br
+
+75
+
+Escaneie o QR code pela
+câmera do seu celular! Escaneie o QR code pela
+
+câmera do seu celular!
+
+
+
+Feira Brasileira de Ciências e Engenharia
+(FEBRACE)
+
+A Feira Brasileira de Ciências e Engenharia
+(FEBRACE) é uma grande oportunidade para
+mostrar o seu talento nas áreas de Ciências,
+Tecnologia, Engenharia, Artes e Matemática. O
+evento acontece na Universidade de São Paulo
+e tem por objetivo principal incentivar a
+realização de projetos e mostras científicas e
+tecnológicas nas escolas. A FEBRACE alcança
+seu objetivo na mostra de projetos finalistas
+que ocorre anualmente em março, desde 2003.
+Acesse o site e o Instagram da FEBRACE
+(https://febrace.org.br e
+https://www.instagram.com/febrace/ ).
+
+COTUCA
+
+A feira Cotuca pode se referir a dois eventos
+distintos realizados pelo colégio de Campinas
+(Cotuca), da Universidade Federal de Campinas
+(Unicamp). O principal objetivo é apresentar
+projetos de pesquisa e trabalhos de conclusão
+de curso (TCC’s) desenvolvidos pelos alunos
+dos cursos técnicos do cotuca.
+
+76
+
+Escaneie o QR code pela Escaneie o QR code pela
+câmera do seu celular! câmera do seu celular!
+
+
+
+ FEIRA BRASILEIRA DE INICIAÇÃO
+CIENTÍFICA (FEBIC)
+
+A Feira Brasileira de Iniciação Científica
+(FEBIC) é uma iniciativa que oferece ao
+estudante a oportunidade, o tempo e o espaço
+para desenvolver e apresentar ideias criativas e
+inovadoras na forma de projetos científicos. Ela
+é considerada uma das mais amplas mostras
+do país e atualmente acontece por volta do
+mês de novembro. Para participar é necessário
+realizar sua inscrição no Portal do Candidato
+através do site oficial da feira
+(www.febic.com.br) .
+
+FEIRA BRASILEIRA DE JOVENS CIENTISTAS
+(FBJC)
+
+A Feira Brasileira de Jovens Cientistas (FBJC) é
+um evento científico e pré- universitário
+nacional totalmente virtual. Seu objetivo é
+democratizar o acesso à ciência para jovens. A
+FBJC oferece palestras, workshops e uma
+mentoria de inovação, além de oportunidades
+para concorrer a prêmios e credenciais para
+eventos no Brasil e no Exterior. Seu objetivo é
+valorizar o potencial de jovens cientistas e o
+impacto de seus projetos, promovendo a
+integração, o desenvolvimento e a conexão
+entre eles. Para participar é preciso realizar
+sua inscrição através do site oficial da página
+ (www.fbjc.com.br e
+https://www.instagram.com/fbjc_/ ).
+
+77
+
+Escaneie o QR code pela
+câmera do seu celular! Escaneie o QR code pela
+
+câmera do seu celular!
+
+
+
+FEIRA INTERNACIONAL DE MÁQUINAS E
+EQUIPAMENTOS (FEIMEC)
+
+A Feira Internacional de Máquinas e
+Equipamentos (FEIMEC) é o maior evento da
+América Latina para realização de negócios,
+promoção de tecnologia, tendências, produção
+e relacionamento para o setor industrial. Ela
+conecta todos os setores da indústria e seus
+principais players, proporcionando
+oportunidades de networking e negócios para
+profissionais de pequenas, médias e grandes
+indústrias. A Feimec está em sua 4° edição e
+para visitar a exposição é necessário realizar a
+inscrição no site oficial da feira
+(www.feimec.com.br). 
+
+MOSTRA INTERNACIONAL DE CIÊNCIA E
+TECNOLOGIA (MOSTRATEC)
+
+A Mostra Internacional de Ciência e Tecnologia
+(MOSTRATEC), é uma feira de ciência e
+tecnologia realizada anualmente pela Fundação
+Liberato na cidade de Novo Hamburgo, Rio
+Grande do Sul, Brasil. A feira tem como objetivo
+estimular estudantes na atividade de iniciação
+científica e tecnológica de forma acelerar o
+processo de expansão e renovação no quadro
+de pesquisadores. A inscrição é realizada no
+portal MOSTRATEC DIGITAL através do site
+oficial da feira ( www.mostratec.com.br).
+
+78
+
+Escaneie o QR code pela Escaneie o QR code pela
+câmera do seu celular! câmera do seu celular!
+
+
+
+ANEXO IV
+OLIMPÍADAS CIENTÍFICAS
+
+79
+
+
+
+LISTA DAS OLIMPÍADAS CIENTÍFICAS
+
+MOSTRA DE FOGUETES (MOBFOG)
+OLIMPÍADA  BRASILEIRA DE ASTRONOMIA (OBA)
+OLIMPÍADA BRASILEIRA DE BIOLOGIA (OBB)
+OLIMPÍADA BRASILEIRA DE CIÊNCIAS (OBC)
+OLIMPÍADA BRASILEIRA DE FÍSICA (OBF)
+OLIMPÍADA BRASILEIRA DE GEOGRAFIA (OBG)
+OLIMPÍADA BRASILEIRA DE INFORMÁTICA (OBI)
+OLIMPÍADA BRASILEIRA DE LINGUÍSTICA (OBL)
+OLIMPÍADA BRASILEIRA DE MATEMÁTICA (OBM)
+OLIMPÍADA BRASILEIRA DE MATEMÁTICA DAS ESCOLAS
+PÚBLICAS (OBMEP)
+OLIMPÍADA BRASILEIRA DE NEUROCIÊNCIAS (OBN)
+OLIMPÍADA BRASILEIRA DE QUÍMICA (OBQ)
+OLIMPÍADA BRASILEIRA DE ROBÓTICA PRÁTICA (OBR)
+OLIMPÍADA BRASILEIRA DE SAÚDE E MEIO AMBIENTE
+(OBSMA)
+OLIMPÍADA CANGURU DE MATEMÁTICA (CANGURU)
+OLIMPÍADA DE MATEMÁTICA DA UNICAMP (OMU)
+OLIMPÍADA DE PORTUGUÊS (OP)
+OLIMPÍADA NACIONAL EM HISTÓRIA DO BRASIL (ONBH) 
+SOLVE FOR TOMORROW BRASIL
+
+80
+
+
+
+MOBFOG – Mostra Brasileira de Foguetes
+
+A Mostra Brasileira de Foguetes (MOBFOG) é
+uma olimpíada experimental realizada
+anualmente pela Sociedade Astronômica
+Brasileira (SAB) em parceria com a Agência
+Espacial Brasileira (AEB). Ela envolve alunos de
+todos os anos do ensino fundamental e médio
+em todo o território nacional, onde o principal
+objetivo é construir e lançar foguetes. A
+MOBFOG é aberta à participação de escolas
+públicas ou privadas, urbanas ou rurais, sem
+exigência de número mínimo ou máximo de
+alunos. Estudantes do primeiro ano do ensino
+fundamental até estudantes do último ano do
+ensino médio podem participar. 
+
+OBA- Olimpíada Brasileira de Astronomia
+
+A Olimpíada de Astronomia e Astronáutica
+(OBA) é um evento nacional realizado nas
+escolas brasileiras desde 1998 pela Sociedade
+Astronômica Brasileira (SAB) em parceria com a
+Agência Espacial Brasileira (AEB). Seu objetivo
+é fomentar o interessante dos jovens pela
+Astronomia, astronáutica e ciências afins,
+promovendo a difusão dos conhecimentos
+básicos de forma lúdica e cooperativa. As
+inscrições devem ser feitas através do site
+oficial.
+www.oba.org.br
+
+81
+
+Escaneie o QR code pela Escaneie o QR code pela
+câmera do seu celular! câmera do seu celular!
+
+
+
+ A prova da MOBFOG consiste em lançamentos
+de foguetes reais, e para participar os
+professores devem inscrever os alunos na
+olimpíada, através do site oficial da página da
+MOBFOG. https://www.oba.org.br
+
+OBB- Olimpíada Brasileira de Biologia
+
+ A Olimpíada Brasileira de Biologia (OBB) é um
+projeto voltado para estudantes de ensino médio,
+organizado pelo instituto Butantan e apoiado pela
+ESIB (Empresa de Saneamento de Itabirito). Seu
+principal objetivo é promover e disseminar o
+conhecimento nas áreas da Biologia. A OBB
+acontece anualmente desde 2005 e tem como
+propósito selecionar os quatro alunos que
+participaram da Olimpíada Internacional de
+Biologia (IBO). Para realizar a inscrição é
+necessário acessar o site oficial da página OBB
+(https://olimpiadasdebiologia.butantan.gov.br).
+
+OBC – Olimpíada Brasileira de Ciências
+
+A Olimpíada Brasileira de Ciências (OBC) é uma
+competição que seleciona alunos para
+representar o Brasil na Olimpíada Internacional
+Júnior de Ciências (IJCO). Essa Olimpíada é uma
+das maiores e mais importantes competições
+acadêmicas do mundo, e tem como principal
+objetivo revelar jovens talentos nas areas de
+Física, Química e Biologia. A Olimpíada ocorre
+anualmente e é possível realizar a inscrição pelo
+site oficial da página da OBC
+(www.obciencias.com.br).
+
+82
+
+Escaneie o QR code pela
+Escaneie o QR code pela câmera do seu celular!
+câmera do seu celular!
+
+
+
+OBF – Olimpíada Brasileira de Física
+
+A Olimpíada Brasileira de Física (OBF) é um
+programa permanente da Sociedade Brasileira de
+Física (SBF) destinado a todos os estudantes do 8°
+ano do ensino fundamental ao 3° ano do ensino
+médio. Essa competição tem como objetivo
+principal despertar e estimular o interesse dos
+estudantes pela Física e pela Ciência em geral. A
+OBF ocorre anualmente por volta do mês de junho.
+Para se inscrever na olimpíada é necessário
+realizar a inscrição no site oficial da página
+(www.sbfisica.org.br).
+
+OBG – Olimpíada Brasileira de Geografia
+
+A Olimpíada Brasileira de Geografia (OBG) é uma
+iniciativa que visa valorizar e promover o
+conhecimento da ciência geográfica no âmbito
+escolar. Ela é organizada pela Universidade
+estadual de Campinas (UNICAMP) e conta com
+uma fase nacional composta por quatro etapas,
+além de uma fase internacional. O principal
+objetivo da OBG é a valorização da Ciência
+Geográfica e o estímulo ao conhecimento e novas
+experiências. A Olimpíada acontece anualmente
+entre os meses de abril a junho. É possível realizar
+a inscrição de maneira virtual através do site oficial
+da página (https://obggeografia.com.br).
+
+83
+
+Escaneie o QR code pela
+câmera do seu celular! Escaneie o QR code pela
+
+câmera do seu celular!
+
+
+
+OBI- Olimpíada Brasileira de Informática 
+
+A olimpíada Brasileira de Informática (OBI)
+é uma competição anual que estimula o
+interesse e o conhecimento em informática
+e programação. Ela é voltada para alunos de
+escolas regulares, desde o quarto ano do
+Ensino Fundamental até o primeiro ano do
+Ensino Superior. As inscrições podem ser
+realizadas através do site oficial
+(https://olimpiada.ic.unicamp.br
+
+OBL – Olimpíada Brasileira de Linguística
+
+A Olimpíada Brasileira de Linguística é um
+evento aberto e gratuito que acontece desde
+2011. Ele instiga os participantes a ampliar
+suas habilidades lógico-analíticas, intuição
+linguística e visão sobre os povos do mundo,
+por meio de uma abordagem interdisciplinar.
+Podem participar estudantes matriculados no
+ensino fundamental e médio de Redes Públicas
+e Privadas. A Olimpíada geralmente acontece
+no outono, entre março e maio de cada ano.
+Para se inscrever é necessário realizar o
+cadastro pelo site oficial da página da OBL
+(https://obling.org).
+
+84
+
+Escaneie o QR code pela
+câmera do seu celular!
+
+Escaneie o QR code pela
+câmera do seu celular!
+
+
+
+OBM – Olimpíada Brasileira de Matemática
+
+A Olimpíada Brasileira de Matemática (OBM) é
+uma competição que seleciona estudantes para
+representar o Brasil em competições
+internacionais de Matemática. Ela também
+oferece treinamento para esses participantes. A
+OBM tem como objetivo estimular o interesse
+pela Matemática e promover o desenvolvimento
+de habilidades nessa área. Realizada
+anualmente, a competição concede medalhas de
+ouro, prata e bronze de acordo com o
+desempenho dos participantes. Para se inscrever
+é necessário avaliar se você preenche todos os
+requisitos descritos no edital, no site oficial da
+página (www.obm.org.br).
+
+OBMEP – Olimpíada Brasileira de Matemática
+das Escolas Públicas
+
+A Olimpíada Brasileira de Matemática das Escolas
+Públicas (OBMEP) é um projeto nacional realizado
+anualmente desde de 2005, dirigido tanto às
+escolas públicas quanto às escolas privadas do
+Brasil. Essa competição tem como principal
+objetivo incentivar o estudo da Matemática entre
+estudantes dos níveis fundamental e médio de
+ensino. As provas atualmente acontecem por volta
+do mês de junho e para se inscrever é necessário
+realizar a inscrição no site oficial da página
+(www.obmep.org.br).
+
+85
+
+Escaneie o QR code pela Escaneie o QR code pela
+câmera do seu celular! câmera do seu celular!
+
+
+
+OBN– Olimpíada Brasileira de Neurociências
+
+A Olimpíada Brasileira de Neurociências (OBN)
+, também conhecida como Brazilian Brain Bee,
+é uma competição científica voltada para
+estudantes do ensino médio. Seu principal
+objetivo é despertar o interesse dos estudantes
+para o conhecimento científico na área de
+Neurociências. A OBA é organizada em etapas
+locais, e o vencedor brasileiro tem a
+oportunidade de representar o Brasil na etapa
+internacional, chamada international Brain Bee.
+As inscrições para a Olimpíada Brasileira de
+Neurociências podem ser realizadas pelo site
+oficial da página da OBN
+(https://brazilianbrainbee.org).
+
+OBQ – Olimpíada Brasileira de Química
+
+A Olimpíada Brasileira de Química (OBQ) é uma
+competição promovida pela Associação
+Brasileira de Química (ABQ). Seu principal
+objetivo é descobrir jovens talentos e alunos
+com aptidão para o estudo da química,
+estimulando a curiosidade científica e
+incentivando-os a se tornar futuros
+profissionais na área. A OBQ ocorre
+anualmente por volta do mês de maio. Para
+realizar a inscrição é necessário acessar o site
+oficial da página (www.obquimica.org).
+
+86
+
+Escaneie o QR code pela Escaneie o QR code pela
+câmera do seu celular! câmera do seu celular!
+
+
+
+OBR Prática e OBR Teórica – Olimpíada
+Brasileira de Robótica Prática
+
+A Olimpíada Brasileira de Robótica (OBR) é
+um evento que oferece oportunidades tanto na
+modalidade prática quanto na modalidade
+teórica para estudantes interessados em
+robótica. A OBR visa incentivar e o estudo da
+robótica e estimular os jovens a seguirem
+carreiras científico-tecnológicas. Ela envolve a
+robótica e a inteligência artificial, mostrando
+que todo conhecimento pode ser utilizado
+para criar soluções práticas e tecnológicas de
+ponta. A etapa prática é disputada na cidade
+de São Bernardo do Campo, na Grande São
+Paulo, por volta do mês de novembro. Para
+realizar a inscrição é necessário se cadastrar
+no site oficial da página da OBR
+(https://obr.robocup.org.br).
+
+OBSMA – Olimpíada Brasileira de Saúde e
+Meio Ambiente
+
+A Olimpíada Brasileira de Saúde é Meio
+Ambiente (Obama) é um projeto educativo
+promovido pela Fundação Oswaldo Cruz
+(Fiocruz), voltado para alunos de escolas
+públicas e privadas em todo o Brasil. Seu
+objetivo é estimular atividades
+interdisciplinares nas escolas, incentivando o
+desejo de aprender, conhecer, pesquisar e
+investigar temas relacionados à saúde e ao
+meio ambiente. É possível realizar a inscrição
+através do site oficial
+
+87 (https://olimpiada.fiocruz.br)
+
+Escaneie o QR code pela
+câmera do seu celular! Escaneie o QR code pela
+
+câmera do seu celular!
+
+
+
+Canguru - Olimpíada Canguru de Matemática
+
+A Olimpíada Canguru de Matemática é uma
+competição internacional que tem como
+principal objetivo estimular o raciocínio lógico
+e as estratégias de solução de problemas de
+forma divertida e desafiadora. Criado há mais
+de 30 anos na França, o concurso atrai
+estudantes de cerca de 100 países, incluindo o
+Brasil. Atualmente as provas onlines e
+presenciais acontecem por volta do mês de
+março. O cadastro deve ser feito pela escola
+através do site oficial da página. Podem
+participar estudantes do 3° ano do ensino
+fundamental até o 3° ano do ensino médio
+(www.cangurudematematicabrasil.com.br).
+
+Olimpíada de Matemática da Unicamp- OMU
+
+A Olimpíada de Matemática da Unicamp (OMU)
+é uma competição matemática realizada pela
+Universidade Estadual de Campinas (Unicamp).
+Ela tem como objetivo estimular o interesse pela
+matemática e contribuir para a formação e
+desenvolvimento dos estudantes brasileiros
+nessa área. A OMU é voltada para alunos do
+Ensino Fundamental e Médio de escolas
+públicas e privadas. A olimpíada acontece
+anualmente por volta do mês de abril. As
+inscrições são realizadas através do site oficial
+da página da OMU.
+(www.olimpiada.ime.unicamp.br)
+
+88
+
+Escaneie o QR code pela Escaneie o QR code pela
+câmera do seu celular! câmera do seu celular!
+
+
+
+OP – Olimpíada de Português
+
+A Olimpíada de Portugues (OP) é uma
+competição acadêmica de Língua Portuguesa em
+nível nacional, voltada para os alunos do Ensino
+Fundamental II e do Ensino Médio. Ela tem como
+objetivo fomentar o bom uso da língua
+portuguesa. A competição abrange escolas
+públicas e privadas, e busca honrar aqueles que
+enobrecem nossa pátria e a janela da vida que é
+a nossa língua. O evento acontece anualmente e
+as inscrições podem ser realizadas por meio do
+site oficial da página da OP
+(https://olimpiadadeportugues.org).
+
+ONHB – Olimpíada Nacional em História do
+Brasil
+
+A Olimpíada Nacional em História do Brasil
+(ONHB) ocorre anualmente. Ela é um projeto de
+extensão da Universidade Estadual de Campinas
+(Unicamp). Seu principal objetivo é promover, no
+campo de ciências humanas, uma atividade que
+estimule o conhecimento, o estudo, desperte
+talentos e aptidões, e envolva os participantes
+em atividades de desafios construtivos. Para
+participar o aluno deve estar matriculado do 8°
+ano do ensino fundamental até o 3° ano do
+ensino médio, montar uma equipe composta por
+até três estudantes e se inscrever através do site
+oficial da página da ONHB
+(www.olimpiadadehistoria.com.br).
+
+89
+
+Escaneie o QR code pela Escaneie o QR code pela
+câmera do seu celular! câmera do seu celular!
+
+
+
+Solve for Tomorrow Brasil
+
+Solfe for Tomorrow Brasil é uma iniciativa Global
+da Samsung que estimula estudantes do Ensino
+Médio de escolas públicas a identificar
+problemas reais e desenvolver soluções
+baseadas em ciência e tecnologia. O objetivo é
+fomentar o interesse e as habilidades dos jovens
+em áreas como Ciência, tecnologia, Tecnologia,
+engenharia e matemática (Stem). É possível
+realizar a inscrição através do site oficial do
+Programa.
+Solvefortomorrowbrasil.com.br
+
+90
+
+Escaneie o QR code pela
+câmera do seu celular!
+
+
+
+ANEXO V
+FILMOGRAFIA CIENTÍFICA
+
+91
+
+
+
+LISTA DOS FILMES CIENTÍFICOS, BIOGRÁFICOS E
+HISTÓRICOS
+
+A LISTA DE SCHINDLER (II GUERRA, HOLOCAUSTO)
+ÁGORA ALEXANDRIA (HISTÓRIA ANTIGA)
+DE VOLTA PARA O FUTURO (VIAGEM NO TEMPO)
+ESTRELAS ALÉM DO TEMPO (CORRIDA ESPACIAL, NASA,
+HISTÓRIA)
+GÊNIO INDOMÁVEL (PSICOLOGIA E COMPORTAMENTO)
+INDIANA JONES (ARQUEOLOGIA E CIÊNCIA)
+INTERESTELAR (DIMENSÕES E COSMOLOGIA)
+JURASSIC PARK (DINOSSAUROS, PALEONTOLOGIA)
+O JOGO DA IMITAÇÃO (BIOGRÁFICO)
+OPPENHEIMER (HISTÓRICO, BOMBA ATÔMICA)
+QUANDO NIETZSCHE CHOROU (FILOSOFIA)
+UMA MENTE BRILHANTE (PRÊMIO NOBEL)
+
+A lista de Schindler (II guerra,
+Holocausto)
+A Lista de Schindler é a história
+real e emocionante do
+empresário alemão Oskar
+Schindler, que num gesto
+humanitário de extrema ousadia
+salvou a vida de milhares de
+judeus, ao mesmo tempo em que
+contava com o apoio dos
+nazistas.
+Classificação indicativa: 14 anos  
+
+92
+
+
+
+Ágora - Alexandria (História
+antiga)
+Em Alexandria, no ano de 391,
+Hipátia é professora de
+astronomia e matemática, além
+de filósofa. Um dos seus alunos,
+Orestes, está apaixonado por
+ela, assim como o seu escravo
+Davus. Juntos, eles deverão
+lutar contra a extinção da
+biblioteca local e outras
+grandes instituições, que não
+devem sobreviver em meio à
+guerra que chega na cidade.
+Classificação indicativa: 16 anos 
+
+ De volta para o futuro (viagem no
+tempo)
+Um jovem (Michael J. Fox) aciona
+acidentalmente uma máquina do tempo
+construída por um cientista
+(Christopher Lloyd) em um Delorean,
+retornando aos anos 50. Lá conhece
+sua mãe (Lea Thompson), antes ainda
+do casamento com seu pai, que fica
+apaixonada por ele.Um jovem (Michael
+J. Fox) aciona acidentalmente uma
+máquina do tempo construída por um
+cientista (Christopher Lloyd) em um
+Delorean, retornando aos anos 50. Lá
+conhece sua mãe (Lea Thompson),
+antes ainda do casamento com seu pai,
+que fica apaixonada por ele.
+Classificação indicativa: 12 anos
+
+93
+
+
+
+Estrelas além do tempo (Corrida
+espacial, NASA, História)
+No auge da corrida espacial travada
+entre Estados Unidos e Rússia
+durante a Guerra Fria, uma equipe de
+cientistas da NASA, formada
+exclusivamente por mulheres afro-
+americanas, provou ser o elemento
+crucial que faltava na equação para a
+vitória dos Estados Unidos, liderando
+uma das maiores operações
+tecnológicas registradas na história
+americana e se tornando verdadeiras
+heroínas da nação.
+Classificação indicativa: 10 anos
+
+ Gênio Indomável (psicologia e
+comportamento)
+O filme gira em torno de Will
+Hunting (Matt Damon), um jovem
+gênio autodidata com uma
+habilidade extraordinária para a
+matemática, mas que luta para
+superar seu passado difícil e
+descobrir seu verdadeiro
+potencial. Enquanto o filme
+desvenda a jornada de Will,
+somos apresentados a
+personagens fundamentais em
+sua vida.
+Classificação indicativa: 14 anos
+
+94
+
+
+
+Indiana Jones e os caçadores da
+Arca perdida (Arqueologia e
+Ciência)
+Em 1936, o arqueólogo Indiana
+Jones (Harrison Ford) é contratado
+para encontrar a Arca da Aliança,
+que segundo as escrituras bíblicas
+conteria "Os Dez Mandamentos"
+que Deus revelou a Moisés no
+Monte Horeb. Mas como a lenda
+diz que o exército que a possuir
+será invencível, Indiana Jones terá
+um adversário de peso na busca
+pela arca perdida: o próprio Adolf
+Hitler. 
+Classificação indicativa: 14 anos
+
+Interestelar (dimensão e cosmologia)
+ Após ver a Terra consumindo boa parte
+de suas reservas naturais, um grupo de
+astronautas recebe a missão de verificar
+possíveis planetas para receberem a
+população mundial, possibilitando a
+continuação da espécie. Cooper
+(Matthew McConaughey) é chamado para
+liderar o grupo e aceita a missão
+sabendo que pode nunca mais ver os
+filhos. Ao lado de Brand (Anne Hathaway),
+Jenkins (Marlon Sanders) e Doyle (Wes
+Bentley), ele seguirá em busca de uma
+nova casa. Com o passar dos anos, sua
+filha Murph (Mackenzie Foy e Jessica
+Chastain) investirá numa própria jornada
+para também tentar salvar a população
+do planeta.
+Classificação indicativa: 12 anos 
+
+95
+
+
+
+Jurassic Park (Dinossauros,
+paleontologia)
+Ação Aventura Ficção científica Um
+milionário traz à vida dinossauros
+extintos há milhares de anos, criando
+um imenso parque. Mas os gigantes
+pré-históricos começam a ameaçar a
+vida dos visitantes. A sequência
+mundialmente famosa possui 3 filmes
+originais dos anos 90 e 4 novos filmes
+(o mais recente de 2022 - imagem ao
+lado).
+Classificação indicativa: 10 anos.
+
+O jogo da imitação
+(Biográfico)
+O Jogo da Imitação (The
+Imitation Game) é baseado na
+história real do lendário
+criptoanalista inglês Alan
+Turing, considerado o pai da
+computação moderna, e narra a
+tensa corrida contra o tempo
+de Turing e sua brilhante
+equipe no projeto Ultra para
+decifrar os códigos de guerra
+nazistas e contribuir para o
+final do conflito.
+Classificação indicativa: 12
+anos
+
+96
+
+
+
+Oppenheimer (histórico, bomba
+atômica)
+Oppenheimer O longa é o primeiro
+inspirado em uma história real da
+carreira do diretor. Baseado no livro
+“Oppenheimer: O triunfo e a tragédia
+do Prometeu americano”, de Kai Bird e
+Martin J. Sherwin, a produção conta a
+história de J. Robert Oppenheimer e do
+seu envolvimento na criação da bomba
+atômica como diretor do Projeto
+Manhattan.
+Classificação indicativa: 16 anos 
+
+Quando Nietzsche chorou (filosofia)
+A história é sobre um fictício encontro
+entre o filósofo Friedrich Nietzsche e o
+médico Josef Breuer, professor de
+Sigmund Freud, quando ambos
+encontravam-se em fases
+atormentadas: Nietzsche apresenta
+tendências suicidas e ainda não era
+conhecido (o ano provável é 1882,
+quando Assim Falou Zaratustra ainda
+não tinha sido escrito) e costumava
+escrever que era um filósofo póstumo,
+e que seus alunos ainda não haviam
+nascido, enquanto Breuer estava
+passando por uma crise por ter se
+envolvido com uma de suas pacientes,
+Bertha Pappenheim (a qual era referida
+como Anna O.).
+Classificação indicativa: 14 anos 
+
+97
+
+
+
+Uma Mente Brilhante (Prêmio
+Nobel)
+John Nash, um gênio da matemática,
+enfrenta a esquizofrenia enquanto
+busca reconhecimento em sua
+carreira e constrói um relacionamento
+com Alicia. Ele aprende a lidar com a
+doença e suas alucinações,
+conquistando o Prêmio Nobel de
+Economia e inspirando com sua
+perseverança.
+Classificação indicativa: 13 anos
+
+98
+
+
+
+ANEXO VI
+CIENTISTAS E COMUNICADORES CIENTÍFICOS
+
+99
+
+
+
+LISTA DOS CIENTISTAS E COMUNICADORES CIENTÍFICOS
+(POR ÁREA DO CONHECIMENTO)
+
+Ciências da Natureza e suas tecnologias (biologia, física e
+química)
+
+Albert Einstein (1879-1955)
+Einstein foi um físico alemão, nascido na
+cidade de Ulm em 1879. Quando jovem,
+mudou-se para a Suíça, onde se formou,
+tornando-se professor da Escola Politécnica
+de Zurique. Em 1903, casou-se com Mileva
+Maric, com quem teve dois filhos. O casal
+permaneceu junto até 1919, mesmo tendo
+vivido os cinco últimos anos do matrimônio
+separados.Einstein foi uma das mentes mais
+brilhantes da ciência, e o seu legado inclui a
+explicação do efeito fotoelétrico, a
+formulação da teoria da relatividade
+espacial geral e restrita, além de grandes
+contribuições para a Física Estatística, por
+meio de sua explicação para o movimento
+browniano.
+
+Carlos Ribeiro Justiniano das Chagas
+(1879-1934) 
+Carlos Ribeiro Justiniano das Chagas
+(Oliveira, 9 de julho de 1878 – Rio de
+Janeiro, 8 de novembro de 1934) foi um
+biólogo, médico sanitarista, infectologista,
+cientista e bacteriologista brasileiro, que
+trabalhou como clínico e pesquisador.
+Atuante na saúde pública do Brasil, iniciou
+sua carreira no combate à malária.
+infecciosa: o patógeno, o vetor
+(Triatominae), os hospedeiros, as
+manifestações clínicas e a epidemiologia. 100
+
+Escaneie o QR code pela
+câmera do celular e saiba
+mais sobre sua biografia!
+
+
+
+Destacou-se ao descobrir o protozoário
+Trypanosoma cruzi (cujo nome foi uma
+homenagem ao seu amigo Oswaldo Cruz) e
+a tripanossomíase americana, conhecida
+como doença de Chagas. Ele foi o primeiro
+e até os dias atuais permanece o único
+cientista na história da medicina a
+descrever completamente uma doença
+infecciosa: o patógeno, o vetor
+(Triatominae), os hospedeiros, as
+manifestações clínicas e a epidemiologia.
+
+César Mansueto Giulio Lattes (1924-
+2005)
+César Mansueto Giulio Lattes, mais
+conhecido como César Lattes (Curitiba, 11
+de julho de 1924 — Campinas, 8 de março
+de 2005), foi um físico brasileiro, co-
+descobridor do méson-π (méson pi ou píon),
+descoberta que levou à concessão do
+Prêmio Nobel de Física de 1950 a Cecil
+Frank Powell, líder da pesquisa. 
+
+Lattes é um dos mais ilustres físicos do
+Brasil e seu trabalho foi fundamental para o
+desenvolvimento da física atômica no país.
+Foi também um grande líder no meio
+científico brasileiro e um dos principais
+responsáveis pela criação do Conselho
+Nacional de Desenvolvimento Científico e
+Tecnológico (CNPq).
+
+101
+
+Escaneie o QR code pela Escaneie o QR code pela
+câmera do celular e saiba câmera do celular e saiba
+mais sobre sua biografia! mais sobre sua biografia!
+
+
+
+Charles Darwin (1809 - 1882)
+Charles Robert Darwin foi um importante
+naturalista, nascido no dia 12 de fevereiro
+de 1809, na Inglaterra, mais precisamente
+na cidade de Shrewsbury. 
+
+Esse importante pesquisador, desde muito
+jovem, já demonstrava seu amor pela
+ciência, dedicando-se às suas coleções e a
+realizar experimentos, com seu irmão, em
+um laboratório de química. Darwin ficou
+conhecido por sua obra “A origem das
+espécies", que contribuiu para o
+entendimento da evolução e, atualmente, é
+considerada um dos livros acadêmicos de
+maior influência na história.
+
+Irène Joilot-Curie (1978-1956)
+Irène foi uma química francesa de grande
+importância no século XX. Vinda de uma
+família de renomados cientistas, teve
+considerável influência da mãe e seguiu os
+seus passos na ciência, aprimorando suas
+descobertas. A primogênita de Marie e
+Pierre Curie nasceu em 12 de setembro de
+1897 na França. Ficou órfã de pai ainda na
+infância, sendo criada pela mãe e outros
+familiares. Com grande facilidade para
+matemática, Irène teve parte da educação
+realizada em casa. Isso porque sua mãe
+optou por fazer parte de uma espécie
+cooperativa entre cientistas franceses que
+se intercalavam na educação dos filhos de
+todos.
+
+102
+
+Escaneie o QR code pela Escaneie o QR code pela
+câmera do celular e saiba câmera do celular e saiba
+mais sobre sua biografia! mais sobre sua biografia!
+
+
+
+Assim a garota teve contato com vários
+assuntos e habilidades, como artes, o
+idioma chinês e, obviamente, estudos
+científicos. Ingressou no curso de ciência
+na Universidade de Paris, até que em 1914
+teve que suspendê-lo por conta da Primeira
+Guerra Mundial. A jovem Irène acompanhou
+sua mãe Marie nos atendimentos aos
+feridos da guerra. Assim como a mãe,
+recebeu o prêmio Nobel de química em
+1935.
+
+Katalin Karikó (1955 - )
+A bioquímica húngara Katalin Karikó nasceu
+em 1955, em Szolnok, uma cidade que fica a
+pouco mais de 100 quilômetros da capital,
+Budapeste. Ela é a 13ª mulher na história a
+ganhar um Prêmio Nobel de Medicina desde
+1901, quando a condecoração foi criada.
+Katalin se interessou pela natureza desde
+jovem e se destacou acadêmicamente em
+ciências, como conta a Encyclopaedia
+Britannica, plataforma de ensino referência
+no Reino Unido. Em 1978, se formou como
+bióloga e concluiu um doutorado em
+bioquímica no ano de 1982, na Universidade
+de Szeged, ainda na Hungria. Em seguida,
+Katalin aceitou um cargo no Biological
+Research Centre (BRC) na mesma cidade, e
+lá estudou a atividade antiviral de
+segmentos curtos de RNA, iniciando sua
+pesquisa sobre nucleosídeos modificados
+(que é um tipo de RNA mensageiro
+sintético). 
+
+103
+
+
+
+Durante seu tempo na Universidade da
+Pensilvânia, a pesquisadora conheceu o
+imunologista Drew Weissman. Juntos, eles
+estudaram como diferentes tipos de RNA
+interagem com o sistema imunológico e
+marcaram um ponto de virada na história da
+ciência. De acordo com o comunicado de
+imprensa emitido pelo Prêmio Nobel, Karikó
+e Weissman contribuíram para uma
+mudança de paradigma na compreensão de
+como as células reconhecem e respondem a
+diferentes formas de mRNA e alertaram que
+sua descoberta foi de profunda importância
+para o uso do mRNA como tratamento. Os
+resultados de sua pesquisa foram
+publicados em 2005, quinze anos antes da
+pandemia da COVID-19.
+
+Louis Pasteur (1822 - 1895) 
+Louis Pasteur foi um cientista francês que
+realizou importantes descobertas nas áreas
+da medicina, microbiologia e química.
+Pasteur despertou seu interesse para a área
+da química e por pesquisas científicas
+quando estudou na Universidade de
+Sorbonne, em Paris. Em 1842, se graduou e
+em 1847 conclui seu doutorado em química
+e física. Na segunda metade do século XIX,
+com o patologista alemão Robert Koch
+(1843-1910), Pasteur lançou as bases da
+microbiologia e o conceito – hoje óbvio – de
+que as doenças infecciosas são causadas
+por microrganismos e podem ser prevenidas
+por meio de medidas de higiene e de
+vacinas. Em homenagem à sua descoberta
+que hoje se faz o leite “pasteurizado”.
+
+104
+
+Escaneie o QR code pela
+câmera do celular e saiba
+mais sobre sua biografia!
+
+
+
+Dois anos depois, a convite de Egydio Salles
+Guerra, Oswaldo começou a trabalhar na
+Policlínica Geral do Rio de Janeiro, onde era
+responsável pela montagem e a chefia do
+laboratório de análises clínicas.
+
+Marie Curie (1867 - 1934)
+Marie Curie foi uma das mulheres a mudar a
+história e os rumos do estudo da
+radioatividade, bem como mostrou ao
+mundo o valor intelectual e a riquíssima
+contribuição que as mulheres podem
+fornecer ao mundo científico, o qual era,
+outrora, de caráter predominantemente
+masculino. Marie Curie foi a primeira
+pessoa a receber o prêmio Nobel duas
+vezes, um em Física, ao demonstrar a
+existência da radioatividade natural em
+1903, e o outro em Química, pela
+descoberta de dois novos elementos
+químicos em 1910. Desde a infância, Marie
+Curie aprendeu a enfrentar e vencer
+desafios impostos pela sociedade e pelas
+condições de vida, sendo um grande
+exemplo como cientista para homens e,
+principalmente, para as mulheres, pois
+mostrou que elas são capazes de promover
+descobertas tão ou mais importantes.
+
+105
+
+Escaneie o QR code pela Escaneie o QR code pela
+câmera do celular e saiba câmera do celular e saiba
+mais sobre sua biografia! mais sobre sua biografia!
+
+
+
+Ciências Humanas e sociais aplicadas (geografia, filosofia,
+sociologia e história)
+
+Aristóteles (384-322 a.C.)
+Aristóteles (384 a.C.-322 a.C.) foi um dos
+mais importantes filósofos gregos e o
+principal representante da terceira fase da
+história da filosofia grega “a fase
+sistemática”. Escreveu uma série de obras
+que falavam sobre política, ética, moral e
+outros campos de conhecimento e foi
+professor de Alexandre, o Grande (356 a.C-
+323 a.C.). Aristóteles nasceu em Estagira, na
+Macedônia, em 384 a.C. Com 17 anos, partiu
+para Atenas e começou a frequentar a
+Academia de Platão. Por conta do local de
+seu nascimento, o autor é chamado
+comumente de "o Estagirita".
+
+Florestan Fernandes (1920-1995) 
+Florestan Fernandes foi um político,
+sociólogo e ensaísta brasileiro,
+considerado o fundador da Sociologia
+Crítica no Brasil. Foi deputado federal
+pelo Partido dos Trabalhadores. Florestan
+Fernandes nasceu em São Paulo, no dia
+22 de julho de 1920. Filho único da
+imigrante portuguesa Maria Fernandes,
+não chegou a conhecer o seu pai. Foi
+criado por sua madrinha Hermínia Bresser
+de Lima, que lhe despertou o interesse
+pelos estudos. O sociólogo Florestan
+Fernandes, patrocinado pela Organização
+das Nações Unidas para a Educação, a
+Ciência e a Cultura (UNESCO), trabalhou
+
+106
+
+Escaneie o QR code pela
+câmera do celular e saiba
+mais sobre sua biografia!
+
+
+
+no Programa de Pesquisas sobre Relações
+Raciais no Brasil. Desenvolveu a pesquisa
+que desmentiu a tese sobre a inexistência
+de preconceito e discriminação no país,
+iniciando uma nova fase do estudo da
+população preta.
+Em 1955 publicou “Negros e Brancos em
+São Paulo”, em parceria com Roger
+Baptiste, no qual inverteu a ideia de que o
+negro constituía um problema social,
+afirmando que a sociedade é que constituía
+um problema para a população negra,
+desfazendo assim o mito de que vigorava no
+Brasil uma “democracia racial”.
+
+Karl Marx (1818-1883)
+Karl Marx, um filósofo, sociólogo,
+economista, jornalista e teórico político
+alemão, é uma figura proeminente no
+campo das ciências humanas. Suas
+contribuições tiveram um impacto
+significativo na Sociologia, Economia,
+História e até mesmo na Pedagogia. Karl
+Marx nasceu em 1818, na cidade de
+Tréveris, que na época fazia parte do
+território da Prússia. Apesar de se tornar um
+dos maiores críticos do capitalismo e da
+divisão de classes sociais, ele veio de uma
+família de classe alta alemã. Seu pai era um
+advogado bem-sucedido e conselheiro do
+governo. A formação inicial de Marx foi
+condizente com sua classe social, mas sua
+trajetória tomou um rumo diferente. 
+
+107
+
+Escaneie o QR code pela
+câmera do celular e saiba
+mais sobre sua biografia!
+
+
+
+Marx se destacou como um crítico ferrenho
+de governos e governantes, demonstrando
+inclinações para a crítica social. Aos 23
+anos, defendeu sua tese em Filosofia,
+obtendo o título de doutor e ingressando na
+carreira acadêmica. No entanto, suas
+críticas ao governo prussiano resultaram em
+sua proibição de lecionar em universidades,
+levando-o a trabalhar como jornalista.
+
+Milton Almeida dos Santos (1926-2001)
+Milton Santos foi geógrafo, intelectual,
+professor e um dos maiores pensadores
+brasileiros. Seus estudos inovaram a área
+da geografia urbana os quais foram
+fundamentais para uma nova abordagem do
+assunto. Ele revolucionou esse campo ao
+abordar outros temas que até então não
+eram tratados pela geografia descritiva, tal
+como a importância e as influências do
+território para os seres humanos. Até hoje
+Milton Santos é considerado o maior
+geógrafo do Brasil sendo também
+conhecido e respeitado em diversos países
+do mundo.
+
+108
+
+Escaneie o QR code pela Escaneie o QR code pela
+câmera do celular e saiba câmera do celular e saiba
+mais sobre sua biografia! mais sobre sua biografia!
+
+
+
+René Descartes (1596–1650) - Filosofia 
+René Descartes foi um filósofo e
+matemático francês. Criador do pensamento
+cartesiano, sistema filosófico que deu
+origem à Filosofia Moderna. Ele é autor da
+obra “O Discurso sobre o Método”, um
+tratado filosófico e matemático publicado
+na França em 1637. Uma das mais famosas
+frases do seu discurso é “Penso, logo
+existo”. Realizou diversos trabalhos na área
+da filosofia, ciências e matemática.
+Relacionou a álgebra com a geometria, fato
+que fez surgir a geometria analítica e o
+sistema de coordenadas, conhecido hoje
+como Plano Cartesiano.
+
+109
+
+Escaneie o QR code pela
+câmera do celular e saiba
+mais sobre sua biografia!
+
+
+
+Linguagens e suas tecnologias (artes e língua portuguesa,
+inglesa)
+
+Annie Ernaux (1940 - )
+A escritora francesa Annie Ernaux é
+conhecida por seus romances sobre classe
+e gênero baseados em sua experiência
+pessoal. Ela foi anunciada como a
+vencedora do Prêmio Nobel de Literatura. A
+escritora de 82 anos foi premiada pela
+"coragem e acuidade clínica com que
+descobre as raízes, os distanciamentos e as
+restrições coletivas da memória pessoal",
+explicou o júri do Nobel. "Considero que é
+uma grande honra e ao mesmo tempo uma
+grande responsabilidade receber o Prêmio
+Nobel", declarou Ernaux ao canal de
+televisão sueco SVT. Ela considera que deve
+continuar a testemunhar "uma forma de
+equidade, justiça, em relação ao mundo".
+Annie Ernaux era um nome citado há muitos
+anos entre possíveis vencedores do Nobel. 
+Ela é a 17ª mulher a receber a honra, entre os 119 laureados desde
+a criação do prêmio em 1901. Professora universitária de
+Literatura, Annie Ernaux escreveu quase 20 livros, nos quais
+aborda o peso da dominação das classes sociais e a paixão do
+amor, dois temas que marcaram sua trajetória. Ernaux tem uma
+obra essencialmente autobiográfica que constitui uma radiografia
+da intimidade de uma mulher que evolui na esteira das grandes
+mudanças na sociedade francesa do pós-guerra.
+
+110
+
+Escaneie o QR code pela
+câmera do celular e saiba
+mais sobre sua biografia!
+
+
+
+Clarice Lispector (1920 - 1977) 
+Clarice Lispector recebeu, na verdade, o
+nome Chaya Pinkhasovna Lispector depois
+de nascer na Ucrânia em 10 dezembro de
+1920. Quando ela ainda era criança, sua
+família migrou para o Brasil, onde ela se
+naturalizou anos mais tarde como brasileira.
+Clarice participava de um grupo literário
+que se reunia no centro do Rio de Janeiro,
+do qual faziam parte, por exemplo, Vinícius
+de Moraes e Rachel de Queiroz. Lançou em
+1961 A Maçã no Escuro, que escreveu
+enquanto ainda morava fora do Brasil, tendo
+a obra recebido o prêmio de melhor livro do
+ano. Escreveu histórias infantis ao longo de
+década de 70, além da sua obra que virou
+filme: A Hora da Estrela. Em 1978 ganhou o
+Prêmio Jabuti (o mais tradicional prêmio
+literário do Brasil) com o romance A Hora da
+Estrela.
+
+Claudia Goldin (1946 - ) 
+Claudia Goldin é uma economista do
+trabalho, estudos de gênero e história do
+papel das mulheres na economia
+estadunidense, sendo atualmente
+professora e pesquisadora na Universidade
+de Harvard. É codiretora do Grupo Gender in
+Economics (Estudos de Gênero em
+Economia) do National Bureau of Economic
+Research (NBER) e foi diretora do programa
+de Desenvolvimento da Economia
+Americana do NBER de 1989 a 2017. 
+
+111
+
+Escaneie o QR code pela
+câmera do celular e saiba
+mais sobre sua biografia!
+
+
+
+A investigação de Claudia Goldin cobre uma
+vasta gama de tópicos: a mulher e o
+mercado de trabalho, a disparidade de
+gênero em relação aos rendimentos, a
+desigualdade de rendimentos, o progresso
+tecnológico, a educação e a imigração.
+Recentemente, em 2021, publicou o livro
+Career e Family: Women's Century-Long
+Journey toward Equity (Princeton University
+Press). A investigação que tem desenvolvido
+sobre as mulheres no mercado de trabalho
+teve impacto em diversos campos da
+economia (e.g economia do trabalho,
+economia de gênero, economia da
+educação, economia do desenvolvimento,
+história econômica). Estudou também o
+impacto da recente crise pandêmica sobre
+as mulheres.
+
+Frederic Skinner (1904-1990)
+Burrhus Frederic Skinner (1904-1990) foi
+um psicólogo norte-americano, seguidor do
+Behaviorismo de J. B. Watson, mas na
+década de 40, criou o Behaviorismo Radical
+com uma proposta filosófica sobre o
+comportamento humano. Burrhus Frederic
+Skinner nasceu em Susquehanna,
+Pensilvânia, Estados Unidos, no dia 20 de
+março de 1904. Filho de um advogado e de
+uma dona de casa, desde cedo despertou o
+interesse sobre o comportamento dos
+animais. 
+
+112
+
+Escaneie o QR code pela
+câmera do celular e saiba
+mais sobre sua biografia!
+
+
+
+Influenciado pela teoria dos reflexos
+condicionados de Pavlov e pelo estudo do
+comportamento de John B. Watson, Skinner
+acreditou que era possível explicar a
+conduta dos indivíduos como um conjunto
+de respostas fisiológicas condicionadas. Se
+dedicou ao estudo das possibilidades que
+ofereciam o controle científico da conduta
+mediante técnicas de reforço (estímulo do
+comportamento desejado). Para ele, a
+aprendizagem concentra-se na capacidade
+de estimular ou reprimir comportamentos,
+desejáveis ou indesejáveis.
+
+José Bonifácio de Andrada e Silva (1763-
+1838)
+José Bonifácio foi um cientista e político
+brasileiro que teve papel destacado no
+processo de independência do Brasil.
+Nasceu em Santos, mas aos 20 anos de
+idade foi para a Europa, tendo estudado em
+Coimbra e desenvolvido uma carreira de
+cientista que durou mais de 30 anos. Atuou
+em importantes cargos do governo luso.
+Retornou ao Brasil, aproximando-se de D.
+Pedro e sendo figura importantíssima no
+processo de independência do Brasil. Atuou
+como político no Primeiro Reinado, sendo
+exilado em 1823 e retornando em 1829. Foi
+considerado patrono da independência do
+Brasil pela sua importância na
+independência brasileira.
+
+113
+
+Escaneie o QR code pela Escaneie o QR code pela
+câmera do celular e saiba câmera do celular e saiba
+mais sobre sua biografia! mais sobre sua biografia!
+
+
+
+Matemática e suas tecnologias (matemática/engenharias)
+
+Gauss Moutinho Cordeiro (1952-) (Brasil)
+Possui graduação em Bacharelado em
+Matemática pela Universidade Católica de
+Pernambuco (1973), graduação em
+Engenharia Civil pela Universidade Federal
+de Pernambuco (1974), Mestrado em
+Engenharia de Produção pela Universidade
+Federal do Rio de Janeiro (1976) e
+Doutorado em Estatística pelo Imperial
+College, University of London (1982). Fez
+pós-doutorado na University of London
+(1986-1987) e no Instituto de Matemática
+Pura e Aplicada (1990-1992). 
+
+Atualmente é professor titular do Departamento de Estatística da
+UFPE. Publicou até agora 440 artigos em periódicos internacionais
+de Estatística com sistemas de revisores e orientou 61 alunos de
+mestrado e doutorado. Tem experiência na área de Probabilidade e
+Estatística, com ênfase em Inferência Paramétrica, atuando
+principalmente nos seguintes temas: distribuições de
+probabilidade e teoria assintótica. Tem trabalhado desde 1983
+como revisor de dezenas de periódicos internacionais. Foi
+Presidente da Associação Brasileira de Estatística (ABE) de 2000 a
+2002 e membro (titular e suplente) do Comitê Assessor de
+Matemática do CNPq em quatro períodos distintos. Foi editor do
+Brazilian Journal of Probability and Statistics (1995-2000).
+Recebeu o Prêmio ABE-2008 pelos relevantes serviços prestados à
+Estatística e, em 2010, o grau de Comendador da Ordem do Mérito
+Científico.
+
+114
+
+Escaneie o QR code pela
+câmera do celular e saiba
+mais sobre sua biografia!
+
+
+
+Isaac Newton (1643-1727)
+Isaac Newton (1643-1727) foi um físico,
+astrônomo e matemático inglês. Seus
+trabalhos sobre a formulação das três leis
+do movimento levaram à lei da gravitação
+universal. A composição da luz branca
+conduziu à moderna física óptica. Na
+matemática ele lançou os fundamentos do
+cálculo infinitesimal. Entre 1665 e 1667,
+durante o tempo em que a universidade
+ficou fechada, em consequência de uma
+epidemia de peste bubônica que assolou a
+Inglaterra e matou um décimo da
+população, Isaac Newton teve que voltar
+para a casa da sua mãe.
+
+Nesse período, Newton fez as descobertas
+mais importantes para a ciência: descobriu
+a lei fundamental da gravitação, imaginou
+as leis básicas da Mecânica e aplicou-as
+aos corpos celestes, inventou os métodos
+de cálculo diferencial e integral, além de
+estabelecer os alicerces de suas grandes
+descobertas ópticas.
+
+Maryam Mirzakhani (1977 - 2017)
+Filha de Ahmad Mirzakhai, engenheiro
+elétrico, e Zahra Haghighi, ela nasceu no
+dia 12 de maio de 1977 em Teerã, capital do
+Irã. Na infância, época em que viveu o
+conflito entre Irã e Iraque, ela tinha o sonho
+de ser escritora. Por influência de um irmão,
+começou a se interessar por matemática no
+Ensino Médio. 
+
+115
+
+Escaneie o QR code pela
+câmera do celular e saiba
+mais sobre sua biografia!
+
+
+
+Aos 17 anos, tornou-se a primeira mulher
+iraniana a ganhar uma medalha de ouro na
+Olimpíada Internacional de Matemática de
+Hong Kong, em 1994. Cursou bacharelado
+em matemática na Universidade
+Tecnológica de Sharif, no Irã, e se formou
+em 1999. Mudou-se para os Estados Unidos,
+onde concluiu um doutorado na
+Universidade de Harvard. 
+Foi a primeira mulher a receber a medalha Fields (o conhecido “
+Prêmio Nobel da matemática”) por sua pesquisa sobre "a dinâmica
+e a geometria de superfícies de Riemann e seus espaços de
+módulos". A superfície de Riemann é uma variedade analítica de
+dimensão complexa, ou seja, deformações de um plano complexo;
+sua função é ajudar cientistas a resolver problemas matemáticos.
+Diagnosticada com câncer de mama, ela morreu aos 40 anos de
+idade, em 2017.
+
+Wilhelm Leibniz (1646-1716)
+Gottfried Wilhelm Leibniz foi um
+filósofo e matemático alemão.
+Estudioso do cálculo integral e do
+cálculo binário, que seria
+futuramente importante para o
+estabelecimento dos programas de
+computadores. 
+
+Criador da teoria das Mônadas - unidades
+primárias do universo que compõem todos
+os corpos. Gottfried Wilhelm Leibniz nasceu
+em Leipzig, Alemanha, no dia 1 de julho de
+1646. Filho de um professor luterano, ficou
+órfão de pai cedo e foi criado pela mãe, que
+lhe transmitiu rígidos valores religiosos. 
+
+116
+
+Escaneie o QR code pela Escaneie o QR code pela
+câmera do celular e saiba câmera do celular e saiba
+mais sobre sua biografia! mais sobre sua biografia!
+
+
+
+Leibniz entrou na escola Nicolau com apenas sete anos. Estudou
+latim e grego e adquiriu conhecimento de forma autodidata. Aos 14
+anos, entrou precocemente na Universidade de Leipzig e
+familiarizou-se com o melhor da filosofia e da ciência, da
+metafísica de Aristóteles à dos empiristas ingleses, do
+racionalismo de René Descartes, aos trabalhos de Campanella,
+Johannes Kepler e Galileu Galilei. Graduou-se em filosofia com a
+tese “Meditação Sobre o Princípio da Individuação”, quando
+apresentou o conceito de “Mônadas” - unidades primárias do
+universo. Em 1663, recebeu o grau de mestre em filosofia. Em
+1666, publicou sua tese “Dissertação Sobre a Arte Combinatória”.
+Em 1666 doutorou-se em direito na Universidade de Altdorf,
+Nuremberg.
+
+117

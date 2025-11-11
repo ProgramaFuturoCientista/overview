@@ -1,0 +1,44 @@
+═══════════════════════════════════════════════════════════════
+  🎯 ÍCONES DO SISTEMA
+  Ícones personalizados para cada seção
+═══════════════════════════════════════════════════════════════
+
+🎯 OBJETIVO:
+   Ícones SVG ou PNG para representar cada seção do sistema
+
+📋 ARQUIVOS:
+
+   icone_evasao.svg             - Ícone da seção Evasão
+   icone_assiduidade.svg        - Ícone da seção Assiduidade
+   icone_analises.svg           - Ícone da seção Análises
+   icone_auditoria.svg          - Ícone da seção Auditoria
+   icone_olimpiadas.svg         - Ícone da seção Olimpíadas
+   icone_cursinho.svg           - Ícone da seção Cursinho
+   icone_projeto_vida.svg       - Ícone da seção Projeto de Vida
+   
+📏 ESPECIFICAÇÕES:
+
+   - Formato: SVG (preferencial) ou PNG
+   - Tamanho: 64x64 pixels (se PNG)
+   - Cores: Compatíveis com paleta do PFC
+   - Estilo: Minimalista, profissional
+   - Fundo: Transparente
+
+💡 ONDE USAR:
+
+   ✓ Menu de navegação
+   ✓ Cards de estatísticas
+   ✓ Botões de ação
+   ✓ Headers de seções
+
+🔄 COMO SUBSTITUIR:
+
+   1. Crie ou baixe ícone SVG
+   2. Mantenha o MESMO NOME
+   3. Substitua nesta pasta
+   4. Sistema usará automaticamente
+
+═══════════════════════════════════════════════════════════════
+🎓 Programa Futuro Cientista® 2025
+═══════════════════════════════════════════════════════════════
+

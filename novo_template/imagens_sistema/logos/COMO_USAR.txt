@@ -1,0 +1,42 @@
+═══════════════════════════════════════════════════════════════
+  🏢 LOGOS DO SISTEMA
+  Logos institucionais do Programa Futuro Cientista
+═══════════════════════════════════════════════════════════════
+
+🎯 OBJETIVO:
+   Armazenar logos oficiais do PFC que aparecem em todo o sistema
+
+📋 ARQUIVOS:
+
+   Logo_PFC.png                  - Logo principal (colorido)
+   Logo_PFC_branco.png          - Logo versão clara (para fundos escuros)
+   Logo_PFC_icone.png           - Ícone/Favicon
+   
+📏 ESPECIFICAÇÕES:
+
+   Logo Principal (Logo_PFC.png):
+   - Formato: PNG com fundo transparente
+   - Tamanho: 400x400 pixels
+   - Uso: Header, páginas, relatórios
+   
+   Logo Branco (Logo_PFC_branco.png):
+   - Formato: PNG com fundo transparente
+   - Tamanho: 400x400 pixels
+   - Uso: Menu, rodapé, fundos escuros
+   
+   Ícone (Logo_PFC_icone.png):
+   - Formato: PNG
+   - Tamanho: 512x512 pixels
+   - Uso: Favicon, app icons
+
+🔄 COMO SUBSTITUIR:
+
+   1. Prepare sua nova imagem
+   2. Salve com o MESMO NOME
+   3. Substitua o arquivo nesta pasta
+   4. Regere os relatórios
+
+═══════════════════════════════════════════════════════════════
+🎓 Programa Futuro Cientista® 2025
+═══════════════════════════════════════════════════════════════
+

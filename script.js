@@ -336,8 +336,80 @@ function autoGrow(el) {
     el.style.height = (el.scrollHeight) + 'px';
 }
 
+// ===== MENU HAMBÚRGUER =====
+function toggleMenu() {
+    const sidebar = document.querySelector('.nav-sidebar');
+    const overlay = document.querySelector('.nav-overlay');
+    const hamburgerBtn = document.querySelector('.hamburger-btn');
+    
+    if (sidebar && overlay && hamburgerBtn) {
+        sidebar.classList.toggle('active');
+        overlay.classList.toggle('active');
+        hamburgerBtn.classList.toggle('active');
+    }
+}
+
+function closeMenu() {
+    const sidebar = document.querySelector('.nav-sidebar');
+    const overlay = document.querySelector('.nav-overlay');
+    const hamburgerBtn = document.querySelector('.hamburger-btn');
+    
+    if (sidebar && overlay && hamburgerBtn) {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+        hamburgerBtn.classList.remove('active');
+    }
+}
+
+// Inicializar menu hambúrguer
+function initHamburgerMenu() {
+    const hamburgerBtn = document.querySelector('.hamburger-btn');
+    const closeBtn = document.querySelector('.nav-close-btn');
+    const overlay = document.querySelector('.nav-overlay');
+    const navLinks = document.querySelectorAll('.nav-sidebar-links a');
+    
+    // Abrir/fechar menu ao clicar no botão hambúrguer
+    if (hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleMenu();
+        });
+    }
+    
+    // Fechar menu ao clicar no botão de fechar
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            closeMenu();
+        });
+    }
+    
+    // Fechar menu ao clicar no overlay (fora do menu)
+    if (overlay) {
+        overlay.addEventListener('click', function() {
+            closeMenu();
+        });
+    }
+    
+    // Fechar menu ao clicar em um link
+    navLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+            closeMenu();
+        });
+    });
+    
+    // Fechar menu ao pressionar ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeMenu();
+        }
+    });
+}
+
 // Inicializar todas as funcionalidades
 $(document).ready(function() {
+    // Inicializar menu hambúrguer
+    initHamburgerMenu();
+    
     // Inicializar DataTables
     initDT('evasaoTurma');
     initDT('evasaoCidade');

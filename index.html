@@ -1,1255 +1,648 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relatório Semanal PFC - Evasão</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <style>
-        /* Modal Styles para Evasão */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            backdrop-filter: blur(5px);
-        }
-        
-        .modal-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            max-width: 90%;
-            max-height: 90%;
-            width: 900px;
-            overflow: hidden;
-            animation: modalSlideIn 0.3s ease-out;
-        }
-        
-        @keyframes modalSlideIn {
-            from {
-                opacity: 0;
-                transform: translate(-50%, -60%);
-                scale: 0.9;
-            }
-            to {
-                opacity: 1;
-                transform: translate(-50%, -50%);
-                scale: 1;
-            }
-        }
-        
-        .modal-header {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            color: white;
-            padding: 20px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-radius: 15px 15px 0 0;
-        }
-        
-        .modal-header h3 {
-            margin: 0;
-            font-size: 1.4rem;
-            font-weight: 600;
-        }
-        
-        .modal-close {
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.3s ease;
-            line-height: 1;
-        }
-        
-        .modal-close:hover {
-            color: #e74c3c;
-        }
-        
-        .modal-body {
-            padding: 25px;
-            max-height: 70vh;
-            overflow-y: auto;
-        }
-        
-        .turma-info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-bottom: 20px;
-        }
-        
-        .info-section {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid #3498db;
-        }
-        
-        .info-section.full-width {
-            grid-column: 1 / -1;
-            border-left-color: #e74c3c;
-        }
-        
-        .info-section h4 {
-            margin: 0 0 15px 0;
-            color: #2c3e50;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-        
-        .info-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            padding: 8px 0;
-            border-bottom: 1px solid #e9ecef;
-        }
-        
-        .info-item:last-child {
-            border-bottom: none;
-        }
-        
-        .info-label {
-            font-weight: 600;
-            color: #495057;
-        }
-        
-        .info-value {
-            color: #2c3e50;
-            text-align: right;
-        }
-        
-        .metrics-display {
-            text-align: center;
-            margin-bottom: 20px;
-            padding: 20px;
-            background: linear-gradient(135deg, #3498db, #2980b9);
-            border-radius: 10px;
-            color: white;
-        }
-        
-        .main-metric {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        .metric-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-        
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .metric-item {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            border-left: 4px solid #3498db;
-        }
-        
-        .metric-item h5 {
-            margin: 0 0 10px 0;
-            color: #2c3e50;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-        
-        .metric-value {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #2c3e50;
-        }
-        
-        .status-indicator {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-        
-        .status-excellent { background: #d4edda; color: #155724; }
-        .status-good { background: #d1ecf1; color: #0c5460; }
-        .status-warning { background: #fff3cd; color: #856404; }
-        .status-danger { background: #f8d7da; color: #721c24; }
-        
-        .modal-footer {
-            padding: 20px 25px;
-            background: #f8f9fa;
-            border-top: 1px solid #e9ecef;
-            text-align: center;
-        }
-        
-        .btn-close {
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
-        }
-        
-        .btn-close:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .modal-content {
-                width: 95%;
-                margin: 10px;
-            }
-            
-            .turma-info-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            
-            .metrics-grid {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-        }
-        
-        /* Cursor pointer para linhas da tabela */
-        #evasaoTurma tbody tr {
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-        
-        #evasaoTurma tbody tr:hover {
-            background-color: #f8f9fa !important;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Programa Futuro Cientista - Sistema de Relatórios</title>
+  <meta name="description" content="Sistema de Relatórios do Programa Futuro Cientista - Monitoramento e Análise de Dados Educacionais">
+  <meta name="keywords" content="Programa Futuro Cientista, PFC, Educação, Ciência, Tecnologia Social">
+
+  <!-- Favicons -->
+  <link href="Logo PFC.png" rel="icon">
+  <link href="Logo PFC.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="novo_template/model/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="novo_template/model/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="novo_template/model/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="novo_template/model/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="novo_template/model/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="novo_template/model/assets/css/main.css" rel="stylesheet">
+  
+  <style>
+    /* Espaço removido - menu hambúrguer desativado */
+    
+    /* Personalização das cores do tema PFC */
+    :root {
+      --accent-color: #3498db;
+      --contrast-color: #ffffff;
+      --nav-color: #2c3e50;
+      --nav-hover-color: #3498db;
+    }
+    
+    .sitename {
+      color: #3498db !important;
+      font-weight: 700;
+    }
+    
+    /* Cards de estatísticas personalizados */
+    .stats-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    
+    .stats-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .stats-card h3 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .stats-card p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    /* Badges de reconhecimento */
+    .badge-award {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      display: inline-block;
+      margin: 5px;
+      font-weight: 600;
+    }
+  </style>
 </head>
-<body>
-    <header>
-        <div class="header-content">
-            <img src="Logo PFC.png" alt="Logo PFC" class="logo">
-            <h1>Relatório Semanal PFC</h1>
-            <p class="subtitle">Análise de Evasão - 29/10/2025</p>
+
+<body class="index-page">
+
+  <!-- Header com Barra de Navegação Superior -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <img src="Logo PFC.png" alt="Logo PFC" style="max-height: 50px; margin-right: 10px;">
+        <h1 class="sitename">Futuro Cientista</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#about">Sobre o PFC</a></li>
+          <li><a href="#services">Módulos</a></li>
+          <li><a href="#stats">Impacto</a></li>
+          <li><a href="#team">Equipe</a></li>
+          <li><a href="#contact">Contato</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="#services">Acessar Relatórios</a>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 content-col" data-aos="fade-up">
+            <div class="content">
+              <div class="agency-name">
+                <h5>SISTEMA DE RELATÓRIOS</h5>
+              </div>
+
+              <div class="main-heading">
+                <h1>PROGRAMA<br>FUTURO CIENTISTA®</h1>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="description">
+                <p>Tecnologia social certificada que promove inclusão, desenvolvimento sustentável e acesso à universidade para jovens talentos em situação de vulnerabilidade. Acompanhe em tempo real o desempenho, frequência e evolução dos nossos estudantes através de análises avançadas e dashboards interativos.</p>
+              </div>
+
+              <div class="cta-button">
+                <a href="#services" class="btn">
+                  <span>EXPLORAR MÓDULOS</span>
+                  <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5" data-aos="zoom-out">
+            <div class="visual-content">
+              <div class="fluid-shape">
+                <img src="novo_template/imagens_sistema/logos/landingPage_op2.png" alt="Programa Futuro Cientista" class="fluid-img" style="border-radius: 20px; width: 100%;">
+              </div>
+            </div>
+          </div>
         </div>
-    </header>
+      </div>
+    </section><!-- /Hero Section -->
 
-    <nav class="nav-bar">
-        <a href="index.html" class="nav-link active">Evasão</a>
-        <a href="assiduidade.html" class="nav-link">Assiduidade</a>
-        <a href="analises.html" class="nav-link">Análises</a>
-        <a href="auditoria.html" class="nav-link">Auditoria</a>
-        <a href="cursinho/cursinho.html" class="nav-link">🎓 Cursinho</a>
-        <a href="olimpiadas.html" class="nav-link">🏆 Olimpíadas</a>
-        <a href="ranking_alunos_pfc.html" class="nav-link">🏅 Ranking Alunos PFC</a>
-    </nav>
+    <!-- About Section -->
+    <section id="about" class="about section">
 
-    <main class="main-content">
-        <section class="summary-cards">
-            <div class="card">
-                <h3>Total de Turmas</h3>
-                <div class="metric">41</div>
-            </div>
-            <div class="card">
-                <h3>Total de Cidades</h3>
-                <div class="metric">10</div>
-            </div>
-            <div class="card">
-                <h3>Total de Escolas</h3>
-                <div class="metric">36</div>
-            </div>
-            <div class="card">
-                <h3>Total de Supervisores</h3>
-                <div class="metric">15</div>
-            </div>
-            <div class="card">
-                <h3>Alunos Esperados</h3>
-                <div class="metric">700</div>
-            </div>
-            <div class="card">
-                <h3>Vagas Não Preenchidas</h3>
-                <div class="metric">32</div>
-            </div>
-            <div class="card">
-                <h3>Ativos</h3>
-                <div class="metric">668</div>
-            </div>
-            <div class="card">
-                <h3>Desligados</h3>
-                <div class="metric">67</div>
-            </div>
-            <div class="card">
-                <h3>Total Evasão</h3>
-                <div class="metric">4.6%</div>
-            </div>
-        </section>
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Sobre o PFC</h2>
+        <div><span>Conheça Mais</span> <span class="description-title">Sobre o Programa</span></div>
+      </div><!-- End Section Title -->
 
-        <section class="table-section">
-            <h2>Evasão por Turma</h2>
-            <table border="1" class="dataframe dataframe data-table" id="evasaoTurma">
-  <thead>
-    <tr style="text-align: right;">
-      <th>Turma</th>
-      <th>Cidade</th>
-      <th>Supervisor</th>
-      <th>Ativos</th>
-      <th>Desligados</th>
-      <th>Vagas</th>
-      <th>Vagas Disponíveis</th>
-      <th>% Evasão</th>
-      <th>Prob. Desligamento (%)</th>
-      <th>média de presença</th>
-      <th>Desvio Padrão de Presenças</th>
-      <th>Média de Faltas</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>CEMUS1 - Turma A</td>
-      <td>Salto-SP</td>
-      <td>Lívia Kormann</td>
-      <td>14</td>
-      <td>2</td>
-      <td>20</td>
-      <td>6</td>
-      <td>30.0</td>
-      <td>15.2</td>
-      <td>1.00</td>
-      <td>0.00</td>
-      <td>1.12</td>
-    </tr>
-    <tr>
-      <td>CEMUS1 - Turma B</td>
-      <td>Salto-SP</td>
-      <td>Lívia Kormann</td>
-      <td>11</td>
-      <td>0</td>
-      <td>20</td>
-      <td>9</td>
-      <td>45.0</td>
-      <td>6.4</td>
-      <td>1.00</td>
-      <td>0.00</td>
-      <td>1.54</td>
-    </tr>
-    <tr>
-      <td>CEMUS5 - Turma A</td>
-      <td>Salto-SP</td>
-      <td>Lívia Kormann</td>
-      <td>15</td>
-      <td>1</td>
-      <td>20</td>
-      <td>5</td>
-      <td>25.0</td>
-      <td>9.5</td>
-      <td>1.00</td>
-      <td>0.00</td>
-      <td>0.56</td>
-    </tr>
-    <tr>
-      <td>CEMUS5 - Turma B</td>
-      <td>Salto-SP</td>
-      <td>Lívia Kormann</td>
-      <td>17</td>
-      <td>1</td>
-      <td>20</td>
-      <td>3</td>
-      <td>15.0</td>
-      <td>14.7</td>
-      <td>0.94</td>
-      <td>0.00</td>
-      <td>2.22</td>
-    </tr>
-    <tr>
-      <td>E. M. Francisco Adolfo de Varnhagen</td>
-      <td>Iperó-SP</td>
-      <td>Jamilli Veloso de Souza</td>
-      <td>10</td>
-      <td>0</td>
-      <td>20</td>
-      <td>10</td>
-      <td>50.0</td>
-      <td>0.2</td>
-      <td>1.70</td>
-      <td>1.09</td>
-      <td>3.10</td>
-    </tr>
-    <tr>
-      <td>E. M. Pedrina de Campos Pedrozo Rosa</td>
-      <td>Iperó-SP</td>
-      <td>Emilly Vitoria Alves Ribeiro</td>
-      <td>17</td>
-      <td>3</td>
-      <td>20</td>
-      <td>3</td>
-      <td>15.0</td>
-      <td>11.3</td>
-      <td>1.40</td>
-      <td>0.41</td>
-      <td>3.20</td>
-    </tr>
-    <tr>
-      <td>E. M. Roque Ayres de Oliveiras</td>
-      <td>Iperó-SP</td>
-      <td>Jamilli Veloso de Souza</td>
-      <td>18</td>
-      <td>0</td>
-      <td>20</td>
-      <td>2</td>
-      <td>10.0</td>
-      <td>7.6</td>
-      <td>1.41</td>
-      <td>0.82</td>
-      <td>1.33</td>
-    </tr>
-    <tr>
-      <td>E. M. Zilma Thibes Melo</td>
-      <td>Iperó-SP</td>
-      <td>Emilly Vitoria Alves Ribeiro</td>
-      <td>23</td>
-      <td>0</td>
-      <td>20</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>1.46</td>
-      <td>0.77</td>
-      <td>2.35</td>
-    </tr>
-    <tr>
-      <td>E.M. Dra. Glaucia Aparecida Andrade Nogueira</td>
-      <td>Iperó-SP</td>
-      <td>Jamilli Veloso de Souza</td>
-      <td>21</td>
-      <td>1</td>
-      <td>20</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>4.2</td>
-      <td>1.27</td>
-      <td>0.59</td>
-      <td>4.00</td>
-    </tr>
-    <tr>
-      <td>E.M. Elisa Moreira dos Santos</td>
-      <td>Iperó-SP</td>
-      <td>Emilly Vitoria Alves Ribeiro</td>
-      <td>20</td>
-      <td>1</td>
-      <td>20</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>0.9</td>
-      <td>1.38</td>
-      <td>0.61</td>
-      <td>1.33</td>
-    </tr>
-    <tr>
-      <td>E.M. Francisco Munhoz</td>
-      <td>Capela do Alto-SP</td>
-      <td>Paulo Miranda</td>
-      <td>13</td>
-      <td>7</td>
-      <td>20</td>
-      <td>7</td>
-      <td>35.0</td>
-      <td>28.8</td>
-      <td>1.28</td>
-      <td>0.37</td>
-      <td>2.80</td>
-    </tr>
-    <tr>
-      <td>E.M. Franciso Mariano</td>
-      <td>Capela do Alto-SP</td>
-      <td>Julia Fernanda de Camargo Teles Miranda</td>
-      <td>20</td>
-      <td>1</td>
-      <td>20</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>5.2</td>
-      <td>2.76</td>
-      <td>0.36</td>
-      <td>4.67</td>
-    </tr>
-    <tr>
-      <td>E.M. Henory de Campos Goes - Manhã</td>
-      <td>Iperó-SP</td>
-      <td>Emilly Vitoria Alves Ribeiro</td>
-      <td>7</td>
-      <td>3</td>
-      <td>10</td>
-      <td>3</td>
-      <td>30.0</td>
-      <td>13.2</td>
-      <td>1.57</td>
-      <td>0.35</td>
-      <td>1.10</td>
-    </tr>
-    <tr>
-      <td>E.M. Joaquim Salvador</td>
-      <td>Capela do Alto-SP</td>
-      <td>Paulo Miranda</td>
-      <td>13</td>
-      <td>8</td>
-      <td>20</td>
-      <td>7</td>
-      <td>35.0</td>
-      <td>32.4</td>
-      <td>1.03</td>
-      <td>0.19</td>
-      <td>2.67</td>
-    </tr>
-    <tr>
-      <td>E.M. Marcilio Leite- Turma A</td>
-      <td>Capela do Alto-SP</td>
-      <td>Julia Fernanda de Camargo Teles Miranda</td>
-      <td>15</td>
-      <td>1</td>
-      <td>10</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>4.8</td>
-      <td>2.77</td>
-      <td>0.32</td>
-      <td>3.69</td>
-    </tr>
-    <tr>
-      <td>E.M. Marcilio Leite- Turma B</td>
-      <td>Capela do Alto-SP</td>
-      <td>Paulo Miranda</td>
-      <td>10</td>
-      <td>5</td>
-      <td>10</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>30.5</td>
-      <td>1.10</td>
-      <td>0.35</td>
-      <td>2.60</td>
-    </tr>
-    <tr>
-      <td>E.M. Ricardo Pucetti</td>
-      <td>Capela do Alto-SP</td>
-      <td>Julia Fernanda de Camargo Teles Miranda</td>
-      <td>20</td>
-      <td>0</td>
-      <td>20</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>0.4</td>
-      <td>3.27</td>
-      <td>0.57</td>
-      <td>1.75</td>
-    </tr>
-    <tr>
-      <td>EE Coronel Castanho de Almeida</td>
-      <td>Guareí-SP</td>
-      <td>Jose (Vinicius Lima Cardozo)</td>
-      <td>13</td>
-      <td>3</td>
-      <td>20</td>
-      <td>7</td>
-      <td>35.0</td>
-      <td>16.9</td>
-      <td>1.93</td>
-      <td>0.85</td>
-      <td>3.06</td>
-    </tr>
-    <tr>
-      <td>EM Carmen Lucia Blanco Britto</td>
-      <td>São Roque-SP</td>
-      <td>Gabriella Lhóren</td>
-      <td>23</td>
-      <td>0</td>
-      <td>20</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>2.4</td>
-      <td>1.04</td>
-      <td>0.27</td>
-      <td>3.52</td>
-    </tr>
-    <tr>
-      <td>EM Henory de Campos Goes - Tarde</td>
-      <td>Iperó-SP</td>
-      <td>Emilly Vitoria Alves Ribeiro</td>
-      <td>15</td>
-      <td>0</td>
-      <td>10</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>1.6</td>
-      <td>1.88</td>
-      <td>0.97</td>
-      <td>1.67</td>
-    </tr>
-    <tr>
-      <td>EMEF Barão de Piratininga - Turma A</td>
-      <td>São Roque-SP</td>
-      <td>Mirela Silva Gondim Garcia</td>
-      <td>16</td>
-      <td>4</td>
-      <td>20</td>
-      <td>4</td>
-      <td>20.0</td>
-      <td>13.0</td>
-      <td>1.36</td>
-      <td>0.56</td>
-      <td>4.45</td>
-    </tr>
-    <tr>
-      <td>EMEF Barão de Piratininga - Turma B</td>
-      <td>São Roque-SP</td>
-      <td>Mirela Silva Gondim Garcia</td>
-      <td>20</td>
-      <td>3</td>
-      <td>20</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>13.3</td>
-      <td>1.58</td>
-      <td>0.73</td>
-      <td>3.87</td>
-    </tr>
-    <tr>
-      <td>EMEF Dr. Rabindranath Tagore dos S. Pires</td>
-      <td>São Roque-SP</td>
-      <td>Gabriella Lhóren</td>
-      <td>25</td>
-      <td>2</td>
-      <td>20</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>7.6</td>
-      <td>1.39</td>
-      <td>0.49</td>
-      <td>2.96</td>
-    </tr>
-    <tr>
-      <td>EMEF Leonidas Antonio de Moreas Professor</td>
-      <td>São Roque-SP</td>
-      <td>Mirela Silva Gondim Garcia</td>
-      <td>18</td>
-      <td>3</td>
-      <td>20</td>
-      <td>2</td>
-      <td>10.0</td>
-      <td>19.6</td>
-      <td>1.60</td>
-      <td>0.72</td>
-      <td>3.86</td>
-    </tr>
-    <tr>
-      <td>EMEF Prof. Darcy Amáncio</td>
-      <td>Mirassol-SP</td>
-      <td>Synara Sajonetti Maistrello</td>
-      <td>20</td>
-      <td>3</td>
-      <td>20</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>12.1</td>
-      <td>1.83</td>
-      <td>0.99</td>
-      <td>2.22</td>
-    </tr>
-    <tr>
-      <td>EMEF Prof. Euclides de Oliveira</td>
-      <td>São Roque-SP</td>
-      <td>Gabriella Lhóren</td>
-      <td>25</td>
-      <td>0</td>
-      <td>20</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>1.1</td>
-      <td>1.30</td>
-      <td>0.53</td>
-      <td>3.84</td>
-    </tr>
-    <tr>
-      <td>EMEF Prof. Joao Alcindo Vieira</td>
-      <td>Guareí-SP</td>
-      <td>Jose (Vinicius Lima Cardozo)</td>
-      <td>22</td>
-      <td>4</td>
-      <td>20</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>12.5</td>
-      <td>1.78</td>
-      <td>0.74</td>
-      <td>3.12</td>
-    </tr>
-    <tr>
-      <td>EMEF Prof. Joaquim Silveira Santos</td>
-      <td>São Roque-SP</td>
-      <td>Vittoria Christina Santos Rocha</td>
-      <td>18</td>
-      <td>2</td>
-      <td>20</td>
-      <td>2</td>
-      <td>10.0</td>
-      <td>12.4</td>
-      <td>1.01</td>
-      <td>0.17</td>
-      <td>5.85</td>
-    </tr>
-    <tr>
-      <td>EMEF Prof. Tiberio Justo da Silva</td>
-      <td>São Roque-SP</td>
-      <td>Gabriella Lhóren</td>
-      <td>24</td>
-      <td>1</td>
-      <td>20</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>4.1</td>
-      <td>1.55</td>
-      <td>0.75</td>
-      <td>4.84</td>
-    </tr>
-    <tr>
-      <td>EMEF Prof. Wilson Paschoal</td>
-      <td>Mirassol-SP</td>
-      <td>Synara Sajonetti Maistrello</td>
-      <td>18</td>
-      <td>0</td>
-      <td>20</td>
-      <td>2</td>
-      <td>10.0</td>
-      <td>0.2</td>
-      <td>1.62</td>
-      <td>1.02</td>
-      <td>1.17</td>
-    </tr>
-    <tr>
-      <td>EMEF Profa. Maria de Lourdes Pedroso Perin</td>
-      <td>Corumbataí-SP</td>
-      <td>Pedro Henrique Prado Alves</td>
-      <td>24</td>
-      <td>5</td>
-      <td>20</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>16.9</td>
-      <td>1.68</td>
-      <td>0.71</td>
-      <td>1.59</td>
-    </tr>
-    <tr>
-      <td>EMEF Professor Antonio Cavaglieri</td>
-      <td>São Roque-SP</td>
-      <td>Vittoria Christina Santos Rocha</td>
-      <td>19</td>
-      <td>1</td>
-      <td>20</td>
-      <td>1</td>
-      <td>5.0</td>
-      <td>4.5</td>
-      <td>1.29</td>
-      <td>0.54</td>
-      <td>2.20</td>
-    </tr>
-    <tr>
-      <td>EMEF Sonia Maria Abreu Ghilardi</td>
-      <td>São Roque-SP</td>
-      <td>Mirela Silva Gondim Garcia</td>
-      <td>15</td>
-      <td>2</td>
-      <td>20</td>
-      <td>5</td>
-      <td>25.0</td>
-      <td>10.4</td>
-      <td>2.53</td>
-      <td>0.92</td>
-      <td>3.29</td>
-    </tr>
-    <tr>
-      <td>EMEF Tetsu Chinone</td>
-      <td>São Roque-SP</td>
-      <td>Vittoria Christina Santos Rocha</td>
-      <td>22</td>
-      <td>0</td>
-      <td>20</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>5.2</td>
-      <td>1.11</td>
-      <td>0.28</td>
-      <td>2.91</td>
-    </tr>
-    <tr>
-      <td>EMEFEI Lucy Cordeiro de Campos - TURMA A</td>
-      <td>Bofete-SP</td>
-      <td>Andressa Da Costa</td>
-      <td>20</td>
-      <td>0</td>
-      <td>20</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>0.65</td>
-    </tr>
-    <tr>
-      <td>Escola Estadual Prof Antônio Tonon - 7º e 8° ano</td>
-      <td>Coronel Macedo-SP</td>
-      <td>Gustavo Eduardo Cardoso</td>
-      <td>26</td>
-      <td>0</td>
-      <td>20</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>0.6</td>
-      <td>1.66</td>
-      <td>0.86</td>
-      <td>7.42</td>
-    </tr>
-    <tr>
-      <td>Escola Municipal Mitsuo Matisura - 5º e 6° ano</td>
-      <td>Coronel Macedo-SP</td>
-      <td>Gustavo Eduardo Cardoso</td>
-      <td>21</td>
-      <td>0</td>
-      <td>20</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>0.1</td>
-      <td>1.89</td>
-      <td>1.10</td>
-      <td>5.24</td>
-    </tr>
-  </tbody>
-</table>
-        </section>
+      <div class="container">
 
-        <section class="table-section">
-            <h2>Evasão por Cidade</h2>
-            <table border="1" class="dataframe dataframe data-table" id="evasaoCidade">
-  <thead>
-    <tr style="text-align: right;">
-      <th>Cidade</th>
-      <th>Ativos</th>
-      <th>Desligados</th>
-      <th>Vagas</th>
-      <th>Vagas Disponíveis</th>
-      <th>% Evasão</th>
-      <th>Prob. Desligamento (%)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Bofete-SP</td>
-      <td>20</td>
-      <td>0</td>
-      <td>20</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <td>Capela do Alto-SP</td>
-      <td>91</td>
-      <td>22</td>
-      <td>100</td>
-      <td>9</td>
-      <td>9.0</td>
-      <td>16.9</td>
-    </tr>
-    <tr>
-      <td>Coronel Macedo-SP</td>
-      <td>47</td>
-      <td>0</td>
-      <td>40</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>0.4</td>
-    </tr>
-    <tr>
-      <td>Corumbataí-SP</td>
-      <td>24</td>
-      <td>5</td>
-      <td>20</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>16.9</td>
-    </tr>
-    <tr>
-      <td>Guareí-SP</td>
-      <td>35</td>
-      <td>7</td>
-      <td>40</td>
-      <td>5</td>
-      <td>12.5</td>
-      <td>14.2</td>
-    </tr>
-    <tr>
-      <td>Iperó-SP</td>
-      <td>131</td>
-      <td>8</td>
-      <td>140</td>
-      <td>9</td>
-      <td>6.4</td>
-      <td>4.7</td>
-    </tr>
-    <tr>
-      <td>Mirassol-SP</td>
-      <td>38</td>
-      <td>3</td>
-      <td>40</td>
-      <td>2</td>
-      <td>5.0</td>
-      <td>6.9</td>
-    </tr>
-    <tr>
-      <td>Salto-SP</td>
-      <td>57</td>
-      <td>4</td>
-      <td>80</td>
-      <td>23</td>
-      <td>28.7</td>
-      <td>12.0</td>
-    </tr>
-    <tr>
-      <td>São Roque-SP</td>
-      <td>225</td>
-      <td>18</td>
-      <td>220</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>8.2</td>
-    </tr>
-  </tbody>
-</table>
-        </section>
+        <div class="row gx-5 align-items-center">
+          <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
+            <div class="about-image position-relative">
+              <img src="novo_template/model/assets/img/about/about-portrait-1.webp" class="img-fluid rounded-4 shadow-sm" alt="Programa Futuro Cientista" loading="lazy">
+              <div class="experience-badge">
+                <span class="years">15+</span>
+                <span class="text">Anos de História</span>
+              </div>
+            </div>
+          </div>
 
-        <section class="table-section">
-            <h2>Evasão por Supervisor</h2>
-            <table border="1" class="dataframe dataframe data-table" id="evasaoSupervisor">
-  <thead>
-    <tr style="text-align: right;">
-      <th>Supervisor</th>
-      <th>Ativos</th>
-      <th>Desligados</th>
-      <th>Vagas</th>
-      <th>Vagas Disponíveis</th>
-      <th>% Evasão</th>
-      <th>Prob. Desligamento (%)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Andressa Da Costa</td>
-      <td>20</td>
-      <td>0</td>
-      <td>20</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <td>Emilly Vitoria Alves Ribeiro</td>
-      <td>82</td>
-      <td>7</td>
-      <td>80</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>4.7</td>
-    </tr>
-    <tr>
-      <td>Gabriella Lhóren</td>
-      <td>97</td>
-      <td>3</td>
-      <td>80</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>3.9</td>
-    </tr>
-    <tr>
-      <td>Gustavo Eduardo Cardoso</td>
-      <td>47</td>
-      <td>0</td>
-      <td>40</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>0.4</td>
-    </tr>
-    <tr>
-      <td>Jamilli Veloso de Souza</td>
-      <td>49</td>
-      <td>1</td>
-      <td>60</td>
-      <td>11</td>
-      <td>18.3</td>
-      <td>4.6</td>
-    </tr>
-    <tr>
-      <td>Jose (Vinicius Lima Cardozo)</td>
-      <td>35</td>
-      <td>7</td>
-      <td>40</td>
-      <td>5</td>
-      <td>12.5</td>
-      <td>14.2</td>
-    </tr>
-    <tr>
-      <td>Julia Fernanda de Camargo Teles Miranda</td>
-      <td>55</td>
-      <td>2</td>
-      <td>50</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>3.4</td>
-    </tr>
-    <tr>
-      <td>Lívia Kormann</td>
-      <td>57</td>
-      <td>4</td>
-      <td>80</td>
-      <td>23</td>
-      <td>28.7</td>
-      <td>12.0</td>
-    </tr>
-    <tr>
-      <td>Mirela Silva Gondim Garcia</td>
-      <td>69</td>
-      <td>12</td>
-      <td>80</td>
-      <td>11</td>
-      <td>13.8</td>
-      <td>14.3</td>
-    </tr>
-    <tr>
-      <td>Paulo Miranda</td>
-      <td>36</td>
-      <td>20</td>
-      <td>50</td>
-      <td>14</td>
-      <td>28.0</td>
-      <td>30.6</td>
-    </tr>
-    <tr>
-      <td>Pedro Henrique Prado Alves</td>
-      <td>24</td>
-      <td>5</td>
-      <td>20</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>16.9</td>
-    </tr>
-    <tr>
-      <td>Synara Sajonetti Maistrello</td>
-      <td>38</td>
-      <td>3</td>
-      <td>40</td>
-      <td>2</td>
-      <td>5.0</td>
-      <td>6.9</td>
-    </tr>
-    <tr>
-      <td>Vittoria Christina Santos Rocha</td>
-      <td>59</td>
-      <td>3</td>
-      <td>60</td>
-      <td>1</td>
-      <td>1.7</td>
-      <td>7.3</td>
-    </tr>
-  </tbody>
-</table>
-        </section>
-    </main>
+          <div class="col-lg-6 mt-4 mt-lg-0" data-aos="fade-left" data-aos-delay="300">
+            <div class="about-content">
+              <h2>Transformando Vidas pela Educação e Ciência</h2>
+              <p class="lead">Criado em 2009 pela UFSCar, o Programa Futuro Cientista® é uma tecnologia social certificada e reconhecida nacionalmente.</p>
+              <p>Promovemos inclusão científica e acadêmica para crianças e jovens de escolas públicas em situação de vulnerabilidade, oferecendo um verdadeiro plano de vida desde a educação básica até o ensino médio.</p>
 
-    <script src="script.js"></script>
-    <script>
-        // Inicializar DataTables quando o documento estiver pronto
-        $(document).ready(function() {
-            // Aguardar um pouco mais para garantir que o script.js não interfira
-            setTimeout(function() {
-                // Verificar se a tabela já foi inicializada pelo script.js
-                if ($.fn.DataTable.isDataTable('#evasaoTurma')) {
-                    $('#evasaoTurma').DataTable().destroy();
-                }
-                
-                // Inicializar DataTable com configuração personalizada
-                $('#evasaoTurma').DataTable({
-                    "language": {
-                        "url": "https://cdn.datatables.net/plug-ins/1.13.6/i18n/pt-BR.json"
-                    },
-                    "pageLength": 6,
-                    "lengthMenu": [6, 10, 15, 25],
-                    "order": [[0, "asc"]],
-                    "columnDefs": [
-                        { "orderable": false, "targets": -1 }
-                    ],
-                    "dom": 'Bfrtip',
-                    "buttons": [
-                        'copy', 'csv', 'excel', 'print'
-                    ],
-                    "responsive": true,
-                    "scrollX": true
-                });
-                
-                // Inicializar outras tabelas
-                initDT('evasaoCidade');
-                initDT('evasaoSupervisor');
-                
-                // Adicionar evento de clique após inicialização
-                $('#evasaoTurma tbody').on('click', 'tr', function() {
-                    var data = $('#evasaoTurma').DataTable().row(this).data();
-                    if (data) {
-                        showTurmaModal(data);
-                    }
-                });
-                
-                console.log('Modal de evasão configurado com sucesso');
-            }, 200);
-        });
-        
-        // Eventos de fechamento do modal (usando delegação de eventos)
-        $(document).on('click', '.modal-close', function() {
-            closeTurmaModal();
-        });
-        
-        $(document).on('click', '.modal-overlay', function(e) {
-            if (e.target === this) {
-                closeTurmaModal();
-            }
-        });
-        
-        function showTurmaModal(data) {
-            // Determinar status da evasão
-            var evasao = parseFloat(data[7]); // % Evasão
-            var statusClass = 'status-excellent';
-            var statusText = 'Excelente';
-            
-            if (evasao > 0 && evasao <= 5) {
-                statusClass = 'status-good';
-                statusText = 'Bom';
-            } else if (evasao > 5 && evasao <= 15) {
-                statusClass = 'status-warning';
-                statusText = 'Atenção';
-            } else if (evasao > 15) {
-                statusClass = 'status-danger';
-                statusText = 'Crítico';
-            }
-            
-            var modal = `
-                <div class="modal-overlay">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3>📊 Detalhes da Turma</h3>
-                            <span class="modal-close">&times;</span>
-                        </div>
-                        <div class="modal-body">
-                            <div class="turma-info-grid">
-                                <div class="info-section">
-                                    <h4>🏫 Informações da Turma</h4>
-                                    <div class="info-item">
-                                        <span class="info-label">Turma:</span>
-                                        <span class="info-value">${data[0]}</span>
-                                    </div>
-                                    <div class="info-item">
-                                        <span class="info-label">Cidade:</span>
-                                        <span class="info-value">${data[1]}</span>
-                                    </div>
-                                    <div class="info-item">
-                                        <span class="info-label">Supervisor:</span>
-                                        <span class="info-value">${data[2]}</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="info-section">
-                                    <h4>👥 Demografia</h4>
-                                    <div class="info-item">
-                                        <span class="info-label">Alunos Ativos:</span>
-                                        <span class="info-value">${data[3]}</span>
-                                    </div>
-                                    <div class="info-item">
-                                        <span class="info-label">Alunos Desligados:</span>
-                                        <span class="info-value">${data[4]}</span>
-                                    </div>
-                                    <div class="info-item">
-                                        <span class="info-label">Total de Vagas:</span>
-                                        <span class="info-value">${data[5]}</span>
-                                    </div>
-                                    <div class="info-item">
-                                        <span class="info-label">Vagas Disponíveis:</span>
-                                        <span class="info-value">${data[6]}</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="info-section full-width">
-                                    <h4>📈 Métricas de Evasão</h4>
-                                    <div class="metrics-display">
-                                        <div class="main-metric">${data[7]}%</div>
-                                        <div class="metric-label">Taxa de Evasão</div>
-                                        <div class="status-indicator ${statusClass}">${statusText}</div>
-                                    </div>
-                                    <div class="metrics-grid">
-                                        <div class="metric-item">
-                                            <h5>Probabilidade de Desligamento</h5>
-                                            <div class="metric-value">${data[8]}%</div>
-                                        </div>
-                                        <div class="metric-item">
-                                            <h5>Média de Presença</h5>
-                                            <div class="metric-value">${data[9]}</div>
-                                        </div>
-                                        <div class="metric-item">
-                                            <h5>Desvio Padrão de Presenças</h5>
-                                            <div class="metric-value">${data[10]}</div>
-                                        </div>
-                                        <div class="metric-item">
-                                            <h5>Média de Faltas</h5>
-                                            <div class="metric-value">${data[11]}</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn-close" onclick="closeTurmaModal()">Fechar</button>
-                        </div>
-                    </div>
+              <div class="row g-4 mt-3">
+                <div class="col-md-6" data-aos="zoom-in" data-aos-delay="400">
+                  <div class="feature-item">
+                    <i class="bi bi-trophy-fill"></i>
+                    <h5>Reconhecimento Internacional</h5>
+                    <p>Certificado pela World's Children's Prize Foundation (2023) e laureado com o Prêmio Péter Murányi de Educação (2022).</p>
+                  </div>
                 </div>
-            `;
-            
-            $('body').append(modal);
-            $('.modal-overlay').fadeIn(300);
-        }
-        
-        function closeTurmaModal() {
-            $('.modal-overlay').fadeOut(300, function() {
-                $(this).remove();
-            });
-        }
-    </script>
+                <div class="col-md-6" data-aos="zoom-in" data-aos-delay="450">
+                  <div class="feature-item">
+                    <i class="bi bi-mortarboard-fill"></i>
+                    <h5>Metodologia Inovadora</h5>
+                    <p>Utilizamos a 'escola científica' e o Prodhase para desenvolver habilidades socioemocionais e acadêmicas.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4">
+                <span class="badge-award">🏆 Prêmio Péter Murányi 2022</span>
+                <span class="badge-award">🌍 World's Children's Prize 2023</span>
+                <span class="badge-award">🎓 Certificado FBB 2017</span>
+              </div>
+
+              <a href="#services" class="btn btn-primary mt-4">Explorar Relatórios</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats section light-background">
+      
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Nosso Impacto</h2>
+        <div><span>Números que</span> <span class="description-title">Transformam Vidas</span></div>
+      </div>
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+          
+          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+            <div class="stats-card">
+              <h3>1000+</h3>
+              <p>Estudantes Ativos</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+            <div class="stats-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+              <h3>50+</h3>
+              <p>Escolas Públicas</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+            <div class="stats-card" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+              <h3>14</h3>
+              <p>Cidades Paulistas</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+            <div class="stats-card" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+              <h3>15</h3>
+              <p>Anos de História</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section><!-- /Stats Section -->
+
+    <!-- Services Section -->
+    <section id="services" class="services section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Módulos do Sistema</h2>
+        <div><span>Explore Nossos</span> <span class="description-title">Relatórios</span></div>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="service-header">
+          <div class="row align-items-center">
+            <div class="col-lg-8 col-md-12">
+              <div class="service-intro">
+                <h2 class="service-heading">
+                  <div>Monitoramento completo</div>
+                  <div><span>e análises avançadas</span></div>
+                </h2>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+              <div class="service-summary">
+                <p>
+                  Acesse dashboards interativos, análises preditivas com Machine Learning e relatórios detalhados sobre o desempenho dos estudantes.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-card position-relative z-1">
+              <div class="service-icon">
+                <i class="bi bi-graph-down"></i>
+              </div>
+              <a href="evasao.html" class="card-action d-flex align-items-center justify-content-center rounded-circle">
+                <i class="bi bi-arrow-up-right"></i>
+              </a>
+              <h3>
+                <a href="evasao.html">
+                  Análise de <span>Evasão</span>
+                </a>
+              </h3>
+              <p>
+                Monitoramento de frequência e identificação de riscos de evasão escolar. Análises por turma, cidade e supervisor educacional.
+              </p>
+            </div>
+          </div>
+          
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-card position-relative z-1">
+              <div class="service-icon">
+                <i class="bi bi-calendar-check"></i>
+              </div>
+              <a href="assiduidade.html" class="card-action d-flex align-items-center justify-content-center rounded-circle">
+                <i class="bi bi-arrow-up-right"></i>
+              </a>
+              <h3>
+                <a href="assiduidade.html">
+                  Controle de <span>Assiduidade</span>
+                </a>
+              </h3>
+              <p>
+                Análise detalhada da frequência dos alunos com métricas de presença, faltas e padrões de comparecimento ao longo do tempo.
+              </p>
+            </div>
+          </div>
+          
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-card position-relative z-1">
+              <div class="service-icon">
+                <i class="bi bi-graph-up-arrow"></i>
+              </div>
+              <a href="analises.html" class="card-action d-flex align-items-center justify-content-center rounded-circle">
+                <i class="bi bi-arrow-up-right"></i>
+              </a>
+              <h3>
+                <a href="analises.html">
+                  Análises <span>Avançadas</span>
+                </a>
+              </h3>
+              <p>
+                Previsões e análises preditivas utilizando Machine Learning para antecipar tendências e otimizar estratégias educacionais.
+              </p>
+            </div>
+          </div>
+          
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-card position-relative z-1">
+              <div class="service-icon">
+                <i class="bi bi-shield-check"></i>
+              </div>
+              <a href="auditoria.html" class="card-action d-flex align-items-center justify-content-center rounded-circle">
+                <i class="bi bi-arrow-up-right"></i>
+              </a>
+              <h3>
+                <a href="auditoria.html">
+                  Sistema de <span>Auditoria</span>
+                </a>
+              </h3>
+              <p>
+                Validação e auditoria de dados do sistema, garantindo integridade e qualidade das informações registradas.
+              </p>
+            </div>
+          </div>
+          
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-card position-relative z-1">
+              <div class="service-icon">
+                <i class="bi bi-trophy"></i>
+              </div>
+              <a href="olimpiadas.html" class="card-action d-flex align-items-center justify-content-center rounded-circle">
+                <i class="bi bi-arrow-up-right"></i>
+              </a>
+              <h3>
+                <a href="olimpiadas.html">
+                  Participação em <span>Olimpíadas</span>
+                </a>
+              </h3>
+              <p>
+                Acompanhamento de participação e premiações em olimpíadas científicas e competições acadêmicas.
+              </p>
+            </div>
+          </div>
+          
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-card position-relative z-1">
+              <div class="service-icon">
+                <i class="bi bi-book"></i>
+              </div>
+              <a href="cursinho/cursinho.html" class="card-action d-flex align-items-center justify-content-center rounded-circle">
+                <i class="bi bi-arrow-up-right"></i>
+              </a>
+              <h3>
+                <a href="cursinho/cursinho.html">
+                  Cursinho <span>Preparatório</span>
+                </a>
+              </h3>
+              <p>
+                Gestão do Cursinho Prepara Cientista, com acompanhamento de entregas, atividades e preparação para vestibulinhos.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-card position-relative z-1">
+              <div class="service-icon">
+                <i class="bi bi-star"></i>
+              </div>
+              <a href="projeto_vida/projeto_vida.html" class="card-action d-flex align-items-center justify-content-center rounded-circle">
+                <i class="bi bi-arrow-up-right"></i>
+              </a>
+              <h3>
+                <a href="projeto_vida/projeto_vida.html">
+                  Projeto de <span>Vida</span>
+                </a>
+              </h3>
+              <p>
+                Orientação profissional e universitária personalizada, auxiliando estudantes na construção de seus projetos de futuro.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Services Section -->
+
+    <!-- Team Section -->
+    <section id="team" class="team section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Nossa Equipe</h2>
+        <div><span>Conheça</span> <span class="description-title">Quem Lidera</span></div>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4 justify-content-center">
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="team-member d-flex">
+              <div class="member-img">
+                <img src="novo_template/model/assets/img/person/person-m-7.webp" class="img-fluid" alt="Prof. Dr. Fábio de Lima Leite" loading="lazy">
+              </div>
+              <div class="member-info flex-grow-1">
+                <h4>Prof. Dr. Fábio de Lima Leite</h4>
+                <span>Idealizador e Criador do PFC</span>
+                <p>Líder do Grupo de Pesquisa em Nanoneurobiofísica e Professor Associado da UFSCar. Criou o Programa Futuro Cientista em 2009 com a missão de transformar vidas pela ciência.</p>
+                <div class="social">
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                  <a href=""><i class="bi bi-envelope"></i></a>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="team-member d-flex">
+              <div class="member-img">
+                <img src="novo_template/model/assets/img/person/person-f-8.webp" class="img-fluid" alt="Equipe PFC" loading="lazy">
+              </div>
+              <div class="member-info flex-grow-1">
+                <h4>Equipe de Coordenação</h4>
+                <span>Gestão Acadêmica e Pedagógica</span>
+                <p>Nossa equipe multidisciplinar trabalha diariamente para garantir a excelência educacional e o acompanhamento personalizado de cada estudante do programa.</p>
+                <div class="social">
+                  <a href=""><i class="bi bi-envelope"></i></a>
+                  <a href=""><i class="bi bi-telephone"></i></a>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Team Section -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Contato</h2>
+        <div><span>Entre em</span> <span class="description-title">Contato Conosco</span></div>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <!-- Contact Info Boxes -->
+        <div class="row gy-4 mb-5">
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="contact-info-box">
+              <div class="icon-box">
+                <i class="bi bi-geo-alt"></i>
+              </div>
+              <div class="info-content">
+                <h4>Localização</h4>
+                <p>Universidade Federal de São Carlos - UFSCar</p>
+                <p>São Carlos, São Paulo</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="contact-info-box">
+              <div class="icon-box">
+                <i class="bi bi-envelope"></i>
+              </div>
+              <div class="info-content">
+                <h4>E-mail</h4>
+                <p>contato@futurocientista.org.br</p>
+                <p>info@futurocientista.org.br</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="contact-info-box">
+              <div class="icon-box">
+                <i class="bi bi-globe"></i>
+              </div>
+              <div class="info-content">
+                <h4>Redes Sociais</h4>
+                <p>Siga-nos nas redes sociais</p>
+                <div class="social mt-2">
+                  <a href="" style="margin-right: 10px;"><i class="bi bi-facebook" style="font-size: 1.5rem;"></i></a>
+                  <a href="" style="margin-right: 10px;"><i class="bi bi-instagram" style="font-size: 1.5rem;"></i></a>
+                  <a href=""><i class="bi bi-linkedin" style="font-size: 1.5rem;"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cidades Atendidas -->
+        <div class="row" data-aos="fade-up" data-aos-delay="400">
+          <div class="col-12">
+            <div class="card p-4" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 15px;">
+              <h3 class="text-center mb-4">🌆 Cidades Atendidas</h3>
+              <div class="row text-center">
+                <div class="col-md-3 col-6 mb-2"><strong>Anhembi</strong></div>
+                <div class="col-md-3 col-6 mb-2"><strong>Araçoiaba da Serra</strong></div>
+                <div class="col-md-3 col-6 mb-2"><strong>Capão Bonito</strong></div>
+                <div class="col-md-3 col-6 mb-2"><strong>Cesário Lange</strong></div>
+                <div class="col-md-3 col-6 mb-2"><strong>Coronel Macedo</strong></div>
+                <div class="col-md-3 col-6 mb-2"><strong>Iperó</strong></div>
+                <div class="col-md-3 col-6 mb-2"><strong>Itu</strong></div>
+                <div class="col-md-3 col-6 mb-2"><strong>Pilar do Sul</strong></div>
+                <div class="col-md-3 col-6 mb-2"><strong>Salto de Pirapora</strong></div>
+                <div class="col-md-3 col-6 mb-2"><strong>São Roque</strong></div>
+                <div class="col-md-3 col-6 mb-2"><strong>Sorocaba</strong></div>
+                <div class="col-md-3 col-6 mb-2"><strong>Tatuí</strong></div>
+                <div class="col-md-3 col-6 mb-2"><strong>Tietê</strong></div>
+                <div class="col-md-3 col-6 mb-2"><strong>Vargem Grande Paulista</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Contact Section -->
+
+  </main>
+
+  <footer id="footer" class="footer">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">Programa Futuro Cientista®</span>
+          </a>
+          <p>Tecnologia social certificada que transforma vidas pela educação e ciência. Promovendo inclusão, desenvolvimento sustentável e acesso à universidade desde 2009.</p>
+          <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Links Úteis</h4>
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">Sobre o PFC</a></li>
+            <li><a href="#services">Módulos</a></li>
+            <li><a href="#stats">Impacto</a></li>
+            <li><a href="#team">Equipe</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Relatórios</h4>
+          <ul>
+            <li><a href="index.html">Evasão</a></li>
+            <li><a href="assiduidade.html">Assiduidade</a></li>
+            <li><a href="analises.html">Análises</a></li>
+            <li><a href="auditoria.html">Auditoria</a></li>
+            <li><a href="olimpiadas.html">Olimpíadas</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+          <h4>Contato</h4>
+          <p>Universidade Federal de São Carlos</p>
+          <p>São Carlos - SP</p>
+          <p>Brasil</p>
+          <p class="mt-4"><strong>Email:</strong> <span>contato@futurocientista.org.br</span></p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">Programa Futuro Cientista®</strong> <span>Todos os Direitos Reservados</span></p>
+      <div class="credits">
+        Sistema desenvolvido pela equipe PFC - UFSCar | 2009-2025
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="novo_template/model/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="novo_template/model/assets/vendor/aos/aos.js"></script>
+  <script src="novo_template/model/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="novo_template/model/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="novo_template/model/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="novo_template/model/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="novo_template/model/assets/js/main.js"></script>
+
 </body>
+
 </html>
+

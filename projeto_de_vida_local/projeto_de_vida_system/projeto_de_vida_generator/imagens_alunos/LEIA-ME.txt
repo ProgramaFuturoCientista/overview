@@ -1,0 +1,98 @@
+╔════════════════════════════════════════════════════════════════════╗
+║                                                                    ║
+║                   📁 PASTA DE IMAGENS DOS ALUNOS                   ║
+║                                                                    ║
+║               Sistema de Projeto de Vida - PFC 2025                ║
+║                                                                    ║
+╚════════════════════════════════════════════════════════════════════╝
+
+
+🎯 OBJETIVO DESTA PASTA
+═══════════════════════════════════════════════════════════════════
+
+    Esta é a pasta PRINCIPAL onde você deve adicionar TODAS as
+    imagens que serão usadas nos documentos "Projeto de Vida"
+    dos alunos.
+
+
+📂 ESTRUTURA DE SUBPASTAS
+═══════════════════════════════════════════════════════════════════
+
+    imagens_alunos/
+    │
+    ├── 📸 fotos_perfil/          ← Fotos dos alunos
+    │   └── COMO_USAR.txt
+    │
+    ├── 🖼️ fotos_background/       ← Imagens de fundo (opcional)
+    │   └── COMO_USAR.txt
+    │
+    └── 🎓 logos_universidades/    ← Logos das universidades
+        └── COMO_USAR.txt
+
+
+🚀 INÍCIO RÁPIDO
+═══════════════════════════════════════════════════════════════════
+
+    1. Abra a pasta: fotos_perfil/
+    2. Leia o arquivo: COMO_USAR.txt
+    3. Adicione as fotos dos alunos
+    
+    4. Abra a pasta: logos_universidades/
+    5. Leia o arquivo: COMO_USAR.txt
+    6. Adicione os logos das universidades
+    
+    7. (OPCIONAL) Adicione backgrounds personalizados em:
+       fotos_background/
+
+
+⚠️ IMPORTANTE
+═══════════════════════════════════════════════════════════════════
+
+    📝 Leia SEMPRE o arquivo "COMO_USAR.txt" em cada pasta!
+    
+    Cada pasta tem instruções ESPECÍFICAS e DETALHADAS sobre:
+    • Como nomear os arquivos
+    • Qual formato usar
+    • Qual tamanho ideal
+    • Exemplos práticos
+
+
+💡 GUIAS DISPONÍVEIS
+═══════════════════════════════════════════════════════════════════
+
+    📖 GUIA_RAPIDO_IMAGENS.txt
+       → Guia resumido com exemplos práticos
+    
+    📖 README_ESTRUTURA.md
+       → Documentação completa do sistema
+    
+    📖 Cada pasta tem seu COMO_USAR.txt
+       → Instruções específicas
+
+
+✅ CHECKLIST ANTES DE COMEÇAR
+═══════════════════════════════════════════════════════════════════
+
+    ☐ Li o arquivo GUIA_RAPIDO_IMAGENS.txt
+    ☐ Entendi como converter nomes (sem acentos, com underline)
+    ☐ Li o COMO_USAR.txt de cada subpasta
+    ☐ Tenho as fotos dos alunos prontas
+    ☐ Tenho os logos das universidades
+    ☐ Sei onde cada tipo de imagem deve ir
+
+
+📞 PRECISA DE AJUDA?
+═══════════════════════════════════════════════════════════════════
+
+    1. Leia: GUIA_RAPIDO_IMAGENS.txt (na pasta principal)
+    2. Leia: COMO_USAR.txt (em cada subpasta)
+    3. Leia: README_ESTRUTURA.md (documentação completa)
+    4. Teste com 2-3 alunos primeiro!
+
+
+═══════════════════════════════════════════════════════════════════
+
+🎓 Programa Futuro Cientista® 2025
+
+═══════════════════════════════════════════════════════════════════
+

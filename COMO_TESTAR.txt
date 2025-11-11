@@ -1,0 +1,183 @@
+═══════════════════════════════════════════════════════════════
+   COMO TESTAR O SISTEMA
+   Guia Passo a Passo
+═══════════════════════════════════════════════════════════════
+
+🎯 PASSO 1: ABRIR PÁGINA DE TESTE
+═══════════════════════════════════════════════════════════════
+
+Abra o arquivo:
+   output/repo/TESTE_LINKS.html
+
+Este arquivo tem botões para testar TODOS os links.
+Se algum não funcionar, você saberá exatamente qual é.
+
+═══════════════════════════════════════════════════════════════
+🎯 PASSO 2: TESTAR A LANDING PAGE
+═══════════════════════════════════════════════════════════════
+
+1. Abra: output/repo/index.html
+
+2. Limpe o cache:
+   Pressione: Ctrl + Shift + R
+
+3. Clique em cada card de módulo:
+   • Análise de Evasão
+   • Controle de Assiduidade  
+   • Análises Avançadas
+   • Sistema de Auditoria
+   • Participação em Olimpíadas
+   • Cursinho Preparatório
+   • Projeto de Vida
+
+4. Anote qual NÃO funciona
+
+═══════════════════════════════════════════════════════════════
+🎯 PASSO 3: TESTAR NAVEGAÇÃO ENTRE RELATÓRIOS
+═══════════════════════════════════════════════════════════════
+
+1. Estando em qualquer relatório
+
+2. Clique no menu hambúrguer (☰)
+
+3. Teste TODOS os links do menu:
+   • 🏠 Home
+   • 📉 Evasão
+   • 📅 Assiduidade
+   • 📈 Análises
+   • 🔍 Auditoria
+   • 🎓 Cursinho
+   • 🏆 Olimpíadas
+   • 🎯 Projeto de Vida
+
+4. Anote qual NÃO funciona
+
+═══════════════════════════════════════════════════════════════
+🔍 PASSO 4: VERIFICAR CONSOLE DO NAVEGADOR
+═══════════════════════════════════════════════════════════════
+
+1. Abra output/repo/index.html
+
+2. Pressione F12 (abre DevTools)
+
+3. Vá na aba "Console"
+
+4. Clique em um card de módulo
+
+5. Veja se aparece erro em vermelho no console
+
+6. SE APARECER ERRO:
+   • Tire print ou copie a mensagem
+   • Me envie a mensagem completa
+
+═══════════════════════════════════════════════════════════════
+🎨 PASSO 5: VERIFICAR VISUAL (TEMA ESCURO)
+═══════════════════════════════════════════════════════════════
+
+Após limpar cache (Ctrl + Shift + R), você DEVE ver:
+
+✓ Fundo: Azul escuro (#031119)
+✓ Cards: Gradiente escuro com borda dourada
+✓ Números: Gradiente dourado
+✓ Tabelas: Header dourado vibrante
+✓ Textos: Brancos/cinza claro
+
+SE NÃO VER ISSO:
+   → Cache ainda ativo
+   → Ctrl + Shift + Delete (limpar tudo)
+   → Fechar e reabrir navegador
+
+═══════════════════════════════════════════════════════════════
+⚠️ SE OS LINKS AINDA NÃO FUNCIONAM
+═══════════════════════════════════════════════════════════════
+
+OPÇÃO A: Testar arquivo direto
+   1. Navegue até output/repo/
+   2. Clique duas vezes em evasao.html
+   3. Se abrir → Problema está nos links
+   4. Se não abrir → Arquivo corrompido
+
+OPÇÃO B: Modo Anônimo
+   1. Ctrl + Shift + N (modo anônimo)
+   2. Arraste index.html para o navegador
+   3. Teste os links
+   4. Se funcionar → Era cache
+
+OPÇÃO C: Outro Navegador
+   1. Chrome → Teste Edge
+   2. Edge → Teste Firefox
+   3. Firefox → Teste Chrome
+
+OPÇÃO D: Servidor Local
+   cd output/repo
+   python -m http.server 8000
+   
+   Abra: http://localhost:8000
+
+═══════════════════════════════════════════════════════════════
+📞 INFORMAÇÕES IMPORTANTES PARA DEBUGAR
+═══════════════════════════════════════════════════════════════
+
+Me diga:
+
+1. Qual navegador você usa?
+   Chrome / Edge / Firefox / Outro
+
+2. O que acontece quando clica no link?
+   • Nada (página não muda)
+   • Página branca
+   • Erro 404
+   • Outro erro: ___________
+
+3. Testou o TESTE_LINKS.html?
+   • Sim, todos funcionaram
+   • Sim, alguns não funcionaram: ___________
+   • Não testei ainda
+
+4. Abriu o Console (F12)?
+   • Sim, tem erro: ___________
+   • Sim, sem erros
+   • Não abri
+
+5. Arquivo evasao.html abre direto (clique duplo)?
+   • Sim
+   • Não
+
+═══════════════════════════════════════════════════════════════
+📝 CHECKLIST DE VERIFICAÇÃO
+═══════════════════════════════════════════════════════════════
+
+Antes de reportar problema, verifique:
+
+[ ] Limpou cache (Ctrl + Shift + R)
+[ ] Fechou e reabriu o navegador
+[ ] Testou em modo anônimo
+[ ] Testou outro navegador
+[ ] Abriu TESTE_LINKS.html
+[ ] Verificou Console (F12)
+[ ] Testou abrir arquivo direto
+
+═══════════════════════════════════════════════════════════════
+✅ ARQUIVOS CONFIRMADOS NA PASTA REPO
+═══════════════════════════════════════════════════════════════
+
+✓ index.html (27.613 bytes) - Landing Page
+✓ evasao.html (28.449 bytes) - Relatório
+✓ assiduidade.html (271.268 bytes)
+✓ analises.html (10.118 bytes)
+✓ auditoria.html (199.964 bytes)
+✓ olimpiadas.html (29.430 bytes)
+✓ cursinho/cursinho.html
+✓ projeto_vida/projeto_vida.html (111.197 bytes)
+✓ style.css - Com tema escuro aplicado!
+✓ script.js
+✓ Logo PFC.png
+
+TODOS os arquivos estão presentes e completos!
+
+═══════════════════════════════════════════════════════════════
+
+Por favor, siga os passos acima e me informe o resultado! 🙏
+
+═══════════════════════════════════════════════════════════════
+
