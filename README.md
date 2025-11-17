@@ -27,7 +27,7 @@ Acesse: https://programafuturocientista.github.io/overview/
 
 Os relatórios são gerados a partir dos dados do Google Sheets do PFC.
 
-**Data de Geração:** 17/11/2025 às 15:01
+**Data de Geração:** 17/11/2025 às 16:38
 
 ---
 
